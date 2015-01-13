@@ -1,2 +1,1 @@
-# drunken-octo-hipster
-Opetusnäytteiden hallintatyökalu
+# Opetusnäytteiden hallintatyökalu
