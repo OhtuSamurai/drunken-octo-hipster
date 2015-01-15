@@ -1,5 +1,7 @@
 # Opetusnäytteiden hallintatyökalu
 
+## Seuraava asiakastapaaminen: ma 19.01.2015 15.15-17 A217, jonka jälkeen ryhmä kokoontuu 
+
 * Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
 * TravisCI:
 * Heroku:
