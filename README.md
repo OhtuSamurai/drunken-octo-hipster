@@ -1,5 +1,5 @@
 # Opetusnäytteiden hallintatyökalu
-
+## Seuraava ryhmätapaaminen: ti 20.01.2015 12-16 kirjaston ryhmätyötilassa nro 2
 ## Seuraava asiakastapaaminen: ma 19.01.2015 15.15-17 A217, jonka jälkeen ryhmä kokoontuu 
 
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
