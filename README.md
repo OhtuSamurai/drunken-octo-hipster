@@ -1,11 +1,12 @@
 # Opetusnäytteiden hallintatyökalu
-## Seuraava ryhmätapaaminen: ti 20.01.2015 12-16 kirjaston ryhmätyötilassa nro 2
-## Seuraava asiakastapaaminen: ma 19.01.2015 15.15-17 A217, jonka jälkeen ryhmä kokoontuu 
+## Seuraava ryhmätapaaminen: to 22.01.2015 14-18 kirjaston ryhmätyötilassa nro 2
+## Seuraava asiakastapaaminen: ma 2.2.2015 15.15-17 A217, jonka jälkeen ryhmä kokoontuu 
 
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
 * Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
 * Heroku: http://shielded-earth-2316.herokuapp.com/
 * Päiväkirja: https://docs.google.com/document/d/1UDgb-qVmfrm2VPWCUePRQSOGZHBhCazKrsLCVF3p0K0/edit?pli=1
+* Tuntipäiväkirja: https://docs.google.com/spreadsheets/d/17g4c-2rYGwq8bGUmzRXsI0MEK7oHIB1Qs6q6wWXee00/edit?usp=sharing
 
 ## Laravel PHP Framework
 
