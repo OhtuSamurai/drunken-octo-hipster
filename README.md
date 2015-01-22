@@ -1,7 +1,8 @@
 # Opetusnäytteiden hallintatyökalu
-[![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
 ## Seuraava ryhmätapaaminen: to 22.01.2015 14-18 kirjaston ryhmätyötilassa nro 2
 ## Seuraava asiakastapaaminen: ma 2.2.2015 15.15-17 A217, jonka jälkeen ryhmä kokoontuu 
+
+[![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
 
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
 * Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
