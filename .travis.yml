@@ -12,10 +12,11 @@ before_script:
 scrpit:
   - phpunit --verbose
 
-deploy:
-  provider: heroku
-  api_key:
-    secure: fjVObLR37AkYsXVlVygFdqkJOKCD+LNe6m8hR/5Y7rbgtf5OT23duUaulunb8v4rs/iKXRZqFpXex2ToHfC/IbjN781UER74CgWzbt8Df2O5FFlFinWoqL6HzU+8xUZHFMfjXIyA4mGr9NcJ5ZbGnNnxQwTEfQPutB47cs4siFk=
-  app: shielded-earth-2316
-  on:
-    repo: OhtuSamurai/drunken-octo-hipster
+# KOMMENTIT VOI POISTAA KUNHAN ON OIKEA API-KEY HEROKUUN!!!!
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: kumi-kumi lisää tähän herokun api-key
+#  app: shielded-earth-2316
+#  on:
+#    repo: OhtuSamurai/drunken-octo-hipster
