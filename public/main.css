@@ -1,0 +1,11 @@
+table tbody tr > td.parhaiten {
+	background-color: green !important;
+}
+
+table tbody tr > td.eisovi {
+	background-color: #FF0000 !important;
+}
+
+table tbody tr > td.sopii {
+	background-color: #80FF00 !important;
+}
