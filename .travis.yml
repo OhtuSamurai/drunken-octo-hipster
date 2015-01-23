@@ -11,3 +11,9 @@ before_script:
 
 scrpit:
   - phpunit --verbose
+
+deploy:
+  provider: heroku
+  app: shielded-earth-2316
+  on:
+    repo: OhtuSamurai/drunken-octo-hipster
