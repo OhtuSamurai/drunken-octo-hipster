@@ -8,13 +8,13 @@ class TestiTest extends TestCase {
 	 *
 	 * @return void
 	 */
-	public function testTestissaLukeeAika()
+	public function testTestiTemplatenSisalto()
 	{
 		$crawler = $this->client->request('GET', 'testi');
 
 		$this->assertTrue($this->client->getResponse()->isOk());
 
-    $this->assertCount(1, $crawler->filter('body:contains("Aika")'));
+    $this->assertCount(1, $crawler->filter('body:contains("ajat")'));
 	}
 
 }
