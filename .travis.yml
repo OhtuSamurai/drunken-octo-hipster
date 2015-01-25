@@ -11,7 +11,7 @@ before_script:
 
 scrpit:
   - phpunit --verbose
-x
+
 deploy:
   provider: heroku
   api_key:
