@@ -19,3 +19,6 @@ deploy:
   app: shielded-earth-2316
   on:
     repo: OhtuSamurai/drunken-octo-hipster
+  run:
+    - "php artisan migrate"
+    - "php artisan db:seed"
