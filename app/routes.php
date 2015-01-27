@@ -20,3 +20,5 @@ Route::get('testi', function()
 {
 	return View::make('testi');
 });
+
+Route::get('pooli', 'UserController@pooli');
