@@ -10,11 +10,11 @@ class TestiTest extends TestCase {
 	 */
 	public function testTestiTemplatenSisalto()
 	{
-		//$response = $this->call('GET', 'testi');
+		$response = $this->call('GET', 'testi');
 
-		//$this->assertTrue($this->client->getResponse()->isOk());
+		$this->assertTrue($this->client->getResponse()->isOk());
 
-    //$this->assertCount(1, $crawler->filter('body:contains("ajat")'));
+    $this->assertCount(1, $crawler->filter('body:contains("ajat")'));
 	}
 
 }
