@@ -21,4 +21,5 @@ deploy:
     repo: OhtuSamurai/drunken-octo-hipster
   run:
     - "php artisan migrate"
+    - "yes"
     - "php artisan db:seed"
