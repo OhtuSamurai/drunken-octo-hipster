@@ -10,7 +10,7 @@ class TestiTest extends TestCase {
 	 */
 	public function testTestiTemplatenSisalto()
 	{
-		$response = $this->call('GET', 'testi');
+		$crawler = $this->client->request('GET', 'testi');
 
 		$this->assertTrue($this->client->getResponse()->isOk());
 
