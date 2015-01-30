@@ -14,6 +14,7 @@
   </style>
 </head>
 <body>
+@include('layouts.navigation')
 <div class="container-fluid">
   @yield('content')
 </div>
