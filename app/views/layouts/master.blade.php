@@ -18,6 +18,5 @@
 <div class="container-fluid">
   @yield('content')
 </div>
-@show
 </body>
 </html>

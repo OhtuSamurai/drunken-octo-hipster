@@ -12,7 +12,9 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('UserTableSeeder');
+		$this->call('TimeideaTableSeeder');
 	  $this->command->info('User table seeded!');
+		$this->command->info('Timeidea table seeded!');
   }
 
 }

@@ -22,3 +22,5 @@ Route::get('testi', function()
 });
 
 Route::get('pooli', 'UserController@pooli');
+
+Route::get('template','TemplateController@template');
