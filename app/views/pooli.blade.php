@@ -22,4 +22,6 @@
     @endforeach
     </tbody>
   </table>
+  <p><a href="#" class="btn btn-default" role="button">Luo uusi kysely</a>
+     <a href="#" class="btn btn-default" role="button">Lisää pooliin</a></p>
 @stop
