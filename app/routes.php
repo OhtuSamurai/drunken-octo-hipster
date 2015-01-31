@@ -24,4 +24,6 @@ Route::get('polls', 'PollController@list_polls');
 
 Route::get('template','PollController@template');
 
+Route::get('poll/{id}', 'PollController@show_poll');
+
 Route::post('#', 'PollController@create');
