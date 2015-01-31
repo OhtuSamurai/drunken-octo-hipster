@@ -11,16 +11,15 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-
 Route::get('testi', function()
 {
 	return View::make('testi');
 });
 
+Route::get('/', 'UserController@pooli');
+
 Route::get('pooli', 'UserController@pooli');
 
-Route::get('template','TemplateController@template');
+Route::get('polls', 'PollController@list_polls');
+
+Route::get('template','PollController@template');
