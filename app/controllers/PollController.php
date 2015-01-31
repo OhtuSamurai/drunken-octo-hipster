@@ -17,7 +17,8 @@ class PollController extends BaseController
   }
 
   public function create() {
-    return Redirect::to('pooli');
+
+    return Redirect::to('poll/{$id}');
   }
 
 	public function show_poll($id) {
