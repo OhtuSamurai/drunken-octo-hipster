@@ -1,8 +1,4 @@
-@extends('layouts.master')
-
-@section('content')
-  <h1>Opetustaitotoimikuntapooli</h1>
-  <table class="table table-hover">
+<table class="table table-hover">
     <thead>
       <tr>
       <th>Etunimi</th>
@@ -24,4 +20,3 @@
   </table>
   <p><a href="#" class="btn btn-default" role="button">Luo uusi kysely</a>
      <a href="#" class="btn btn-default" role="button">Lisää pooliin</a></p>
-@stop
