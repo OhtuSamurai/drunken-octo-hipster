@@ -15,4 +15,8 @@ class PollController extends BaseController
     $polls = Poll::all();
     return View::make('polls', array('polls' => $polls));
   }
+
+  public function create() {
+    return Redirect::to('pooli');
+  }
 }

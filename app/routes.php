@@ -23,3 +23,5 @@ Route::get('pooli', 'UserController@pooli');
 Route::get('polls', 'PollController@list_polls');
 
 Route::get('template','PollController@template');
+
+Route::post('#', 'PollController@create');
