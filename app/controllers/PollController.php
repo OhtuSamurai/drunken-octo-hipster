@@ -25,6 +25,11 @@ class PollController extends \BaseController {
     $poll->toimikunta = Input::get('toimikunta');
     $poll->save();
 
+    $users = Input::get('user');
+
+    foreach($users as $user)
+      $poll->users()->attach($user);
+
     return Redirect::route('poll.show', array('poll' => $poll));
   }
 
