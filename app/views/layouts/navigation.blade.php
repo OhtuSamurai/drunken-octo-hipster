@@ -13,9 +13,9 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="pooli">Pooli</a></li>
-        <li><a href="poll">Kyselyt</a></li>
-        <li><a href="template">Template</a></li>
+        <li><a href="/pooli">Pooli</a></li>
+        <li><a href="/poll">Kyselyt</a></li>
+        <li><a href="/template">Template</a></li>
     </div>
   </div>
   </nav>
