@@ -19,10 +19,6 @@ class DatabaseSeeder extends Seeder {
 
     $this->call('PollTableSeeder');
     $this->command->info('Poll table seeded!');
-
-    $this->call('ParticipantTableSeeder');
-    $this->command->info('Participant table seeded!');
-
   }
 
 }
