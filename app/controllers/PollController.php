@@ -48,7 +48,8 @@ class PollController extends \BaseController {
 	public function show($id)
 	{
 		$poll = Poll::find($id);
-		return View::make('poll.show', array('poll' => $poll));
+    $users = $poll->users;
+		return View::make('poll.show', array('poll' => $poll, 'users' => $users));
   }
 
 

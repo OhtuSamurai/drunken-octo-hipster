@@ -15,12 +15,13 @@
   </thead>
   <tbody>
   @foreach($users as $user)
-    <tr>
+  <tr>
       <td>{{$user->first_name}}</td>
       <td>{{$user->last_name}}</td>
       <td>{{$user->department}}</td>
       <td>{{$user->position}}</td>
-      </tr>
+  </tr>
+
   @endforeach
   </tbody>
 </table>

@@ -15,4 +15,8 @@ class Poll extends Eloquent {
 	protected $table = 'polls';
 
   protected $fillable = ['toimikunta'];
+
+  public function users(){
+    return $this->belongsToMany('User', 'participants');
+  }
 }
