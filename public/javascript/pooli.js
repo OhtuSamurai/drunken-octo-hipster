@@ -1,8 +1,10 @@
 $(document).ready(function(){
+  $(".userselector").prop("checked", false);
+	
   $(".pooltable>tbody>tr").click(function(){
     checkbox = $(this).find(".userselector")
      
-    if(checkbox.prop("checked")){
+    if(!checkbox.prop("checked")){
       $(this).addClass("active");
     }else{
       $(this).removeClass("active");

@@ -19,8 +19,7 @@
       <td>{{$user->first_name}}<input class="userselector hidden" type="checkbox" name="user" value="{{$user->id}}"></td>	
       <td>{{$user->last_name}}</td>
       <td>{{$user->department}}</td>
-      <td>{{$user->position}}</td>
-      <td>{{var_dump($user->id)}}</td>      
+      <td>{{$user->position}}</td>     
     </tr>
   @endforeach
   </tbody>
