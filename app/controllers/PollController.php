@@ -10,7 +10,7 @@ class PollController extends \BaseController {
 	public function index()
 	{
 	  $polls = Poll::all();
-    return View::make('polls', array('polls' => $polls));
+    return View::make('poll.index', array('polls' => $polls));
 	}
 
 
@@ -21,8 +21,11 @@ class PollController extends \BaseController {
 	 */
 	public function create()
 	{
-		return "moi";
-	}
+    $poll = new Poll;
+    $poll->toimikunta = Input::get('toimikunta');
+    $poll->save();
+		return Redirect::route('poll.show', array('poll' => $poll));
+  }
 
 
 	/**
@@ -46,7 +49,7 @@ class PollController extends \BaseController {
 	{
 		$poll = Poll::find($id);
 		return View::make('poll', array('poll' => $poll));
-	}
+  }
 
 
 	/**

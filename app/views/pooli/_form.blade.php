@@ -2,7 +2,7 @@
 
 {{ Form::label('toimikunta', 'Valitse toimikunnalle nimi' )}}
 {{ Form::text('toimikunta') }}
-{{ Form::submit('Luo uusi kysely') }}
+{{ Form::submit('Luo uusi kysely', array('class' => 'btn btn-primary')) }}
 
 <table class="table table-hover">
   <thead>

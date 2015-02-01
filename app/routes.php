@@ -20,4 +20,4 @@ Route::resource('user', 'UserController',
                 array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show')));
 
 Route::resource('poll', 'PollController',
-                array('except' => array('destroy', 'update', 'edit', 'show')));
+                array('except' => array('destroy', 'update', 'edit')));
