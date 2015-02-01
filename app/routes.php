@@ -16,14 +16,8 @@ Route::get('pooli', 'UserController@index');
 
 Route::get('template','TemplateController@template');
 
-Route::get('polls', 'PollController@index');
-
-Route::get('poll/{id}', 'PollController@show');
-
-Route::post('#', 'PollController@create');
-
 Route::resource('user', 'UserController',
                 array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show')));
 
 Route::resource('poll', 'PollController',
-                array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show')));
+                array('except' => array('destroy', 'update', 'edit', 'show')));

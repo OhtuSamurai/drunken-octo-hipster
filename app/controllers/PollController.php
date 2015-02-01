@@ -21,7 +21,7 @@ class PollController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return "moi";
 	}
 
 
