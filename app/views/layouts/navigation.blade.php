@@ -13,15 +13,9 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-<<<<<<< HEAD
-        <li><a href="pooli">Pooli</a></li>
-        <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
-        <li><a href="template">Template</a></li>
-=======
         <li><a href="/pooli">Pooli</a></li>
-        <li><a href="/poll">Kyselyt</a></li>
+        <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
         <li><a href="/template">Template</a></li>
->>>>>>> 05cb7bbfb2613de4e985b6b3b2164eb567fbbd57
     </div>
   </div>
   </nav>
