@@ -24,7 +24,8 @@ class PollController extends \BaseController {
     $poll = new Poll;
     $poll->toimikunta = Input::get('toimikunta');
     $poll->save();
-		return Redirect::route('poll.show', array('poll' => $poll));
+
+    return Redirect::route('poll.show', array('poll' => $poll));
   }
 
 
