@@ -4,15 +4,14 @@
 
 [![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
 [![Code Climate](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster/badges/gpa.svg)](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster)
-[![Test Coverage](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster/badges/coverage.svg)](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster)
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
 ![Ohtu Samurai](http://b.repl.ca/v1/Ohtu-Samurai-lightgrey.png)
 
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
-* Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
 * Heroku: http://shielded-earth-2316.herokuapp.com/
-* Päiväkirja: https://docs.google.com/document/d/1UDgb-qVmfrm2VPWCUePRQSOGZHBhCazKrsLCVF3p0K0/edit?pli=1
+* Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
 * Tuntipäiväkirja: https://docs.google.com/spreadsheets/d/17g4c-2rYGwq8bGUmzRXsI0MEK7oHIB1Qs6q6wWXee00/edit?usp=sharing
+* Päiväkirja: https://docs.google.com/document/d/1UDgb-qVmfrm2VPWCUePRQSOGZHBhCazKrsLCVF3p0K0/edit?pli=1
 
 ## Laravel PHP Framework
 
