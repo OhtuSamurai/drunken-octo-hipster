@@ -1,5 +1,5 @@
 # Opetusnäytteiden hallintatyökalu
-## Seuraava ryhmätapaaminen: pe 30.01.2015 klo 11 kirjaston ryhmätyötilassa nro 2
+## Seuraava ryhmätapaaminen: ke 04.02.2015 klo 14.00 kirjaston ryhmätyötilassa nro 2
 ## Seuraava asiakastapaaminen: ma 16.2.2015 12.15-13 A217, jonka jälkeen ryhmä kokoontuu 
 
 [![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
