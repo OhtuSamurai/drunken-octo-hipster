@@ -7,5 +7,5 @@
 @section('content')
   <h1>Opetustaitotoimikuntapooli</h1>
 
-  @include('pooli._form')
+  @include('user._form')
 @stop
