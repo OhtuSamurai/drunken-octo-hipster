@@ -1,3 +1,7 @@
+table tr.active{
+	color: #339900 !important;
+}
+
 table tbody tr > td.parhaiten {
 	background-color: green !important;
 }
