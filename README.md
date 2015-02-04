@@ -7,6 +7,8 @@
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
 ![Ohtu Samurai](http://b.repl.ca/v1/Ohtu-Samurai-lightgrey.png)
 
+100 commits! ![100](https://cdn3.iconfinder.com/data/icons/mixed-3d-icons/512/celebration-512.png "100")
+
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
 * Heroku: http://shielded-earth-2316.herokuapp.com/
 * Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
