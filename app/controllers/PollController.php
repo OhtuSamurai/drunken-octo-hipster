@@ -21,16 +21,7 @@ class PollController extends \BaseController {
 	 */
 	public function create()
 	{
-    $poll = new Poll;
-    $poll->toimikunta = Input::get('toimikunta');
-    $poll->save();
-
-    $users = Input::get('user');
-
-    foreach($users as $user)
-      $poll->users()->attach($user);
-
-    return Redirect::route('poll.show', array('poll' => $poll));
+    //
   }
 
 
@@ -41,7 +32,16 @@ class PollController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$poll = new Poll;
+    $poll->toimikunta = Input::get('toimikunta');
+    $poll->save();
+
+    $users = Input::get('user');
+
+    foreach($users as $user)
+      $poll->users()->attach($user);
+
+    return Redirect::route('poll.show', array('poll' => $poll));
 	}
 
 

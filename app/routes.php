@@ -20,7 +20,7 @@ Route::resource('user', 'UserController',
                 array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show')));
 
 Route::resource('poll', 'PollController',
-                array('except' => array('destroy', 'update', 'edit', 'store')));
+                array('except' => array('destroy', 'update', 'edit', 'create')));
 
 Route::resource('timeidea', 'TimeideaController',
                 array('only' => array('create')));

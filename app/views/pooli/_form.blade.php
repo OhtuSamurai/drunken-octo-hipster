@@ -1,4 +1,4 @@
-{{ Form::open(array('action' => 'poll.create', 'method' => 'get')) }}
+{{ Form::open(array('action' => 'poll.store')) }}
 
 {{ Form::label('toimikunta', 'Valitse toimikunnalle nimi' )}}
 {{ Form::text('toimikunta') }}
