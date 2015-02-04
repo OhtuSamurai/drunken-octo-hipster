@@ -62,5 +62,8 @@
 				</tr>
 			</tbody>
 		</table>
+
+    @include('timeidea._form')
+
     <button type="submit" class="btn btn-default">Sulje kysely</button>
 @stop
