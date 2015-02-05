@@ -9,7 +9,7 @@ class OtsikkoTest extends PHPUnit_Extensions_Selenium2TestCase
 
     public function testTitle()
     {
-        $this->url('http://homestead.app');
+        $this->url('http://localhost');
         $this->assertEquals('oona', $this->title());
     }
 
