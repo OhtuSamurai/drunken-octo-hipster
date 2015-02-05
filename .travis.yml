@@ -13,12 +13,10 @@ before_install:
 before_script:
   - composer self-update
   - composer install --dev --prefer-source --no-interaction
-  - ./scripts/run_sc_server_master.sh
-  - sleep 5 # give sc-server some time to start
 
 script:
   phpunit --verbose
-  phantomjs phantomjs/test_runner.js --no-experimental --exclude-targets=/sproutcore/greenhouse  
+  phantomjs phantomjs/test_runner.js  
       
 deploy:
   provider: heroku
