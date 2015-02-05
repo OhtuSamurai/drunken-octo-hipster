@@ -11,7 +11,7 @@ before_script:
 
 script:
   phpunit --verbose
-  phantomjs phantomjs/test_runner.js  
+  phantomjs testrunner.js  
       
 deploy:
   provider: heroku
