@@ -3,7 +3,7 @@ class OtsikkoTest extends PHPUnit_Extensions_Selenium2TestCase
 {
     protected function setUp()
     {
-        $this->setBrowser('firefox');
+        $this->setBrowser('phantomjs');
         $this->setBrowserUrl('http://www.example.com/');
     }
 
