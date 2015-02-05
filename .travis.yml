@@ -14,9 +14,10 @@ before_script:
   - composer self-update
   - composer install --dev --prefer-source --no-interaction
 
-scrpit:
+script:
   - phpunit --verbose
-
+        - phantomjs phantomjs/test_runner.js --no-experimental --exclude-targets=/sproutcore/greenhouse  
+      
 deploy:
   provider: heroku
   api_key:
@@ -24,3 +25,4 @@ deploy:
   app: shielded-earth-2316
   on:
     repo: OhtuSamurai/drunken-octo-hipster
+
