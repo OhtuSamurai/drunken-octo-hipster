@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends \BaseController {
+class PollController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +9,8 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = User::all();
-    return View::make('user.index', array('users' => $users));
+	  $polls = Poll::all();
+    return View::make('poll.index', array('polls' => $polls));
 	}
 
 
@@ -21,8 +21,8 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
-	}
+    //
+  }
 
 
 	/**
@@ -32,7 +32,16 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$poll = new Poll;
+    $poll->toimikunta = Input::get('toimikunta');
+    $poll->save();
+
+    $users = Input::get('user');
+
+    foreach($users as $user)
+      $poll->users()->attach($user);
+
+    return Redirect::route('poll.show', array('poll' => $poll));
 	}
 
 
@@ -44,8 +53,10 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-	}
+		$poll = Poll::find($id);
+    $users = $poll->users;
+		return View::make('poll.show', array('poll' => $poll, 'users' => $users));
+  }
 
 
 	/**

@@ -1,18 +1,19 @@
 # Opetusnäytteiden hallintatyökalu
-## Seuraava ryhmätapaaminen: to 22.01.2015 14-18 kirjaston ryhmätyötilassa nro 2
-## Seuraava asiakastapaaminen: ma 2.2.2015 15.15-17 A217, jonka jälkeen ryhmä kokoontuu 
+## Seuraava ryhmätapaaminen: to 05.02.2015 klo 12.00 kirjaston ryhmätyötilan nro 1 (varaus alkaa 14.00 eteenpäin)
+## Seuraava asiakastapaaminen: ma 16.2.2015 12.15-13 A217, jonka jälkeen ryhmä kokoontuu 
 
 [![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
 [![Code Climate](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster/badges/gpa.svg)](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster)
-[![Test Coverage](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster/badges/coverage.svg)](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster)
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
 ![Ohtu Samurai](http://b.repl.ca/v1/Ohtu-Samurai-lightgrey.png)
 
+100 commits! ![100](https://cdn3.iconfinder.com/data/icons/mixed-3d-icons/512/celebration-512.png "100")
+
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
-* Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
 * Heroku: http://shielded-earth-2316.herokuapp.com/
-* Päiväkirja: https://docs.google.com/document/d/1UDgb-qVmfrm2VPWCUePRQSOGZHBhCazKrsLCVF3p0K0/edit?pli=1
+* Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
 * Tuntipäiväkirja: https://docs.google.com/spreadsheets/d/17g4c-2rYGwq8bGUmzRXsI0MEK7oHIB1Qs6q6wWXee00/edit?usp=sharing
+* Päiväkirja: https://docs.google.com/document/d/1UDgb-qVmfrm2VPWCUePRQSOGZHBhCazKrsLCVF3p0K0/edit?pli=1
 
 ## Laravel PHP Framework
 

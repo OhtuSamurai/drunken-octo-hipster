@@ -1,3 +1,7 @@
+table tr.active{
+	color: #339900 !important;
+}
+
 table tbody tr > td.parhaiten {
 	background-color: green !important;
 }
@@ -8,4 +12,9 @@ table tbody tr > td.eisovi {
 
 table tbody tr > td.sopii {
 	background-color: #80FF00 !important;
+}
+
+table tbody tr > td.kysy {
+	color: blue !important;
+	text-decoration: underline;
 }

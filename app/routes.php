@@ -10,15 +10,18 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/', 'UserController@index');
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('pooli', 'UserController@index');
 
-Route::get('testi', function()
-{
-	return View::make('testi');
-});
+Route::get('template','TemplateController@template');
 
-Route::get('pooli', 'UserController@pooli');
+Route::resource('user', 'UserController',
+                array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show', 'index')));
+
+Route::resource('poll', 'PollController',
+                array('except' => array('destroy', 'update', 'edit', 'create')));
+
+Route::resource('timeidea', 'TimeideaController',
+                array('only' => array('create')));
+

@@ -7,16 +7,13 @@
   {{HTML::style('bootstrap-3.3.2-dist/css/bootstrap-theme.min.css')}}
   {{HTML::style('main.css')}}
   {{HTML::script('bootstrap-3.3.2-dist/js/bootstrap.min.js')}}
-  <style>
-    body{
-      padding-top: 70px;
-      }
-  </style>
+  {{HTML::script('javascript/jquery-1.11.2.min.js')}}
+  @yield('pagehead')
 </head>
 <body>
+@include('layouts.navigation')
 <div class="container-fluid">
   @yield('content')
 </div>
-@show
 </body>
 </html>

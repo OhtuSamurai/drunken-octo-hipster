@@ -5,18 +5,17 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class Timeidea extends Eloquent {
 
-	use UserTrait, RemindableTrait;
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'timeideas';
 
-  protected $fillable = ['first_name', 'last_name', 'department', 'position'];
+  protected $fillable = ['date', 'begins', 'ends'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -24,9 +23,5 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	//protected $hidden = array('password', 'remember_token');
-
-  public function polls(){
-    return $this->belongsToMany('Poll', 'participants');
-  }
 
 }
