@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
 [![Code Climate](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster/badges/gpa.svg)](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster)
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
-![Ohtu Samurai](http://b.repl.ca/v1/Ohtu-Samurai-lightgrey.png)
+![Ohtu Samurai](https://img.shields.io/badge/ohtu-samurai-lightgrey.svg)
 
 100 commits! ![100](https://cdn3.iconfinder.com/data/icons/mixed-3d-icons/512/celebration-512.png "100")
 
