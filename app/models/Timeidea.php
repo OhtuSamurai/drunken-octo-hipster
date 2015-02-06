@@ -20,4 +20,8 @@ class Timeidea extends Eloquent {
   public function poll() {
     return $this->belongsTo('Poll');
   }
+
+  public function answers() {
+    return $this->hasMany('Answer');
+  }
 }
