@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/risto/drunken-octo-hipster/app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/nv.d3.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="index.html">/home/risto/drunken-octo-hipster/app</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="models/Participant.php.html#6">Participant</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Poll.php.html#6">Poll</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Timeidea.php.html#8">Timeidea</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/User.php.html#8">User</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Answer.php.html#3">Answer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/UserController.php.html#3">UserController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/HomeController.php.html#3">HomeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#3">PollController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TemplateController.php.html#3">TemplateController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#3">TimeideaController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/BaseController.php.html#3">BaseController</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="controllers/PollController.php.html#3">PollController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="controllers/BaseController.php.html#3">BaseController</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="controllers/UserController.php.html#57"><abbr title="UserController::edit">edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/UserController.php.html#69"><abbr title="UserController::update">update</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/UserController.php.html#81"><abbr title="UserController::destroy">destroy</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/UserController.php.html#45"><abbr title="UserController::show">show</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/UserController.php.html#33"><abbr title="UserController::store">store</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/UserController.php.html#10"><abbr title="UserController::index">index</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/UserController.php.html#22"><abbr title="UserController::create">create</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Answer.php.html#9"><abbr title="Answer::timeidea">timeidea</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Participant.php.html#17"><abbr title="Participant::etunimi">etunimi</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Timeidea.php.html#24"><abbr title="Timeidea::answers">answers</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/User.php.html#28"><abbr title="User::polls">polls</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Timeidea.php.html#20"><abbr title="Timeidea::poll">poll</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Poll.php.html#27"><abbr title="Poll::ansers">ansers</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Poll.php.html#19"><abbr title="Poll::users">users</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="models/Poll.php.html#23"><abbr title="Poll::timeideas">timeideas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#80"><abbr title="TimeideaController::destroy">destroy</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#68"><abbr title="TimeideaController::update">update</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#54"><abbr title="PollController::show">show</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#68"><abbr title="PollController::edit">edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#33"><abbr title="PollController::store">store</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#22"><abbr title="PollController::create">create</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/HomeController.php.html#18"><abbr title="HomeController::showWelcome">showWelcome</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#10"><abbr title="PollController::index">index</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#80"><abbr title="PollController::update">update</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/PollController.php.html#92"><abbr title="PollController::destroy">destroy</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#44"><abbr title="TimeideaController::show">show</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#56"><abbr title="TimeideaController::edit">edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#32"><abbr title="TimeideaController::store">store</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#21"><abbr title="TimeideaController::create">create</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TemplateController.php.html#8"><abbr title="TemplateController::template">template</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/TimeideaController.php.html#10"><abbr title="TimeideaController::index">index</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="controllers/BaseController.php.html#10"><abbr title="BaseController::setupLayout">setupLayout</a></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="controllers/PollController.php.html#33"><abbr title="PollController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="controllers/BaseController.php.html#10"><abbr title="BaseController::setupLayout">setupLayout</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.0.15</a> using <a href="http://php.net/" target="_top">PHP 5.5.20</a> and <a href="http://phpunit.de/">PHPUnit 4.4.5</a> at Fri Feb 6 12:11:17 UTC 2015.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="js/holder.js" type="text/javascript"></script>
+  <script src="js/d3.min.js" type="text/javascript"></script>
+  <script src="js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([11,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([32,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"controllers\/BaseController.php.html#3\">BaseController<\/a>"],[0,1,"<a href=\"controllers\/HomeController.php.html#3\">HomeController<\/a>"],[0,8,"<a href=\"controllers\/PollController.php.html#3\">PollController<\/a>"],[0,1,"<a href=\"controllers\/TemplateController.php.html#3\">TemplateController<\/a>"],[0,7,"<a href=\"controllers\/TimeideaController.php.html#3\">TimeideaController<\/a>"],[0,7,"<a href=\"controllers\/UserController.php.html#3\">UserController<\/a>"],[0,1,"<a href=\"models\/Answer.php.html#3\">Answer<\/a>"],[0,1,"<a href=\"models\/Participant.php.html#6\">Participant<\/a>"],[0,3,"<a href=\"models\/Poll.php.html#6\">Poll<\/a>"],[0,2,"<a href=\"models\/Timeidea.php.html#8\">Timeidea<\/a>"],[0,1,"<a href=\"models\/User.php.html#8\">User<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"controllers\/BaseController.php.html#10\">BaseController::setupLayout<\/a>"],[0,1,"<a href=\"controllers\/HomeController.php.html#18\">HomeController::showWelcome<\/a>"],[0,1,"<a href=\"controllers\/PollController.php.html#10\">PollController::index<\/a>"],[0,1,"<a href=\"controllers\/PollController.php.html#22\">PollController::create<\/a>"],[0,2,"<a href=\"controllers\/PollController.php.html#33\">PollController::store<\/a>"],[0,1,"<a href=\"controllers\/PollController.php.html#54\">PollController::show<\/a>"],[0,1,"<a href=\"controllers\/PollController.php.html#68\">PollController::edit<\/a>"],[0,1,"<a href=\"controllers\/PollController.php.html#80\">PollController::update<\/a>"],[0,1,"<a href=\"controllers\/PollController.php.html#92\">PollController::destroy<\/a>"],[0,1,"<a href=\"controllers\/TemplateController.php.html#8\">TemplateController::template<\/a>"],[0,1,"<a href=\"controllers\/TimeideaController.php.html#10\">TimeideaController::index<\/a>"],[0,1,"<a href=\"controllers\/TimeideaController.php.html#21\">TimeideaController::create<\/a>"],[0,1,"<a href=\"controllers\/TimeideaController.php.html#32\">TimeideaController::store<\/a>"],[0,1,"<a href=\"controllers\/TimeideaController.php.html#44\">TimeideaController::show<\/a>"],[0,1,"<a href=\"controllers\/TimeideaController.php.html#56\">TimeideaController::edit<\/a>"],[0,1,"<a href=\"controllers\/TimeideaController.php.html#68\">TimeideaController::update<\/a>"],[0,1,"<a href=\"controllers\/TimeideaController.php.html#80\">TimeideaController::destroy<\/a>"],[0,1,"<a href=\"controllers\/UserController.php.html#10\">UserController::index<\/a>"],[0,1,"<a href=\"controllers\/UserController.php.html#22\">UserController::create<\/a>"],[0,1,"<a href=\"controllers\/UserController.php.html#33\">UserController::store<\/a>"],[0,1,"<a href=\"controllers\/UserController.php.html#45\">UserController::show<\/a>"],[0,1,"<a href=\"controllers\/UserController.php.html#57\">UserController::edit<\/a>"],[0,1,"<a href=\"controllers\/UserController.php.html#69\">UserController::update<\/a>"],[0,1,"<a href=\"controllers\/UserController.php.html#81\">UserController::destroy<\/a>"],[0,1,"<a href=\"models\/Answer.php.html#9\">Answer::timeidea<\/a>"],[0,1,"<a href=\"models\/Participant.php.html#17\">Participant::etunimi<\/a>"],[0,1,"<a href=\"models\/Poll.php.html#19\">Poll::users<\/a>"],[0,1,"<a href=\"models\/Poll.php.html#23\">Poll::timeideas<\/a>"],[0,1,"<a href=\"models\/Poll.php.html#27\">Poll::ansers<\/a>"],[0,1,"<a href=\"models\/Timeidea.php.html#20\">Timeidea::poll<\/a>"],[0,1,"<a href=\"models\/Timeidea.php.html#24\">Timeidea::answers<\/a>"],[0,1,"<a href=\"models\/User.php.html#28\">User::polls<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
