@@ -19,4 +19,8 @@ class Poll extends Eloquent {
   public function users(){
     return $this->belongsToMany('User', 'participants');
   }
+
+  public function timeideas(){
+    return $this->hasMany('Timeidea');
+  }
 }

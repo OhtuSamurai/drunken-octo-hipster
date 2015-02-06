@@ -17,11 +17,7 @@ class Timeidea extends Eloquent {
 
   protected $fillable = ['date', 'begins', 'ends'];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	//protected $hidden = array('password', 'remember_token');
-
+  public function poll() {
+    return $this->belongsTo('Poll');
+  }
 }
