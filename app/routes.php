@@ -12,6 +12,12 @@
 */
 Route::get('/', 'UserController@index');
 
+Route::get('login', 'LoginController@showLoginPage');
+
+Route::post('login', 'LoginController@doLogin');
+
+Route::get('logout', 'LoginController@logout');
+
 Route::get('pooli', 'UserController@index');
 
 Route::get('template','TemplateController@template');
