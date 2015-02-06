@@ -15,6 +15,8 @@ class CreateTimeideasTable extends Migration {
 		Schema::create('timeideas', function(Blueprint $table)
 		{
 		$table->increments('id');
+    $table->integer('poll_id')->unsigned();
+	  $table->foreign('poll_id')->references('id')->on('polls');
 		$table->date('date');
 		$table->time('begins');
 		$table->time('ends');
