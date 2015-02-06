@@ -23,4 +23,8 @@ class Poll extends Eloquent {
   public function timeideas(){
     return $this->hasMany('Timeidea');
   }
+
+  public function ansers() {
+    return $this->hasManyThrough('Answer', 'Timeidea');
+  }
 }
