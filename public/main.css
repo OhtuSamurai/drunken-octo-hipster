@@ -3,15 +3,15 @@ table tr.active{
 }
 
 table tbody tr > td.parhaiten {
-	background-color: green !important;
+	background-color: #009900 !important;
 }
 
 table tbody tr > td.eisovi {
-	background-color: #FF0000 !important;
+	background-color: #CC0000 !important;
 }
 
 table tbody tr > td.sopii {
-	background-color: #80FF00 !important;
+	background-color: #FFCC33 !important;
 }
 
 table tbody tr > td.kysy {
