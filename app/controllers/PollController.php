@@ -9,8 +9,8 @@ class PollController extends \BaseController {
 	 */
 	public function index()
 	{
-	  $polls = Poll::all();
-    return View::make('poll.index', array('polls' => $polls));
+	  $polls = Poll::all(); 	  
+          return View::make('poll.index', array('polls' => $polls));
 	}
 
 
@@ -21,8 +21,8 @@ class PollController extends \BaseController {
 	 */
 	public function create()
 	{
-    //
-  }
+ 	   //
+  	}
 
 
 	/**
@@ -33,15 +33,15 @@ class PollController extends \BaseController {
 	public function store()
 	{
 		$poll = new Poll;
-    $poll->toimikunta = Input::get('toimikunta');
-    $poll->save();
+    			$poll->toimikunta = Input::get('toimikunta');
+    			$poll->save();
 
-    $users = Input::get('user');
+    			$users = Input::get('user');
 
-    foreach($users as $user)
-      $poll->users()->attach($user);
+    		foreach($users as $user)
+      			$poll->users()->attach($user);
 
-    return Redirect::route('poll.show', array('poll' => $poll));
+    		return Redirect::route('poll.show', array('poll' => $poll));
 	}
 
 
@@ -54,9 +54,10 @@ class PollController extends \BaseController {
 	public function show($id)
 	{
 		$poll = Poll::find($id);
-    $users = $poll->users;
-		return View::make('poll.show', array('poll' => $poll, 'users' => $users));
-  }
+    	$users = $poll->users;
+		$timeideas = $poll->timeideas;
+		return View::make('poll.show', array('poll' => $poll, 'users' => $users, 'timeideas' => $timeideas));
+	}
 
 
 	/**

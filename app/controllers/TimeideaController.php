@@ -43,7 +43,8 @@ class TimeideaController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$timeidea = Timeidea::find($id);
+		return View::make('timeidea.show', array('timeidea' => $timeidea));
 	}
 
 
