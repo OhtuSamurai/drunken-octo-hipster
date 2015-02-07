@@ -3,6 +3,7 @@
 ## Seuraava asiakastapaaminen: ma 16.2.2015 12.15-13 A217, jonka jälkeen ryhmä kokoontuu 
 
 [![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
+[![Coverage Status](https://coveralls.io/repos/OhtuSamurai/drunken-octo-hipster/badge.svg)](https://coveralls.io/r/OhtuSamurai/drunken-octo-hipster)
 [![Code Climate](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster/badges/gpa.svg)](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster)
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
 ![Ohtu Samurai](https://img.shields.io/badge/ohtu-samurai-lightgrey.svg)
