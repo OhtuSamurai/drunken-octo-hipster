@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1423337032">
+  <project timestamp="1423337032">
+    <file name="/home/marko/drunken-octo-hipster/app/controllers/BaseController.php">
+      <class name="BaseController" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+      </class>
+      <line num="10" type="method" name="setupLayout" crap="6" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+      <line num="15" type="stmt" count="0"/>
+      <line num="16" type="stmt" count="0"/>
+      <metrics loc="18" ncloc="13" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/controllers/HomeController.php">
+      <class name="HomeController" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </class>
+      <line num="18" type="method" name="showWelcome" crap="2" count="0"/>
+      <line num="20" type="stmt" count="0"/>
+      <metrics loc="23" ncloc="11" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/controllers/LoginController.php">
+      <class name="LoginController" namespace="global">
+        <metrics methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+      </class>
+      <line num="5" type="method" name="showLoginPage" crap="2" count="0"/>
+      <line num="7" type="stmt" count="0"/>
+      <line num="10" type="method" name="doLogin" crap="6" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+      <line num="15" type="stmt" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="21" type="method" name="logout" crap="2" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <metrics loc="27" ncloc="27" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/controllers/PollController.php">
+      <class name="PollController" namespace="global">
+        <metrics methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="23" coveredelements="0"/>
+      </class>
+      <line num="10" type="method" name="index" crap="2" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="22" type="method" name="create" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="33" type="method" name="store" crap="6" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="39" type="stmt" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="54" type="method" name="show" crap="2" count="0"/>
+      <line num="56" type="stmt" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="58" type="stmt" count="0"/>
+      <line num="68" type="method" name="edit" crap="2" count="0"/>
+      <line num="71" type="stmt" count="0"/>
+      <line num="80" type="method" name="update" crap="2" count="0"/>
+      <line num="83" type="stmt" count="0"/>
+      <line num="92" type="method" name="destroy" crap="2" count="0"/>
+      <line num="95" type="stmt" count="0"/>
+      <metrics loc="98" ncloc="51" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="23" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/controllers/TemplateController.php">
+      <class name="TemplateController" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+      </class>
+      <line num="8" type="method" name="template" crap="2" count="0"/>
+      <line num="9" type="stmt" count="0"/>
+      <line num="10" type="stmt" count="0"/>
+      <line num="11" type="stmt" count="0"/>
+      <metrics loc="13" ncloc="10" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/controllers/TimeideaController.php">
+      <class name="TimeideaController" namespace="global">
+        <metrics methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="14" coveredelements="0"/>
+      </class>
+      <line num="10" type="method" name="index" crap="2" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="21" type="method" name="create" crap="2" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="32" type="method" name="store" crap="2" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="44" type="method" name="show" crap="2" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="56" type="method" name="edit" crap="2" count="0"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="68" type="method" name="update" crap="2" count="0"/>
+      <line num="71" type="stmt" count="0"/>
+      <line num="80" type="method" name="destroy" crap="2" count="0"/>
+      <line num="83" type="stmt" count="0"/>
+      <metrics loc="86" ncloc="35" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="14" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/controllers/UserController.php">
+      <class name="UserController" namespace="global">
+        <metrics methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="15" coveredelements="0"/>
+      </class>
+      <line num="10" type="method" name="index" crap="2" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="22" type="method" name="create" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="33" type="method" name="store" crap="2" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="45" type="method" name="show" crap="2" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <line num="57" type="method" name="edit" crap="2" count="0"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="69" type="method" name="update" crap="2" count="0"/>
+      <line num="72" type="stmt" count="0"/>
+      <line num="81" type="method" name="destroy" crap="2" count="0"/>
+      <line num="84" type="stmt" count="0"/>
+      <metrics loc="87" ncloc="36" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="15" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/models/Answer.php">
+      <class name="Answer" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </class>
+      <line num="9" type="method" name="timeidea" crap="2" count="0"/>
+      <line num="10" type="stmt" count="0"/>
+      <metrics loc="12" ncloc="12" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/models/Poll.php">
+      <class name="Poll" namespace="global">
+        <metrics methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+      </class>
+      <line num="19" type="method" name="users" crap="2" count="0"/>
+      <line num="20" type="stmt" count="0"/>
+      <line num="23" type="method" name="timeideas" crap="2" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="27" type="method" name="ansers" crap="2" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <metrics loc="30" ncloc="25" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/models/Timeidea.php">
+      <class name="Timeidea" namespace="global">
+        <metrics methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      </class>
+      <line num="20" type="method" name="poll" crap="2" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="24" type="method" name="answers" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <metrics loc="27" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+    </file>
+    <file name="/home/marko/drunken-octo-hipster/app/models/User.php">
+      <class name="User" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </class>
+      <line num="28" type="method" name="polls" crap="2" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <metrics loc="32" ncloc="20" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+    </file>
+    <metrics files="11" loc="453" ncloc="262" classes="11" methods="34" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="56" coveredstatements="0" elements="90" coveredelements="0"/>
+  </project>
+</coverage>
