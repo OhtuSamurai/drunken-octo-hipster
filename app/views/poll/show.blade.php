@@ -25,7 +25,9 @@
 				@endforeach
 			</tbody>
 		</table>
-    @include('answer._form')
-    @include('timeidea._form')
-    <button type="submit" class="btn btn-default">Sulje kysely</button>
+	@if($poll->is_open)
+    	@include('answer._form')
+    	@include('timeidea._form')
+    	<button type="submit" class="btn btn-default">Sulje kysely</button>
+    @endif
 @stop

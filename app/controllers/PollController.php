@@ -34,6 +34,8 @@ class PollController extends \BaseController {
 	{
 		$poll = new Poll;
     	$poll->toimikunta = Input::get('toimikunta');
+    	$poll->is_open = 1;
+    	
     	$poll->save();
 
     	$users = Input::get('user');
