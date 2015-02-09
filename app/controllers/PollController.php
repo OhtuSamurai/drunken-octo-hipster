@@ -92,7 +92,6 @@ class PollController extends \BaseController {
 		}
 
 		$poll->save();
-		//return $poll;
 		return Redirect::route('poll.show', array('poll' => $id));
 	}
 
