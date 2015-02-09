@@ -1,4 +1,6 @@
-{{ Form::open(/* array('action' => 'timeaidea.store')*/) }}
+{{ Form::open(array('action' => 'timeidea.store')) }}
+
+{{ Form::hidden('poll_id', $poll->id) }}
 
 {{ Form::label('date', 'Valitse päivämäärä' )}}
 {{ Form::text('date', date("d.m.Y")) }}

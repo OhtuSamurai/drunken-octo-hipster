@@ -20,9 +20,9 @@
 			</tr>
 		</thead>
 			<tbody>
-				{{--@foreach($timeideas as $timeidea)--}}
-					@include('poll_timeidea.show')		
-				{{--@endforeach--}}
+				@foreach($timeideas as $timeidea)
+					@include('timeidea.show')		
+				@endforeach
 			</tbody>
 		</table>
     @include('answer._form')

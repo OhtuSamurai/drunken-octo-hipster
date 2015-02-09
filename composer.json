@@ -9,6 +9,7 @@
 	},
 	"require-dev": {
 		"phpunit/phpunit-selenium": ">=1.2",
+		"mockery/mockery": "dev-master",
 		"satooshi/php-coveralls": "dev-master"
 	},
 	"autoload": {

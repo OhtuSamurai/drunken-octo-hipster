@@ -29,5 +29,5 @@ Route::resource('poll', 'PollController',
                 array('except' => array('destroy', 'update', 'edit', 'create')));
 
 Route::resource('timeidea', 'TimeideaController',
-                array('only' => array('create')));
+                array('only' => array('store')));
 

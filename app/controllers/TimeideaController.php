@@ -20,7 +20,7 @@ class TimeideaController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('timeidea.create');
+		//
 	}
 
 
@@ -31,7 +31,15 @@ class TimeideaController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+
+		$timeidea = new Timeidea;
+		$timeidea->poll_id = Input::get('poll_id');
+		$timeidea->date = date("Y-m-d", strtotime( Input::get('date') ) );
+		$timeidea->begins = Input::get('begins');
+		$timeidea->ends = Input::get('ends');
+		$timeidea->save();
+
+		return Redirect::route('poll.show', array('poll' => $timeidea->poll_id));
 	}
 
 
