@@ -5,12 +5,12 @@ class OtsikkoTest extends PHPUnit_Extensions_Selenium2TestCase
     {
         //$this->setBrowser('htmlunit');
         $this->setBrowser('firefox');
-        $this->setBrowserUrl('http://www.example.com/');
+        $this->setBrowserUrl('http://localhost');
     }
 
     public function testTitle()
     {
-        $this->url('http://homestead.app');
+        $this->url('index.php');
         $this->assertEquals('oona', $this->title());
     }
 
