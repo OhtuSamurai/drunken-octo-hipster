@@ -1,8 +1,10 @@
 @extends('layouts.master')
 
+@if($poll->is_open)
 @section('pagehead')
   {{HTML::script('javascript/poll_timeidea.js')}}
 @stop
+@endif
 
 @section('content')
   <h1>Sopivat ajat opetustaitotoimikunnan {{$poll->toimikunta}} tapaamiseen</h1>
