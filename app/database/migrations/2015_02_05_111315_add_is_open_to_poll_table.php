@@ -14,7 +14,7 @@ class AddIsOpenToPollTable extends Migration {
 	{
 		Schema::table('polls', function(Blueprint $table)
 		{
-			$table->boolean('is_open');
+			$table->boolean('is_open')->default(1);
 		});
 	}
 
