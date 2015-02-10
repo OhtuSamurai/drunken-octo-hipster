@@ -8,6 +8,7 @@
 
 @section('content')
   <h1>Sopivat ajat opetustaitotoimikunnan {{$poll->toimikunta}} tapaamiseen</h1>
+  {{ Form::open(array('action' => 'answer.store')) }} {{-- Here starts form for answers --}}
   <table class="table table-bordered">
 		<thead>
 			<tr>
@@ -28,8 +29,9 @@
 			</tbody>
 		</table>
 	@if($poll->is_open)
-    	@include('answer._form')
+    	@include('answer._form') {{-- Here ends form for answers --}}
     	@include('timeidea._form')
     	@include('poll.close')
     @endif
+
 @stop

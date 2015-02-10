@@ -3,11 +3,8 @@
 class UserControllerTest extends TestCase {
 
 	public function testIndex() {
-		/*Event::shouldReceive('all')
-			 ->once();
-
-		$this->call('GET', 'pooli');
-
-		$this->assertViewHas('users');*/
-	}
+		//$this->mock->shouldReceive('all')->once();
+		//$this->app->instance('User', $this->mock);
+		//$this->call('GET', 'pooli');
+	} 
 }

@@ -15,7 +15,6 @@
       <ul class="nav navbar-nav">
         <li><a href="/pooli">Pooli</a></li>
         <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
-        <li><a href="/template">Template</a></li>
         @if(Auth::user())
         <li><a href="#">Kirjautunut: {{{Auth::user()->first_name}}}</a></li>
         <li><a href="/logout">Kirjaudu ulos</a></li>

@@ -1,7 +1,7 @@
 <?php
 
-class UserController extends \BaseController {
-	
+class AnswerController extends \BaseController {
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,8 +9,7 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = User::all();
-    	return View::make('user.index', array('users' => $users));
+		//
 	}
 
 
@@ -32,7 +31,7 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		return Input::all();
 	}
 
 
