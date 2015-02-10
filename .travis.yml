@@ -7,14 +7,23 @@ php:
   - hhvm
 
 install:
+  # Php-coveralls
   - composer require satooshi/php-coveralls:~0.6@stable
 
 before_script:
   - composer self-update
   - composer install --dev --prefer-source --no-interaction
+  
+  # for Php-coveralls
   - mkdir -p build/logs
-  - "wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar &"
-  - "java -jar selenium-server-standalone-2.44.0.jar"
+  
+  # Selenium
+  - sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99
+  - curl http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar > selenium.jar
+  - java -jar selenium.jar
+# - "wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar &"
+# - "java -jar selenium-server-standalone-2.44.0.jar"
 
 
 script:
