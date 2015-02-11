@@ -1,7 +1,7 @@
 <?php
 
 class UserTest extends TestCase {
-	
+			
 	public function testStoringUser() {
 		$usr = $this->mockUser(42);
 		$usr->save();

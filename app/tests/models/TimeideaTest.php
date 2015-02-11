@@ -1,6 +1,7 @@
 <?php
 
 class TimeideaTest extends TestCase {
+
 	public function testStoringTimeidea() {
 		$idea = $this->mockTimeidea(27,27);
 		$idea->save();

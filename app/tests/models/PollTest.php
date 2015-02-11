@@ -1,7 +1,7 @@
 <?php
 
 class PollTest extends TestCase {
-	
+		
 	public function testUudenPollinLuominen() {
 		$poll = $this->mockPoll(27);
 		$poll->save();

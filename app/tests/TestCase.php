@@ -23,7 +23,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
     		parent::setUp(); // Don't forget this!
     		$this->prepareForTests();
 	}
-
+	
 	public function mockUser($id) {
 		$usr = new User;
 		$usr->id=$id;
