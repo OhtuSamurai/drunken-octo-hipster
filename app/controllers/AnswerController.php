@@ -31,8 +31,7 @@ class AnswerController extends \BaseController {
 	 */
 	public function store()
 	{
-		Input::put();
-		return Input::all();
+		//
 	}
 
 

@@ -1,31 +1,49 @@
 <?php
 
 class PollTest extends TestCase {
-	private function teeUusiPolli($id) {
-		$poll = new Poll;
-		$poll->toimikunta = "testi";
-		$poll->is_open=1;
-		$poll->id=$id;		
-		return $poll;
-	}
+	
 	public function testUudenPollinLuominen() {
-		$poll = $this->teeUusiPolli(27);
+		$poll = $this->mockPoll(27);
 		$poll->save();
-		$this->assertEquals(Poll::find(27)->toimikunta,"testi");
+		$this->assertEquals(Poll::find(27)->toimikunta, $poll->toimikunta);
 	}
 
 	public function testTimeideanHakuFunktioToimii() {
-		$poll=$this->teeUusiPolli(35);
+		$poll=$this->mockPoll(35);
 		$poll->save();
 		
-		$idea = new Timeidea;
-		$idea->poll_id=35;
-		$idea->date="2015-01-01";
-		$idea->begins="10:00:00.000";
-		$idea->ends="11:00:00.000";
+		$idea = $this->mockTimeidea(35, $poll->id);
 		$idea->save();
 	
 		$haetut = $poll->timeIdeas;
 		$this->assertEquals($haetut[0]->date,$idea->date);
+	}
+
+	public function testPollWithUser() {
+		$poll = $this->mockPoll(42);
+		$poll->save();
+
+		$u = $this->mockUser(42);
+		$u->save();
+
+		$poll->users()->attach($u);
+		$pu = $poll->users;
+
+		$this->assertEquals($pu[0]->username, $u->username);
+	}
+
+	public function testPollWithAnswers() {
+		$poll=$this->mockPoll(35);
+		$poll->save();
+		
+		$idea = $this->mockTimeidea(35, $poll->id);
+		$idea->save();
+		
+		$a = $this->mockAnswer(42, 1337, $poll->id);
+		$a->save();
+
+		$pa = $poll->answers;
+		foreach($pa as $p)
+			$this->assertEquals($p->sopivuus, $a->sopivuus);
 	}
 }

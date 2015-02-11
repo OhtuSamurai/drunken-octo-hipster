@@ -13,9 +13,9 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">
-					<a type="button" class="btn btn-default btn-block" aria-label="Muokkaa" href="/timeidea/create">
+					{{--<a type="button" class="btn btn-default btn-block" aria-label="Muokkaa" href="/timeidea/create">
   						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-					</a>
+					</a>--}}
 				</th>
 				@foreach($users as $user)
 					<td class="col-md-1">{{$user->first_name}}</td>

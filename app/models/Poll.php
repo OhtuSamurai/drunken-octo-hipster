@@ -17,7 +17,7 @@ class Poll extends Eloquent {
   protected $fillable = ['toimikunta', 'is_open'];
 
   public function users(){
-    return $this->belongsToMany('User', 'participants');
+    return $this->belongsToMany('User', 'participants')->withTimestamps();
   }
 
   public function timeideas(){
