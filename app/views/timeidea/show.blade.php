@@ -6,9 +6,9 @@
 	
 	@foreach($users as $user)
 		@foreach($answers as $answer)
-			@if($answer->participant_id == $user->id)
+			@if($answer->participant_id == $user->id && $timeidea->id == $answer->timeidea_id)
 			<td class="options {{$answer->sopivuus}}">
-				{{Form::select('size', array('sopii' => 'Sopii', 'paras' => 'Paras', 'eisovi' => 'Ei'), $answer->sopivuus, array('class'=>'selectedvalue hidden'))}}
+				{{Form::select('size', array('sopii' => 'Sopii', 'paras' => 'Paras', 'eisovi' => 'Ei'), $answer->sopivuus, array('class'=>'selectedvalue hidden', 'name'=>$user->id . ';' . $timeidea->id))}}
 				 {{--{{ substr(ucfirst($answer->sopivuus), 0, 1) }} tulostaa sopivuuden etukirjaimen isolla --}}
 			</td>
 			@endif
