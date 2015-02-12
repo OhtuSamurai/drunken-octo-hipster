@@ -17,9 +17,11 @@
   						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					</a>--}}
 				</th>
+				@if (!empty($users))
 				@foreach($users as $user)
 					<td class="col-md-1">{{$user->first_name}}</td>
 				@endforeach
+				@endif
 			</tr>
 		</thead>
 			<tbody>

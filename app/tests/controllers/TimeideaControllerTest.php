@@ -11,11 +11,6 @@ class TimeideaControllerTest extends TestCase {
 		$a = new TimeideaController;
 		$this->assertNull($a->create());
 	}
-	/* TODO!!!
-	public function testStore() {
-		$a = new TimeideaController;
-		$this->assertNull($a->store());
-	}*/
 	
 	public function testShow() {
 		$ti = $this->mockTimeidea(1,1);
@@ -40,4 +35,40 @@ class TimeideaControllerTest extends TestCase {
 		$a = new TimeideaController;
 		$this->assertNull($a->destroy(1));
 	}
+	
+	public function testStore() {
+		$tic = new TimeideaController;
+		Request::replace($input=['poll_id'=>'25','begins'=>'14:00','ends'=>'16:00','date'=>'2015-11-11']);
+		$polli = $this->mockPoll(25);
+		$polli->save();
+		$u = $this->mockUser(25);
+		$u->save();
+		$polli->users()->attach($u);
+		$tic->Store();
+		$this->assertTrue(Timeidea::find(1)->date=='2015-11-11');	
+		$this->assertTrue(Timeidea::find(1)->begins=='14:00');
+		$vastaukset =  $polli->answers();
+		foreach($vastaukset as $vastaus)
+			$this->assertTrue($vastaus->sopivuus=='eisovi');
+	}
+	public function testToimiikoMakeTimeideaOfInput() {
+		Request::replace($input=['poll_id'=>'25','begins'=>'14:00','ends'=>'16:00','date'=>'2015-11-11']);
+		$tic = new TimeideaController;
+		$this->assertTrue(25==$tic->makeTimeideaOfInput()->poll_id);
+	}	
+
+	public function testSetAnswer() {
+		$tic = new TimeideaController;
+		$poll = $this->mockPoll(20);
+		$poll->save();
+		$u = $this->mockUser(20);
+		$u->save();
+		$poll->users()->attach($u);
+		$tic->setAnswers($poll,15);
+		$vastaukset = $poll->answers();
+		foreach($vastaukset as $vastaus) 
+			$this->assertTrue($vastaus->sopivuus=='eisovi');	
+
+	}
+
 }

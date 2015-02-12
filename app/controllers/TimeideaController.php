@@ -29,25 +29,30 @@ class TimeideaController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-
+	public function makeTimeideaOfInput() {
 		$timeidea = new Timeidea;
 		$timeidea->poll_id = Input::get('poll_id');
 		$timeidea->date = date("Y-m-d", strtotime( Input::get('date') ) );
 		$timeidea->begins = Input::get('begins');
 		$timeidea->ends = Input::get('ends');
-		$timeidea->save();
-
-		$poll = Poll::find($timeidea->poll_id);
+		return $timeidea;
+	}
+	public function setAnswers($poll,$timeideaid) {
 		foreach($poll->users as $user) {
 			$answer = new Answer;
 			$answer->participant_id = $user->id;
-			$answer->timeidea_id = $timeidea->id;
+			$answer->timeidea_id = $timeideaid;
 			$answer->sopivuus = 'eisovi';
 			$answer->save(); 
 		}
+	}
 
+	public function store()
+	{
+		$timeidea = $this->makeTimeideaOfInput();
+		$timeidea->save();
+		$poll = Poll::find($timeidea->poll_id);
+		$this->setAnswers($poll,$timeidea->id);
 		return Redirect::route('poll.show', array('poll' => $timeidea->poll_id));
 	}
 
