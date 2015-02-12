@@ -11,11 +11,6 @@ class TimeideaControllerTest extends TestCase {
 		$a = new TimeideaController;
 		$this->assertNull($a->create());
 	}
-	/* TODO!!!
-	public function testStore() {
-		$a = new TimeideaController;
-		$this->assertNull($a->store());
-	}*/
 	
 	public function testShow() {
 		$ti = $this->mockTimeidea(1,1);
