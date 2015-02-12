@@ -20,8 +20,6 @@ Route::get('logout', 'LoginController@logout');
 
 Route::get('pooli', 'UserController@index');
 
-Route::get('template','TemplateController@template');
-
 Route::resource('user', 'UserController',
                 array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show', 'index')));
 
@@ -31,3 +29,5 @@ Route::resource('poll', 'PollController',
 Route::resource('timeidea', 'TimeideaController',
                 array('only' => array('store')));
 
+Route::resource('answer', 'AnswerController',
+                array('only' => array('store')));

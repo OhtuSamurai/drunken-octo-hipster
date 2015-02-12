@@ -39,6 +39,15 @@ class TimeideaController extends \BaseController {
 		$timeidea->ends = Input::get('ends');
 		$timeidea->save();
 
+		$poll = Poll::find($timeidea->poll_id);
+		foreach($poll->users as $user) {
+			$answer = new Answer;
+			$answer->participant_id = $user->id;
+			$answer->timeidea_id = $timeidea->id;
+			$answer->sopivuus = 'eisovi';
+			$answer->save(); 
+		}
+
 		return Redirect::route('poll.show', array('poll' => $timeidea->poll_id));
 	}
 
