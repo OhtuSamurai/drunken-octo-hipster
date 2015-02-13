@@ -23,6 +23,7 @@ class PollControllerTest extends TestCase {
 		Request::replace($input=['toimikunta'=>'Hieno Toimikunta', 'user'=>[51, 52]]);
 		$a->Store();
 		$poll = Poll::find(1);
+		$this->assertEquals(1, $poll->is_open);
 		$this->assertTrue($poll->toimikunta=='Hieno Toimikunta');
 		$this->assertTrue($poll->users()->get()->contains(51));
 		$this->assertTrue($poll->users()->get()->contains(52));
@@ -42,11 +43,20 @@ class PollControllerTest extends TestCase {
 		$a = new PollController;
 		$this->assertNull($a->edit(1));
 	}
-	/* TODO!!!
+	
 	public function testUpdate() {
+		$this->mockPoll(74)->save();
+
+		$poll = Poll::find(74);
+		$this->assertEquals(1, $poll->is_open);
+
 		$a = new PollController;
-		$this->assertNull($a->update(1));
-	}*/
+		Request::replace($input=['is_open'=>false]);
+		$a->update(74);
+
+		$poll = Poll::find(74);
+		$this->assertEquals(0, $poll->is_open);
+	}
 
 	public function testDestroy() {
 		$a = new PollController;
