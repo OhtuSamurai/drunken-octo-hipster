@@ -51,6 +51,7 @@ class TimeideaControllerTest extends TestCase {
 		foreach($vastaukset as $vastaus)
 			$this->assertTrue($vastaus->sopivuus=='eisovi');
 	}
+	/* 
 	public function testToimiikoMakeTimeideaOfInput() {
 		Request::replace($input=['poll_id'=>'25','begins'=>'14:00','ends'=>'16:00','date'=>'2015-11-11']);
 		$tic = new TimeideaController;
@@ -69,6 +70,5 @@ class TimeideaControllerTest extends TestCase {
 		foreach($vastaukset as $vastaus) 
 			$this->assertTrue($vastaus->sopivuus=='eisovi');	
 
-	}
-
+	}*/
 }

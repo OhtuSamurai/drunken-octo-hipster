@@ -23,13 +23,12 @@ class TimeideaController extends \BaseController {
 		//
 	}
 
-
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function makeTimeideaOfInput() {
+	* Creates a new Model of Timeidea
+	*
+	* @return Timeidea
+	*/
+	private function makeTimeideaOfInput() {
 		$timeidea = new Timeidea;
 		$timeidea->poll_id = Input::get('poll_id');
 		$timeidea->date = date("Y-m-d", strtotime( Input::get('date') ) );
@@ -37,16 +36,34 @@ class TimeideaController extends \BaseController {
 		$timeidea->ends = Input::get('ends');
 		return $timeidea;
 	}
-	public function setAnswers($poll,$timeideaid) {
+
+	/*
+	* Creates a single new answer
+	*
+	*/
+	private function createAnswer($uid, $timeideaid) {
+		$answer = new Answer;
+		$answer->participant_id = $uid;
+		$answer->timeidea_id = $timeideaid;
+		$answer->sopivuus = 'eisovi';
+		$answer->save();
+	}
+
+	/*
+	* Creates answers for a single timeidea
+	*
+	*/
+	private function setAnswers($poll,$timeideaid) {
 		foreach($poll->users as $user) {
-			$answer = new Answer;
-			$answer->participant_id = $user->id;
-			$answer->timeidea_id = $timeideaid;
-			$answer->sopivuus = 'eisovi';
-			$answer->save(); 
+			$this->createAnswer($user->id, $timeideaid);
 		}
 	}
 
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
 	public function store()
 	{
 		$timeidea = $this->makeTimeideaOfInput();
