@@ -237,16 +237,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v4.2.16",
+            "version": "v4.2.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "31fe6a5747bbe3c2df21dc4cc8f291e75ab6144f"
+                "reference": "3359de6d6cd322e8a1b251c2f8d9dd42a3e4e232"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/31fe6a5747bbe3c2df21dc4cc8f291e75ab6144f",
-                "reference": "31fe6a5747bbe3c2df21dc4cc8f291e75ab6144f",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/3359de6d6cd322e8a1b251c2f8d9dd42a3e4e232",
+                "reference": "3359de6d6cd322e8a1b251c2f8d9dd42a3e4e232",
                 "shasum": ""
             },
             "require": {
@@ -257,7 +257,7 @@
                 "jeremeamia/superclosure": "~1.0.1",
                 "monolog/monolog": "~1.6",
                 "nesbot/carbon": "~1.0",
-                "patchwork/utf8": "1.1.*",
+                "patchwork/utf8": "~1.1",
                 "php": ">=5.4.0",
                 "phpseclib/phpseclib": "0.3.*",
                 "predis/predis": "0.8.*",
@@ -348,7 +348,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-12-22 20:56:10"
+            "time": "2015-02-11 20:37:15"
         },
         {
             "name": "monolog/monolog",
@@ -515,16 +515,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.28",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "ffa082111aa3cb23cf2479a17e6785ace91da982"
+                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/ffa082111aa3cb23cf2479a17e6785ace91da982",
-                "reference": "ffa082111aa3cb23cf2479a17e6785ace91da982",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/01f0ed1628db7794e2d4e336f55a09daef4248a5",
+                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5",
                 "shasum": ""
             },
             "require": {
@@ -534,9 +534,15 @@
             "suggest": {
                 "ext-iconv": "Use iconv for best performance",
                 "ext-intl": "Use Intl for best performance",
-                "ext-mbstring": "Use Mbstring for best performance"
+                "ext-mbstring": "Use Mbstring for best performance",
+                "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Patchwork": "class/",
@@ -562,7 +568,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2015-01-12 08:05:15"
+            "time": "2015-01-29 08:36:50"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -1791,12 +1797,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "c9fbdd9fb044cf1dd7c2abecfc9cce6ca714d1fe"
+                "reference": "06de684e349582cad2e1b76aee79dc4018bd0a89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/c9fbdd9fb044cf1dd7c2abecfc9cce6ca714d1fe",
-                "reference": "c9fbdd9fb044cf1dd7c2abecfc9cce6ca714d1fe",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/06de684e349582cad2e1b76aee79dc4018bd0a89",
+                "reference": "06de684e349582cad2e1b76aee79dc4018bd0a89",
                 "shasum": ""
             },
             "require": {
@@ -1849,7 +1855,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2015-02-09 15:10:41"
+            "time": "2015-02-13 10:36:42"
         },
         {
             "name": "phpdocumentor/reflection-docblock",

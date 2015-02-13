@@ -14,11 +14,20 @@ class PollControllerTest extends TestCase {
 		$a = new PollController;
 		$this->assertNull($a->create());
 	}
-	/* TODO!!!
+
 	public function testStore() {
+		$this->mockUser(51)->save();
+		$this->mockUser(52)->save();
+		$this->mockUser(53)->save();
 		$a = new PollController;
-		$this->assertNull($a->store());
-	}*/
+		Request::replace($input=['toimikunta'=>'Hieno Toimikunta', 'user'=>[51, 52]]);
+		$a->Store();
+		$poll = Poll::find(1);
+		$this->assertTrue($poll->toimikunta=='Hieno Toimikunta');
+		$this->assertTrue($poll->users()->get()->contains(51));
+		$this->assertTrue($poll->users()->get()->contains(52));
+		$this->assertFalse($poll->users()->get()->contains(53));
+	}
 	
 	public function testShow() {
 		$p = $this->mockPoll(42);
