@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	    selected = $(this).find(".selectedvalue");
 	     
-	    if(selected.val()=='paras'){
+	    if(selected.val()=='parhaiten'){
 	    	selected.val('sopii');
 	    	$(this).removeClass("parhaiten");
 	    	$(this).addClass("sopii");
@@ -15,7 +15,7 @@ $(document).ready(function(){
 	    	$(this).addClass("eisovi");
 	    }
 	    else if(selected.val()=='eisovi'){
-	    	selected.val('paras');
+	    	selected.val('parhaiten');
 	    	$(this).removeClass("eisovi");
 	    	$(this).addClass("parhaiten");
 	    } 	
