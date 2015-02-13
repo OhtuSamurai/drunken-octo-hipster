@@ -70,6 +70,17 @@ class AnswerController extends \BaseController {
 		//
 	}
 
+	public function updateSopivuus() {
+		$answers = Input::all();
+
+		foreach($answers as $answer_id => $answer_sopivuus) {
+			$a = Answer::find($answer_id);
+			$a->sopivuus = $answer_sopivuus;
+			$a->save();
+		}
+		return Redirect::back();
+	}
+
 
 	/**
 	 * Remove the specified resource from storage.

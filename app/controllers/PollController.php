@@ -44,6 +44,7 @@ class PollController extends \BaseController {
       			$poll->users()->attach($user);
 
     	return Redirect::route('poll.show', array('poll' => $poll->id));
+    	//return Input::all();
 	}
 
 
