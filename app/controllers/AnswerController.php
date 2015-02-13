@@ -78,7 +78,7 @@ class AnswerController extends \BaseController {
 			$a->sopivuus = $answer_sopivuus;
 			$a->save();
 		}
-		return Redirect::back();
+		return Redirect::route('poll.index');
 	}
 
 
