@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder {
     /*
 		$this->call('TimeideaTableSeeder');
 		$this->command->info('Timeidea table seeded!');
-    */
+    
     	$this->call('PollTableSeeder');
     	$this->command->info('Poll table seeded!');
+    */
   }
 
 }
