@@ -7,9 +7,9 @@
 @endif
 
 @section('content')
-  <h1>Sopivat ajat opetustaitotoimikunnan {{$poll->toimikunta}} tapaamiseen</h1>
+	<h1>Sopivat ajat opetustaitotoimikunnan {{$poll->toimikunta}} tapaamiseen</h1>
   {{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method'=>'GET')) }} {{-- Here starts form for answers --}}
-  <table class="table table-bordered">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th class="col-md-1">
@@ -24,12 +24,23 @@
 				@endif
 			</tr>
 		</thead>
-			<tbody>
-				@foreach($timeideas as $timeidea)
-					@include('timeidea.show')		
-				@endforeach
-			</tbody>
-		</table>
+		<tbody>
+			@foreach($timeideas as $timeidea)
+				@include('timeidea.show')		
+			@endforeach
+		</tbody>
+	</table>
+	
+	<table class="table table-bordered selitykset">
+		<tbody>
+			<tr>
+				<td class="eisovi">ei sovi</td>
+				<td class="sopii">sopii</td>
+				<td class="parhaiten">paras</td>		
+			</tr>
+		</tbody>
+	</table>
+	
 	@if($poll->is_open)
     	@include('answer._form') {{-- Here ends form for answers --}}
     	@include('timeidea._form')

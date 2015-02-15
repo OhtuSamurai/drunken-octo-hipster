@@ -2,6 +2,15 @@ table tr.active{
 	color: #339900 !important;
 }
 
+table.selitykset{
+    table-layout: fixed;
+    width: 200px;
+}
+table.selitykset > tr >td{
+    overflow: hidden;
+    width: 100px;
+}
+
 table tbody tr > td.parhaiten {
 	background-color: #009900 !important;
 }
