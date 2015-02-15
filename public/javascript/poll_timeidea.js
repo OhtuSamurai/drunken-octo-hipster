@@ -1,9 +1,8 @@
 $(document).ready(function(){
 	document.getElementById("pollform").reset();
-	$(".timeidea>.options").click(function(){
-
+	$(".timeidea>.options").click(function(){		
 	    selected = $(this).find(".selectedvalue");
-	     
+	    selected.attr('data-clicked', 'true'); 
 	    if(selected.val()=='parhaiten'){
 	    	selected.val('sopii');
 	    	$(this).removeClass("parhaiten");
@@ -19,6 +18,9 @@ $(document).ready(function(){
 	    	$(this).removeClass("eisovi");
 	    	$(this).addClass("parhaiten");
 	    } 	
-  });
+	});
+	$("#pollform").submit( function() {
+    	$(this).find("select[data-clicked|='false']").remove();
+	});
 });
 

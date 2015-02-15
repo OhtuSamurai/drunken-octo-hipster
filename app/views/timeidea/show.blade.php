@@ -13,7 +13,8 @@
 								$answer->sopivuus, 
 								array('class'=>'selectedvalue hidden', 
 									  'name'=>$answer->id, 
-									  'value'=>$answer->sopivuus))}}			
+									  'value'=>$answer->sopivuus,
+									  'data-clicked'=>'false'))}}			
 			</td>
 			@endif
 		@endforeach
