@@ -9,7 +9,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+<<<<<<< HEAD
       <a class="navbar-brand" href="#"><img src="/app/../images/oonapieni.png" class="img-rounded"></a>
+=======
+      <a class="navbar-brand" href="#"><img src="/images/oonapieni.png" class="img-rounded"></a>
+>>>>>>> 2b979d4c20686acb31aa9a787d2ecc7961e451bd
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
