@@ -48,7 +48,7 @@ class AnswerControllerTest extends TestCase {
 		$this->assertEquals('sopii', $answer->sopivuus);
 
 		Request::replace($input=[33=>'ei sovi', 34=>'ei sovi']);
-
+	
 		$a = new AnswerController;
 		$a->updateSopivuus();
 
