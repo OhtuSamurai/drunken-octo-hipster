@@ -11,6 +11,10 @@ table.selitykset > tr >td{
     width: 100px;
 }
 
+table tbody tr > td.eivastattu {
+	background-color: #989898 !important;
+}
+
 table tbody tr > td.parhaiten {
 	background-color: #009900 !important;
 }

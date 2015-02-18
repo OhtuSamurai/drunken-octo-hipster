@@ -45,7 +45,7 @@ class TimeideaController extends \BaseController {
 		$answer = new Answer;
 		$answer->participant_id = $uid;
 		$answer->timeidea_id = $timeideaid;
-		$answer->sopivuus = 'eisovi';
+		$answer->sopivuus = 'eivastattu';
 		$answer->save();
 	}
 

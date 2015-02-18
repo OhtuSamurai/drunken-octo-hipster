@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	document.getElementById("pollform").reset();
-	$(".timeidea>.options").click(function(){		
+	$(".timeidea>.options").click(function(){
+		$(this).removeClass("eivastattu");		
 	    selected = $(this).find(".selectedvalue");
 	    selected.attr('data-clicked', 'true'); 
 	    if(selected.val()=='parhaiten'){
@@ -16,6 +17,11 @@ $(document).ready(function(){
 	    else if(selected.val()=='eisovi'){
 	    	selected.val('parhaiten');
 	    	$(this).removeClass("eisovi");
+	    	$(this).addClass("parhaiten");
+	    }
+	    else if(selected.val()=='eivastattu'){
+	    	selected.val('parhaiten');
+	    	$(this).removeClass("eivastattu");
 	    	$(this).addClass("parhaiten");
 	    } 	
 	});

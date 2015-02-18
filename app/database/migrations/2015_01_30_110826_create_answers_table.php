@@ -19,7 +19,7 @@ class CreateAnswersTable extends Migration {
 			$table->foreign('participant_id')->references('id')->on('users');
 			$table->integer('timeidea_id')->unsigned();
 			$table->foreign('timeidea_id')->references('id')->on('timeideas');
-			$table->enum('sopivuus',array('parhaiten','sopii','eisovi'));
+			$table->enum('sopivuus',array('parhaiten','sopii','eisovi','eivastattu'));
 			$table->timestamps();
 		});
 	}
