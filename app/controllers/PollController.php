@@ -39,13 +39,12 @@ class PollController extends \BaseController {
     	$poll->save();
 
     	$users = Input::get('user');
-	if (!empty($users))
+		if (!empty($users))
     		foreach($users as $user)
       			$poll->users()->attach($user);
 
     	return Redirect::route('poll.show', array('poll' => $poll->id));
-    	//return Input::all();
-	}
+    }
 
 
 	/**
@@ -95,6 +94,7 @@ class PollController extends \BaseController {
 		}
 
 		$poll->save();
+		//return Redirect::back();
 		return Redirect::route('poll.show', array('poll' => $id));
 	}
 

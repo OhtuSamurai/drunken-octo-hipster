@@ -79,6 +79,7 @@ class AnswerController extends \BaseController {
 			$a->save();
 		}
 		return Redirect::route('poll.index');
+		//return Redirect::back();
 	}
 
 
