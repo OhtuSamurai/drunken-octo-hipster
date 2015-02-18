@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	document.getElementById("pollform").reset();
-	$(".timeidea>.options").click(function(){
-		$(this).removeClass("eivastattu");		
+	$(".timeidea>.options").click(function(){	
 	    selected = $(this).find(".selectedvalue");
 	    selected.attr('data-clicked', 'true'); 
 	    if(selected.val()=='parhaiten'){
