@@ -16,4 +16,15 @@ class UserTest extends TestCase {
 		$usr->polls()->attach($poll);
 		$this->assertEquals($usr->polls[0]->toimikunta, $poll->toimikunta);
 	}
+
+	public function testUserInACommittee() {
+		$com = $this->mockCommittee();
+		$com->save();
+
+		$usr = $this->mockUser();
+		$usr->save();
+
+		$usr->committees()->attach($com);
+		$this->assertEquals($com->name, $usr->committees[0]->name);
+	}
 }
