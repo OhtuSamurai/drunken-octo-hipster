@@ -1,5 +1,7 @@
 $(document).ready(function(){
+	
 	document.getElementById("pollform").reset();
+	
 	$(".timeidea>.options").click(function(){	
 	    selected = $(this).find(".selectedvalue");
 	    selected.attr('data-clicked', 'true'); 
@@ -24,8 +26,15 @@ $(document).ready(function(){
 	    	$(this).addClass("parhaiten");
 	    } 	
 	});
+	
 	$("#pollform").submit( function() {
     	$(this).find("select[data-clicked|='false']").remove();
+	});
+	
+	timeideas = $(".timeidea>th");
+	timeideas.click(function(){
+	    timeideas.removeClass("active");		
+      	$(this).addClass("active");
 	});
 });
 
