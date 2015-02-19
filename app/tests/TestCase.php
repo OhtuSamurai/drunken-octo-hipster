@@ -23,16 +23,19 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
     		parent::setUp(); // Don't forget this!
     		$this->prepareForTests();
 	}
-	
-	public function mockUser($id) {
-		$usr = new User;
-		$usr->id=$id;
-		$usr->first_name="general name";
-		$usr->last_name="even more general name";
-		$usr->department="mock department";
-		$usr->position="very important position";
-		$usr->username="username";
-		return $usr;
+
+	private function brew_a_user() {
+		return $params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
+	}
+
+
+	private function brew_a_committee() {
+		return ['id' => 1, 'name' => 'committee', 'time' => 'default'];
+	}
+
+	public function mockUser($params = array()) {
+		if(empty($params)) $params = $this->brew_a_user();
+		return $this->generalMockery(new User, $params);
 	}
 
 	public function mockPoll($id) {
@@ -58,5 +61,17 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		$ans->timeidea_id=$tid;
 		$ans->sopivuus="sopii";
 		return $ans;
+	}
+
+	public function mockCommittee($params = array()) {
+		if(empty($params)) $params = $this->brew_a_committee();
+		return $this->generalMockery(new Committee, $params);
+	}
+
+	public function generalMockery($model, $params = array()) {
+		foreach($params as $key => $value) {
+			$model->$key = $value;
+		}
+		return $model;
 	}
 }

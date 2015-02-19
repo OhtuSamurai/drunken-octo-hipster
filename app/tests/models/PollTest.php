@@ -23,13 +23,10 @@ class PollTest extends TestCase {
 		$poll = $this->mockPoll(42);
 		$poll->save();
 
-		$u = $this->mockUser(42);
+		$u = $this->mockUser();
 		$u->save();
-
 		$poll->users()->attach($u);
-		$pu = $poll->users;
-
-		$this->assertEquals($pu[0]->username, $u->username);
+		$this->assertEquals($poll->users[0]->username, $u->username);
 	}
 
 	public function testPollWithAnswers() {

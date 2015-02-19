@@ -16,9 +16,18 @@ class PollControllerTest extends TestCase {
 	}
 
 	public function testStore() {
-		$this->mockUser(51)->save();
-		$this->mockUser(52)->save();
-		$this->mockUser(53)->save();
+		$u51 = $this->mockUser();
+		$u51->id = 51;
+		$u51->save();
+		
+		$u52 = $this->mockUser();
+		$u52->id = 52;
+		$u52->save();
+		
+		$u53 = $this->mockUser();
+		$u53->id = 53;
+		$u53->save();
+		
 		$a = new PollController;
 		Request::replace($input=['toimikunta'=>'Hieno Toimikunta', 'user'=>[51, 52]]);
 		$a->Store();

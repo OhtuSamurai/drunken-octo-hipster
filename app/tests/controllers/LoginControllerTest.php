@@ -11,7 +11,7 @@ class LoginControllerTest extends TestCase {
 	}
 
 	public function testLoginAndLogout() {
-		$user = $this->mockUser(42);
+		$user = $this->mockUser();
 		$user->username = 'tiina';
 		$user->save();
 
