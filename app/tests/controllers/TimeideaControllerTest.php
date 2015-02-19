@@ -13,12 +13,12 @@ class TimeideaControllerTest extends TestCase {
 	}
 	
 	public function testShow() {
-		$ti = $this->mockTimeidea(1,1);
-		$ti->save();
+		$this->mockTimeidea()->save();
 
 		$a = new TimeideaController;
-		$view = $a->show($ti->id)->getData();
-		$this->assertTrue(str_contains($view['timeidea'], $ti->description));
+		$actual = Timeidea::all()->first();
+		$view = $a->show($actual->id)->getData();
+		$this->assertTrue(str_contains($view['timeidea'], $actual->description));
 	}
 	
 	public function testEdit() {
@@ -38,8 +38,8 @@ class TimeideaControllerTest extends TestCase {
 	
 	public function testStore() {
 		$tic = new TimeideaController;
-		Request::replace($input=['poll_id'=>'25','description'=>'kokista']);
-		$polli = $this->mockPoll(25);
+		Request::replace($input=['poll_id'=>'43','description'=>'kokista']);
+		$polli = $this->mockPoll();
 		$polli->save();
 		$u = $this->mockUser();
 		$u->save();

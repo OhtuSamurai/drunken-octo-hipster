@@ -3,11 +3,11 @@
 class AnswerTest extends TestCase {
 		
 	public function testAnswerWithATimeidea() {
-		$t = $this->mockTimeidea(2,2);
-		$t->save();
-		$a = $this->mockAnswer(1,1,$t->id);
-		$a->save();
+		$this->mockTimeidea()->save();
+		$t = Timeidea::find(23);
 
-		$this->assertEquals($a->timeidea->date, $t->date);
+		$this->mockAnswer(['id' => 2, 'participant_id' => 99, 'timeidea_id'=>$t->id, 'sopivuus' => 'sopii'])->save();
+
+		$this->assertEquals(Answer::find(2)->timeidea->description, $t->description);
 	}
 }

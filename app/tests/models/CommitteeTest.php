@@ -8,20 +8,19 @@ class CommitteeTest extends TestCase {
 	}
 
 	public function testCommitteeHasUsers() {
-		$com = $this->mockCommittee(['id' => 1, 'name' => 'committee', 'time' => 'default']);
-		$com->save();
-
-		$u = $this->mockUser();
-		$u->save();
-
+		$this->mockCommittee(['id' => 1, 'name' => 'committee', 'time' => 'default'])->save();
+		$this->mockUser()->save();
+		
 		$u11 = $this->mockUser();
 		$u11->id = 11;
 		$u11->save();
 
-		$com->users()->attach($u);
-		$com->users()->attach($u);
+		$com = Committee::find(1);
+
+		$com->users()->attach(User::find(42));
+		$com->users()->attach($u11);
 		
-		$this->assertEquals($com->users[0]->username, $u->username);
+		$this->assertEquals($com->users->last()->username, $u11->username);
 		$this->assertEquals(2, count($com->users));
 	}
 }

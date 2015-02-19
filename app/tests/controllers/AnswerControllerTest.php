@@ -35,11 +35,11 @@ class AnswerControllerTest extends TestCase {
 
 	public function testUpdateSopivuus() {
 		$this->mockUser()->save();
-		$this->mockPoll(23)->save();
-		$this->mockTimeidea(44,23)->save();
-		$this->mockTimeidea(45,23)->save();
-		$this->mockAnswer(33,1,44)->save();
-		$this->mockAnswer(34,1,45)->save();
+		$this->mockPoll()->save();
+		$this->mockTimeidea(['id' => 44, 'poll_id' => 43, 'description' => 'Future Primitive'])->save();
+		$this->mockTimeidea(['id' => 45, 'poll_id' => 43, 'description' => 'Corridors of Power'])->save();
+		$this->mockAnswer(['id' => 33, 'participant_id' => 42, 'timeidea_id'=>44, 'sopivuus' => 'sopii'])->save();
+		$this->mockAnswer(['id' => 34, 'participant_id' => 42, 'timeidea_id'=>45, 'sopivuus' => 'sopii'])->save();
 
 		$answer = Answer::find(33);
 		$this->assertEquals('sopii', $answer->sopivuus);

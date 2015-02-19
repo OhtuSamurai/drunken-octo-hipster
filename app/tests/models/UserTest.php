@@ -8,12 +8,13 @@ class UserTest extends TestCase {
 	}
 
 	public function testUserParticipatesInAPoll() {
-		$poll = $this->mockPoll(42);
-		$poll->save();
+		$this->mockPoll()->save();
+		$poll = Poll::find(43);
 
 		$usr = $this->mockUser();
 		$usr->save(); 
 		$usr->polls()->attach($poll);
+
 		$this->assertEquals($usr->polls[0]->toimikunta, $poll->toimikunta);
 	}
 

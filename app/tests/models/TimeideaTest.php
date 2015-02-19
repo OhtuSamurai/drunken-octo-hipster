@@ -3,28 +3,24 @@
 class TimeideaTest extends TestCase {
 
 	public function testStoringTimeidea() {
-		$idea = $this->mockTimeidea(27,27);
-		$idea->save();
-		$this->assertEquals(Timeidea::find(27)->date, $idea->date);
+		$this->mockTimeidea()->save();
+		$this->assertEquals('Stay awhile and listen' ,Timeidea::find(23)->description);
 	}
 
 	public function testTimeideaInApoll() {
-		$p = $this->mockPoll(42);
-		$p->save();
-
-		$idea = $this->mockTimeidea(42, $p->id);
-		$idea->save();
-
-		$this->assertEquals($idea->poll->toimikunta, $p->toimikunta);
+		$this->mockPoll(['id' => 43, 'toimikunta' => 'committee', 'is_open' => 1])->save();
+		$this->mockTimeidea(['id' => 23, 'poll_id' => 43, 'description' => 'Stay awhile and listen'])->save();
+		$this->assertEquals(Poll::find(43)->toimikunta, Timeidea::find(23)->poll->toimikunta);
 	}
 
 	public function testTimeideaWithAnswers() {
-		$idea = $this->mockTimeidea(42, 12);
-		$idea->save();
+		$this->mockTimeidea()->save();
+		$idea = Timeidea::find(23);
 		
-		$a = $this->mockAnswer(36, 1, $idea->id);
-		$a->save();
+		$this->mockAnswer(['id' => 1, 'participant_id' => 99, 'timeidea_id'=>$idea->id, 'sopivuus' => 'sopii'])->save();
+		$this->mockAnswer(['id' => 2, 'participant_id' => 99, 'timeidea_id'=>$idea->id, 'sopivuus' => 'sopii'])->save();
 
-		$this->assertEquals($idea->answers[0]->sopivuus, $a->sopivuus);
+		$this->assertEquals($idea->answers[0]->sopivuus, Answer::find(1)->sopivuus);
+		$this->assertEquals(2, count($idea->answers));
 	}
 }
