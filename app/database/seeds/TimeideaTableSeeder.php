@@ -9,17 +9,11 @@ class TimeideaTableSeeder extends Seeder {
   public function run() {
     //DB::table('timeideas')->delete();
 
-    Timeidea::create(array('date' => '2015-1-30',
-                       'begins' => '09:00:00',
-                       'ends' => '11:00:00',
+    Timeidea::create(array('idea' => 'oispa kaljaa',
                        'poll_id'=>4));
-    Timeidea::insert(array('date' => '2015-1-30',
-                       'begins' => '12:00:00',
-                       'ends' => '14:00:00',
+    Timeidea::insert(array('idea' => '5.5.2015 aamusta',
                        'poll_id'=>4));
-	  Timeidea::insert(array('date' => '2015-1-30',
-                       'begins'=>'14:00:00',
-		                   'ends'=>'16:00:00',
+	Timeidea::insert(array('idea' => 'Maaliskuun alussa',
                        'poll_id'=>4));
   }
 }

@@ -31,9 +31,7 @@ class TimeideaController extends \BaseController {
 	private function makeTimeideaOfInput() {
 		$timeidea = new Timeidea;
 		$timeidea->poll_id = Input::get('poll_id');
-		$timeidea->date = date("Y-m-d", strtotime( Input::get('date') ) );
-		$timeidea->begins = Input::get('begins');
-		$timeidea->ends = Input::get('ends');
+		$timeidea->description = Input::get('description');
 		return $timeidea;
 	}
 

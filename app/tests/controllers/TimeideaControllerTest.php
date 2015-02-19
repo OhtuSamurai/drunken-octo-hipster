@@ -18,7 +18,7 @@ class TimeideaControllerTest extends TestCase {
 
 		$a = new TimeideaController;
 		$view = $a->show($ti->id)->getData();
-		$this->assertTrue(str_contains($view['timeidea'], $ti->date));
+		$this->assertTrue(str_contains($view['timeidea'], $ti->description));
 	}
 	
 	public function testEdit() {
@@ -38,15 +38,14 @@ class TimeideaControllerTest extends TestCase {
 	
 	public function testStore() {
 		$tic = new TimeideaController;
-		Request::replace($input=['poll_id'=>'25','begins'=>'14:00','ends'=>'16:00','date'=>'2015-11-11']);
+		Request::replace($input=['poll_id'=>'25','description'=>'kokista']);
 		$polli = $this->mockPoll(25);
 		$polli->save();
 		$u = $this->mockUser(25);
 		$u->save();
 		$polli->users()->attach($u);
 		$tic->Store();
-		$this->assertTrue(Timeidea::find(1)->date=='2015-11-11');	
-		$this->assertTrue(Timeidea::find(1)->begins=='14:00');
+		$this->assertTrue(Timeidea::find(1)->description=='kokista');	
 		$vastaukset =  $polli->answers();
 		foreach($vastaukset as $vastaus)
 			$this->assertTrue($vastaus->sopivuus=='eisovi');

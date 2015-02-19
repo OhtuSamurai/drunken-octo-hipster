@@ -15,7 +15,7 @@ class Timeidea extends Eloquent {
 	 */
 	protected $table = 'timeideas';
 
-  protected $fillable = ['date', 'begins', 'ends'];
+  protected $fillable = ['description'];
 
   public function poll() {
     return $this->belongsTo('Poll');

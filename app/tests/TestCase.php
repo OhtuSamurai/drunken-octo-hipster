@@ -47,9 +47,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		$idea = new Timeidea;
 		$idea->id=$id;
 		$idea->poll_id=$pid;
-		$idea->date="2015-01-01";
-		$idea->begins="10:00:00.000";
-		$idea->ends="11:00:00.000";
+		$idea->description="testi";
 		return $idea;
 	}
 

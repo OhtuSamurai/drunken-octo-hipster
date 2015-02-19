@@ -1,7 +1,6 @@
 <tr class="timeidea">
 	<th>
-		{{ date('l', strtotime($timeidea->date)) }}
-		{{ date("H:i", strtotime($timeidea->begins) ) . " - " . date("H:i", strtotime($timeidea->ends) ) }}
+		{{ $timeidea->description; }}
 	</th>
 	
 	@foreach($users as $user)
