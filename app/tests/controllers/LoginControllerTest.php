@@ -11,9 +11,8 @@ class LoginControllerTest extends TestCase {
 	}
 
 	public function testLoginAndLogout() {
-		$user = $this->mockUser();
-		$user->username = 'tiina';
-		$user->save();
+		$params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'tiina'];
+		$this->mockUser($params)->save();
 
 		$a = new LoginController;
 		$this->assertNull(Auth::user());

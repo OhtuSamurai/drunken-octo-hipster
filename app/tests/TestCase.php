@@ -28,6 +28,17 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return $params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
 	}
 
+	private function brew_an_answer() {
+		return $params = ['id' => 8, 'participant_id' => 99, 'timeidea_id'=>99, 'sopivuus' => 'sopii'];
+	}
+
+	private function brew_a_poll() {
+		return ['id' => 43, 'toimikunta' => 'committee', 'is_open' => 1];
+	}
+
+	private function brew_an_idea() {
+		return ['id' => 23, 'poll_id' => 1, 'description' => 'Stay awhile and listen'];
+	}
 
 	private function brew_a_committee() {
 		return ['id' => 1, 'name' => 'committee', 'time' => 'default'];
@@ -38,29 +49,19 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return $this->generalMockery(new User, $params);
 	}
 
-	public function mockPoll($id) {
-		$poll = new Poll;
-		$poll->toimikunta = "testi";
-		$poll->is_open=1;
-		$poll->id=$id;		
-		return $poll;
+	public function mockPoll($params = array()) {
+		if(empty($params)) $params = $this->brew_a_poll();
+		return $this->generalMockery(new Poll, $params);
 	}
 
-	public function mockTimeidea($id, $pid) {
-		$idea = new Timeidea;
-		$idea->id=$id;
-		$idea->poll_id=$pid;
-		$idea->description="testi";
-		return $idea;
+	public function mockTimeidea($params = array()) {
+		if(empty($params)) $params = $this->brew_an_idea();
+		return $this->generalMockery(new Timeidea, $params);
 	}
 
-	public function mockAnswer($id, $uid, $tid) {
-		$ans = new Answer;
-		$ans->id=$id;
-		$ans->participant_id=$uid;
-		$ans->timeidea_id=$tid;
-		$ans->sopivuus="sopii";
-		return $ans;
+	public function mockAnswer($params = array()) {
+		if(empty($params)) $params = $this->brew_an_answer();
+		return $this->generalMockery(new Answer, $params);
 	}
 
 	public function mockCommittee($params = array()) {
@@ -68,6 +69,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return $this->generalMockery(new Committee, $params);
 	}
 
+	//yleistä solvaamista
 	public function generalMockery($model, $params = array()) {
 		foreach($params as $key => $value) {
 			$model->$key = $value;

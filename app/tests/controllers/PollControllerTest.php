@@ -16,22 +16,19 @@ class PollControllerTest extends TestCase {
 	}
 
 	public function testStore() {
-		$u51 = $this->mockUser();
-		$u51->id = 51;
-		$u51->save();
-		
-		$u52 = $this->mockUser();
-		$u52->id = 52;
-		$u52->save();
-		
-		$u53 = $this->mockUser();
-		$u53->id = 53;
-		$u53->save();
-		
 		$a = new PollController;
+		$params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
+
+		//luodaan userit ideillä 51,52,53
+		for($i = 51; $i<54; $i++) {
+			$params['id'] = $i;
+			$this->mockUser($params)->save();
+		}
+
 		Request::replace($input=['toimikunta'=>'Hieno Toimikunta', 'user'=>[51, 52]]);
-		$a->Store();
+		$a->store();
 		$poll = Poll::find(1);
+
 		$this->assertEquals(1, $poll->is_open);
 		$this->assertTrue($poll->toimikunta=='Hieno Toimikunta');
 		$this->assertTrue($poll->users()->get()->contains(51));
@@ -40,10 +37,11 @@ class PollControllerTest extends TestCase {
 	}
 	
 	public function testShow() {
-		$p = $this->mockPoll(42);
-		$p->save();
-
+		$this->mockPoll()->save();
+		
+		$p = Poll::find(43);
 		$ctrl = new PollController;
+		
 		$view = $ctrl->show($p->id)->getData();
 		$this->assertTrue(str_contains($view['poll'], $p->toimikunta));
 	}
@@ -54,16 +52,16 @@ class PollControllerTest extends TestCase {
 	}
 	
 	public function testUpdate() {
-		$this->mockPoll(74)->save();
+		$this->mockPoll()->save();
 
-		$poll = Poll::find(74);
+		$poll = Poll::find(43);
 		$this->assertEquals(1, $poll->is_open);
 
 		$a = new PollController;
 		Request::replace($input=['is_open'=>false]);
-		$a->update(74);
+		$a->update(43);
 
-		$poll = Poll::find(74);
+		$poll = Poll::find(43);
 		$this->assertEquals(0, $poll->is_open);
 	}
 

@@ -3,44 +3,35 @@
 class PollTest extends TestCase {
 		
 	public function testUudenPollinLuominen() {
-		$poll = $this->mockPoll(27);
-		$poll->save();
-		$this->assertEquals(Poll::find(27)->toimikunta, $poll->toimikunta);
+		$this->mockPoll()->save();
+		$this->assertEquals(Poll::find(43)->toimikunta, "committee");
 	}
 
 	public function testTimeideanHakuFunktioToimii() {
-		$poll=$this->mockPoll(35);
-		$poll->save();
-		
-		$idea = $this->mockTimeidea(35, $poll->id);
-		$idea->save();
-	
-		$haetut = $poll->timeIdeas;
-		$this->assertEquals($haetut[0]->date,$idea->date);
+		$this->mockPoll()->save();	
+		$this->mockTimeidea(['id' => 23, 'poll_id' => 43, 'description' => 'Stay awhile and listen'])->save();
+		$this->assertEquals(Poll::find(43)->timeideas()->first()->description, Timeidea::find(23)->description);
 	}
 
 	public function testPollWithUser() {
-		$poll = $this->mockPoll(42);
-		$poll->save();
-
-		$u = $this->mockUser();
-		$u->save();
+		$this->mockPoll()->save();
+		$this->mockUser()->save();
+		
+		$poll = Poll::find(43);
+		$u = User::find(42);
 		$poll->users()->attach($u);
-		$this->assertEquals($poll->users[0]->username, $u->username);
+
+		$this->assertEquals($poll->users->first()->username, $u->username);
 	}
 
 	public function testPollWithAnswers() {
-		$poll=$this->mockPoll(35);
-		$poll->save();
+		$this->mockPoll()->save();
+		$this->mockTimeidea(['id' => 23, 'poll_id' => 43, 'description' => 'Stay awhile and listen'])->save();
+		$idea = Timeidea::find(23);
 		
-		$idea = $this->mockTimeidea(35, $poll->id);
-		$idea->save();
-		
-		$a = $this->mockAnswer(42, 1337, $poll->id);
-		$a->save();
-
-		$pa = $poll->answers;
-		foreach($pa as $p)
-			$this->assertEquals($p->sopivuus, $a->sopivuus);
+		for($i = 1; $i<4; $i++)
+			$this->mockAnswer(['id' => $i, 'participant_id' => $i, 'timeidea_id'=>$idea->id, 'sopivuus' => 'sopii'])->save();
+		foreach(Poll::find(43)->answers as $ans)
+			$this->assertEquals(Answer::find($ans->id)->sopivuus, $ans->sopivuus);
 	}
 }
