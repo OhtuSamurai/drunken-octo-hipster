@@ -33,3 +33,7 @@ Route::resource('timeidea', 'TimeideaController',
 
 Route::resource('answer', 'AnswerController',
                 array('only' => array('store')));
+
+Route::resource('committee', 'CommitteeController',
+                array('only' => array('index', 'show')));
+
