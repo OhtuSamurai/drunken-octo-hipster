@@ -22,6 +22,8 @@ Route::get('pooli', 'UserController@index');
 
 Route::get('updateSopivuus', 'AnswerController@updateSopivuus');
 
+Route::get('admin', 'AdminController@showAdminPage');
+
 Route::resource('user', 'UserController',
                 array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show', 'index')));
 
