@@ -18,8 +18,8 @@ class CreateCommitteeParticipantsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
-			$table->integer('committees_id')->unsigned();
-			$table->foreign('committees_id')->references('id')->on('committees');
+			$table->integer('committee_id')->unsigned();
+			$table->foreign('committee_id')->references('id')->on('committees');
 			$table->timestamps();
 		});
 	}

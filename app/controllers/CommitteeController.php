@@ -9,7 +9,8 @@ class CommitteeController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$committees = Committee::all(); 	  
+		return View::make('committee.index', array('committees' => $committees));
 	}
 
 
