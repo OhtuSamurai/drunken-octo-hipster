@@ -8,7 +8,7 @@
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
 ![Ohtu Samurai](https://img.shields.io/badge/ohtu-samurai-lightgrey.svg)
 
-100 commits! ![100](https://cdn3.iconfinder.com/data/icons/mixed-3d-icons/512/celebration-512.png "100")
+200 commits! ![200](https://kazdelaney.files.wordpress.com/2011/06/celebration-mine54.jpg#celebrate "200")
 
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
 * Heroku: http://shielded-earth-2316.herokuapp.com/
