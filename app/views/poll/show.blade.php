@@ -3,6 +3,7 @@
 @if($poll->is_open)
 @section('pagehead')
   {{HTML::script('javascript/poll_timeidea.js')}}
+  {{HTML::script('javascript/poll.js')}}
 @stop
 @endif
 
@@ -19,7 +20,7 @@
 				</th>
 				@if (!empty($users))
 				@foreach($users as $user)
-					<td class="col-md-1">{{$user->first_name}}</td>
+					<td class="col-md-1 users">{{$user->first_name}}</td>
 				@endforeach
 				@endif
 			</tr>
