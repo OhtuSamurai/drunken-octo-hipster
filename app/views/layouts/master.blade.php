@@ -12,6 +12,14 @@
 </head>
 <body>
 @include('layouts.navigation')
+@if (!($errors->first()==NULL))
+	<div class="alert alert-danger">
+		@foreach ($errors->getMessages() as $error)
+			 <b>{{$error[0];}}</b>	
+		@endforeach
+	</div> 
+@endif
+
 <div class="container-fluid">
   @yield('content')
 </div>

@@ -64,6 +64,12 @@ class TimeideaController extends \BaseController {
 	 */
 	public function store()
 	{
+		$rules = array('description'=>'required|min:1');		
+		$messages = ['required'=>'Yritit lisätä tyhjän ajankohdan'];
+		$validation = Validator::make(Input::all(),$rules,$messages);
+		if($validation->fails()) {
+			return Redirect::route('poll.show', array('poll'=>Input::get('poll_id')))->withErrors($validation);
+		}
 		$timeidea = $this->makeTimeideaOfInput();
 		$timeidea->save();
 		$poll = Poll::find($timeidea->poll_id);
@@ -108,7 +114,8 @@ class TimeideaController extends \BaseController {
 	{
 		//
 	}
-
+	
+	
 
 	/**
 	 * Remove the specified resource from storage.
