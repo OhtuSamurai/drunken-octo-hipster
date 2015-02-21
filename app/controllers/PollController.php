@@ -32,13 +32,18 @@ class PollController extends \BaseController {
 	 */
 	public function store()
 	{
+		$rules = array('toimikunta'=>'required|min:1');
+		$messages = array('required'=>'Anna toimikunnalle nimi');
+		$validation = Validator::make(Input::all(),$rules,$messages);
+		if ($validation->fails())
+			return Redirect::back()->withErrors($validation);
 		$poll = new Poll;
-    	$poll->toimikunta = Input::get('toimikunta');
-    	$poll->is_open = 1;
-    	
-    	$poll->save();
+    		$poll->toimikunta = Input::get('toimikunta');
+    		$poll->is_open = 1;
+    		
+    		$poll->save();
 
-    	$users = Input::get('user');
+    		$users = Input::get('user');
 		if (!empty($users))
     		foreach($users as $user)
       			$poll->users()->attach($user);
