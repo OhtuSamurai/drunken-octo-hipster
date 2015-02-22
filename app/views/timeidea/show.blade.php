@@ -6,7 +6,7 @@
 	@foreach($users as $user)
 		@foreach($answers as $answer)
 			@if($answer->participant_id == $user->id && $timeidea->id == $answer->timeidea_id)
-			<td class="options {{$answer->sopivuus}}">
+			<td class="options {{$answer->sopivuus}}" data-userid="{{$user->id}}">
 				{{Form::select('size', 
 								array('sopii' => 'Sopii', 'parhaiten' => 'Parhaiten', 'eisovi' => 'Ei', 'eivastattu' => 'eivastattu'), 
 								$answer->sopivuus, 

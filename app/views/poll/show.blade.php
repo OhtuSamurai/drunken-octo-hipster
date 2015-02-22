@@ -29,6 +29,10 @@
 			@foreach($timeideas as $timeidea)
 				@include('timeidea.show')		
 			@endforeach
+				<th></th>
+				@foreach($users as $user)
+					<td class="allred" data-userid="{{$user->id}}">kaikki punaiseksi</td>
+				@endforeach
 		</tbody>
 	</table>
 	
