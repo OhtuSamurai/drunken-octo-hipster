@@ -16,6 +16,8 @@ class PollControllerTest extends TestCase {
 	}
 
 	public function testStore() {
+		$this->fakeLogin();
+
 		$poll_ctrl = new PollController;
 		$params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
 

@@ -24,6 +24,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
     		$this->prepareForTests();
 	}
 
+	private function brew_an_admin() {
+		return $params = ['id' => 123, 'first_name' => 'first', 'last_name' => 'last', 'department' => 'deb', 'position' => 'pos', 'username' => 'user', 'is_admin' => 1];
+	}
+
 	private function brew_a_user() {
 		return $params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
 	}
@@ -75,5 +79,12 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 			$model->$key = $value;
 		}
 		return $model;
+	}
+
+	public function fakeLogin() {
+		$this->mockUser($this->brew_an_admin())->save();
+		$login_ctrl = new LoginController;
+		Request::replace($input=['username'=>'user']);
+		$login_ctrl->doLogin();
 	}
 }
