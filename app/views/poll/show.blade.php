@@ -23,9 +23,9 @@
 					<td class="col-md-1 users">{{$user->first_name}}</td>
 				@endforeach
 				@endif
-				<th class="col-md-1">
+				<td class="col-md-1">
 					Paras/Sopii
-				</th>
+				</td>
 			</tr>
 		</thead>
 		<tbody>
