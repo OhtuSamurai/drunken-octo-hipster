@@ -6,35 +6,35 @@ class LoginControllerTest extends TestCase {
 		$response = $this->action('GET', 'LoginController@showLoginPage');
 
 		$view = $response->original;
-		$a = new LoginController;
-		$this->assertEquals($a->showLoginPage(), $view );
+		$login_ctrl = new LoginController;
+		$this->assertEquals($login_ctrl->showLoginPage(), $view );
 	}
 
 	public function testLoginAndLogout() {
 		$params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'tiina'];
 		$this->mockUser($params)->save();
 
-		$a = new LoginController;
+		$login_ctrl = new LoginController;
 		$this->assertNull(Auth::user());
 
 		Request::replace($input=['username'=>'tiina']);
-		$a->doLogin();
+		$login_ctrl->doLogin();
 
 		$this->assertNotNull(Auth::user());
 		$this->assertEquals('tiina', Auth::user()->username);
 
-		$a->logout();
+		$login_ctrl->logout();
 		$this->assertNull(Auth::user());
 	}
 
 	public function testCantLoginWithInvalidUsername() {
-		$a = new LoginController;
+		$login_ctrl = new LoginController;
 
 		Request::replace($input=['username'=>'godzilla']);
 
 		$response = $this->action('POST', 'LoginController@doLogin');
 		$view = $response->original;
-		$this->assertEquals($a->doLogin(), $view );
+		$this->assertEquals($login_ctrl->doLogin(), $view );
 
 		$this->assertNull(Auth::user());
 	}

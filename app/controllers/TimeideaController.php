@@ -58,18 +58,30 @@ class TimeideaController extends \BaseController {
 	}
 
 	/**
+  	* Sets Validator arguments and returns an instance of Validator
+  	* 
+  	* @return Validator
+  	*/
+  	private function validate() {
+  		$rules = array('description'=>'required|min:1');		
+		$messages = ['required'=>'Yritit lisätä tyhjän ajankohdan'];
+		return Validator::make(Input::all(),$rules,$messages);
+	}
+
+	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$rules = array('description'=>'required|min:1');		
-		$messages = ['required'=>'Yritit lisätä tyhjän ajankohdan'];
-		$validation = Validator::make(Input::all(),$rules,$messages);
-		if($validation->fails()) {
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::route('poll.show', array('poll'=>Input::get('poll_id')))->withErrors("Toiminto evätty!");
+
+		$validation = $this->validate();
+		if($validation->fails())
 			return Redirect::route('poll.show', array('poll'=>Input::get('poll_id')))->withErrors($validation);
-		}
+
 		$timeidea = $this->makeTimeideaOfInput();
 		$timeidea->save();
 		$poll = Poll::find($timeidea->poll_id);

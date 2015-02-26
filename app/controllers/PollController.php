@@ -24,6 +24,28 @@ class PollController extends \BaseController {
  	   //
   	}
 
+  	/**
+  	* Sets Validator arguments and returns an instance of Validator
+  	* 
+  	* @return Validator
+  	*/
+  	private function validate() {
+  		$rules = array('toimikunta'=>'required|min:1');
+		$messages = array('required'=>'Anna toimikunnalle nimi');
+		return Validator::make(Input::all(),$rules,$messages);
+	}
+
+	/**
+	* Creates and instance of Poll, saves it and lastly returns it
+	*
+	* @return Poll
+	*/
+	private function makeAndSaveAPoll() {
+		$poll = new Poll;
+    	$poll->toimikunta = Input::get('toimikunta');
+    	$poll->save();
+    	return $poll;
+	}	
 
 	/**
 	 * Store a newly created resource in storage.
@@ -32,18 +54,16 @@ class PollController extends \BaseController {
 	 */
 	public function store()
 	{
-		$rules = array('toimikunta'=>'required|min:1');
-		$messages = array('required'=>'Anna toimikunnalle nimi');
-		$validation = Validator::make(Input::all(),$rules,$messages);
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::back()->withErrors("Toiminto evätty!");
+
+		$validation = $this->validate();
 		if ($validation->fails())
 			return Redirect::back()->withErrors($validation);
-		$poll = new Poll;
-    		$poll->toimikunta = Input::get('toimikunta');
-    		$poll->is_open = 1;
-    		
-    		$poll->save();
+				
+		$poll = $this->makeAndSaveAPoll();
 
-    		$users = Input::get('user');
+    	$users = Input::get('user');
 		if (!empty($users))
     		foreach($users as $user)
       			$poll->users()->attach($user);

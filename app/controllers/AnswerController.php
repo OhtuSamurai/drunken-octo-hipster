@@ -74,9 +74,9 @@ class AnswerController extends \BaseController {
 		$answers = Input::all();
 
 		foreach($answers as $answer_id => $answer_sopivuus) {
-			$a = Answer::find($answer_id);
-			$a->sopivuus = $answer_sopivuus;
-			$a->save();
+			$answer = Answer::find($answer_id);
+			$answer->sopivuus = $answer_sopivuus;
+			$answer->save();
 		}
 		return Redirect::route('poll.index');
 		//return Redirect::back();

@@ -18,4 +18,3 @@ class OtsikkoTest extends PHPUnit_Extensions_Selenium2TestCase
     }
 
 }
-?>

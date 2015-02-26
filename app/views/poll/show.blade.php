@@ -51,11 +51,9 @@
 	
 	@if($poll->is_open)
     	@include('answer._form') {{-- Here ends form for answers --}}
-    	@if(Auth::user())
-		@if(Auth::user()->is_admin)
+    	@if(Auth::user() && Auth::user()->is_admin)
     		@include('timeidea._form')
     		@include('poll.close')
-    	@endif
     	@endif
     @endif
 
