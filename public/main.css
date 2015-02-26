@@ -1,5 +1,6 @@
-table tr.active{
-	color: #339900 !important;
+.active{
+	color: #339900 !important;	
+	background: #CCFF99 !important;
 }
 
 table.selitykset{

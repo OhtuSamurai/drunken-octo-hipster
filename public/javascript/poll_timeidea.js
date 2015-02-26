@@ -36,5 +36,14 @@ $(document).ready(function(){
 	    timeideas.removeClass("active");		
       	$(this).addClass("active");
 	});
+	
+	$(".allred").click(function(){
+		redbuttonuserid = $(this).data("userid");
+		selectedcolumn = $(".timeidea>.options[data-userid|='"+redbuttonuserid+"']");
+		selectedcolumn.removeClass(); //removes all classes
+		selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true');
+		selectedcolumn.find(".selectedvalue").val('eisovi');
+		selectedcolumn.addClass("eisovi");
+	});
 });
 

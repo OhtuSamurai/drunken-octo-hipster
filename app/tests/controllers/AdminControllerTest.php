@@ -6,7 +6,7 @@ class AdminControllerTest extends TestCase {
 		$response = $this->action('GET', 'AdminController@showAdminPage');
 
 		$view = $response->original;
-		$a = new AdminController;
-		$this->assertEquals($a->showAdminPage(), $view );
+		$admin_ctrl = new AdminController;
+		$this->assertEquals($admin_ctrl->showAdminPage(), $view );
 	}
 }

@@ -6,39 +6,39 @@ class UserControllerTest extends TestCase {
 		$response = $this->action('GET', 'UserController@index');
 
 		$view = $response->original;
-		$a = new UserController;
-		$this->assertEquals($a->index(), $view );
+		$usr_ctrl = new UserController;
+		$this->assertEquals($usr_ctrl->index(), $view );
 	}
 
 	public function testCreate() {
-		$a = new UserController;
-		$this->assertNull($a->create());
+		$usr_ctrl = new UserController;
+		$this->assertNull($usr_ctrl->create());
 	}
 
 
 	public function testStore() {
-		$a = new UserController;
-		$this->assertNull($a->store());
+		$usr_ctrl = new UserController;
+		$this->assertNull($usr_ctrl->store());
 	}
 
 	public function testShow() {
-		$a = new UserController;
-		$this->assertNull($a->show(1));
+		$usr_ctrl = new UserController;
+		$this->assertNull($usr_ctrl->show(1));
 	}
 
 	public function testEdit() {
-		$a = new UserController;
-		$this->assertNull($a->edit(1));
+		$usr_ctrl = new UserController;
+		$this->assertNull($usr_ctrl->edit(1));
 	}
 
 
 	public function testUpdate() {
-		$a = new UserController;
-		$this->assertNull($a->update(1));
+		$usr_ctrl = new UserController;
+		$this->assertNull($usr_ctrl->update(1));
 	}
 
 	public function testDestroy() {
-		$a = new UserController;
-		$this->assertNull($a->destroy(1));
+		$usr_ctrl = new UserController;
+		$this->assertNull($usr_ctrl->destroy(1));
 	}
 }

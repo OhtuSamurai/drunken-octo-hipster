@@ -17,7 +17,7 @@
 			if ($answer->sopivuus=='sopii') 
 				$sopivat++;
 			?>
-			<td class="options {{$answer->sopivuus}}">
+			<td class="options {{$answer->sopivuus}}" data-userid="{{$user->id}}">
 				{{Form::select('size', 
 								array('sopii' => 'Sopii', 'parhaiten' => 'Parhaiten', 'eisovi' => 'Ei', 'eivastattu' => 'eivastattu'), 
 								$answer->sopivuus, 

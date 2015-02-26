@@ -18,10 +18,10 @@ class PollTest extends TestCase {
 		$this->mockUser()->save();
 		
 		$poll = Poll::find(43);
-		$u = User::find(42);
-		$poll->users()->attach($u);
+		$usr = User::find(42);
+		$poll->users()->attach($usr);
 
-		$this->assertEquals($poll->users->first()->username, $u->username);
+		$this->assertEquals($poll->users->first()->username, $usr->username);
 	}
 
 	public function testPollWithAnswers() {
