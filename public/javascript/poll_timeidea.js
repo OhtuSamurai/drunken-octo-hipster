@@ -28,14 +28,14 @@ $(document).ready(function(){
 	});
 	
 	$("#pollform").submit( function() {
-    	$(this).find("select[data-clicked|='false']").remove();
+    $(this).find("select[data-clicked|='false']").remove();
 	});
-	
+
 	timeideas = $(".timeidea>th");
 	timeideas.click(function(){
 	    timeideas.removeClass("active");		
-      	$(this).addClass("active");
-	});
+    $(this).addClass("active");
+	}); 
 	
 	$(".allred").click(function(){
 		redbuttonuserid = $(this).data("userid");

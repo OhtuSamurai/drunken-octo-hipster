@@ -114,7 +114,7 @@ class PollController extends \BaseController {
 		if(!Auth::check() or !Auth::User()->is_admin)
 			return Redirect::route('poll.show', array('poll' => $id));
 		$poll = Poll::find($id);
-
+		
 		foreach (Input::all() as $key => $value) {
 			if( array_key_exists($key, $poll->toArray() ))
 				$poll->$key = $value;
@@ -122,7 +122,7 @@ class PollController extends \BaseController {
 		$poll->save();
 
 		if( array_key_exists('is_open', Input::all())) {
-			return Redirect::action('CommitteeController@store', array('poll_id' => $id, 'time' => 'TARVII TIMEIDEA'));
+			return Redirect::action('CommitteeController@store', array('poll_id' => $id, 'time' => "FORMI BUGI"));
 		}
 		//return Redirect::back();
 		return Redirect::route('poll.show', array('poll' => $id));
