@@ -20,7 +20,7 @@
 				</th>
 				@if (!empty($users))
 				@foreach($users as $user)
-					<td class="col-md-1 users">{{$user->first_name}}</td>
+					<td class="col-md-1 users" data-id = "{{$user->id}}">{{$user->first_name}}</td>
 				@endforeach
 				@endif
 				<td class="col-md-1">
@@ -56,5 +56,14 @@
     		@include('poll.close')
     	@endif
     @endif
-
+	{{ Form::open(array('action' => 'CommitteeController@store', 'id'=>'committeeform', 'method'=>'GET')) }}
+		{{ Form::hidden('time', '', array('class' => 'valittuaika')) }}
+		<div class = "valitutuserit hidden">
+		@foreach($users as $user)
+			{{ Form::checkbox('user[]', $user->id) }}
+		@endforeach
+		</div>
+		{{ Form::hidden('poll_id', $poll->id)}}
+		{{ Form::submit('Sulje kysely', array('class' => 'btn btn-default')) }}
+	{{ Form::close() }}
 @stop

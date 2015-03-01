@@ -1,5 +1,5 @@
 <tr class="timeidea">
-	<th>
+	<th data-id= "{{$timeidea->id}}" data-description = "{{$timeidea->description}}">
 		{{ $timeidea->description; }}
 	</th>
 	<?php

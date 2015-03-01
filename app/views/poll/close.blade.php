@@ -2,6 +2,4 @@
 
 {{ Form::hidden('is_open', 0) }}
 
-{{ Form::submit('Sulje kysely', array('class' => 'btn btn-default')) }}
-
 {{ Form::close() }}

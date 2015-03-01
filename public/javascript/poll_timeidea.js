@@ -33,6 +33,9 @@ $(document).ready(function(){
 
 	timeideas = $(".timeidea>th");
 	timeideas.click(function(){
+		id = $(this).data('id');
+		description = $(this).data('description');
+		$(".valittuaika").val(description);
 	    timeideas.removeClass("active");		
     $(this).addClass("active");
 	}); 
