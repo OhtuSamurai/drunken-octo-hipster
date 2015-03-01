@@ -58,6 +58,20 @@ class PollControllerTest extends TestCase {
 		$this->mockPoll()->save();
 
 		$poll = Poll::find(43);
+
+		$poll_ctrl = new PollController;
+		Request::replace($input=['toimikunta'=>'bricks']);
+		$poll_ctrl->update(43);
+
+		$poll = Poll::find(43);
+		$this->assertEquals('bricks', $poll->toimikunta);
+	}
+
+	public function testUpdateIsOpen() {
+		$this->fakeLogin();
+		$this->mockPoll()->save();
+
+		$poll = Poll::find(43);
 		$this->assertEquals(1, $poll->is_open);
 
 		$poll_ctrl = new PollController;

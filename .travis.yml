@@ -27,8 +27,7 @@ before_script:
 #  - sleep 5 
 
 script:
-  - phpunit --verbose
-  - phpunit --coverage-clover build/logs/clover.xml
+  - phpunit --verbose --coverage-clover build/logs/clover.xml
 
 after_success:
   - php vendor/bin/coveralls -v --exclude-no-stmt

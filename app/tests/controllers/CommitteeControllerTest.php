@@ -1,4 +1,4 @@
-	<?php
+<?php
 
 class CommitteeControllerTest extends TestCase {
 
@@ -28,7 +28,7 @@ class CommitteeControllerTest extends TestCase {
 
 		$committee = Committee::find(1);
 		$this->assertEquals('committee', $committee->name);
-		$this->assertTrue($poll->users()->get()->contains(42));
+		$this->assertTrue($committee->users()->get()->contains(42));
 	}
 
 	public function testShow() {
