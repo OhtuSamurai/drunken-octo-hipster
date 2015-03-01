@@ -16,13 +16,9 @@ class CommitteeControllerTest extends TestCase {
 
 
 	public function testStore() {
-		$com_ctrl = new CommitteeController;
-		$this->assertNull($com_ctrl->store());
 	}
 
 	public function testShow() {
-		$com_ctrl = new CommitteeController;
-		$this->assertNull($com_ctrl->show(1));
 	}
 
 	public function testEdit() {

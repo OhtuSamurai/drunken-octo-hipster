@@ -32,7 +32,17 @@ class CommitteeController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$poll_id = Input::get('poll_id');
+		$poll = Poll::find($poll_id);
+		
+		$committee = new Committee;
+		$committee->name = $poll->toimikunta;
+		$committee->time = Input::get('time');
+		$committee->save();
+
+		foreach($poll->users as $user)
+			$committee->users()->attach($user);
+		return Redirect::route('committee.show', array('poll' => $committee->id));
 	}
 
 
@@ -44,7 +54,11 @@ class CommitteeController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$committee = Committee::find($id);
+    	
+    	$users = $committee->users;
+		
+		return View::make('committee.show', array('committee' => $committee, 'users' => $users));
 	}
 
 
