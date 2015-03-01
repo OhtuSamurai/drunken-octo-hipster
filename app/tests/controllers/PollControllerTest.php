@@ -54,6 +54,7 @@ class PollControllerTest extends TestCase {
 	}
 	
 	public function testUpdate() {
+		$this->fakeLogin();
 		$this->mockPoll()->save();
 
 		$poll = Poll::find(43);

@@ -111,6 +111,8 @@ class PollController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::route('poll.show', array('poll' => $id));
 		$poll = Poll::find($id);
 
 		foreach (Input::all() as $key => $value) {
