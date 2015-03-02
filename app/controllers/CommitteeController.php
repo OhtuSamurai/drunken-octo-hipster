@@ -40,8 +40,8 @@ class CommitteeController extends \BaseController {
 		$committee->name = $poll->toimikunta;
 		$committee->time = Input::get('time');
 		$committee->save();
-		$committee->users =Input::get('user');
-		foreach($poll->users as $user)
+		$users =Input::get('user');
+		foreach($users as $user)
 			$committee->users()->attach($user);
 		return Redirect::route('committee.show', array('poll' => $committee->id));
 	}

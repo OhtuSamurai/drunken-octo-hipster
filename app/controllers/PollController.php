@@ -123,7 +123,8 @@ class PollController extends \BaseController {
 
 		//if poll is_open changes, method will lead to other ctrl
 		if( array_key_exists('is_open', Input::all())) {
-			return Redirect::action('CommitteeController@store', array('poll_id' => $id, 'time' => "FORMI BUGI"));
+			return Redirect::action('CommitteeController@store',
+				array('poll_id' => $id, 'time' => Input::get('time'), 'user' => Input::get('user')));
 		}
 
 		//for example if polls name gets changed

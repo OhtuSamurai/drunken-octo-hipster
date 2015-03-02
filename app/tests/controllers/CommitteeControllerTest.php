@@ -23,7 +23,7 @@ class CommitteeControllerTest extends TestCase {
 		$poll->save();
 
 		$ctrl = new CommitteeController;
-		Request::replace($input=['poll_id'=>43, 'time'=>'time']);
+		Request::replace($input=['poll_id'=>43, 'time'=>'time', 'user' => ['42']]);
 		$ctrl->store();
 
 		$committee = Committee::find(1);

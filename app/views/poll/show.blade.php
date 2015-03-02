@@ -54,16 +54,17 @@
     	@if(Auth::user() && Auth::user()->is_admin)
     		@include('timeidea._form')
     		@include('poll.close')
-    	@endif
-    @endif
-	{{ Form::open(array('action' => 'CommitteeController@store', 'id'=>'committeeform', 'method'=>'GET')) }}
+	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'committeeform', 'method'=>'PUT')) }}
 		{{ Form::hidden('time', '', array('class' => 'valittuaika')) }}
 		<div class = "valitutuserit hidden">
 		@foreach($users as $user)
 			{{ Form::checkbox('user[]', $user->id) }}
 		@endforeach
 		</div>
-		{{ Form::hidden('poll_id', $poll->id)}}
+		{{ Form::hidden('is_open', 0)}}
+		{{-- {{ Form::hidden('poll_id', $poll->id)}} --}}
 		{{ Form::submit('Sulje kysely', array('class' => 'btn btn-default')) }}
 	{{ Form::close() }}
+		@endif
+    @endif
 @stop
