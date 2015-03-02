@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('UserTableSeeder');
 	  	$this->command->info('User table seeded!');
-
+	/*
 	  	$this->call('CommitteeTableSeeder');
 	  	$this->command->info('Committee table seeded!');
-    /*
+    
 		$this->call('TimeideaTableSeeder');
 		$this->command->info('Timeidea table seeded!');
     
