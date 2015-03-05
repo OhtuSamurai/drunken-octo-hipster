@@ -16,13 +16,10 @@ class LoginController extends Controller {
 	public function doLogin()
 	{
 		$validation = $this->validate();
-		if ($validation->fails())
-			return Redirect::action('LoginController@showLoginPage')->withErrors($validation);
-
 		$username = Input::get('username');
 		$user = User::where('username', $username)->first();
-		if ($user == null) {
-			return View::make('login.login')->withErrors('Virheellinen käyttäjätunnus');
+		if ($user == null OR $validation->fails()) {
+			return Redirect::action('LoginController@showLoginPage')->withErrors('Virheellinen käyttäjätunnus');
 		}
 		Auth::login($user);
 		return Redirect::action('UserController@show', array('id' => $user->id));

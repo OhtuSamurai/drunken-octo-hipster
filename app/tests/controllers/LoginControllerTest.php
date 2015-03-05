@@ -27,11 +27,8 @@ class LoginControllerTest extends TestCase {
 		$this->assertNull(Auth::user());
 	}
 
-	public function testCantLoginWithInvalidUsername() {
-		Request::replace($input=['username'=>'godzilla']);
-
+	public function testCantLoginWithoutUsername() {
 		$this->action('POST', 'LoginController@doLogin');
-		
 		$this->assertRedirectedTo('login');
 		$this->assertSessionHasErrors();
 		$this->assertNull(Auth::user());
