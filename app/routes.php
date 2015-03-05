@@ -25,7 +25,7 @@ Route::get('updateSopivuus', 'AnswerController@updateSopivuus');
 Route::get('admin', 'AdminController@showAdminPage');
 
 Route::resource('user', 'UserController',
-                array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'show', 'index')));
+                array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'index')));
 
 Route::resource('poll', 'PollController',
                 array('except' => array('destroy', 'edit', 'create')));

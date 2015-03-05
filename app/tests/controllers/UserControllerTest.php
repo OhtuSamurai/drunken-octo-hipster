@@ -22,8 +22,11 @@ class UserControllerTest extends TestCase {
 	}
 
 	public function testShow() {
+		$response = $this->action('GET', 'UserController@show', array('id' => 1));
+
+		$view = $response->original;
 		$usr_ctrl = new UserController;
-		$this->assertNull($usr_ctrl->show(1));
+		$this->assertEquals($usr_ctrl->show(1), $view );
 	}
 
 	public function testEdit() {

@@ -44,7 +44,9 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$committees = Committee::all();//where('is_open', '=', 1)->get();
+		$polls = Poll::where('is_open', '=', 1)->get();
+		return View::make('user.show', array('polls' => $polls, 'committees' => $committees));
 	}
 
 
