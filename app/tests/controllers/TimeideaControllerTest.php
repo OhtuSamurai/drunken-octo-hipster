@@ -37,7 +37,7 @@ class TimeideaControllerTest extends TestCase {
 	}
 	
 	public function testStore() {
-		$this->fakeLogin();
+		$this->fakeLoginAdmin();
 
 		$tic = new TimeideaController;
 		Request::replace($input=['poll_id'=>'43','description'=>'kokista']);

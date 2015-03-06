@@ -16,7 +16,7 @@ class PollControllerTest extends TestCase {
 	}
 
 	public function testStore() {
-		$this->fakeLogin();
+		$this->fakeLoginAdmin();
 
 		$poll_ctrl = new PollController;
 		$params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
@@ -54,7 +54,7 @@ class PollControllerTest extends TestCase {
 	}
 	
 	public function testUpdate() {
-		$this->fakeLogin();
+		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
 
 		$poll = Poll::find(43);
@@ -68,7 +68,7 @@ class PollControllerTest extends TestCase {
 	}
 
 	public function testUpdateIsOpen() {
-		$this->fakeLogin();
+		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
 
 		$poll = Poll::find(43);
