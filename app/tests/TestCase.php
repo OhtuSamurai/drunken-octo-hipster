@@ -81,10 +81,21 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return $model;
 	}
 
-	public function fakeLogin() {
-		$this->mockUser($this->brew_an_admin())->save();
+	public function fakeLogin($user) {
 		$login_ctrl = new LoginController;
-		Request::replace($input=['username'=>'user']);
+		Request::replace($input=['username'=>$user->username]);
 		$login_ctrl->doLogin();
+	}
+
+	public function fakeLoginUser() {
+		$user = $this->mockUser($this->brew_a_user());
+		$user->save();	
+		$this->fakeLogin($user);
+	}
+
+	public function fakeLoginAdmin() {
+		$user = $this->mockUser($this->brew_an_admin());
+		$user->save();
+		$this->fakeLogin($user);
 	}
 }

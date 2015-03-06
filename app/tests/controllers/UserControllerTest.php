@@ -22,11 +22,21 @@ class UserControllerTest extends TestCase {
 	}
 
 	public function testShow() {
-		$response = $this->action('GET', 'UserController@show', array('id' => 1));
+		$this->fakeLoginUser();
+		$response = $this->action('GET', 'UserController@show', array('id' => 42));
 
 		$view = $response->original;
 		$usr_ctrl = new UserController;
-		$this->assertEquals($usr_ctrl->show(1), $view );
+		$this->assertEquals($usr_ctrl->show(42), $view );
+	}
+
+	public function testShowWithAdmin() {
+		$this->fakeLoginAdmin();
+		$response = $this->action('GET', 'UserController@show', array('id' => 123));
+
+		$view = $response->original;
+		$usr_ctrl = new UserController;
+		$this->assertEquals($usr_ctrl->show(123), $view );		
 	}
 
 	public function testEdit() {

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <h1>Yhteenveto</h1>
+<h1>Yhteenveto</h1>
 
 <div class="col-md-6">
   <h2>Päätetyt toimikunnat:</h2>
