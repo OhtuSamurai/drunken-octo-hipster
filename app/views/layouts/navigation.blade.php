@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/pooli">Pooli</a></li>
         <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
+        <li><a href= {{route('committee.index')}} >Toimikunnat</a></li>
         @if(Auth::user())
         <li><a href={{action('UserController@show', array('id' => Auth::user()->id))}}>{{{Auth::user()->first_name}}}</a></li>
         <li><a href="/logout">Kirjaudu ulos</a></li>
