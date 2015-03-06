@@ -11,7 +11,7 @@ class CommitteeControllerTest extends TestCase {
 
 	public function testCreate() {
 		$com_ctrl = new CommitteeController;
-		$this->assertNull($com_ctrl->create());
+		$this->assertNotNull($com_ctrl->create());
 	}
 
 	public function testStore() {

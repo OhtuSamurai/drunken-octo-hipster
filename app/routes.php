@@ -28,7 +28,7 @@ Route::resource('user', 'UserController',
                 array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'index')));
 
 Route::resource('poll', 'PollController',
-                array('except' => array('destroy', 'edit', 'create')));
+                array('except' => array('destroy', 'edit')));
 
 Route::resource('timeidea', 'TimeideaController',
                 array('only' => array('store')));
@@ -37,7 +37,7 @@ Route::resource('answer', 'AnswerController',
                 array('only' => array('store')));
 
 Route::resource('committee', 'CommitteeController',
-                array('only' => array('index', 'show', 'store')));
+                array('except' => array('destroy', 'edit')));
 
 Route::get('add', 'CommitteeController@store');
 

@@ -21,7 +21,8 @@ class PollController extends \BaseController {
 	 */
 	public function create()
 	{
- 	   //
+		$users = User::all();
+		return View::make('poll.create', array('users' => $users));
   	}
 
   	/**

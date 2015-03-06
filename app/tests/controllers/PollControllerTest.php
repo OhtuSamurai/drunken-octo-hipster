@@ -12,7 +12,7 @@ class PollControllerTest extends TestCase {
 
 	public function testCreate() {
 		$poll_ctrl = new PollController;
-		$this->assertNull($poll_ctrl->create());
+		$this->assertNotNull($poll_ctrl->create());
 	}
 
 	public function testStore() {

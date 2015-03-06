@@ -21,7 +21,8 @@ class CommitteeController extends \BaseController {
 	 */
 	public function create()
 	{
-		
+		$users = User::all();
+		return View::make('committee.create', array('users' => $users));
 	}
 
 
