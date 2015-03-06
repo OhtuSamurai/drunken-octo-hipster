@@ -9,13 +9,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img src="/app/../images/oonapieni.png" class="img-rounded"></a>
+      <a class="navbar-brand" href="/"><img src="/app/../images/oonapieni.png" class="img-rounded"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/pooli">Pooli</a></li>
-        <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
         <li><a href= {{route('committee.index')}} >Toimikunnat</a></li>
+        <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
+        <li><a href="/pooli">Pooli</a></li>
         @if(Auth::user())
         <li><a href={{action('UserController@show', array('id' => Auth::user()->id))}}>{{{Auth::user()->first_name}}}</a></li>
         <li><a href="/logout">Kirjaudu ulos</a></li>
