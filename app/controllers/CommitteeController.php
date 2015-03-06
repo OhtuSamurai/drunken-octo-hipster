@@ -21,6 +21,9 @@ class CommitteeController extends \BaseController {
 	 */
 	public function create()
 	{
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
 		$users = User::all();
 		return View::make('committee.create', array('users' => $users));
 	}
@@ -34,7 +37,7 @@ class CommitteeController extends \BaseController {
 	public function store()
 	{
 		if(!Auth::check() or !Auth::User()->is_admin){
-			return Redirect::back()->withErrors("Toiminto evätty!");
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
 		}
 
     	$users = Input::get('user');
@@ -69,6 +72,41 @@ class CommitteeController extends \BaseController {
 		return View::make('committee.show', array('committee' => $committee, 'users' => $users));
 	}
 
+	/**
+	 * Mark this committee as 'closed'.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function close($id)
+	{
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
+		$committee = Committee::find($id);
+		$committee->is_open = false;
+		$committee->save();
+		return Redirect::route('committee.show', array('committee' => $id));
+	}
+
+	/**
+	 * Mark this committee as 'open'.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function open($id)
+	{
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::back()->withErrors("Toiminto evätty!");
+		}
+		$committee = Committee::find($id);
+		$committee->is_open = true;
+		$committee->save();
+		return Redirect::route('committee.show', array('committee' => $id));
+	}
+
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -90,7 +128,7 @@ class CommitteeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+
 	}
 
 

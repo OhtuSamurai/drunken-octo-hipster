@@ -22,7 +22,9 @@ Route::get('pooli', 'UserController@index');
 
 Route::get('updateSopivuus', 'AnswerController@updateSopivuus');
 
-Route::get('admin', 'AdminController@showAdminPage');
+Route::post('committee/{id}/close', 'CommitteeController@close');
+
+Route::post('committee/{id}/open', 'CommitteeController@open');
 
 Route::resource('user', 'UserController',
                 array('except' => array('create', 'store', 'destroy', 'update', 'edit', 'index')));

@@ -21,6 +21,9 @@ class PollController extends \BaseController {
 	 */
 	public function create()
 	{
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
 		$users = User::all();
 		return View::make('poll.create', array('users' => $users));
   	}
@@ -56,7 +59,7 @@ class PollController extends \BaseController {
 	public function store()
 	{
 		if(!Auth::check() or !Auth::User()->is_admin)
-			return Redirect::back()->withErrors("Toiminto evätty!");
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
 
 		$users = Input::get('user');
    		if (empty($users)) {
@@ -124,7 +127,7 @@ class PollController extends \BaseController {
 		}
 		$poll->save();
 
-		//if poll is_open changes, method will create new controller from poll
+		//if poll is_open changes, method will create new committee from poll
 		if( array_key_exists('is_open', Input::all())) {			
 			$committee = new Committee;
 			$committee->name = $poll->toimikunta;

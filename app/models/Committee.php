@@ -9,7 +9,7 @@ class Committee extends Eloquent {
 	 */
 	protected $table = 'committees';
 
-  protected $fillable = ['name', 'time'];
+  protected $fillable = ['name', 'time', 'is_open'];
 
   public function users(){
     return $this->belongsToMany('User', 'committee_participants')->withTimestamps();
