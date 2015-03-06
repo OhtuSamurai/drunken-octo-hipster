@@ -21,9 +21,8 @@ class CommitteeController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		
 	}
-	
 
 
 	/**
@@ -33,16 +32,23 @@ class CommitteeController extends \BaseController {
 	 */
 	public function store()
 	{
-		$poll_id = Input::get('poll_id');
-		$poll = Poll::find($poll_id);
-		
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::back()->withErrors("Toiminto evätty!");
+		}
+
 		$committee = new Committee;
-		$committee->name = $poll->toimikunta;
+		$committee->name = Input::get('name');
 		$committee->time = Input::get('time');
 		$committee->save();
-		$users =Input::get('user');
-		foreach($users as $user)
-			$committee->users()->attach($user);
+    	$users = Input::get('user');
+
+    	if (empty($users)) {
+    		return Redirect::back()->withErrors("Et valinnut yhtään käyttäjää!");
+    	}
+
+    	foreach($users as $user)
+      		$committee->users()->attach($user);
+
 		return Redirect::route('committee.show', array('poll' => $committee->id));
 	}
 

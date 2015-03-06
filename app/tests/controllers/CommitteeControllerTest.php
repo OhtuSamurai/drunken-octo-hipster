@@ -15,20 +15,19 @@ class CommitteeControllerTest extends TestCase {
 	}
 
 	public function testStore() {
-		$poll = $this->mockPoll();
-		$poll->save();
+		$this->fakeLoginAdmin();
 		$user = $this->mockUser();
 		$user->save();
-		$poll->users()->attach($user);
-		$poll->save();
+
+		Request::replace($input=['name'=>'uusi uljas toimikunta', 'time'=>'nyt', 'user' => [$user->id]]);
 
 		$ctrl = new CommitteeController;
-		Request::replace($input=['poll_id'=>43, 'time'=>'time', 'user' => ['42']]);
 		$ctrl->store();
 
 		$committee = Committee::find(1);
-		$this->assertEquals('committee', $committee->name);
-		$this->assertTrue($committee->users()->get()->contains(42));
+		$this->assertEquals('uusi uljas toimikunta', $committee->name);
+		$this->assertEquals('nyt', $committee->time);
+		$this->assertTrue($committee->users()->get()->contains($user->id));
 	}
 
 	public function testShow() {

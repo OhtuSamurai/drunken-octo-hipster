@@ -62,11 +62,12 @@ class PollController extends \BaseController {
 			return Redirect::back()->withErrors($validation);
 				
 		$poll = $this->makeAndSaveAPoll();
-
     	$users = Input::get('user');
-		if (!empty($users))
-    		foreach($users as $user)
-      			$poll->users()->attach($user);
+   		if (empty($users)) {
+    		return Redirect::back()->withErrors("Et valinnut yhtään käyttäjää!");
+    	}
+    	foreach($users as $user)
+      		$poll->users()->attach($user);
 
     	return Redirect::route('poll.show', array('poll' => $poll->id));
     }
@@ -121,10 +122,15 @@ class PollController extends \BaseController {
 		}
 		$poll->save();
 
-		//if poll is_open changes, method will lead to other ctrl
-		if( array_key_exists('is_open', Input::all())) {
-			return Redirect::action('CommitteeController@store',
-				array('poll_id' => $id, 'time' => Input::get('time'), 'user' => Input::get('user')));
+		//if poll is_open changes, method will create new controller from poll
+		if( array_key_exists('is_open', Input::all())) {			
+			$committee = new Committee;
+			$committee->name = $poll->toimikunta;
+			$committee->time = Input::get('time');
+			$committee->save();
+			foreach($poll->users as $user)
+				$committee->users()->attach($user);
+		return Redirect::route('committee.show', array('poll' => $committee->id));
 		}
 
 		//for example if polls name gets changed

@@ -37,7 +37,7 @@ Route::resource('answer', 'AnswerController',
                 array('only' => array('store')));
 
 Route::resource('committee', 'CommitteeController',
-                array('only' => array('index', 'show')));
+                array('only' => array('index', 'show', 'store')));
 
 Route::get('add', 'CommitteeController@store');
 
