@@ -58,15 +58,16 @@ class PollController extends \BaseController {
 		if(!Auth::check() or !Auth::User()->is_admin)
 			return Redirect::back()->withErrors("Toiminto evätty!");
 
+		$users = Input::get('user');
+   		if (empty($users)) {
+    		return Redirect::back()->withErrors("Valitse ensin käyttäjiä listasta");
+    	}
+
 		$validation = $this->validate();
 		if ($validation->fails())
 			return Redirect::back()->withErrors($validation);
-				
+
 		$poll = $this->makeAndSaveAPoll();
-    	$users = Input::get('user');
-   		if (empty($users)) {
-    		return Redirect::back()->withErrors("Et valinnut yhtään käyttäjää!");
-    	}
     	foreach($users as $user)
       		$poll->users()->attach($user);
 

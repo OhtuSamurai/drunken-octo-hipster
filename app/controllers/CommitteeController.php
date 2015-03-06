@@ -37,15 +37,15 @@ class CommitteeController extends \BaseController {
 			return Redirect::back()->withErrors("Toiminto evätty!");
 		}
 
+		if (empty($users)) {
+			return Redirect::back()->withErrors("Valitse ensin käyttäjiä listasta");
+    	}
+
 		$committee = new Committee;
 		$committee->name = Input::get('name');
 		$committee->time = Input::get('time');
 		$committee->save();
     	$users = Input::get('user');
-
-    	if (empty($users)) {
-    		return Redirect::back()->withErrors("Et valinnut yhtään käyttäjää!");
-    	}
 
     	foreach($users as $user)
       		$committee->users()->attach($user);
