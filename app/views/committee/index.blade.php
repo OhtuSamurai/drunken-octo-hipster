@@ -5,5 +5,6 @@
 
 	@include('committee.list')
 
-  <p><a href="/committee/create" class="btn btn-default" role="button">Luo uusi toimikunta</a></p>
+  <p><a href="/poll/create" class="btn btn-default" role="button">Luo uusi toimikunta kyselyn kautta</a></p>
+  <p><a href="/committee/create" class="btn btn-default" role="button">Luo uusi toimikunta ilman kyselyä</a></p>
 @stop
