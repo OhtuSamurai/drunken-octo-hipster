@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/pooli">Pooli</a></li>
         <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
+        <li><a href= {{route('committee.index')}} >Toimikunnat</a></li>
         @if(Auth::user())
           @if(Auth::user()->is_admin)
           <li><a href="/admin">Admin</a></li>
