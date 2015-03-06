@@ -37,6 +37,7 @@ class CommitteeController extends \BaseController {
 			return Redirect::back()->withErrors("Toiminto evätty!");
 		}
 
+    	$users = Input::get('user');
 		if (empty($users)) {
 			return Redirect::back()->withErrors("Valitse ensin käyttäjiä listasta");
     	}
@@ -45,7 +46,6 @@ class CommitteeController extends \BaseController {
 		$committee->name = Input::get('name');
 		$committee->time = Input::get('time');
 		$committee->save();
-    	$users = Input::get('user');
 
     	foreach($users as $user)
       		$committee->users()->attach($user);
