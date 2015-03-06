@@ -23,11 +23,21 @@ class UserControllerTest extends TestCase {
 
 	public function testShow() {
 		$this->fakeLoginUser();
+
+		$poll = $this->mockPoll();
+		$poll->save();
+		$poll->users()->attach(User::find(42));
+		$close_poll = $this->mockPoll();
+		$close_poll->id = 99;
+		$close_poll->is_open = 0;
+		$close_poll->save();
+		$close_poll->users()->attach(User::find(42));
 		$response = $this->action('GET', 'UserController@show', array('id' => 42));
 
 		$view = $response->original;
 		$usr_ctrl = new UserController;
 		$this->assertEquals($usr_ctrl->show(42), $view );
+		$this->assertViewHas("polls");
 	}
 
 	public function testShowWithAdmin() {
