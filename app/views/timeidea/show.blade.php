@@ -2,21 +2,11 @@
 	<th data-id= "{{$timeidea->id}}" data-description = "{{$timeidea->description}}">
 		{{ $timeidea->description; }}
 	</th>
-	<?php
-	$sopivat=0;
-	$parhaat=0;
-	?>	
+	
 	@foreach($users as $user)
 		@foreach($answers as $answer)
 			@if($answer->participant_id == $user->id && $timeidea->id == $answer->timeidea_id)
-			<?php 
-			if ($answer->sopivuus=='parhaiten') {
-				$parhaat++;
-				$sopivat++;
-			}
-			if ($answer->sopivuus=='sopii') 
-				$sopivat++;
-			?>
+			
 			<td class="options {{$answer->sopivuus}}" data-userid="{{$user->id}}">
 				{{Form::select('size', 
 								array('sopii' => 'Sopii', 'parhaiten' => 'Parhaiten', 'eisovi' => 'Ei', 'eivastattu' => 'eivastattu'), 
@@ -30,5 +20,9 @@
 		@endforeach
 	@endforeach
 
-	<td class="howmany"><?php echo $parhaat ?>/<?php echo $sopivat ?></td>
+	<td class="howmany">
+		<div class="best"></div>
+		<div class="isokay"></div>
+		<div class="no"></div>
+	</td>
 </tr>

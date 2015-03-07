@@ -1,8 +1,21 @@
-$(document).ready(function(){
+function countsum(){ //laskee summatietoihin vihreät ja keltaiset
+	$(".timeidea").each(function(){ //looppaa kaikki rivit ja laskee jokaisen summat
+		best = $(this).find(".parhaiten").length;
+		isokay = $(this).find(".sopii").length;
+		no = $(this).find(".eisovi").length;
+		$(this).find(".howmany>.best").text(best);  //asetetaan parhaiden summa oikeaan paikkaan showiin
+		$(this).find(".howmany>.isokay").text(isokay);
+		$(this).find(".howmany>.no").text(no);
+	});
 	
+}
+
+$(document).ready(function(){
+	countsum();
 	document.getElementById("pollform").reset();
 	
 	$(".timeidea>.options").click(function(){ //muuttaa laatikoiden värejä klikkailujen mukaan
+		
 	    selected = $(this).find(".selectedvalue");
 	    selected.attr('data-clicked', 'true'); 
 	    if(selected.val()=='parhaiten'){
@@ -25,6 +38,7 @@ $(document).ready(function(){
 	    	$(this).removeClass("eivastattu");
 	    	$(this).addClass("parhaiten");
 	    } 	
+	    countsum();
 	});
 	
 	$("#pollform").submit( function() {
@@ -60,5 +74,6 @@ $(document).ready(function(){
 		selectedcolumn.find(".selectedvalue").val('eisovi');
 		selectedcolumn.addClass("eisovi");
 	});
+	
 });
 
