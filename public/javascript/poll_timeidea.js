@@ -3,8 +3,8 @@ function countsum(){ //laskee summatietoihin vihreät ja keltaiset
 		best = $(this).find(".parhaiten").length;
 		isokay = $(this).find(".sopii").length;
 		no = $(this).find(".eisovi").length;
-		$(this).find(".howmany>.best").text(best);  //asetetaan parhaiden summa oikeaan paikkaan showiin
-		$(this).find(".howmany>.isokay").text(isokay);
+		$(this).find(".howmany>.best").text(best + " /");  //asetetaan parhaiden summa oikeaan paikkaan showiin
+		$(this).find(".howmany>.isokay").text(isokay + " /");
 		$(this).find(".howmany>.no").text(no);
 	});
 	

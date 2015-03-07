@@ -23,7 +23,7 @@
 				@endforeach
 				@endif
 				<td class="col-md-1">
-					Paras/Sopii
+					Paras/Sopii/Ei sovi
 				</td>
 			</tr>
 		</thead>

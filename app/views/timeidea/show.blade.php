@@ -21,8 +21,8 @@
 	@endforeach
 
 	<td class="howmany">
-		<div class="best"></div>
-		<div class="isokay"></div>
-		<div class="no"></div>
+		<span class="best"></span>
+		<span class="isokay"></span>
+		<span class="no"></span>
 	</td>
 </tr>
