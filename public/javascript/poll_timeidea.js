@@ -1,23 +1,21 @@
-function countsum(){ //laskee summatietoihin vihreät ja keltaiset
+function countsum(){ //laskee summatietoihin Paras/Sopii/Eisovi
 	$(".timeidea").each(function(){ //looppaa kaikki rivit ja laskee jokaisen summat
-		best = $(this).find(".parhaiten").length;
+		best = $(this).find(".parhaiten").length; //"parhaiten"-luokan omaavien elementtien määrä tällä rivillä
 		isokay = $(this).find(".sopii").length;
 		no = $(this).find(".eisovi").length;
 		$(this).find(".howmany>.best").text(best + " /");  //asetetaan parhaiden summa oikeaan paikkaan showiin
 		$(this).find(".howmany>.isokay").text(isokay + " /");
 		$(this).find(".howmany>.no").text(no);
-	});
-	
+	});	
 }
 
 $(document).ready(function(){
 	countsum();
 	document.getElementById("pollform").reset();
 	
-	$(".timeidea>.options").click(function(){ //muuttaa laatikoiden värejä klikkailujen mukaan
-		
+	$(".timeidea>.options").click(function(){ //muuttaa laatikoiden värejä klikkailujen mukaan		
 	    selected = $(this).find(".selectedvalue");
-	    selected.attr('data-clicked', 'true'); 
+	    selected.attr('data-clicked', 'true'); //tieto siitä, että tätä elementtiä on klikattu
 	    if(selected.val()=='parhaiten'){
 	    	selected.val('sopii');
 	    	$(this).removeClass("parhaiten");
@@ -42,7 +40,7 @@ $(document).ready(function(){
 	});
 	
 	$("#pollform").submit( function() {
-    	$(this).find("select[data-clicked|='false']").remove();
+    	$(this).find("select[data-clicked|='false']").remove(); //formiin submitataan vain klikatut answerit
 	});
 
 	timeideas = $(".timeidea>th");
@@ -70,7 +68,7 @@ $(document).ready(function(){
 		redbuttonuserid = $(this).data("userid");
 		selectedcolumn = $(".timeidea>.options[data-userid|='"+redbuttonuserid+"']");
 		selectedcolumn.removeClass(); //removes all classes
-		selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true');
+		selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
 		selectedcolumn.find(".selectedvalue").val('eisovi');
 		selectedcolumn.addClass("eisovi");
 	});
