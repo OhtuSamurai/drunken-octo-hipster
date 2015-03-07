@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	document.getElementById("pollform").reset();
 	
-	$(".timeidea>.options").click(function(){	
+	$(".timeidea>.options").click(function(){ //muuttaa laatikoiden värejä klikkailujen mukaan
 	    selected = $(this).find(".selectedvalue");
 	    selected.attr('data-clicked', 'true'); 
 	    if(selected.val()=='parhaiten'){
@@ -28,19 +28,31 @@ $(document).ready(function(){
 	});
 	
 	$("#pollform").submit( function() {
-    $(this).find("select[data-clicked|='false']").remove();
+    	$(this).find("select[data-clicked|='false']").remove();
 	});
 
 	timeideas = $(".timeidea>th");
-	timeideas.click(function(){
+	timeideas.click(function(){  //hoitaa valittavan timeidean klikkailun
 		id = $(this).data('id');
 		description = $(this).data('description');
 		$(".valittuaika").val(description);
 	    timeideas.removeClass("active");		
-    $(this).addClass("active");
+    	$(this).addClass("active");
+	});
+	
+	$(".users").click(function(){  //hoitaa valittavien käyttäjien klikkailun	
+		id = $(this).data('id');		
+		usercheckbox = $("[value='" + id + "']");
+		usercheckbox.prop("checked", !usercheckbox.prop("checked"));
+	    if($(this).hasClass("active")){
+      		$(this).removeClass("active");
+      	}
+      	else{
+      		$(this).addClass("active");
+      	}      	
 	}); 
 	
-	$(".allred").click(function(){
+	$(".allred").click(function(){  //muutetaan tietyn sarakkeen kaikki boxit punaiseksi
 		redbuttonuserid = $(this).data("userid");
 		selectedcolumn = $(".timeidea>.options[data-userid|='"+redbuttonuserid+"']");
 		selectedcolumn.removeClass(); //removes all classes

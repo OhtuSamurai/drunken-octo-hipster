@@ -3,7 +3,6 @@
 @if($poll->is_open)
 @section('pagehead')
   {{HTML::script('javascript/poll_timeidea.js')}}
-  {{HTML::script('javascript/poll.js')}}
 @stop
 @endif
 
