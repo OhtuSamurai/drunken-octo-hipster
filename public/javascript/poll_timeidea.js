@@ -1,12 +1,23 @@
+function is_user_active(userid){
+	selecteduser = $(".users[data-id|='"+userid+"']");
+	return selecteduser.hasClass("active");
+}
+
 function countsum(){ //laskee summatietoihin Paras/Sopii/Eisovi
 	$(".timeidea").each(function(){ //looppaa kaikki rivit ja laskee jokaisen summat
-		best = $(this).find(".parhaiten").length; //"parhaiten"-luokan omaavien elementtien määrä tällä rivillä
-		isokay = $(this).find(".sopii").length;
-		no = $(this).find(".eisovi").length;
-		$(this).find(".howmany>.best").text(best + " /");  //asetetaan parhaiden summa oikeaan paikkaan showiin
-		$(this).find(".howmany>.isokay").text(isokay + " /");
+		best = $(this).find(".parhaiten").filter(function(){
+			return is_user_active($(this).data("userid")); //ottaa huomioon vain ne sarakkeet, joiden userid on valittu
+		}).length;
+		is_okay = $(this).find(".sopii").filter(function(){
+			return is_user_active($(this).data("userid"));
+		}).length;
+		no = $(this).find(".eisovi").filter(function(){
+			return is_user_active($(this).data("userid"));
+		}).length;
+		$(this).find(".howmany>.best").text(best + " /");  //asetetaan summa oikeaan paikkaan showiin
+		$(this).find(".howmany>.isokay").text(is_okay + " /");
 		$(this).find(".howmany>.no").text(no);
-	});	
+	});		
 }
 
 $(document).ready(function(){
@@ -61,7 +72,8 @@ $(document).ready(function(){
       	}
       	else{
       		$(this).addClass("active");
-      	}      	
+      	}
+      	countsum();      	
 	}); 
 	
 	$(".allred").click(function(){  //muutetaan tietyn sarakkeen kaikki boxit punaiseksi
@@ -73,6 +85,7 @@ $(document).ready(function(){
 		selectedcolumn.addClass("eisovi");
 		countsum();
 	});
+	
 	
 });
 
