@@ -71,6 +71,7 @@ $(document).ready(function(){
 		selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
 		selectedcolumn.find(".selectedvalue").val('eisovi');
 		selectedcolumn.addClass("eisovi");
+		countsum();
 	});
 	
 });
