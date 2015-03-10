@@ -36,9 +36,9 @@ before_script:
 #  - sleep 5 
 
 script:
-  - phpunit --verbose --coverage-clover build/logs/clover.xml
+#  - phpunit --verbose --coverage-clover build/logs/clover.xml
   - phantomjs --webdriver=4444 & vendor/bin/codecept run acceptance
-
+  - cat /var/log/apache2/error.log
 
 after_success:
   - php vendor/bin/coveralls -v --exclude-no-stmt
