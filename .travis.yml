@@ -24,7 +24,7 @@ before_script:
   #- sudo ln -s /home/travis/build/OhtuSamurai/drunken-octo-hipster/public/ /var/www #add app to documentroot
   #- sudo sed -i -e "s,AllowOverride[ ]None,AllowOverride All,g" /etc/apache2/sites-available/default
   #- sudo /etc/init.d/apache2 restart
-
+  - echo $TRAVIS_BUILD_DIR
   - sudo apt-get install apache2 libapache2-mod-fastcgi
   # enable php-fpm
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
