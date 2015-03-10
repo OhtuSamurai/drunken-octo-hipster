@@ -19,7 +19,7 @@ before_script:
   - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-mysql php5-intl > /dev/null
   - sudo chmod 777 -R /home/travis/build/OhtuSamurai/drunken-octo-hipster/
   - sudo rm -rf /var/www
-  - sudo ln -s /home/travis/build/OhtuSamurai/drunken-octo-hipster/app/ /var/www #add app to documentroot
+  - sudo ln -s /home/travis/build/OhtuSamurai/drunken-octo-hipster/public/ /var/www #add app to documentroot
   - sudo sed -i -e "s,AllowOverride[ ]None,AllowOverride All,g" /etc/apache2/sites-available/default
   - sudo /etc/init.d/apache2 restart
 
