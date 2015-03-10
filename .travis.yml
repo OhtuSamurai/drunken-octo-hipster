@@ -19,7 +19,7 @@ before_script:
 
   # for Php-coveralls
   - mkdir -p build/logs
-  
+
 # Selenium: toimii, mutta testaus remotessa ei ole huomioitu
 #  - sh -e /etc/init.d/xvfb start
 #  - export DISPLAY=:99
@@ -28,6 +28,9 @@ before_script:
 
 script:
   - phpunit --verbose --coverage-clover build/logs/clover.xml
+  - phantomjs --webdriver=4444
+  - vendor/bin/codecept run acceptance
+
 
 after_success:
   - php vendor/bin/coveralls -v --exclude-no-stmt
