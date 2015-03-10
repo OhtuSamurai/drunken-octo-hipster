@@ -43,6 +43,8 @@ script:
   - sudo cat /var/log/apache2/error.log
   - sudo cat /etc/apache2/sites-available/default
   - php --version
+  - cat /usr/local/apache2/conf/httpd.conf
+  - ls -l /usr/local/bin | grep php
 
 after_success:
   - php vendor/bin/coveralls -v --exclude-no-stmt
