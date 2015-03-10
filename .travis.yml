@@ -15,6 +15,7 @@ install:
 
 before_script:
   # Install Apache
+  - php --version
   - sudo apt-get update -qq
   #- sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-mysql php5-intl > /dev/null
   - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 > /dev/null
@@ -40,6 +41,7 @@ script:
 #  - phpunit --verbose --coverage-clover build/logs/clover.xml
   - phantomjs --webdriver=4444 & vendor/bin/codecept run acceptance
   - sudo cat /var/log/apache2/error.log
+  - php --version
 
 after_success:
   - php vendor/bin/coveralls -v --exclude-no-stmt
