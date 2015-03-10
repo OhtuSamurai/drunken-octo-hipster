@@ -28,7 +28,7 @@ before_script:
 
 script:
   - phpunit --verbose --coverage-clover build/logs/clover.xml
-  - phantomjs --webdriver=4444
+  - phantomjs --webdriver=4444 &
   - vendor/bin/codecept run acceptance
 
 
