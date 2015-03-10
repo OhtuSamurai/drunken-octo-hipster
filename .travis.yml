@@ -18,7 +18,7 @@ before_script:
   - php --version
   - sudo apt-get update -qq
   #- sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-mysql php5-intl > /dev/null
-  - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 > /dev/null
+  - sudo apt-get install -y --force-yes apache2 > /dev/null
   - sudo chmod 777 -R /home/travis/build/OhtuSamurai/drunken-octo-hipster/
   - sudo rm -rf /var/www
   - sudo ln -s /home/travis/build/OhtuSamurai/drunken-octo-hipster/public/ /var/www #add app to documentroot
@@ -41,6 +41,7 @@ script:
 #  - phpunit --verbose --coverage-clover build/logs/clover.xml
   - phantomjs --webdriver=4444 & vendor/bin/codecept run acceptance
   - sudo cat /var/log/apache2/error.log
+  - sudo cat /etc/apache2/sites-available/default
   - php --version
 
 after_success:
