@@ -47,7 +47,7 @@ before_script:
 script:
 #  - phpunit --verbose --coverage-clover build/logs/clover.xml
   - phantomjs --webdriver=4444 &
-  - sleep 3
+  - sleep 10
   - vendor/bin/codecept run
 
 after_failure:
