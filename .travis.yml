@@ -15,8 +15,8 @@ install:
 
 before_script:
   - psql -c 'create database forge;' -U postgres
-  - psql -c 'create user forge WITH PASSWORD \'\';' -U postgres
-  - psql -c 'GRANT ALL PRIVILEGES ON DATABASE \"forge\" to forge;' -U postgres
+  - psql -c "create user forge WITH PASSWORD '';" -U postgres
+  - psql -c 'GRANT ALL PRIVILEGES ON DATABASE "forge" to forge;' -U postgres
 
   - sudo apt-get install apache2 libapache2-mod-fastcgi
   # enable php-fpm
