@@ -31,7 +31,7 @@ before_script:
   - sudo service apache2 restart
 
   - composer self-update
-  - composer install --dev --prefer-source --no-interaction
+  - composer install --prefer-source --no-interaction
 
   # for Php-coveralls
   - mkdir -p build/logs
@@ -48,10 +48,10 @@ script:
 #  - phpunit --verbose --coverage-clover build/logs/clover.xml
   - phantomjs --webdriver=4444 &
   - sleep 3
-  - vendor/bin/codecept run acceptance
+  - vendor/bin/codecept run
 
 after_failure:
-  - lynx --dump tests/_output/WelcomeCept.fail.html 
+  #- lynx --dump tests/_output/WelcomeCept.fail.html 
   #- sudo cat /var/log/apache2/error.log
   #- sudo cat /etc/apache2/sites-available/default
   #- php --version

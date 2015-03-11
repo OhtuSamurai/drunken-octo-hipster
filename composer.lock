@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "380986395b04856578d7133f9c1803d9",
+    "hash": "26bc250cbf4eeaa1aac20775adad8b79",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -3021,12 +3021,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "d141c5b1b302d4d746e38ccc95ffe215129a8557"
+                "reference": "491dcbbf450ed41aeb78ccf5ea2d88ce5d457bd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/d141c5b1b302d4d746e38ccc95ffe215129a8557",
-                "reference": "d141c5b1b302d4d746e38ccc95ffe215129a8557",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/491dcbbf450ed41aeb78ccf5ea2d88ce5d457bd8",
+                "reference": "491dcbbf450ed41aeb78ccf5ea2d88ce5d457bd8",
                 "shasum": ""
             },
             "require": {
@@ -3078,62 +3078,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2015-03-03 20:10:54"
-        },
-        {
-            "name": "phpunit/phpunit-selenium",
-            "version": "1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/giorgiosironi/phpunit-selenium.git",
-                "reference": "c84dd7ca214563868ce216123b7ae9c792beb262"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/giorgiosironi/phpunit-selenium/zipball/c84dd7ca214563868ce216123b7ae9c792beb262",
-                "reference": "c84dd7ca214563868ce216123b7ae9c792beb262",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-dom": "*",
-                "php": ">=5.3.3",
-                "phpunit/phpunit": "~3.7|~4.0",
-                "sebastian/comparator": "~1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "PHPUnit/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sb@sebastian-bergmann.de",
-                    "role": "lead"
-                },
-                {
-                    "name": "Giorgio Sironi",
-                    "email": "info@giorgiosironi.com",
-                    "role": "developer"
-                }
-            ],
-            "description": "Selenium Server integration for PHPUnit",
-            "homepage": "http://www.phpunit.de/",
-            "keywords": [
-                "selenium",
-                "testing",
-                "xunit"
-            ],
-            "time": "2014-11-02 09:23:27"
+            "time": "2015-03-10 22:19:46"
         },
         {
             "name": "satooshi/php-coveralls",
