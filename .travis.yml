@@ -36,7 +36,7 @@ before_script:
   # for Php-coveralls
   - mkdir -p build/logs
 
-  - php artisan migrate
+  - php artisan migrate --force
 
 # Selenium: toimii, mutta testaus remotessa ei ole huomioitu
 #  - sh -e /etc/init.d/xvfb start
