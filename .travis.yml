@@ -19,6 +19,7 @@ before_script:
   - psql -c 'GRANT ALL PRIVILEGES ON DATABASE "forge" to forge;' -U postgres
 
   - sudo apt-get install apache2 libapache2-mod-fastcgi
+  - sudo apt-get install lynx-cur
   # enable php-fpm
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   - sudo a2enmod rewrite actions fastcgi alias
@@ -44,9 +45,12 @@ before_script:
 script:
 #  - phpunit --verbose --coverage-clover build/logs/clover.xml
   - phantomjs --webdriver=4444 & vendor/bin/codecept run acceptance
-  - sudo cat /var/log/apache2/error.log
-  - sudo cat /etc/apache2/sites-available/default
-  - php --version
+
+after_failure:
+  - lynx --dump tests/_output/WelcomeCept.fail.html 
+  #- sudo cat /var/log/apache2/error.log
+  #- sudo cat /etc/apache2/sites-available/default
+  #- php --version
 
 after_success:
   - php vendor/bin/coveralls -v --exclude-no-stmt
