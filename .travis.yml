@@ -14,9 +14,9 @@ install:
   #  - wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
 
 before_script:
-  - psql -c 'create database forge;' -U postgres
-  - psql -c 'create user forge;' -U postgres
-  - psql -c 'GRANT ALL PRIVILEGES ON DATABASE "forge" to forge;' -U postgres
+  - psql -c 'create database travis_ci_test;' -U postgres
+  #- psql -c 'create user forge;' -U postgres
+  #- psql -c 'GRANT ALL PRIVILEGES ON DATABASE "forge" to forge;' -U postgres
 
   - sudo apt-get install apache2 libapache2-mod-fastcgi
   - sudo apt-get install lynx-cur
