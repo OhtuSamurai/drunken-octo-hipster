@@ -15,7 +15,7 @@ install:
 
 before_script:
   - psql -c 'create database forge;' -U postgres
-  - psql -c "create user forge WITH PASSWORD '';" -U postgres
+  - psql -c 'create user forge;' -U postgres
   - psql -c 'GRANT ALL PRIVILEGES ON DATABASE "forge" to forge;' -U postgres
 
   - sudo apt-get install apache2 libapache2-mod-fastcgi
@@ -47,8 +47,6 @@ script:
   - sudo cat /var/log/apache2/error.log
   - sudo cat /etc/apache2/sites-available/default
   - php --version
-  - sudo cat /usr/local/apache2/conf/httpd.conf
-  - sudo ls -l /usr/local/bin | grep php
 
 after_success:
   - php vendor/bin/coveralls -v --exclude-no-stmt
