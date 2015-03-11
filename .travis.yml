@@ -14,6 +14,7 @@ install:
   #  - wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
 
 before_script:
+  - mv app/config/database.travis.php app/config/database.php
   - psql -c 'create database travis_ci_test;' -U postgres
   #- psql -c 'create user forge;' -U postgres
   #- psql -c 'GRANT ALL PRIVILEGES ON DATABASE "forge" to forge;' -U postgres
