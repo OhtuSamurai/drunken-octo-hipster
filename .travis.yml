@@ -6,11 +6,6 @@ php:
   - 5.6
 
 install:
-  # Php-coveralls
-  - composer require satooshi/php-coveralls:~0.6@stable
-
-  # Selenium
-  #  - wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
 
 before_script:
   - mv app/config/database.travis.php app/config/database.php
@@ -46,10 +41,9 @@ before_script:
 #  - sleep 5 
 
 script:
-  #- phpunit --verbose --coverage-clover build/logs/clover.xml
   - phantomjs --webdriver=4444 &
   - sleep 10
-  - vendor/bin/codecept run
+  - vendor/bin/codecept run --coverage --xml
 
 after_failure:
   #- lynx --dump tests/_output/WelcomeCept.fail.html 
