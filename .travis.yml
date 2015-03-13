@@ -43,7 +43,7 @@ before_script:
 script:
   - phantomjs --webdriver=4444 &
   - sleep 10
-  - vendor/bin/codecept run --coverage --xml
+  - vendor/bin/codecept run --coverage --coverage-xml
 
 after_failure:
   #- lynx --dump tests/_output/WelcomeCept.fail.html 
