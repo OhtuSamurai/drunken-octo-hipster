@@ -10,7 +10,7 @@
 		"codeception/c3": ">=2.0.3"
 	},
 	"require-dev": {
-		"satooshi/php-coveralls": "dev-master"
+		"satooshi/php-coveralls": "dev-master",
 		"mockery/mockery": "dev-master"
 	},
 	"autoload": {
