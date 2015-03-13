@@ -13,6 +13,18 @@ class UserController extends \BaseController {
     	return View::make('user.index', array('users' => $users));
 	}
 
+	public function active()
+	{
+		$users = User::where('is_active', '=', true)->get();
+    	return View::make('user.index', array('users' => $users));
+	}
+
+	public function inactive()
+	{
+		$users = User::where('is_active', '=', false)->get();
+    	return View::make('user.index', array('users' => $users));
+	}
+
 
 	/**
 	 * Show the form for creating a new resource.

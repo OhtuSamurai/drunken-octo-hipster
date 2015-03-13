@@ -20,4 +20,3 @@ coverage:
     include: 
         - app/controllers/*
         - app/models/*
-        - app/views/*
