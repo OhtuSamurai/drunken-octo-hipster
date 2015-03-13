@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "84531b33b0a87d4f5fe7c8753c0ac062",
+    "hash": "062b8517cd03332df511e516d1a5f6f8",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -97,16 +97,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "dev-master",
+            "version": "2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "5fcaf86251eefa255c895dcf6ecc26fc198703c6"
+                "reference": "9c7f23eff3e607225e9f43277c6d9cdb03d30b84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/5fcaf86251eefa255c895dcf6ecc26fc198703c6",
-                "reference": "5fcaf86251eefa255c895dcf6ecc26fc198703c6",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/9c7f23eff3e607225e9f43277c6d9cdb03d30b84",
+                "reference": "9c7f23eff3e607225e9f43277c6d9cdb03d30b84",
                 "shasum": ""
             },
             "require": {
@@ -115,7 +115,7 @@
                 "facebook/webdriver": "~0.4|~0.5",
                 "guzzlehttp/guzzle": "~4.0|~5.0",
                 "php": ">=5.4.0",
-                "phpunit/phpunit": "4.4.*",
+                "phpunit/phpunit": "~4.5.0",
                 "symfony/browser-kit": "~2.4",
                 "symfony/console": "~2.4",
                 "symfony/css-selector": "~2.4",
@@ -173,7 +173,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2015-03-12 00:44:11"
+            "time": "2015-02-23 23:10:03"
         },
         {
             "name": "d11wtq/boris",
@@ -950,6 +950,55 @@
             "time": "2015-01-29 08:36:50"
         },
         {
+            "name": "phpdocumentor/reflection-docblock",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d68dbdc53dc358a816f00b300704702b2eaff7b8",
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "dflydev/markdown": "~1.0",
+                "erusev/parsedown": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "phpDocumentor": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "mike.vanriel@naenius.com"
+                }
+            ],
+            "time": "2015-02-03 12:10:50"
+        },
+        {
             "name": "phpseclib/phpseclib",
             "version": "0.3.10",
             "source": {
@@ -1046,6 +1095,65 @@
                 "x509"
             ],
             "time": "2015-01-28 21:50:33"
+        },
+        {
+            "name": "phpspec/prophecy",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpspec/prophecy.git",
+                "reference": "9ca52329bcdd1500de24427542577ebf3fc2f1c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/9ca52329bcdd1500de24427542577ebf3fc2f1c9",
+                "reference": "9ca52329bcdd1500de24427542577ebf3fc2f1c9",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/instantiator": "~1.0,>=1.0.2",
+                "phpdocumentor/reflection-docblock": "~2.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Prophecy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantin Kudryashov",
+                    "email": "ever.zet@gmail.com",
+                    "homepage": "http://everzet.com"
+                },
+                {
+                    "name": "Marcello Duarte",
+                    "email": "marcello.duarte@gmail.com"
+                }
+            ],
+            "description": "Highly opinionated mocking framework for PHP 5.3+",
+            "homepage": "http://phpspec.org",
+            "keywords": [
+                "Double",
+                "Dummy",
+                "fake",
+                "mock",
+                "spy",
+                "stub"
+            ],
+            "time": "2014-11-17 16:23:49"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1293,16 +1401,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.4.5",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2e8580deebb7d1ac92ac878595e6bffe01069c2a"
+                "reference": "5b578d3865a9128b9c209b011fda6539ec06e7a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2e8580deebb7d1ac92ac878595e6bffe01069c2a",
-                "reference": "2e8580deebb7d1ac92ac878595e6bffe01069c2a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5b578d3865a9128b9c209b011fda6539ec06e7a5",
+                "reference": "5b578d3865a9128b9c209b011fda6539ec06e7a5",
                 "shasum": ""
             },
             "require": {
@@ -1312,17 +1420,17 @@
                 "ext-reflection": "*",
                 "ext-spl": "*",
                 "php": ">=5.3.3",
+                "phpspec/prophecy": "~1.3.1",
                 "phpunit/php-code-coverage": "~2.0",
                 "phpunit/php-file-iterator": "~1.3.2",
                 "phpunit/php-text-template": "~1.2",
                 "phpunit/php-timer": "~1.0.2",
                 "phpunit/phpunit-mock-objects": "~2.3",
-                "sebastian/comparator": "~1.0",
+                "sebastian/comparator": "~1.1",
                 "sebastian/diff": "~1.1",
-                "sebastian/environment": "~1.1",
-                "sebastian/exporter": "~1.1",
+                "sebastian/environment": "~1.2",
+                "sebastian/exporter": "~1.2",
                 "sebastian/global-state": "~1.0",
-                "sebastian/recursion-context": "~1.0",
                 "sebastian/version": "~1.0",
                 "symfony/yaml": "~2.0"
             },
@@ -1335,7 +1443,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.4.x-dev"
+                    "dev-master": "4.5.x-dev"
                 }
             },
             "autoload": {
@@ -1361,7 +1469,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-01-27 16:06:15"
+            "time": "2015-02-05 15:51:19"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2858,109 +2966,17 @@
     ],
     "packages-dev": [
         {
-            "name": "guzzle/guzzle",
-            "version": "v3.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle3.git",
-                "reference": "54991459675c1a2924122afbb0e5609ade581155"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/54991459675c1a2924122afbb0e5609ade581155",
-                "reference": "54991459675c1a2924122afbb0e5609ade581155",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.3.3",
-                "symfony/event-dispatcher": "~2.1"
-            },
-            "replace": {
-                "guzzle/batch": "self.version",
-                "guzzle/cache": "self.version",
-                "guzzle/common": "self.version",
-                "guzzle/http": "self.version",
-                "guzzle/inflection": "self.version",
-                "guzzle/iterator": "self.version",
-                "guzzle/log": "self.version",
-                "guzzle/parser": "self.version",
-                "guzzle/plugin": "self.version",
-                "guzzle/plugin-async": "self.version",
-                "guzzle/plugin-backoff": "self.version",
-                "guzzle/plugin-cache": "self.version",
-                "guzzle/plugin-cookie": "self.version",
-                "guzzle/plugin-curlauth": "self.version",
-                "guzzle/plugin-error-response": "self.version",
-                "guzzle/plugin-history": "self.version",
-                "guzzle/plugin-log": "self.version",
-                "guzzle/plugin-md5": "self.version",
-                "guzzle/plugin-mock": "self.version",
-                "guzzle/plugin-oauth": "self.version",
-                "guzzle/service": "self.version",
-                "guzzle/stream": "self.version"
-            },
-            "require-dev": {
-                "doctrine/cache": "~1.3",
-                "monolog/monolog": "~1.0",
-                "phpunit/phpunit": "3.7.*",
-                "psr/log": "~1.0",
-                "symfony/class-loader": "~2.1",
-                "zendframework/zend-cache": "2.*,<2.3",
-                "zendframework/zend-log": "2.*,<2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Guzzle": "src/",
-                    "Guzzle\\Tests": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Guzzle Community",
-                    "homepage": "https://github.com/guzzle/guzzle/contributors"
-                }
-            ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2014-08-11 04:32:36"
-        },
-        {
             "name": "mockery/mockery",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "491dcbbf450ed41aeb78ccf5ea2d88ce5d457bd8"
+                "reference": "8f49adc0fccd0575e2a156a52046e6c6ed7a5c60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/491dcbbf450ed41aeb78ccf5ea2d88ce5d457bd8",
-                "reference": "491dcbbf450ed41aeb78ccf5ea2d88ce5d457bd8",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/8f49adc0fccd0575e2a156a52046e6c6ed7a5c60",
+                "reference": "8f49adc0fccd0575e2a156a52046e6c6ed7a5c60",
                 "shasum": ""
             },
             "require": {
@@ -3012,185 +3028,13 @@
                 "test double",
                 "testing"
             ],
-            "time": "2015-03-10 22:19:46"
-        },
-        {
-            "name": "satooshi/php-coveralls",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/satooshi/php-coveralls.git",
-                "reference": "2fbf803803d179ab1082807308a67bbd5a760c70"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/2fbf803803d179ab1082807308a67bbd5a760c70",
-                "reference": "2fbf803803d179ab1082807308a67bbd5a760c70",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-simplexml": "*",
-                "guzzle/guzzle": ">=2.7",
-                "php": ">=5.3",
-                "psr/log": "1.0.0",
-                "symfony/config": ">=2.0",
-                "symfony/console": ">=2.0",
-                "symfony/stopwatch": ">=2.2",
-                "symfony/yaml": ">=2.0"
-            },
-            "require-dev": {
-                "apigen/apigen": "2.8.*@stable",
-                "pdepend/pdepend": "dev-master as 2.0.0",
-                "phpmd/phpmd": "dev-master",
-                "phpunit/php-invoker": ">=1.1.0,<1.2.0",
-                "phpunit/phpunit": "3.7.*@stable",
-                "sebastian/finder-facade": "dev-master",
-                "sebastian/phpcpd": "1.4.*@stable",
-                "squizlabs/php_codesniffer": "1.4.*@stable",
-                "theseer/fdomdocument": "dev-master"
-            },
-            "suggest": {
-                "symfony/http-kernel": "Allows Symfony integration"
-            },
-            "bin": [
-                "composer/bin/coveralls"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Satooshi\\Component": "src/",
-                    "Satooshi\\Bundle": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kitamura Satoshi",
-                    "email": "with.no.parachute@gmail.com",
-                    "homepage": "https://www.facebook.com/satooshi.jp"
-                }
-            ],
-            "description": "PHP client library for Coveralls API",
-            "homepage": "https://github.com/satooshi/php-coveralls",
-            "keywords": [
-                "ci",
-                "coverage",
-                "github",
-                "test"
-            ],
-            "time": "2014-11-11 15:35:34"
-        },
-        {
-            "name": "symfony/config",
-            "version": "v2.6.4",
-            "target-dir": "Symfony/Component/Config",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/Config.git",
-                "reference": "a9f781ba1221067d1f07c8cec0bc50f81b8d7408"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Config/zipball/a9f781ba1221067d1f07c8cec0bc50f81b8d7408",
-                "reference": "a9f781ba1221067d1f07c8cec0bc50f81b8d7408",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/filesystem": "~2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Config\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Symfony Config Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-01-21 20:57:55"
-        },
-        {
-            "name": "symfony/stopwatch",
-            "version": "v2.6.4",
-            "target-dir": "Symfony/Component/Stopwatch",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/Stopwatch.git",
-                "reference": "e8da5286132ba75ce4b4275fbf0f4cd369bfd71c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Stopwatch/zipball/e8da5286132ba75ce4b4275fbf0f4cd369bfd71c",
-                "reference": "e8da5286132ba75ce4b4275fbf0f4cd369bfd71c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Stopwatch\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Symfony Stopwatch Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-01-03 08:01:59"
+            "time": "2015-03-13 10:47:42"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "codeception/codeception": 20,
-        "mockery/mockery": 20,
-        "satooshi/php-coveralls": 20
+        "mockery/mockery": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
