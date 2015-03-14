@@ -9,18 +9,27 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
+		if (!Auth::user())
+			return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');
+		
 		$users = User::all();
-    	return View::make('user.index', array('users' => $users));
+    		return View::make('user.index', array('users' => $users));
 	}
 
 	public function active()
 	{
+		if (!Auth::user()) {
+			return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');		
+		}
 		$users = User::where('is_active', '=', true)->get();
     	return View::make('user.index', array('users' => $users));
 	}
 
 	public function inactive()
 	{
+		if (!Auth::user()) {
+			return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');
+		}
 		$users = User::where('is_active', '=', false)->get();
     	return View::make('user.index', array('users' => $users));
 	}
