@@ -78,8 +78,7 @@ class AnswerController extends \BaseController {
 			$answer->sopivuus = $answer_sopivuus;
 			$answer->save();
 		}
-		return Redirect::route('poll.index');
-		//return Redirect::back();
+		return Redirect::route('poll.show', array('id' => $answer->timeidea->poll_id));
 	}
 
 
