@@ -11,7 +11,7 @@
 200 commits! ![200](https://kazdelaney.files.wordpress.com/2011/06/celebration-mine54.jpg#celebrate "200")
 
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
-* Heroku: http://shielded-earth-2316.herokuapp.com/
+* Heroku: http://oona.herokuapp.com
 * Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing
 * Tuntipäiväkirja: https://docs.google.com/spreadsheets/d/17g4c-2rYGwq8bGUmzRXsI0MEK7oHIB1Qs6q6wWXee00/edit?usp=sharing
 * Päiväkirja: https://docs.google.com/document/d/1UDgb-qVmfrm2VPWCUePRQSOGZHBhCazKrsLCVF3p0K0/edit?pli=1
