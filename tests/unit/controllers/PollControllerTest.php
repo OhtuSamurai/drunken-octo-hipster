@@ -14,6 +14,12 @@ class PollControllerTest extends TestCase {
 		$poll_ctrl = new PollController;
 		$this->assertNotNull($poll_ctrl->create());
 	}
+	
+	public function testCreateAdmin() {
+		$this->fakeLoginAdmin();
+		$poll_ctrl = new PollController;
+		$this->assertNotNull($poll_ctrl->create());
+	}
 
 	public function testStore() {
 		$this->fakeLoginAdmin();

@@ -28,7 +28,7 @@ class LoginController extends Controller {
 	public function logout()
 	{
 		Auth::logout();
-		return Redirect::action('UserController@index');
+		return Redirect::action('CommitteeController@index');
 	}
 
 }

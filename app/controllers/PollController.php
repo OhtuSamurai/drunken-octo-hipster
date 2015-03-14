@@ -9,6 +9,9 @@ class PollController extends \BaseController {
 	 */
 	public function index()
 	{
+	  if (!Auth::user() OR !Auth::user()->is_admin)
+		return Redirect::to('login')->withErrors('Kyselyt näkyvät vain adminille');
+
 	  $polls = Poll::all(); 	  
 	  return View::make('poll.index', array('polls' => $polls));
 	}
