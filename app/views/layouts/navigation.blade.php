@@ -15,12 +15,15 @@
       <ul class="nav navbar-nav">
         <li><a href= {{route('committee.index')}} >Toimikunnat</a></li>
         <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
-        <li><a href="/pooli">Pooli</a></li>
+        <li><a href={{action('UserController@active')}}>Pooli</a></li>
         @if(Auth::user())
-        <li><a href={{action('UserController@show', array('id' => Auth::user()->id))}}>{{{Auth::user()->first_name}}}</a></li>
-        <li><a href="/logout">Kirjaudu ulos</a></li>
+          @if(Auth::user()->is_admin)
+            <li><a href= {{action('UserController@inactive')}}>Poolista poistetut käyttäjät</a></li>
+          @endif
+          <li><a href={{action('UserController@show', array('id' => Auth::user()->id))}}>{{{Auth::user()->first_name}}}</a></li>
+          <li><a href="/logout">Kirjaudu ulos</a></li>
         @else
-        <li><a href="/login">Kirjaudu sisään</a></li>
+          <li><a href="/login">Kirjaudu sisään</a></li>
         @endif
     </div>
   </div>

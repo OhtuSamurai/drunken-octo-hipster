@@ -32,6 +32,16 @@ class UserControllerTest extends TestCase {
 		$close_poll->is_open = 0;
 		$close_poll->save();
 		$close_poll->users()->attach(User::find(42));
+
+		$committee = $this->mockCommittee();
+		$committee->save();
+		$committee->users()->attach(User::find(42));
+		$close_committee = $this->mockCommittee();
+		$close_committee->id = 99;
+		$close_committee->is_open = 0;
+		$close_committee->save();
+		$close_committee->users()->attach(User::find(42));
+
 		$response = $this->action('GET', 'UserController@show', array('id' => 42));
 
 		$view = $response->original;

@@ -13,7 +13,7 @@ vendor/
 
 # Php-coveralls #
 #################
-build/
+build/logs/
 
 # Phpunit coverage #
 ####################
@@ -29,3 +29,4 @@ report/
 ehthumbs.db
 Thumbs.db
  
+tests/_output/*
