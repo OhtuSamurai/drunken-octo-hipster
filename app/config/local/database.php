@@ -17,7 +17,7 @@ return array(
 	| choice installed on your machine before you begin development.
 	|
 	*/
-
+ 	'default' => 'mysql',
 	'connections' => array(
 
 		'mysql' => array(
