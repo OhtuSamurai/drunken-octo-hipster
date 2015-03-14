@@ -4,6 +4,18 @@ class PollControllerTest extends TestCase {
 	
 	public function testIndex() {
 		$response = $this->action('GET', 'PollController@index');
+		$this->assertRedirectedToAction('LoginController@showLoginPage');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testIndexWithLoggedInUser() {
+		$this->fakeLoginUser();
+		$this->testIndex();
+	}
+
+	public function testIndexWithAdmin() {
+		$this->fakeLoginAdmin();
+		$response = $this->action('GET', 'PollController@index');
 
 		$view = $response->original;
 		$poll_ctrl = new PollController;
