@@ -19,7 +19,12 @@
 				</th>
 				@if (!empty($users))
 				@foreach($users as $user)
-					<td class="col-md-1 users" data-id = "{{$user->id}}">{{$user->first_name}}</td>
+					<td class="col-md-1 users" data-id = "{{$user->id}}">
+						{{$user->position . ":"}}
+						{{$user->first_name}}
+						{{$user->last_name . ","}}
+						{{$user->department}}
+					</td>
 				@endforeach
 				@endif
 				<td class="col-md-1">
