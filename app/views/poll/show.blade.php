@@ -37,21 +37,30 @@
 				@endforeach
 		</tbody>
 	</table>
-	
+	<div class="row">
+	<div class="col-md-3">
+	@if($poll->is_open)
+    		@include('answer._form') {{-- Here ends form for answers --}}
+	</div>
+
+	<div class="col-md-2 col-md-offset-7">
 	<table class="table table-bordered selitykset">
 		<tbody>
 			<tr>
-				<td class="eisovi">ei sovi</td>
-				<td class="sopii">sopii</td>
-				<td class="parhaiten">paras</td>		
+				<td class="eisovi"><b>ei sovi</b></td>
+				<td class="sopii"><b>sopii</b></td>
+				<td class="parhaiten"><b>paras</b></td>		
 			</tr>
 		</tbody>
 	</table>
-	
-	@if($poll->is_open)
-    	@include('answer._form') {{-- Here ends form for answers --}}
+	</div>
+		</div>
     	@if(Auth::user() && Auth::user()->is_admin)
+		<div class="admin top30">
+		<h2> Admin-alue </h2>
+		<div class="row">
     		@include('timeidea._form')
+		</div>
     		@include('poll.close')
 	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'committeeform', 'method'=>'PUT')) }}
 		{{ Form::hidden('time', '', array('class' => 'valittuaika')) }}
@@ -62,8 +71,11 @@
 		</div>
 		{{ Form::hidden('is_open', 0)}}
 		{{-- {{ Form::hidden('poll_id', $poll->id)}} --}}
-		{{ Form::submit('Sulje kysely', array('class' => 'btn btn-default')) }}
+		<div class="row top15">
+		{{ Form::submit('Sulje kysely', array('class' => 'btn btn-primary')) }}
+		</div>
 	{{ Form::close() }}
 		@endif
+	</div>
     @endif
 @stop
