@@ -3,6 +3,7 @@
 class UserControllerTest extends TestCase {
 
 	public function testIndex() {
+		$this->fakeLoginUser();
 		$response = $this->action('GET', 'UserController@index');
 
 		$view = $response->original;
