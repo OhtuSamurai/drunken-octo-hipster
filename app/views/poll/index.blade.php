@@ -5,8 +5,4 @@
 
 	@include('poll.list')
 
-@if(Auth::user() && Auth::user()->is_admin)
-  <p><a href="/poll/create" class="btn btn-default" role="button">Luo uusi kysely</a></p>
-@endif
-
 @stop

@@ -1,3 +1,4 @@
+@if(Auth::user())
 <table class="pooltable table table-hover">
   <thead>
     <tr>
@@ -20,3 +21,4 @@
   @endforeach
   </tbody>
 </table>
+@endif
