@@ -57,8 +57,8 @@ after_success:
 
 deploy:
   provider: heroku
-  api_key:
-    secure: IYkhIPMH/d8+AmQrgdltfTh+u08+/Faki/xq8wlsUBRexN6Z+IEaEiPX/mEzwRl7zY5NXaTHPZT9upHj+9ApEtEB4szp1iKouZ8PhPwX7nb8u9T7vOQulNMdhx79KibUKgai2xMkdraI14mfBBocwzkhGFw1IFKgkT5Crucmmb0=
-  app: shielded-earth-2316
+  api_key: 5febf326-4f97-452d-aa7a-a499a2aaf7aa
+   # secure: IYkhIPMH/d8+AmQrgdltfTh+u08+/Faki/xq8wlsUBRexN6Z+IEaEiPX/mEzwRl7zY5NXaTHPZT9upHj+9ApEtEB4szp1iKouZ8PhPwX7nb8u9T7vOQulNMdhx79KibUKgai2xMkdraI14mfBBocwzkhGFw1IFKgkT5Crucmmb0=
+  app: oona
   on:
     repo: OhtuSamurai/drunken-octo-hipster
