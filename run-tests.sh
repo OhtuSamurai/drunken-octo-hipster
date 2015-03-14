@@ -1,6 +1,7 @@
 #!/bin/bash
 #author kumikumi
 command -v phantomjs >/dev/null 2>&1 || { echo "Asennetaan phantomjs. Hetki"; sudo apt-get update >/dev/null && sudo apt-get install --yes phantomjs; }
+trap 'killall phantomjs' 2
 phantomjs --webdriver=4444 & 
 if [ "$1" = "--acceptance" ]
 then
