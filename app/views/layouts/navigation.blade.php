@@ -21,7 +21,6 @@
         @if(Auth::user())
           @if(Auth::user()->is_admin)
             <li><a href= {{action('UserController@inactive')}}>Poolista poistetut käyttäjät</a></li>
-            <li><a href= {{route('poll.index')}} >Kyselyt</a></li>
           @endif
           <li><a href={{action('UserController@show', array('id' => Auth::user()->id))}}>{{{Auth::user()->first_name}}}</a></li>
           <li><a href="/logout">Kirjaudu ulos</a></li>
