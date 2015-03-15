@@ -66,7 +66,7 @@ class PollController extends \BaseController {
 
 		$users = Input::get('user');
    		if (empty($users)) {
-    		return Redirect::back()->withErrors("Valitse ensin käyttäjiä listasta");
+    		return Redirect::route('poll.create')->withErrors("Valitse ensin käyttäjiä listasta");
     	}
 
 		$validation = $this->validate();
