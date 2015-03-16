@@ -9,9 +9,35 @@ class CommitteeControllerTest extends TestCase {
 		$this->assertEquals($com_ctrl->index(), $view );
 	}
 
-	public function testCreate() {
+	public function testCreateNotLoggedin() {
 		$com_ctrl = new CommitteeController;
 		$this->assertNotNull($com_ctrl->create());
+	}
+
+	public function testCreate() {
+		$this->fakeLoginAdmin();
+		$ctrl = new CommitteeController;
+		$this->assertNotNull($ctrl->create());
+	}
+
+	public function testStoreNotLoggedin() {
+		$this->action('POST', 'CommitteeController@store');
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testStoreLoggedInAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->action('POST', 'CommitteeController@store');
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();	
+	}
+
+	public function testStoreWithIncorrectInput() {
+		$this->fakeLoginAdmin();
+		$this->action('POST', 'CommitteeController@store');
+		$this->assertRedirectedToAction('CommitteeController@create');
+		$this->assertSessionHasErrors();
 	}
 
 	public function testStore() {
@@ -38,6 +64,42 @@ class CommitteeControllerTest extends TestCase {
 		
 		$view = $ctrl->show($committee->id)->getData();
 		$this->assertTrue(str_contains($view['committee'], $committee->name));
+	}
+
+	public function testCloseAsNotLoggedIn() {
+		$this->action('POST', 'CommitteeController@close', ['id' => 1]);
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testCloseLoggedInAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->action('POST', 'CommitteeController@close', ['id' => 1]);
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testClose() {
+		
+	}
+
+	public function testOpenAsNotLoggedIn() {
+		$com = $this->mockCommittee();
+		$com->is_open = 0;
+		$com->save();
+		$this->action('POST', 'CommitteeController@open', ['id' => $com->id]);
+		$this->assertRedirectedToAction('CommitteeController@show', ['id' => $com->id]);
+		$this->assertSessionHasErrors();
+	}
+
+	public function testOpenLoggedInAsRegularUser() {
+		$this->fakeLoginUser();
+		$com = $this->mockCommittee();
+		$com->is_open = 0;
+		$com->save();
+		$this->action('POST', 'CommitteeController@open', ['id' => $com->id]);
+		$this->assertRedirectedToAction('CommitteeController@show', ['id' => $com->id]);
+		$this->assertSessionHasErrors();
 	}
 
 	public function testEdit() {

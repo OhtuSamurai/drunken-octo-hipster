@@ -33,6 +33,13 @@ class PollControllerTest extends TestCase {
 		$this->assertNotNull($poll_ctrl->create());
 	}
 	
+	public function testStoreWithIncorrectInput() {
+		$this->fakeLoginAdmin();
+		$this->action('POST', 'PollController@store');
+		$this->assertRedirectedToAction('PollController@create');
+		$this->assertSessionHasErrors();
+	}
+
 	public function testStore() {
 		$this->fakeLoginAdmin();
 

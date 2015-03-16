@@ -2,13 +2,37 @@
 
 class UserControllerTest extends TestCase {
 
-	public function testIndex() {
+	/*public function testIndex() {
 		$this->fakeLoginUser();
 		$response = $this->action('GET', 'UserController@index');
 
 		$view = $response->original;
 		$usr_ctrl = new UserController;
 		$this->assertEquals($usr_ctrl->index(), $view );
+	}*/
+
+	public function testActive() {
+		$this->fakeLoginUser();
+		$this->action('GET', 'UserController@active');
+		$this->assertResponseOk();
+	}
+
+	public function testActiveAsNotLoggedIn() {
+		$this->action('GET', 'UserController@active');
+		$this->assertSessionHasErrors();
+		$this->assertRedirectedToAction('LoginController@showLoginPage');
+	}
+
+	public function testInactive() {
+		$this->fakeLoginUser();
+		$this->action('GET', 'UserController@inactive');
+		$this->assertResponseOk();	
+	}
+
+	public function testInactiveAsNotLoggedIn() {
+		$this->action('GET', 'UserController@inactive');
+		$this->assertSessionHasErrors();
+		$this->assertRedirectedToAction('LoginController@showLoginPage');
 	}
 
 	public function testCreate() {

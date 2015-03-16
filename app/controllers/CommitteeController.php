@@ -42,7 +42,7 @@ class CommitteeController extends \BaseController {
 
     	$users = Input::get('user');
 		if (empty($users)) {
-			return Redirect::back()->withErrors("Valitse ensin käyttäjiä listasta");
+			return Redirect::action('CommitteeController@create')->withErrors("Valitse ensin käyttäjiä listasta");
     	}
 
 		$committee = new Committee;
@@ -98,7 +98,7 @@ class CommitteeController extends \BaseController {
 	public function open($id)
 	{
 		if(!Auth::check() or !Auth::User()->is_admin){
-			return Redirect::back()->withErrors("Toiminto evätty!");
+			return Redirect::action('CommitteeController@show', ['id' => $id])->withErrors("Toiminto evätty!");
 		}
 		$committee = Committee::find($id);
 		$committee->is_open = true;

@@ -2,19 +2,20 @@
 
 class UserController extends \BaseController {
 	
-	/**
+	/** TARVITAANKO TÄTÄ METODIA ENÄÄ???
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
+	 *
+	 *public function index()
+	 *{
+	 *	if (!Auth::user())
+	 *		return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');
+	 *	
+	 *	$users = User::all();
+     *		return View::make('user.index', array('users' => $users));
+	 *} 
 	 */
-	public function index()
-	{
-		if (!Auth::user())
-			return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');
-		
-		$users = User::all();
-    		return View::make('user.index', array('users' => $users));
-	}
 
 	public function active()
 	{
