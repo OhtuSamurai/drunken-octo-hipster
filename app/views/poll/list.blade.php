@@ -1,4 +1,8 @@
 <table class="pooltable table table-hover">
+	@if(isset($polls))
+		<h3>Ei avoimia kyselyjä</h3>
+	@endif
+	@if(!isset($polls))
   <thead>
     <tr>
       <th>Kysely</th>
@@ -14,3 +18,4 @@
   @endforeach
   </tbody>
 </table>
+	@endif

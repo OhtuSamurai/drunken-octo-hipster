@@ -1,6 +1,7 @@
 @extends('layouts.master')
-
 @section('content')
+
+<div class="col-md-7">
   <h1>Toimikunnat</h1>
 
 	@include('committee.list')
@@ -15,5 +16,5 @@
 		</div>
 	</div>
 @endif
-
+</div>
 @stop

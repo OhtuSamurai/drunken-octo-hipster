@@ -12,7 +12,7 @@ class PollController extends \BaseController {
 	  if (!Auth::user() OR !Auth::user()->is_admin)
 		return Redirect::to('login')->withErrors('Kyselyt näkyvät vain adminille');
 
-	  $polls = Poll::all(); 	  
+	  $polls = Poll::where('is_open','=',1)->get(); 	  
 	  return View::make('poll.index', array('polls' => $polls));
 	}
 
@@ -66,7 +66,7 @@ class PollController extends \BaseController {
 
 		$users = Input::get('user');
    		if (empty($users)) {
-    		return Redirect::route('poll.create')->withErrors("Valitse ensin käyttäjiä listasta");
+    			return Redirect::route('poll.create')->withErrors("Valitse ensin käyttäjiä listasta");
     	}
 
 		$validation = $this->validate();
