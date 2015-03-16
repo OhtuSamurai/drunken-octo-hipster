@@ -45,7 +45,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_a_committee() {
-		return ['id' => 1, 'name' => 'committee', 'time' => 'default'];
+		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' = 1];
 	}
 
 	public function mockUser($params = array()) {
