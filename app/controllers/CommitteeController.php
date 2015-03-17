@@ -24,7 +24,7 @@ class CommitteeController extends \BaseController {
 		if(!Auth::check() or !Auth::User()->is_admin){
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
 		}
-		$users = User::all();
+		$users = User::where('is_active', '=', true)->get();
 		return View::make('committee.create', array('users' => $users));
 	}
 
