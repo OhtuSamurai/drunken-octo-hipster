@@ -19,7 +19,7 @@ class LoginController extends Controller {
 		$username = Input::get('username');
 		$user = User::where('username', $username)->first();
 		if ($user == null OR $validation->fails()) {
-			return Redirect::action('LoginController@showLoginPage')->withErrors('Virheellinen käyttäjätunnus');
+			return Redirect::action('LoginController@showLoginPage')->withErrors('Virheellinen käyttäjätunnus: '.$username);
 		}
 		Auth::login($user);
 		return Redirect::action('UserController@show', array('id' => $user->id));
