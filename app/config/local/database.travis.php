@@ -10,5 +10,5 @@ return array(
 	| (ie. Laravel homestead)
 	|
 	*/
- 	'default' => 'travis-pgsql'
+ 	'default' => 'travis-mysql'
 );
