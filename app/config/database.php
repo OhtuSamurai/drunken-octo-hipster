@@ -14,16 +14,27 @@ return array(
 	'fetch' => PDO::FETCH_CLASS,
 	'default' => 'pgsql',
 	'connections' => array(
-        'pgsql' => array(
-                'driver'   => 'pgsql',
-                'host'     => 'ec2-23-21-183-70.compute-1.amazonaws.com',
-                'database' => 'd1l6ermr789lku',
-                'username' => 'ijyhbeywureirl',
-                'password' => 'Cm09RG3noSDhrrFcAoEWIG1skS',
-                'charset'  => 'utf8',
-                'prefix'   => '',
-                'schema'   => 'public',
-        ),
+		'pgsql' => array(
+			'driver'   => 'pgsql',
+			'host'     => 'ec2-23-21-183-70.compute-1.amazonaws.com',
+			'database' => 'd1l6ermr789lku',
+			'username' => 'ijyhbeywureirl',
+			'password' => 'Cm09RG3noSDhrrFcAoEWIG1skS',
+			'charset'  => 'utf8',
+			'prefix'   => '',
+			'schema'   => 'public',
+		),
+
+		'homestead-mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'homestead',
+			'username'  => 'homestead',
+			'password'  => 'secret',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 	),
 
 	/*
