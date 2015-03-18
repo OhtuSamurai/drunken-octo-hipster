@@ -123,7 +123,7 @@ class PollController extends \BaseController {
 			return Redirect::route('poll.show', array('poll' => $id));
 		if(Input::has('is_open') AND !Input::has('user'))
 		 return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ensin käyttäjiä');
-		if(Input::has('is_open') AND empty(Input::has('time')))
+		if(Input::has('is_open') AND !Input::has('time'))
 			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ajankohta');
 		$poll = Poll::find($id);
 		
