@@ -31,7 +31,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_a_user() {
-		return $params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
+		return $params = ['id' => 40, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr', 'is_active' => 1];
 	}
 
 	private function brew_an_answer() {
@@ -47,7 +47,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_a_committee() {
-		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' = 1];
+		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' => 1];
 	}
 
 	public function mockUser($params = array()) {

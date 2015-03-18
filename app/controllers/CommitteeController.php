@@ -36,23 +36,16 @@ class CommitteeController extends \BaseController {
 	 */
 	public function store()
 	{
-		if(!Auth::check() or !Auth::User()->is_admin){
+		if(!Auth::check() or !Auth::User()->is_admin)
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
-		}
-
-    	$users = Input::get('user');
-		if (empty($users)) {
+    	if (!Input::has('user'))
 			return Redirect::action('CommitteeController@create')->withErrors("Valitse ensin käyttäjiä listasta");
-    	}
-
 		$committee = new Committee;
 		$committee->name = Input::get('name');
 		$committee->time = Input::get('time');
 		$committee->save();
-
-    	foreach($users as $user)
+		foreach(Input::get('user') as $user)
       		$committee->users()->attach($user);
-
 		return Redirect::route('committee.show', array('poll' => $committee->id));
 	}
 
@@ -66,9 +59,7 @@ class CommitteeController extends \BaseController {
 	public function show($id)
 	{
 		$committee = Committee::find($id);
-    	
     	$users = $committee->users;
-		
 		return View::make('committee.show', array('committee' => $committee, 'users' => $users));
 	}
 

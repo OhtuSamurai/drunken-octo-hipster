@@ -70,7 +70,8 @@ class AnswerController extends \BaseController {
 		//
 	}
 
-	public function updateSopivuus() {
+	public function updateSopivuus()
+	{
 		$answers = Input::all();
 
 		foreach($answers as $answer_id => $answer_sopivuus) {

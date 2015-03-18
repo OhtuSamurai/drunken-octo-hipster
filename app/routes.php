@@ -18,7 +18,7 @@ Route::post('login', 'LoginController@doLogin');
 
 Route::get('logout', 'LoginController@logout');
 
-Route::get('updateSopivuus', 'AnswerController@updateSopivuus');
+Route::get('updateSopivuus', 'AnswerController@updateSopivuus');//eikö tämän pitäisi olla post tai put
 
 Route::post('committee/{id}/toggleopen', 'CommitteeController@toggleOpen');
 

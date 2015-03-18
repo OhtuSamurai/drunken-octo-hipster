@@ -22,14 +22,16 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	public function setUp() {
     		parent::setUp(); // Don't forget this!
     		$this->prepareForTests();
+    		Session::start();
+    		Route::enableFilters();
 	}
 
 	private function brew_an_admin() {
-		return $params = ['id' => 123, 'first_name' => 'first', 'last_name' => 'last', 'department' => 'deb', 'position' => 'pos', 'username' => 'user', 'is_admin' => 1];
+		return $params = ['id' => 123, 'first_name' => 'first', 'last_name' => 'last', 'department' => 'deb', 'position' => 'pos', 'username' => 'user', 'is_admin' => 1, 'is_active' => 1];
 	}
 
 	private function brew_a_user() {
-		return $params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr'];
+		return $params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr', 'is_active' => 1];
 	}
 
 	private function brew_an_answer() {
@@ -45,7 +47,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_a_committee() {
-		return ['id' => 1, 'name' => 'committee', 'time' => 'default'];
+		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' => 1];
 	}
 
 	public function mockUser($params = array()) {
