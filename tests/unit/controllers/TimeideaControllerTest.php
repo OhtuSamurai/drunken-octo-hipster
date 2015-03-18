@@ -12,9 +12,8 @@ class TimeideaControllerTest extends TestCase {
 		$this->assertNull($idea_ctrl->create());
 	}
 	
-	public function testShow() {
+	public function testShow() { //Pakko tehdä suoraan kontrolleria käyttämällä, koska route undefined
 		$this->mockTimeidea()->save();
-
 		$idea_ctrl = new TimeideaController;
 		$actual = Timeidea::all()->first();
 		$view = $idea_ctrl->show($actual->id)->getData();
@@ -38,23 +37,37 @@ class TimeideaControllerTest extends TestCase {
 	
 	public function testStore() {
 		$this->fakeLoginAdmin();
-
-		$tic = new TimeideaController;
-		Request::replace($input=['poll_id'=>'43','description'=>'kokista']);
-		$polli = $this->mockPoll();
-		$polli->save();
+		$poll = $this->mockPoll();
+		$poll->save();
 		$usr = $this->mockUser();
 		$usr->save();
-		$polli->users()->attach($usr);
-		$tic->store();
-		$this->assertTrue(Timeidea::find(1)->description=='kokista');	
-		$vastaukset =  $polli->answers();
-		foreach($vastaukset as $vastaus)
-			$this->assertTrue($vastaus->sopivuus=='eisovi');
+		$poll->users()->attach($usr);
+		$this->action('POST', 'TimeideaController@store', null, ['poll_id'=>'43','description'=>'kokista']);
+		$this->assertRedirectedToAction('PollController@show', ['id' => $poll->id]);
+		$this->assertEquals('kokista', Timeidea::find(1)->description);
+		foreach($poll->answers() as $answer)
+			$this->assertEquals('eisovi', $answer->sopivuus);
+}
+
+	public function testStoreWithoutAdmin() {
+		$poll = $this->mockPoll();
+		$poll->save();
+		$this->action('POST', 'TimeideaController@store', null, ['poll_id' => $poll->id]);
+		$this->assertRedirectedToAction('PollController@show', array('id' => $poll->id));
+		$this->assertSessionHasErrors();
 	}
 
-	public function testUnvalidStoring() {
-		$this->action('POST', 'TimeideaController@store');
-		$this->assertRedirectedToAction('PollController@show', array('id' => ''));
+	public function testStoreWithRegularUser() {
+		$this->fakeLoginUser();
+		$this->testStoreWithoutAdmin();
 	}
+
+	public function testStoreWithWrongCreds() {
+		$this->fakeLoginAdmin();
+		$poll = $this->mockPoll();
+		$poll->save();
+		$this->action('POST', 'TimeideaController@store', null, ['poll_id' => $poll->id]);
+		$this->assertRedirectedToAction('PollController@show', ['id' => $poll->id]);
+		$this->assertSessionHasErrors('description');
+	} 
 }

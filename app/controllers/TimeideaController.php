@@ -87,7 +87,6 @@ class TimeideaController extends \BaseController {
 		$poll = Poll::find($timeidea->poll_id);
 		$this->setAnswers($poll,$timeidea->id);
 		return Redirect::route('poll.show', array('poll' => $timeidea->poll_id));
-		//return Redirect::back(); //Testit herjaavat tästä ???
 	}
 
 
