@@ -123,7 +123,7 @@ class PollController extends \BaseController {
 		if(!Auth::check() or !Auth::User()->is_admin)
 			return Redirect::route('poll.show', array('poll' => $id));
 		$poll = Poll::find($id);
-		
+
 		foreach (Input::all() as $key => $value) {
 			if( array_key_exists($key, $poll->toArray() ))
 				$poll->$key = $value;
