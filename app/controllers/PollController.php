@@ -123,19 +123,20 @@ class PollController extends \BaseController {
 			return Redirect::route('poll.show', array('poll' => $id));
 		if(Input::has('is_open') AND !Input::has('user'))
 		 return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ensin käyttäjiä');
-		
 		if(Input::has('is_open') AND empty(Input::has('time')))
 			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ajankohta');
 		$poll = Poll::find($id);
 		
-		foreach (Input::all() as $key => $value) {
+		foreach (Input::all() as $key => $value)
+		{
 			if( array_key_exists($key, $poll->toArray() ))
 				$poll->$key = $value;
 		}
 		$poll->save();
 
 		//if poll is_open changes, method will create new committee from poll
-		if( Input::has('is_open') ) {			
+		if( Input::has('is_open') )
+		{			
 			$committee = new Committee;
 			$committee->name = $poll->toimikunta;
 			$committee->time = Input::get('time');

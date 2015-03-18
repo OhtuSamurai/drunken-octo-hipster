@@ -100,7 +100,7 @@ class PollControllerTest extends TestCase {
 		$this->assertEquals(1, $poll->is_open);
 
 		$poll_ctrl = new PollController;
-		Request::replace($input=['is_open'=>false, 'time'=>'Joskus']);
+		Request::replace($input=['is_open'=>false, 'time'=>'Joskus', 'user'=>[1]]);
 		$poll_ctrl->update(43);
 
 		$poll = Poll::find(43);
