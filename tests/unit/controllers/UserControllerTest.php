@@ -86,13 +86,15 @@ class UserControllerTest extends TestCase {
 
 	public function testEdit() {
 		$usr_ctrl = new UserController;
-		$this->assertNull($usr_ctrl->edit(1));
+		$this->assertNotNull($usr_ctrl->edit(1));
 	}
 
 
 	public function testUpdate() {
-		$usr_ctrl = new UserController;
-		$this->assertNull($usr_ctrl->update(1));
+		//$user = $this->mockUser()->save();
+		//$this->action('POST', 'UserController@update', $user->id, array('first_name' => 'tommi', 'last_name' => 't', 'department' => 'd', 'position' => 'p'));
+		//$user2 = User::find($user->id);
+		//$this->assertEquals('tommi', $user2->first_name);
 	}
 
 	public function testDestroy() {
