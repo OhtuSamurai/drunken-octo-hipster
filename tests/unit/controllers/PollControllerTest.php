@@ -92,6 +92,30 @@ class PollControllerTest extends TestCase {
 		$this->assertEquals('bricks', $poll->toimikunta);
 	}
 
+	private function updateIsOpen($input_arr) {
+		$this->fakeLoginAdmin();
+		$this->mockPoll()->save();
+		$poll = Poll::find(43);
+		$this->assertEquals(1, $poll->is_open);
+		$poll_ctrl = new PollController;
+		Request::replace($input=$input_arr);
+		$poll_ctrl->update(43);
+		$poll = Poll::find(43);
+		$this->assertEquals(1, $poll->is_open);	
+	}
+
+	public function testUpdateIsOpenWithoutInput() {
+		$this->updateIsOpen(['is_open'=>false]);
+	}
+
+	public function testUpdateIsOpenWithTimeideaButWithoutUser() {
+		$this->updateIsOpen(['is_open'=>false, 'time'=>'joskus']);
+	}
+
+	public function testUpdateIsOpenWithUserButWithoutTimeidea() {
+		$this->updateIsOpen(['is_open'=>false, 'user'=>[1]]);
+	}
+
 	public function testUpdateIsOpen() {
 		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
