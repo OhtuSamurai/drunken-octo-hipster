@@ -111,7 +111,6 @@ class PollController extends \BaseController {
 		//
 	}
 
-
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -122,8 +121,13 @@ class PollController extends \BaseController {
 	{
 		if(!Auth::check() or !Auth::User()->is_admin)
 			return Redirect::route('poll.show', array('poll' => $id));
+		if(Input::has('is_open') AND !Input::has('user'))
+		 return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ensin käyttäjiä');
+		
+		if(Input::has('is_open') AND empty(Input::has('time')))
+			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ajankohta');
 		$poll = Poll::find($id);
-
+		
 		foreach (Input::all() as $key => $value) {
 			if( array_key_exists($key, $poll->toArray() ))
 				$poll->$key = $value;
@@ -131,18 +135,18 @@ class PollController extends \BaseController {
 		$poll->save();
 
 		//if poll is_open changes, method will create new committee from poll
-		if( array_key_exists('is_open', Input::all())) {			
+		if( Input::has('is_open') ) {			
 			$committee = new Committee;
 			$committee->name = $poll->toimikunta;
 			$committee->time = Input::get('time');
 			$committee->save();
-			foreach($poll->users as $user)
+			foreach(Input::get('user') as $user)
 				$committee->users()->attach($user);
 		return Redirect::route('committee.show', array('poll' => $committee->id));
 		}
 
 		//for example if polls name gets changed
-		return Redirect::route('poll.show', array('poll' => $id));
+		return Redirect::route('poll.show', array('id' => $id));
 	}
 
 
