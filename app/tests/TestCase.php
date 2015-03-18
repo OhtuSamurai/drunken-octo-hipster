@@ -86,7 +86,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	public function fakeLogin($user) {
 		$login_ctrl = new LoginController;
 		Request::replace($input=['username'=>$user->username]);
-		$login_ctrl->doLogin();
+		$login_ctrl->login();
 	}
 
 	public function fakeLoginUser() {
