@@ -14,7 +14,7 @@ Route::get('/', 'CommitteeController@index');
 
 Route::get('login', 'LoginController@showLoginPage');
 
-Route::post('login', 'LoginController@doLogin');
+Route::post('login', 'LoginController@login');
 
 Route::get('logout', 'LoginController@logout');
 

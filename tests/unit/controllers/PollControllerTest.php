@@ -33,11 +33,28 @@ class PollControllerTest extends TestCase {
 		$this->assertViewHas('users');	
 	}
 	
-	public function testStoreWithIncorrectInput() {
+	public function testStoreNotLoggedIn() {
+		$this->action('POST', 'PollController@store');
+		$this->assertRedirectedTo('/');
+	}
+
+	public function testStoreWithRegularUser() {
+		$this->fakeLoginUser();//auth on sessiossa, siksi seuraava rivi toimii
+		$this->testStoreNotLoggedIn();
+	}	
+
+	public function testStoreWithMissingInput() {
 		$this->fakeLoginAdmin();
 		$this->action('POST', 'PollController@store');
 		$this->assertRedirectedToAction('PollController@create');
 		$this->assertSessionHasErrors();
+	}
+
+	public function testStoreWithMissingUsersInput() {
+		$this->fakeLoginAdmin();
+		$this->action('POST', 'PollController@store', null, ['user' => [1]]);
+		$this->assertRedirectedToAction('PollController@create');
+		$this->assertSessionHasErrors('toimikunta');
 	}
 
 	public function testStore() {

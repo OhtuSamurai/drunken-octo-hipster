@@ -4,7 +4,7 @@ class LoginController extends Controller {
 
 	private function validate() {
   		$rules = array('username'=>'required|min:1');
-		$messages = array('required'=>'Virheellinen käyttäjätunnus');
+		$messages = array('required'=>'Et kirjoittanut käyttäjätunnustasi');
 		return Validator::make(Input::all(),$rules,$messages);
 	}
 
@@ -13,14 +13,13 @@ class LoginController extends Controller {
 		return View::make('login.login');
 	}
 
-	public function doLogin()
+	public function login()
 	{
-		$validation = $this->validate();
-		$username = Input::get('username');
-		$user = User::where('username', $username)->first();
-		if ($user == null OR $validation->fails()) {
-			return Redirect::action('LoginController@showLoginPage')->withErrors('Virheellinen käyttäjätunnus: '.$username);
-		}
+		if($this->validate()->fails()) 
+			return Redirect::action('LoginController@showLoginPage')->withErrors($this->validate());
+		$user = User::where('username', '=',Input::get('username'))->first();
+		if ($user == null)
+			return Redirect::action('LoginController@showLoginPage')->withErrors('Virheellinen käyttäjätunnus');
 		Auth::login($user);
 		return Redirect::action('UserController@show', array('id' => $user->id));
 	}
@@ -28,7 +27,6 @@ class LoginController extends Controller {
 	public function logout()
 	{
 		Auth::logout();
-		return Redirect::action('CommitteeController@index');
+		return Redirect::to('/');
 	}
-
 }
