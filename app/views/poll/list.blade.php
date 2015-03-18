@@ -1,8 +1,8 @@
 <table class="pooltable table table-hover">
-	@if(isset($polls))
+	@if(count($polls)==0)
 		<h3>Ei avoimia kyselyjä</h3>
 	@endif
-	@if(!isset($polls))
+	@if(!(count($polls)==0))
   <thead>
     <tr>
       <th>Kysely</th>

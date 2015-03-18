@@ -9,7 +9,10 @@ modules:
     enabled:
         - WebDriver
         - AcceptanceHelper
+        - Laravel4
     config:
         WebDriver:
             browser: phantomjs
             url: 'http://localhost/'
+        Laravel4:
+            environment: local

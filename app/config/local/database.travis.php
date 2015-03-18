@@ -10,5 +10,5 @@ return array(
 	| (ie. Laravel homestead)
 	|
 	*/
-	'default' => 'homestead-mysql'
+ 	'default' => 'travis-mysql'
 );

@@ -11,9 +11,19 @@ return array(
 	*/
 
 	'fetch' => PDO::FETCH_CLASS,
-	'default' => 'pgsql',
+	'default' => 'travis-mysql',
 	'connections' => array(
-		'pgsql' => array(
+		'travis-mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'myapp_test',
+			'username'  => 'travis',
+			'password'  => '',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+		'travis-pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
 			'database' => 'travis_ci_test',

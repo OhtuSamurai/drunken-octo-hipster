@@ -25,10 +25,24 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-
 	'local' => array('homestead'),
-
 ));
+
+/*
+$env = $app->detectEnvironment(function()
+{
+	if (gethostname() === 'homestead') {
+		echo("Setting environment to 'local'.");
+		return 'local';
+	}
+
+	if (getenv('TRAVIS') == 1) {
+		echo("Setting environment to 'travis'.");
+		return 'travis';
+	}
+	echo("Setting environment to 'production'.");
+	return 'production';
+});/*
 
 /*
 |--------------------------------------------------------------------------
