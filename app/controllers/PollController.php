@@ -90,12 +90,9 @@ class PollController extends \BaseController {
 	public function show($id)
 	{
 		$poll = Poll::find($id);
-    	
     	$users = $poll->users;
-		
 		$timeideas = $poll->timeideas;
 		$answers = $poll->answers;
-		
 		return View::make('poll.show', array('poll' => $poll, 'users' => $users, 'timeideas' => $timeideas, 'answers' => $answers));
 	}
 
@@ -122,7 +119,7 @@ class PollController extends \BaseController {
 		if(!Auth::check() or !Auth::User()->is_admin)
 			return Redirect::route('poll.show', array('poll' => $id));
 		if(Input::has('is_open') AND !Input::has('user'))
-		 return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ensin käyttäjiä');
+			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ensin käyttäjiä');
 		if(Input::has('is_open') AND !Input::has('time'))
 			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ajankohta');
 		$poll = Poll::find($id);

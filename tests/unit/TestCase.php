@@ -22,6 +22,8 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	public function setUp() {
     		parent::setUp(); // Don't forget this!
     		$this->prepareForTests();
+    		Session::start();
+    		Route::enableFilters();
 	}
 
 	private function brew_an_admin() {
