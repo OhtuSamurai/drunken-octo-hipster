@@ -5,12 +5,12 @@
 	<h1>{{ $committee->name }}</h1>
 	<h2>Järjestetään: {{ $committee->time }}</h2>
     @if($committee->is_open)
-    {{ Form::open(array('url' => '/committee/'.$committee->id.'/close')) }}
+    {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
     {{ Form::submit('Sulje toimikunta', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @else
     Toimikunta on suljettu.
-    {{ Form::open(array('url' => '/committee/'.$committee->id.'/open')) }}
+    {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
     {{ Form::submit('Avaa uudelleen', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @endif

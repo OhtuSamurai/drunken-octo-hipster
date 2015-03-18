@@ -13,7 +13,7 @@ class UserController extends \BaseController {
 	 *		return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');
 	 *	
 	 *	$users = User::all();
-     *		return View::make('user.index', array('users' => $users));
+	 *		return View::make('user.index', array('users' => $users));
 	 *} 
 	 */
 
@@ -23,7 +23,7 @@ class UserController extends \BaseController {
 			return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');		
 		}
 		$users = User::where('is_active', '=', true)->get();
-    	return View::make('user.index', array('users' => $users));
+		return View::make('user.index', array('users' => $users));
 	}
 
 	public function inactive()
@@ -32,7 +32,7 @@ class UserController extends \BaseController {
 			return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');
 		}
 		$users = User::where('is_active', '=', false)->get();
-    	return View::make('user.index', array('users' => $users));
+		return View::make('user.inactive', array('users' => $users));
 	}
 
 
@@ -43,7 +43,10 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
+		return View::make('user.create', array('user' => new User));	
 	}
 
 
@@ -54,7 +57,25 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
+
+		$user = new User;
+		$user->username = Input::get('username');
+		$user->first_name = Input::get('first_name');
+		$user->last_name = Input::get('last_name');
+		$user->department = Input::get('department');
+		$user->position = Input::get('position');
+		$user->is_active = false;
+
+		$user1 = User::where('username', $user->username)->first();
+		if ($user1 != null) {
+			return View::make('user.create', array('user' => $user))->withErrors("Käyttäjätunnus ".$user->username." löytyy jo järjestelmästä.");
+		}
+
+		$user->save();
+		return Redirect::action('UserController@inactive')->with('success', "Käyttäjä ".$user->username." on luotu järjestelmään.");
 	}
 
 

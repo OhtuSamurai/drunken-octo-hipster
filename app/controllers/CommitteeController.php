@@ -73,39 +73,21 @@ class CommitteeController extends \BaseController {
 	}
 
 	/**
-	 * Mark this committee as 'closed'.
+	 * Marks an open committee as closed and marks a closed committee as open.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function close($id)
+	public function toggleOpen($id)
 	{
 		if(!Auth::check() or !Auth::User()->is_admin){
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
 		}
 		$committee = Committee::find($id);
-		$committee->is_open = false;
+		$committee->is_open = !$committee->is_open;
 		$committee->save();
 		return Redirect::route('committee.show', array('committee' => $id));
 	}
-
-	/**
-	 * Mark this committee as 'open'.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function open($id)
-	{
-		if(!Auth::check() or !Auth::User()->is_admin){
-			return Redirect::action('CommitteeController@show', ['id' => $id])->withErrors("Toiminto evätty!");
-		}
-		$committee = Committee::find($id);
-		$committee->is_open = true;
-		$committee->save();
-		return Redirect::route('committee.show', array('committee' => $id));
-	}
-
 
 
 	/**
