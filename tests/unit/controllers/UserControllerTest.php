@@ -37,13 +37,13 @@ class UserControllerTest extends TestCase {
 
 	public function testCreate() {
 		$usr_ctrl = new UserController;
-		$this->assertNull($usr_ctrl->create());
+		$this->assertNotNull($usr_ctrl->create());
 	}
 
 
 	public function testStore() {
 		$usr_ctrl = new UserController;
-		$this->assertNull($usr_ctrl->store());
+		$this->assertNotNull($usr_ctrl->store());
 	}
 
 	public function testShow() {

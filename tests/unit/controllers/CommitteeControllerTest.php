@@ -66,58 +66,40 @@ class CommitteeControllerTest extends TestCase {
 		$this->assertTrue(str_contains($view['committee'], $committee->name));
 	}
 
-	public function testCloseAsNotLoggedIn() {
-		$this->action('POST', 'CommitteeController@close', ['id' => 1]);
+	public function testToggleDoesntWorkWhenNotLoggedIn() {
+		$this->action('POST', 'CommitteeController@toggleOpen', ['id' => 1]);
 		$this->assertRedirectedTo('/');
 		$this->assertSessionHasErrors();
 	}
 
-	public function testCloseLoggedInAsRegularUser() {
+	public function testToggleDoesntWorkWhenLoggedInAsRegularUser() {
 		$this->fakeLoginUser();
-		$this->action('POST', 'CommitteeController@close', ['id' => 1]);
+		$this->action('POST', 'CommitteeController@toggleOpen', ['id' => 1]);
 		$this->assertRedirectedTo('/');
 		$this->assertSessionHasErrors();
 	}
 
-	public function testClose() {
+	public function testToggleClosesCommittee() {
 		$this->fakeLoginAdmin();
 		$com = $this->mockCommittee();
 		$com->save();
-		$this->action('POST', 'CommitteeController@close', ['id' =>  $com->id]);
+		$this->action('POST', 'CommitteeController@toggleOpen', ['id' =>  $com->id]);
 		$com = Committee::find($com->id);
 		$this->assertEquals(0, $com->is_open);
 		$this->assertRedirectedToAction('CommitteeController@show', ['id' => $com->id]);
 	}
 
-	public function testOpenAsNotLoggedIn() {
-		$com = $this->mockCommittee();
-		$com->is_open = 0;
-		$com->save();
-		$this->action('POST', 'CommitteeController@open', ['id' => $com->id]);
-		$this->assertRedirectedToAction('CommitteeController@show', ['id' => $com->id]);
-		$this->assertSessionHasErrors();
-	}
-
-	public function testOpenLoggedInAsRegularUser() {
-		$this->fakeLoginUser();
-		$com = $this->mockCommittee();
-		$com->is_open = 0;
-		$com->save();
-		$this->action('POST', 'CommitteeController@open', ['id' => $com->id]);
-		$this->assertRedirectedToAction('CommitteeController@show', ['id' => $com->id]);
-		$this->assertSessionHasErrors();
-	}
-
-	public function testOpen() {
+	public function testToggleOpensCommittee() {
 		$this->fakeLoginAdmin();
 		$com = $this->mockCommittee();
 		$com->is_open = 0;
 		$com->save();
-		$this->action('POST', 'CommitteeController@open', ['id' =>  $com->id]);
+		$this->action('POST', 'CommitteeController@toggleOpen', ['id' =>  $com->id]);
 		$com = Committee::find($com->id);
 		$this->assertEquals(1, $com->is_open);
 		$this->assertRedirectedToAction('CommitteeController@show', ['id' => $com->id]);
 	}
+
 
 	public function testEdit() {
 		$com_ctrl = new CommitteeController;

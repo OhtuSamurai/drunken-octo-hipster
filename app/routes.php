@@ -20,16 +20,14 @@ Route::get('logout', 'LoginController@logout');
 
 Route::get('updateSopivuus', 'AnswerController@updateSopivuus');
 
-Route::post('committee/{id}/close', 'CommitteeController@close');
-
-Route::post('committee/{id}/open', 'CommitteeController@open');
+Route::post('committee/{id}/toggleopen', 'CommitteeController@toggleOpen');
 
 Route::get('pooli', 'UserController@active');
 
 Route::get('poistetut', 'UserController@inactive');
 
 Route::resource('user', 'UserController',
-                array('except' => array('index','create', 'store', 'destroy', 'update', 'edit')));
+                array('except' => array('index', 'destroy', 'update', 'edit')));
 
 Route::resource('poll', 'PollController',
                 array('except' => array('destroy', 'edit')));
