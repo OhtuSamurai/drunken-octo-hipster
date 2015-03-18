@@ -87,6 +87,7 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		$user = User::find($id);
 		if(Auth::user()->is_admin) {
 			$polls = Poll::where('is_open', '=', 1)->get(); 
 			$committees = Committee::where('is_open', '=', 1)->get();
@@ -99,7 +100,9 @@ class UserController extends \BaseController {
 			foreach(Auth::user()->committees as $committee)
 				if($committee->is_open) array_push($committees, $committee);
 		}
-		return View::make('user.show', array('polls' => $polls, 'committees' => $committees));
+
+
+		return View::make('user.show', array('user' => $user, 'polls' => $polls, 'committees' => $committees));
 	}
 
 
@@ -111,7 +114,8 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::find($id);
+		return View::make('user.edit', array('user' => $user));	
 	}
 
 
@@ -123,7 +127,14 @@ class UserController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::find($id);
+		$user->first_name = Input::get('first_name');
+		$user->last_name = Input::get('last_name');
+		$user->department = Input::get('department');
+		$user->position = Input::get('position');
+		$user->description = Input::get('description');
+		$user->save();
+		return Redirect::action('UserController@show', $id)->with('success', "Käyttäjän tiedot päivitetty.");	
 	}
 
 

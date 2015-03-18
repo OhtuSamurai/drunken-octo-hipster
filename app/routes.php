@@ -27,7 +27,7 @@ Route::get('pooli', 'UserController@active');
 Route::get('poistetut', 'UserController@inactive');
 
 Route::resource('user', 'UserController',
-                array('except' => array('index', 'destroy', 'update', 'edit')));
+                array('except' => array('index', 'destroy')));
 
 Route::resource('poll', 'PollController',
                 array('except' => array('destroy', 'edit')));
