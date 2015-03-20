@@ -50,6 +50,12 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' => 1];
 	}
 
+	public function mockUserWithId($id) {
+		$params = $this->brew_a_user();
+		$params['id'] = $id;
+		return $this->generalMockery(new User, $params);
+	}
+
 	public function mockUser($params = array()) {
 		if(empty($params)) $params = $this->brew_a_user();
 		return $this->generalMockery(new User, $params);

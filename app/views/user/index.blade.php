@@ -4,6 +4,6 @@
 <div class="col-md-7">
   <h1>Opetustaitotoimikuntapooli</h1>
 
-  @include('user._form')
+  @include('user.list')
 </div>
 @stop

@@ -14,7 +14,7 @@
 	{{ Form::text('time') }}
 	{{ Form::submit('Luo uusi toimikunta', array('class' => 'btn btn-primary')) }}
 
-	@include('user._form')
+	@include('user.list')
 	{{ Form::close() }}
 
 @stop

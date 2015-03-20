@@ -67,13 +67,13 @@ class UserController extends \BaseController {
 		$user->last_name = Input::get('last_name');
 		$user->department = Input::get('department');
 		$user->position = Input::get('position');
+		$user->description = Input::get('description');
 		$user->is_active = false;
 
-		$user1 = User::where('username', $user->username)->first();
-		if ($user1 != null) {
-			return View::make('user.create', array('user' => $user))->withErrors("Käyttäjätunnus ".$user->username." löytyy jo järjestelmästä.");
+		$validator = $user->validator();
+		if ($validator->fails()) {
+			return Redirect::action('UserController@create')->withErrors($validator)->withInput(Input::all());
 		}
-
 		$user->save();
 		return Redirect::action('UserController@inactive')->with('success', "Käyttäjä ".$user->username." on luotu järjestelmään.");
 	}
@@ -114,6 +114,9 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		if(!Auth::check() || (!Auth::user()->is_admin && Auth::user()->id != $id)) {
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
 		$user = User::find($id);
 		return View::make('user.edit', array('user' => $user));	
 	}
@@ -127,12 +130,21 @@ class UserController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		if(!Auth::check() || (!Auth::user()->is_admin && Auth::user()->id != $id)) {
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
 		$user = User::find($id);
 		$user->first_name = Input::get('first_name');
 		$user->last_name = Input::get('last_name');
 		$user->department = Input::get('department');
 		$user->position = Input::get('position');
 		$user->description = Input::get('description');
+
+		$validator = $user->validator();
+		if ($validator->fails()) {
+			return Redirect::action('UserController@edit', $id)->withErrors($validator)->withInput(Input::all());
+		}
+
 		$user->save();
 		return Redirect::action('UserController@show', $id)->with('success', "Käyttäjän tiedot päivitetty.");	
 	}

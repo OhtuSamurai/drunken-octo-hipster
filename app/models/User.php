@@ -26,11 +26,28 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	//protected $hidden = array('password', 'remember_token');
 
   public function polls(){
-    return $this->belongsToMany('Poll', 'participants')->withTimestamps();
+	return $this->belongsToMany('Poll', 'participants')->withTimestamps();
   }
 
   public function committees(){
-    return $this->belongsToMany('Committee', 'committee_participants')->withTimestamps();
+	return $this->belongsToMany('Committee', 'committee_participants')->withTimestamps();
+  }
+
+  public function validator() {
+	return Validator::make(
+		$this->getAttributes(),
+		array('username' => 'required|unique:users,username,'.$this->id,
+			'first_name' => 'required',
+			'last_name' => 'required',
+			'department' => 'required',
+			'position' => 'required'
+		), array('username.required' => 'Anna käyttäjätunnus.',
+			'first_name.required' => 'Anna etunimi.',
+			'last_name.required' => 'Anna sukunimi.',
+			'department.required' => 'Anna laitos.',
+			'position.required' => 'Anna asema.',
+			'username.unique' => 'Käyttäjätunnus löytyy jo järjestelmästä.'
+		));
   }
 
 }

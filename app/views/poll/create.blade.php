@@ -12,7 +12,7 @@
 	{{ Form::text('toimikunta') }}
 	{{ Form::submit('Luo uusi kysely', array('class' => 'btn btn-primary')) }}
 
-	@include('user._form')
+	@include('user.list')
 	{{ Form::close() }}
 
 @stop
