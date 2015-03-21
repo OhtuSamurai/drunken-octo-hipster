@@ -61,12 +61,7 @@
 	</div>
 		</div>
 
-	@if (count($comments)==0)
-			<h4>Ei kommentteja</h4>
-	@endif
-	@if (count($comments)>0)
-		@include('comment.list')		
-	@endif
+	@include('comment.list')		
 
     	@if(Auth::user() && Auth::user()->is_admin)
 		<div class="admin top30">
