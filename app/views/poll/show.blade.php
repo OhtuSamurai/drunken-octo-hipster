@@ -9,6 +9,13 @@
 @section('content')
 	<h1>Sopivat ajat opetustaitotoimikunnan {{$poll->toimikunta}} tapaamiseen</h1>
   {{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method'=>'GET')) }} {{-- Here starts form for answers --}}
+  <div>
+  	@if(Auth::user() && Auth::user()->is_admin)
+  	Otsikko  {{ Form::text('otsikko') }} <br>
+  	Kuvaus  <textarea rows="4" cols="50"></textarea>
+  	<input type="submit" value="Tallenna">
+	@endif  
+  </div>
 	<table class="table table-bordered">
 		<thead>
 			<tr>
