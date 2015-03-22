@@ -59,7 +59,7 @@ after_success:
 
 deploy:
   provider: heroku
-  api_key: 5febf326-4f97-452d-aa7a-a499a2aaf7aa
+  api_key: 21830b77-6e9a-4799-bbb4-51081cb46774
    # secure: IYkhIPMH/d8+AmQrgdltfTh+u08+/Faki/xq8wlsUBRexN6Z+IEaEiPX/mEzwRl7zY5NXaTHPZT9upHj+9ApEtEB4szp1iKouZ8PhPwX7nb8u9T7vOQulNMdhx79KibUKgai2xMkdraI14mfBBocwzkhGFw1IFKgkT5Crucmmb0=
   app: oona
   on:

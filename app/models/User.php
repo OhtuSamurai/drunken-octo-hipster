@@ -25,11 +25,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	//protected $hidden = array('password', 'remember_token');
 
-  public function polls(){
+  public function polls() {
 	return $this->belongsToMany('Poll', 'participants')->withTimestamps();
   }
 
-  public function committees(){
+  public function committees() {
 	return $this->belongsToMany('Committee', 'committee_participants')->withTimestamps();
   }
 
@@ -50,4 +50,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		));
   }
 
+  //returns users polls which are open
+  public function curr_polls() {
+  	return $this->polls->filter(function($poll) { 
+  		return $poll->is_open;
+  	});
+  }
+
+  //returns users committees which are open
+  public function curr_committees() {
+  	return $this->committees->filter(function($com) { 
+  		return $com->is_open;
+  	});
+  }
 }

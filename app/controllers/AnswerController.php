@@ -72,14 +72,14 @@ class AnswerController extends \BaseController {
 
 	public function updateSopivuus()
 	{
-		$answers = Input::all();
-
+		$answers = array_except(Input::all(), ['_method','_token', 'poll_id']);
+		if(empty($answers)) return Redirect::action('PollController@show', ['id' => Input::get('poll_id')])->withErrors('Ruutua klikkaamalla voit muuttaa valintojasi');
 		foreach($answers as $answer_id => $answer_sopivuus) {
 			$answer = Answer::find($answer_id);
 			$answer->sopivuus = $answer_sopivuus;
 			$answer->save();
 		}
-		return Redirect::route('poll.show', array('id' => $answer->timeidea->poll_id));
+		return Redirect::action('PollController@show', ['id' => Input::get('poll_id')]);
 	}
 
 

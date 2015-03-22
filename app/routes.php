@@ -18,7 +18,7 @@ Route::post('login', 'LoginController@login');
 
 Route::get('logout', 'LoginController@logout');
 
-Route::get('updateSopivuus', 'AnswerController@updateSopivuus');//eikö tämän pitäisi olla post tai put
+Route::put('updateSopivuus', 'AnswerController@updateSopivuus');//eikö tämän pitäisi olla post tai put
 
 Route::post('committee/{id}/toggleopen', 'CommitteeController@toggleOpen');
 
@@ -35,6 +35,8 @@ Route::resource('poll', 'PollController',
 Route::resource('timeidea', 'TimeideaController',
                 array('only' => array('store')));
 
+Route::resource('comment', 'CommentController');
+
 Route::resource('answer', 'AnswerController',
                 array('only' => array('store')));
 
@@ -42,4 +44,3 @@ Route::resource('committee', 'CommitteeController',
                 array('except' => array('destroy', 'edit')));
 
 Route::get('add', 'CommitteeController@store');
-

@@ -62,6 +62,10 @@ class UserControllerTest extends TestCase {
 		$usr_ctrl = new UserController;
 		$this->assertEquals($usr_ctrl->show(42), $view );
 		$this->assertViewHas("polls");
+		$this->assertViewHas("curr", 1);
+		$this->assertViewHas("evry", 2);
+		$this->assertViewHas("currp", 1);
+		$this->assertViewHas("evryp", 2);		
 	}
 
 	public function testShowWithAdmin() {
