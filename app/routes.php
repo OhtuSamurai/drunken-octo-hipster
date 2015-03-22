@@ -26,6 +26,8 @@ Route::get('pooli', 'UserController@active');
 
 Route::get('poistetut', 'UserController@inactive');
 
+Route::put('updateDescriptionAndTitle', 'PollController@updateDescriptionAndTitle');
+
 Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
 

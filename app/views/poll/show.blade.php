@@ -9,14 +9,23 @@
 @section('content')
 
 <h1>Sopivat ajat opetustaitotoimikunnan {{$poll->toimikunta}} tapaamiseen</h1>
-{{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method' => 'PUT')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
+{{ Form::open(array('action' => 'PollController@updateDescriptionAndTitle', 'id'=>'titleanddes', 'method' => 'PUT')) }}
+{{ Form::hidden('poll_id', $poll->id) }}
 <div>
   	@if(Auth::user() && Auth::user()->is_admin)
-  	Otsikko  {{ Form::text('otsikko') }} <br>
-  	Kuvaus  <textarea rows="4" cols="50"></textarea>
-  	<input type="submit" value="Tallenna">
+  		<p>Otsikko  {{ Form::text('title', $poll->title) }} </p>
+  		<p>Kuvaus  {{ Form::textarea('description', $poll->description)}}
+  			<input type="submit" value="Tallenna">
+  		</p>
+  	@else
+  		<p>{{$poll->title}}</p>
+  		<p>{{$poll->description}}</p>
 	@endif  
 </div>
+{{ Form::close() }}
+
+{{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method' => 'PUT')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
+
 <table class="table table-bordered">
 	<thead>
 		<tr>

@@ -72,6 +72,22 @@ class PollController extends \BaseController {
       		$poll->users()->attach($user);
     	return Redirect::route('poll.show', array('poll' => $poll->id));
     }
+    
+    
+    /**
+     *Updates Description and title given by Admin
+     *
+    */
+    public function updateDescriptionAndTitle(){
+    	$poll = Poll::find(Input::get('poll_id'));
+    	//var_dump(Input::get('description'));
+    	//var_dump(Input::get('title'));
+    	//var_dump(Input::get('poll_id'));
+    	$poll->description = Input::get('description');
+    	$poll->title = Input::get('title');
+    	$poll->save();
+    	return Redirect::route('poll.show', ['id' => Input::get('poll_id')]);
+    }
 
 
 	/**
