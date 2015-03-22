@@ -35,17 +35,6 @@ class UserControllerTest extends TestCase {
 		$this->assertRedirectedToAction('LoginController@showLoginPage');
 	}
 
-	public function testCreate() {
-		$usr_ctrl = new UserController;
-		$this->assertNotNull($usr_ctrl->create());
-	}
-
-
-	public function testStore() {
-		$usr_ctrl = new UserController;
-		$this->assertNotNull($usr_ctrl->store());
-	}
-
 	public function testShow() {
 		$this->fakeLoginUser();
 
@@ -84,18 +73,118 @@ class UserControllerTest extends TestCase {
 		$this->assertEquals($usr_ctrl->show(123), $view );		
 	}
 
-	public function testEdit() {
-		$usr_ctrl = new UserController;
-		$this->assertNotNull($usr_ctrl->edit(1));
+	public function testCreateNotLoggedIn() {
+		$response = $this->action('GET', 'UserController@create');
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
 	}
 
-
-	public function testUpdate() {
-		//$user = $this->mockUser()->save();
-		//$this->action('POST', 'UserController@update', $user->id, array('first_name' => 'tommi', 'last_name' => 't', 'department' => 'd', 'position' => 'p'));
-		//$user2 = User::find($user->id);
-		//$this->assertEquals('tommi', $user2->first_name);
+	public function testCreateLoggedInAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testCreateNotLoggedIn();
 	}
+
+	public function testCreateAsAdmin() {
+		$this->fakeLoginAdmin();
+		$response = $this->action('GET', 'UserController@create');
+		$this->assertResponseOk();
+		$this->assertViewHas('user');
+	}
+
+	public function testStoreNotLoggedIn() {
+		$this->action('POST', 'UserController@store', array('username' => 'iines', 'first_name' => 'Iines', 'last_name' => 'Ankka', 'department' => 'd', 'position' => 'e', 'description' => ''));
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+		$user1 = User::where('username', 'iines')->first();
+		$this->assertNull($user1);
+	}
+
+	public function testStoreLoggedInAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testStoreNotLoggedIn();
+	}
+
+	public function testStoreAsAdmin() {
+		$this->fakeLoginAdmin();
+		$this->action('POST', 'UserController@store', array('username' => 'iines', 'first_name' => 'Iines', 'last_name' => 'Ankka', 'department' => 'd', 'position' => 'e', 'description' => ''));
+		$this->assertRedirectedToAction('UserController@inactive', array(), array('success' => 'Käyttäjä iines on luotu järjestelmään.'));
+		$this->action('POST', 'UserController@store', array('username' => 'iines', 'first_name' => 'Iines', 'last_name' => 'Ankka', 'department' => 'd', 'position' => 'e', 'description' => ''));
+		$this->assertSessionHasErrors();
+	}
+
+	public function testEditNotLoggedIn() {
+		$this->mockUserWithId(666)->save();
+		$response = $this->action('GET', 'UserController@edit', 666);
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testEditLoggedInAsRegularUser() {
+		$user = $this->mockUserWithId(667);
+		$user->save();
+		$this->fakeLogin($user);
+		$this->testEditNotLoggedIn();
+	}
+
+	public function testEditOwnProfile() {
+		$user = $this->mockUserWithId(668);
+		$user->save();
+		$this->fakeLogin($user);
+		$response = $this->action('GET', 'UserController@edit', 668);
+		$this->assertResponseOk();
+	}
+
+	public function testEditUserAsAdmin() {
+		$user = $this->mockUserWithId(669)->save();
+		$this->fakeLoginAdmin();
+		$response = $this->action('GET', 'UserController@edit', 669);
+		$this->assertResponseOk();
+	}
+
+	public function testUpdateNotLoggedIn() {
+		$user = $this->mockUserWithId(670);
+		$user->save();
+		$this->action('PUT', 'UserController@update', 670, array('first_name' => 'Iines', 'last_name' => 'Ankka', 'department' => 'd', 'position' => 'e', 'description' => 'ihQ'));
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+		$user2 = User::find(670);
+		$this->assertEquals('', $user2->description);
+	}
+
+	public function testUpdateLoggedInAsRegularUser() {
+		$user = $this->mockUserWithId(671);
+		$user->save();
+		$this->fakeLogin($user);
+		$this->testUpdateNotLoggedIn();
+	}
+
+	public function testUpdateOwnProfile() {
+		$user = $this->mockUserWithId(672);
+		$user->save();
+		$this->fakeLogin($user);
+		$this->action('PUT', 'UserController@update', 672, array('first_name' => 'Iines', 'last_name' => 'Ankka', 'department' => 'd', 'position' => 'e', 'description' => 'ihQ'));
+		$user2 = User::find(672);
+		$this->assertEquals('ihQ', $user2->description);
+	}
+
+	public function testUpdateUserAsAdmin() {
+		$user = $this->mockUserWithId(673)->save();
+		$this->fakeLoginAdmin();
+		$this->action('PUT', 'UserController@update', 673, array('first_name' => 'Iines', 'last_name' => 'Ankka', 'department' => 'd', 'position' => 'e', 'description' => 'ihQ'));
+		$user2 = User::find(673);
+		$this->assertEquals('ihQ', $user2->description);	
+	}
+
+	public function testCantLeaveMandatoryFieldEmpty() {
+		$user = $this->mockUserWithId(674)->save();
+		$this->fakeLoginAdmin();
+		$this->action('PUT', 'UserController@update', 674, array('first_name' => '', 'last_name' => 'Ankka', 'department' => 'd', 'position' => 'e', 'description' => 'ihQ'));
+		$this->assertRedirectedToAction('UserController@edit', 674);
+		$this->assertSessionHasErrors();
+		$user2 = User::find(674);
+		$this->assertEquals('', $user2->description);	
+	}
+
 
 	public function testDestroy() {
 		$usr_ctrl = new UserController;

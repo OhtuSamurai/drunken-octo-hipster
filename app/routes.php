@@ -35,6 +35,8 @@ Route::resource('poll', 'PollController',
 Route::resource('timeidea', 'TimeideaController',
                 array('only' => array('store')));
 
+Route::resource('comment', 'CommentController');
+
 Route::resource('answer', 'AnswerController',
                 array('only' => array('store')));
 

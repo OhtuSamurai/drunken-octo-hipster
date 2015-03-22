@@ -60,6 +60,9 @@
 	</table>
 	</div>
 		</div>
+
+	@include('comment.list')		
+
     	@if(Auth::user() && Auth::user()->is_admin)
 		<div class="admin top30">
 		<h2> Admin-alue </h2>

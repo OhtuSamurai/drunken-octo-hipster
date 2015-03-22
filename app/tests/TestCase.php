@@ -38,6 +38,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return $params = ['id' => 8, 'participant_id' => 99, 'timeidea_id'=>99, 'sopivuus' => 'sopii'];
 	}
 
+	private function brew_a_comment() {
+		return ['id'=>12,'commenttext'=>'Ebin juttu XD','poll_id'=>43,'user_id'=>42];
+	}
+
 	private function brew_a_poll() {
 		return ['id' => 43, 'toimikunta' => 'committee', 'is_open' => 1];
 	}
@@ -48,6 +52,17 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 	private function brew_a_committee() {
 		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' => 1];
+	}
+
+	public function mockUserWithId($id) {
+		$params = $this->brew_a_user();
+		$params['id'] = $id;
+		return $this->generalMockery(new User, $params);
+	}
+
+	public function mockComment() {
+		$params = $this->brew_a_comment();
+		return $this->generalMockery(new Comment,$params);
 	}
 
 	public function mockUser($params = array()) {
