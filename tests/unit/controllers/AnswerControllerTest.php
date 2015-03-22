@@ -33,30 +33,23 @@ class AnswerControllerTest extends TestCase {
 		$this->assertNull($ans_ctrl->update(1));
 	}
 
+	public function testUpdateSopivuusMissClick() {
+		$this->action('POST', 'AnswerController@updateSopivuus', [], ['poll_id' => 1]);
+		$this->assertRedirectedToAction('PollController@show', ['id' => 1]);
+		$this->assertSessionHasErrors();
+	}
+
 	public function testUpdateSopivuus() {
 		$this->mockUser()->save();
 		$this->mockPoll()->save();
-		$this->mockTimeidea(['id' => 44, 'poll_id' => 43, 'description' => 'Future Primitive'])->save();
-		$this->mockTimeidea(['id' => 45, 'poll_id' => 43, 'description' => 'Corridors of Power'])->save();
 		$this->mockAnswer(['id' => 33, 'participant_id' => 42, 'timeidea_id'=>44, 'sopivuus' => 'sopii'])->save();
 		$this->mockAnswer(['id' => 34, 'participant_id' => 42, 'timeidea_id'=>45, 'sopivuus' => 'sopii'])->save();
-
-		$answer = Answer::find(33);
-		$this->assertEquals('sopii', $answer->sopivuus);
-
-		$answer = Answer::find(34);
-		$this->assertEquals('sopii', $answer->sopivuus);
-
-		Request::replace($input=[33=>'ei sovi', 34=>'ei sovi']);
-	
-		$ans_ctrl = new AnswerController;
-		$ans_ctrl->updateSopivuus();
-
+		$this->action('POST', 'AnswerController@updateSopivuus', [], [33 => 'ei sovi', 'poll_id' => 1]);
+		$this->assertRedirectedToAction('PollController@show', ['id' => 1]);
 		$answer = Answer::find(33);
 		$this->assertEquals('ei sovi', $answer->sopivuus);
-
 		$answer = Answer::find(34);
-		$this->assertEquals('ei sovi', $answer->sopivuus);
+		$this->assertEquals('sopii', $answer->sopivuus);
 	}
 
 	public function testDestroy() {
