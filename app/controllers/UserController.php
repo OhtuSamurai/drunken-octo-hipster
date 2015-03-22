@@ -88,11 +88,12 @@ class UserController extends \BaseController {
 	public function show($id)
 	{
 		$user = User::find($id);
-		if(Auth::user()->is_admin) {
+		if($user->is_admin) {
 			$polls = Poll::where('is_open', '=', 1)->get(); 
 			$committees = Committee::where('is_open', '=', 1)->get();
 		}
-		else {
+		else 
+		{
 			$polls = [];
 			$committees = [];
 			foreach(Auth::user()->polls as $poll)
@@ -100,9 +101,9 @@ class UserController extends \BaseController {
 			foreach(Auth::user()->committees as $committee)
 				if($committee->is_open) array_push($committees, $committee);
 		}
-
-
-		return View::make('user.show', array('user' => $user, 'polls' => $polls, 'committees' => $committees));
+		return View::make('user.show', 
+			array('user' => $user, 'polls' => $polls, 'committees' => $committees,
+				'curr' => count($user->curr_committees()), 'evry' => count($user->committees), 'currp' => count($user->curr_polls()), 'evryp' =>count($user->polls)));
 	}
 
 

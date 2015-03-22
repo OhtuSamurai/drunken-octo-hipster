@@ -7,6 +7,8 @@
 <p>Laitos: {{$user->department}}</p>
 <p>Asema: {{$user->position}}</p>
 
+<p>Kuulut tällä hetkellä {{$curr}} toimikuntaan ja {{$currp}} kyselyyn.</p>
+<p>Olet ollut jäsenenä {{$evry}} toimikunnassa {{$evryp}} kyselyssä.</p>
 <p>Kuvaus:</p>
 <pre>{{$user->description}}</pre>
 
