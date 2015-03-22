@@ -42,4 +42,3 @@ Route::resource('committee', 'CommitteeController',
                 array('except' => array('destroy', 'edit')));
 
 Route::get('add', 'CommitteeController@store');
-

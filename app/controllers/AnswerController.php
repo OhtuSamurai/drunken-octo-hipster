@@ -73,7 +73,7 @@ class AnswerController extends \BaseController {
 	public function updateSopivuus()
 	{
 		$answers = Input::all();
-
+		//if(empty($answers)) return Redirect::
 		foreach($answers as $answer_id => $answer_sopivuus) {
 			$answer = Answer::find($answer_id);
 			$answer->sopivuus = $answer_sopivuus;
