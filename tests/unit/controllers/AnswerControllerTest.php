@@ -34,7 +34,7 @@ class AnswerControllerTest extends TestCase {
 	}
 
 	public function testUpdateSopivuusMissClick() {
-		$this->action('POST', 'AnswerController@updateSopivuus', [], ['poll_id' => 1]);
+		$this->action('PUT', 'AnswerController@updateSopivuus', [], ['poll_id' => 1]);
 		$this->assertRedirectedToAction('PollController@show', ['id' => 1]);
 		$this->assertSessionHasErrors();
 	}
@@ -44,7 +44,7 @@ class AnswerControllerTest extends TestCase {
 		$this->mockPoll()->save();
 		$this->mockAnswer(['id' => 33, 'participant_id' => 42, 'timeidea_id'=>44, 'sopivuus' => 'sopii'])->save();
 		$this->mockAnswer(['id' => 34, 'participant_id' => 42, 'timeidea_id'=>45, 'sopivuus' => 'sopii'])->save();
-		$this->action('POST', 'AnswerController@updateSopivuus', [], [33 => 'ei sovi', 'poll_id' => 1]);
+		$this->action('PUT', 'AnswerController@updateSopivuus', [], [33 => 'ei sovi', 'poll_id' => 1]);
 		$this->assertRedirectedToAction('PollController@show', ['id' => 1]);
 		$answer = Answer::find(33);
 		$this->assertEquals('ei sovi', $answer->sopivuus);

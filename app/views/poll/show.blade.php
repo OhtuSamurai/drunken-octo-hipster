@@ -8,7 +8,7 @@
 
 @section('content')
 <h1>Sopivat ajat opetustaitotoimikunnan {{$poll->toimikunta}} tapaamiseen</h1>
-{{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
+{{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method' => 'PUT')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
 <table class="table table-bordered">
 	<thead>
 		<tr>
