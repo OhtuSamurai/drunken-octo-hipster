@@ -12,7 +12,7 @@
 			@endforeach
 		</ul>
 		@if (Auth::user())
-			@include('comment._form')
+			@include('comment.create-form')
 		@endif
 	</div>
 </div>

@@ -67,7 +67,7 @@
 	<div class="admin top30">
 	<h2> Admin-alue </h2>
 	<div class="row">
-		@include('timeidea._form')
+		@include('timeidea.create-form')
 	</div>
     @include('poll.close')
 	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'committeeform', 'method'=>'PUT')) }}
