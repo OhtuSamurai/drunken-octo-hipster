@@ -18,5 +18,18 @@
 					$testi=false;
 			}
 			$this->assertTrue($testi);	
-		} 
+		}
+
+		public function testStore() {
+			$this->fakeLoginUser();
+			$this->mockPoll()->save();
+			$this->action('POST','CommentController@store', [], ['poll_id' => 43, 'commenttext' => 'no-copi-pastarino']);
+			$this->assertRedirectedToAction('PollController@show', ['id' => 43]);
+			$this->assertEquals(1, count(Poll::find(43)->comments));
+		}
+
+		public function testCreate() {
+			$response = new CommentController;
+			$this->assertNull($response->create());
+		}
 	}
