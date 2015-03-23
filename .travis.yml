@@ -35,16 +35,6 @@ before_script:
   - sudo service apache2 restart
 
   - composer self-update
-<<<<<<< HEAD
-  - composer install --dev --prefer-source --no-interaction
-  - ./scripts/run_sc_server_master.sh
-  - sleep 5 # give sc-server some time to start
-
-script:
-  phpunit --verbose
-  phantomjs phantomjs/test_runner.js --no-experimental --exclude-targets=/sproutcore/greenhouse  
-      
-=======
   - composer install --prefer-source --no-interaction
 
   - php artisan migrate --force
@@ -72,7 +62,6 @@ after_success:
   - cp tests/_output/coverage.xml build/logs/clover.xml
   - php vendor/bin/coveralls -v --exclude-no-stmt
 
->>>>>>> 9741b72a2271e31169b4478edcaf8c342dc2adb9
 deploy:
   provider: heroku
   api_key: 21830b77-6e9a-4799-bbb4-51081cb46774
@@ -80,9 +69,6 @@ deploy:
   app: oona
   on:
     repo: OhtuSamurai/drunken-octo-hipster
-<<<<<<< HEAD
-
-=======
   run:
     - php artisan migrate --seed --force
 
@@ -94,4 +80,3 @@ notifications:
       - "%{repository}#%{build_number} (%{branch} - %{commit}) %{author}: %{message} - %{build_url}"
   on_failure: always
   on_success: change
->>>>>>> 9741b72a2271e31169b4478edcaf8c342dc2adb9
