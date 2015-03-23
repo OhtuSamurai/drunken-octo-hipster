@@ -1,9 +1,11 @@
 language: php
 
 php:
-  - 5.6
+  - 5.4
   - 5.5
-  - hhvm
+  - 5.6
+
+install:
 
 
 before_install:
@@ -11,7 +13,29 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 before_script:
+  - mv app/config/database.travis.php app/config/database.php
+  - mv app/config/local/database.travis.php app/config/local/database.php
+
+  - mysql -e 'create database myapp_test;'
+  - psql -c 'create database travis_ci_test;' -U postgres
+  #- psql -c 'create user forge;' -U postgres
+  #- psql -c 'GRANT ALL PRIVILEGES ON DATABASE "forge" to forge;' -U postgres
+
+  - sudo apt-get update
+  - sudo apt-get install apache2 libapache2-mod-fastcgi
+  - sudo apt-get install lynx-cur
+  # enable php-fpm
+  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+  - sudo a2enmod rewrite actions fastcgi alias
+  - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+  # configure apache virtual hosts
+  - sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/default
+  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
+  - sudo service apache2 restart
+
   - composer self-update
+<<<<<<< HEAD
   - composer install --dev --prefer-source --no-interaction
   - ./scripts/run_sc_server_master.sh
   - sleep 5 # give sc-server some time to start
@@ -20,11 +44,54 @@ script:
   phpunit --verbose
   phantomjs phantomjs/test_runner.js --no-experimental --exclude-targets=/sproutcore/greenhouse  
       
+=======
+  - composer install --prefer-source --no-interaction
+
+  - php artisan migrate --force
+
+# Selenium: toimii, mutta testaus remotessa ei ole huomioitu
+#  - sh -e /etc/init.d/xvfb start
+#  - export DISPLAY=:99
+#  - java -jar selenium-server-standalone-2.42.2.jar -port 4444 & > /dev/null
+#  - sleep 5 
+
+script:
+  - phantomjs --webdriver=4444 &
+  - sleep 10
+  - vendor/bin/codecept run --coverage --coverage-xml
+
+after_failure:
+  #- lynx --dump tests/_output/WelcomeCept.fail.html 
+  #- sudo cat /var/log/apache2/error.log
+  #- sudo cat /etc/apache2/sites-available/default
+  #- php --version
+
+after_success:
+  # for Php-coveralls
+  - mkdir -p build/logs
+  - cp tests/_output/coverage.xml build/logs/clover.xml
+  - php vendor/bin/coveralls -v --exclude-no-stmt
+
+>>>>>>> 9741b72a2271e31169b4478edcaf8c342dc2adb9
 deploy:
   provider: heroku
-  api_key:
-    secure: IYkhIPMH/d8+AmQrgdltfTh+u08+/Faki/xq8wlsUBRexN6Z+IEaEiPX/mEzwRl7zY5NXaTHPZT9upHj+9ApEtEB4szp1iKouZ8PhPwX7nb8u9T7vOQulNMdhx79KibUKgai2xMkdraI14mfBBocwzkhGFw1IFKgkT5Crucmmb0=
-  app: shielded-earth-2316
+  api_key: 21830b77-6e9a-4799-bbb4-51081cb46774
+   # secure: IYkhIPMH/d8+AmQrgdltfTh+u08+/Faki/xq8wlsUBRexN6Z+IEaEiPX/mEzwRl7zY5NXaTHPZT9upHj+9ApEtEB4szp1iKouZ8PhPwX7nb8u9T7vOQulNMdhx79KibUKgai2xMkdraI14mfBBocwzkhGFw1IFKgkT5Crucmmb0=
+  app: oona
   on:
     repo: OhtuSamurai/drunken-octo-hipster
+<<<<<<< HEAD
 
+=======
+  run:
+    - php artisan migrate --seed --force
+
+notifications:
+  irc:
+    channels:
+      - "irc.cc.tut.fi#ohtusamurai"
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit}) %{author}: %{message} - %{build_url}"
+  on_failure: always
+  on_success: change
+>>>>>>> 9741b72a2271e31169b4478edcaf8c342dc2adb9

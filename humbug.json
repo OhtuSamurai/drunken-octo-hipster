@@ -1,0 +1,13 @@
+{
+    "timeout": 60,
+    "source": {
+        "directories": [
+            "app/models",
+            "app/controllers"
+        ]
+    },
+    "logs": {
+        "text": "report/humbuglog.txt",
+        "json": "report/humbuglog.json"
+    }
+}

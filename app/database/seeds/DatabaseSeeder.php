@@ -12,7 +12,17 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('UserTableSeeder');
-	  $this->command->info('User table seeded!');
+	  	$this->command->info('User table seeded!');
+	/*
+	  	$this->call('CommitteeTableSeeder');
+	  	$this->command->info('Committee table seeded!');
+    
+		$this->call('TimeideaTableSeeder');
+		$this->command->info('Timeidea table seeded!');
+    
+    	$this->call('PollTableSeeder');
+    	$this->command->info('Poll table seeded!');
+    */
   }
 
 }

@@ -5,7 +5,13 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"codeception/codeception": ">=2.0.11",
+		"codeception/c3": ">=2.0.3"
+	},
+	"require-dev": {
+		"satooshi/php-coveralls": "dev-master",
+		"mockery/mockery": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -19,10 +25,12 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
+			"Codeception\\c3\\Installer::copyC3ToRoot",
 			"php artisan clear-compiled",
 			"php artisan optimize"
 		],
 		"post-update-cmd": [
+			"Codeception\\c3\\Installer::copyC3ToRoot",
 			"php artisan clear-compiled",
 			"php artisan optimize"
 		],

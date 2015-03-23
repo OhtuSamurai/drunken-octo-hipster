@@ -11,6 +11,14 @@
 composer.phar
 vendor/
 
+# Php-coveralls #
+#################
+build/logs/
+
+# Phpunit coverage #
+####################
+report/
+
 # OS generated files #
 ######################
 .DS_Store
@@ -20,3 +28,5 @@ vendor/
 .Trashes
 ehthumbs.db
 Thumbs.db
+ 
+tests/_output/*

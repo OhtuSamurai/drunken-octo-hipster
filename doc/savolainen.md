@@ -1,0 +1,26 @@
+- Ja mitäs teille?
+- Mitteepä tässä, kiitos vuan kysymästä.
+- Tarkoitan siis, mitä te syötte?
+- Purkkoo. Tästä on kyllä männä jo maku.
+- Mutta mitä te tilaatte nyt?
+- Savon Sanomia ja Aku Ankkoo, mutta nyt ottaesin hampurilaesen.
+- Selvä. Ja minkähän hampurilaisen?
+- No se on se systeemi, jossa on pihvi ja kaks kuorta. Pitäs teijän tiällä tietee.
+- Syötkö täällä?
+- Sillon tällön.
+- Öh... siis syötkö täällä nyt tällä hetkellä?
+- Purkkoo vieläkiin, mutta maku on männä jo.
+- Puhun tilaamastasi hampurilaisesta. Tuleeko se mukaan?
+- Kah, jos se vuan tahtoo.
+- Siis otatko mukaan?
+- Tule vuan, jos halluut.
+- Selkeä kysymys: syötkö tilaamasi ruoan täällä?
+- Onko siellä tilloo? Aattelin kyllä että tuolla pöyvässä...
+- Hyvä on. Saako laittaa kaikki mausteet?
+- Jos ne vuan mahtuu, vähän kyllä eppäelen.
+- Eli: kaikkia mausteita vai ei kaikkia mausteita?
+- Joo... vuan kanelin suap jättee poekkeen.
+- Eipä sitä kyllä yleensä... no, kaikkia muita saa siis panna?
+- No sepä oli aeka suora ja hävytön kysymys, hävetkee nyt vähäsen.
+- Voi helvetti teidän kanssa!!!
+- Vai niin, että tällasta palavelua. Taijanpa sitten jättee tilloomatta ja hakkee torilta muikkukukon

@@ -16,7 +16,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
-  protected $fillable = ['first_name', 'last_name', 'department', 'position'];
+  protected $fillable = ['first_name', 'last_name', 'department', 'position', 'username', 'is_admin', 'is_active', 'description'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -25,4 +25,42 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	//protected $hidden = array('password', 'remember_token');
 
+  public function polls() {
+	return $this->belongsToMany('Poll', 'participants')->withTimestamps();
+  }
+
+  public function committees() {
+	return $this->belongsToMany('Committee', 'committee_participants')->withTimestamps();
+  }
+
+  public function validator() {
+	return Validator::make(
+		$this->getAttributes(),
+		array('username' => 'required|unique:users,username,'.$this->id,
+			'first_name' => 'required',
+			'last_name' => 'required',
+			'department' => 'required',
+			'position' => 'required'
+		), array('username.required' => 'Anna käyttäjätunnus.',
+			'first_name.required' => 'Anna etunimi.',
+			'last_name.required' => 'Anna sukunimi.',
+			'department.required' => 'Anna laitos.',
+			'position.required' => 'Anna asema.',
+			'username.unique' => 'Käyttäjätunnus löytyy jo järjestelmästä.'
+		));
+  }
+
+  //returns users polls which are open
+  public function curr_polls() {
+  	return $this->polls->filter(function($poll) { 
+  		return $poll->is_open;
+  	});
+  }
+
+  //returns users committees which are open
+  public function curr_committees() {
+  	return $this->committees->filter(function($com) { 
+  		return $com->is_open;
+  	});
+  }
 }

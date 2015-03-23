@@ -6,17 +6,30 @@
   {{HTML::style('bootstrap-3.3.2-dist/css/bootstrap.min.css')}}
   {{HTML::style('bootstrap-3.3.2-dist/css/bootstrap-theme.min.css')}}
   {{HTML::style('main.css')}}
+  {{HTML::script('javascript/jquery-1.11.2.min.js')}}  
   {{HTML::script('bootstrap-3.3.2-dist/js/bootstrap.min.js')}}
-  <style>
-    body{
-      padding-top: 70px;
-      }
-  </style>
+  @yield('pagehead')
 </head>
 <body>
+<div class="container">
+@include('layouts.navigation')
+@if (!($errors->first()==NULL))
+	<div class="alert alert-danger">
+		@foreach ($errors->getMessages() as $error)
+			 <b>{{$error[0];}}</b>	
+		@endforeach
+	</div> 
+@endif
+
+@if (Session::has('success'))
+  <div class="alert alert-success">
+       <b>{{Session::get('success')}}</b>  
+  </div> 
+@endif
+
 <div class="container-fluid">
   @yield('content')
 </div>
-@show
+</div>
 </body>
 </html>

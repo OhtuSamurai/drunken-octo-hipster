@@ -6,6 +6,8 @@
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
 
+include '../c3.php';
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
