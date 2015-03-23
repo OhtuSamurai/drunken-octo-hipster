@@ -6,11 +6,15 @@ phantomjs --webdriver=4444 &
 if [ "$1" = "--acceptance" ]
 then
 echo ajetaan vain acceptance testit
-vendor/bin/codecept run acceptance --coverage --coverage-xml --coverage-html
+vendor/bin/codecept run acceptance
 elif [ "$1" = "--unit" ]
 then
 echo ajetaan vain unit testit
-vendor/bin/codecept run unit --coverage --coverage-xml --coverage-html
+vendor/bin/codecept run unit
+elif [ "$1" = "--coverage" ]
+then
+echo ajetaan kaikki testit ja generoidaan kattavuusraportti
+vendor/bin/codecept run --coverage --coverage-xml --coverage-html
 else
 echo ajetaan kaikki testit
 vendor/bin/codecept run
