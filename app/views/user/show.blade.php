@@ -16,6 +16,7 @@
 
 <h1>Yhteenveto</h1>
 
+@if($user->is_admin)
 <div class="col-md-4">
   <h2>Päätetyt toimikunnat:</h2>
 	@include('committee.list')
@@ -24,4 +25,14 @@
   <h2>Avoimet kyselyt:</h2>
 	@include('poll.list')
 </div>
+@else
+<div class="col-md-4">
+  <h2>Kuulut toimikuntiin:</h2>
+	@include('committee.list')
+</div>
+<div class="col-md-4">
+  <h2>Kuulut kyselyihin:</h2>
+	@include('poll.list')
+</div>
+@endif
 @stop

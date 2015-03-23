@@ -17,5 +17,5 @@
     </tr>
   @endforeach
   </tbody>
+  @endif
 </table>
-	@endif

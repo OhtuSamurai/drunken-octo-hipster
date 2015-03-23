@@ -96,9 +96,9 @@ class UserController extends \BaseController {
 		{
 			$polls = [];
 			$committees = [];
-			foreach(Auth::user()->polls as $poll)
+			foreach($user->polls as $poll)
 				if($poll->is_open) array_push($polls, $poll);
-			foreach(Auth::user()->committees as $committee)
+			foreach($user->committees as $committee)
 				if($committee->is_open) array_push($committees, $committee);
 		}
 		return View::make('user.show', 
