@@ -29,6 +29,6 @@ class Poll extends Eloquent {
   }
 	
 	public function comments() {
-		return $this->hasMany('Comment')->orderBy('created_at');
+		return $this->hasMany('Comment')->orderBy('created_at','desc');
 	}
 }
