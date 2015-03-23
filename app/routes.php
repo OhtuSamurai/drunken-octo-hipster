@@ -45,4 +45,7 @@ Route::resource('answer', 'AnswerController',
 Route::resource('committee', 'CommitteeController',
                 array('except' => array('destroy', 'edit')));
 
+Route::resource('lurker', 'LurkerController',
+				array('only' => array('store')));
+
 Route::get('add', 'CommitteeController@store');
