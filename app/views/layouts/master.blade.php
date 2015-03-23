@@ -11,6 +11,7 @@
   @yield('pagehead')
 </head>
 <body>
+<div class="container">
 @include('layouts.navigation')
 @if (!($errors->first()==NULL))
 	<div class="col-md-7">
@@ -30,6 +31,7 @@
 
 <div class="container-fluid">
   @yield('content')
+</div>
 </div>
 </body>
 </html>
