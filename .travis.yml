@@ -7,11 +7,6 @@ php:
 
 install:
 
-
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-
 before_script:
   - mv app/config/database.travis.php app/config/database.php
   - mv app/config/local/database.travis.php app/config/local/database.php
