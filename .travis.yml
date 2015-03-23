@@ -64,3 +64,12 @@ deploy:
   app: oona
   on:
     repo: OhtuSamurai/drunken-octo-hipster
+
+notifications:
+  irc:
+    channels:
+      - "irc.cc.tut.fi#ohtusamurai"
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit}) %{author}: %{message} - %{build_url}"
+  on_failure: always
+  on_success: change
