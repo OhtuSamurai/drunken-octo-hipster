@@ -16,7 +16,7 @@ class CreateCommentsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->longText('commenttext');
+			$table->text('commenttext');
 			$table->integer('poll_id')->unsigned();
 			$table->foreign('poll_id')->references('id')->on('polls');
 			$table->integer('user_id')->unsigned();

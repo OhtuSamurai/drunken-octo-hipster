@@ -80,11 +80,8 @@ class PollController extends \BaseController {
     */
     public function updateDescriptionAndTitle(){
     	$poll = Poll::find(Input::get('poll_id'));
-    	//var_dump(Input::get('description'));
-    	//var_dump(Input::get('title'));
-    	//var_dump(Input::get('poll_id'));
     	$poll->description = Input::get('description');
-    	$poll->title = Input::get('title');
+    	$poll->toimikunta = Input::get('title');
     	$poll->save();
     	return Redirect::route('poll.show', ['id' => Input::get('poll_id')]);
     }

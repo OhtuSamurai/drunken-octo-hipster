@@ -16,7 +16,7 @@ class CreateTimeideasTable extends Migration {
 		{
 		$table->increments('id');
 		$table->integer('poll_id')->unsigned();
-	  	$table->foreign('poll_id')->references('id')->on('polls');
+		$table->foreign('poll_id')->references('id')->on('polls');
 		$table->string('description');
 		$table->timestamps();
 		});

@@ -17,6 +17,7 @@ class CreateCommitteesTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('time');
+			$table->boolean('is_open')->default(1);
 			$table->timestamps();
 		});
 	}

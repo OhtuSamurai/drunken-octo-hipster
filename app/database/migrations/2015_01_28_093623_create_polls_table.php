@@ -17,6 +17,8 @@ class CreatePollsTable extends Migration {
 			$table->increments('id');
 			$table->string('toimikunta');
 			$table->timestamps();
+			$table->boolean('is_open')->default(1);
+			$table->text('description')->default('');
 		});
 	}
 
