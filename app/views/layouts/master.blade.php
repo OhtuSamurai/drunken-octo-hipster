@@ -14,13 +14,11 @@
 <div class="container">
 @include('layouts.navigation')
 @if (!($errors->first()==NULL))
-	<div class="col-md-7">
 	<div class="alert alert-danger">
 		@foreach ($errors->getMessages() as $error)
 			 <b>{{$error[0];}}</b>	
 		@endforeach
 	</div> 
-	</div>
 @endif
 
 @if (Session::has('success'))
