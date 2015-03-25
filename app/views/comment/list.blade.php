@@ -7,12 +7,12 @@
 			@foreach($comments as $comment)
 				<div class="commentText">
 					<p>{{$comment->commenttext}}</p>
-					<span class="date sub-text">{{$comment->user->first_name}} {{$comment->created_at}} </span>
+					<span class="date sub-text">{{$comment->user ? $comment->user->first_name : $comment->author_name}} {{$comment->created_at}} </span>
 				</div>	
 			@endforeach
 		</ul>
-		@if (Auth::user())
-			@include('comment.create-form')
-		@endif
+		
+		@include('comment.create-form')
+	
 	</div>
 </div>

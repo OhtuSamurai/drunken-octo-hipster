@@ -7,17 +7,17 @@ class CommentController extends \BaseController {
 		$pollid = Input::get('poll_id');
 		$commenttext = Input::get('commenttext');
 		$comment = new Comment;
-		$comment->commenttext = $commenttext;	
-		$comment->user_id = Auth::user()->id;
+		$comment->commenttext = $commenttext;
+		if (Auth::user())
+			$comment->user_id = Auth::user()->id;
+		else
+			$comment->author_name = (Input::get('author_name') ? Input::get('author_name') : "Anonyymi");
 		$comment->poll_id = $pollid;
+		$validator = $comment->validator();
+		if ($validator->fails())
+			return Redirect::route('poll.show',$pollid)->withErrors($validator);
 		$comment->save();
 		return Redirect::route('poll.show',$pollid);	
 	}
-	/** 
-	* Näyttää uuden kommentin luomiseen tarvittavat asiat 
-	*/
-	public function create() {
-		
-	
-	}
+
 }
