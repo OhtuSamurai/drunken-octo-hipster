@@ -27,9 +27,4 @@
 			$this->assertRedirectedToAction('PollController@show', ['id' => 43]);
 			$this->assertEquals(1, count(Poll::find(43)->comments));
 		}
-
-		public function testCreate() {
-			$response = new CommentController;
-			$this->assertNull($response->create());
-		}
 	}
