@@ -38,8 +38,13 @@ $(document).ready(function(){
 	    	$(this).addClass("eisovi");
 	    }
 	    else if(selected.val()=='eisovi'){
-	    	selected.val('parhaiten');
+	    	selected.val('entieda');
 	    	$(this).removeClass("eisovi");
+	    	$(this).addClass("entieda");
+	    }
+	    else if(selected.val()=='entieda'){
+	    	selected.val('parhaiten');
+	    	$(this).removeClass("entieda");
 	    	$(this).addClass("parhaiten");
 	    }
 	    else if(selected.val()=='eivastattu'){

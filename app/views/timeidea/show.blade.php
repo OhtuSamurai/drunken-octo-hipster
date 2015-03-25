@@ -9,7 +9,7 @@
 			
 			<td class="options {{$answer->sopivuus}}" data-userid="{{$user->id}}">
 				{{Form::select('size', 
-								array('sopii' => 'Sopii', 'parhaiten' => 'Parhaiten', 'eisovi' => 'Ei', 'eivastattu' => 'eivastattu'), 
+								array('sopii' => 'Sopii', 'parhaiten' => 'Parhaiten', 'eisovi' => 'Ei','entieda' => 'En tiedä', 'eivastattu' => 'eivastattu'), 
 								$answer->sopivuus, 
 								array('class'=>'selectedvalue hidden', 
 									  'name'=>$answer->id, 
