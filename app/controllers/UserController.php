@@ -149,6 +149,21 @@ class UserController extends \BaseController {
 		$user->save();
 		return Redirect::action('UserController@show', $id)->with('success', "Käyttäjän tiedot päivitetty.");	
 	}
+	
+	public function removefrompool(){
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+   		if (!Input::has('user'))
+    			return Redirect::route('poll.create')->withErrors("Valitse ensin käyttäjiä listasta");
+    	echo('testest');
+		var_dump(Input::get('user'));
+    	foreach(Input::get('user') as $id)
+    	//	var_dump($user);
+    		$user = User::find($id);
+    		$user->is_active = false;
+      		$user->save();
+    	return Redirect::action('UserController@active')->with('success', "Käyttäjä/t on poistettu poolista.");
+	}
 
 
 	/**

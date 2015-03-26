@@ -28,6 +28,8 @@ Route::get('poistetut', 'UserController@inactive');
 
 Route::put('updateDescriptionAndTitle', 'PollController@updateDescriptionAndTitle');
 
+Route::put('removefrompool', 'UserController@removefrompool');
+
 Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
 

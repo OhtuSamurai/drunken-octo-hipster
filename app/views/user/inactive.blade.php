@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('pagehead')
+  {{HTML::script('javascript/inactive.js')}}
+@stop
 @section('content')
 <div class="col-md-7">
   <h1>Poolin ulkopuoliset käyttäjät</h1>
