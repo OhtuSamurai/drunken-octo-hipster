@@ -39,9 +39,9 @@ class TimeideaController extends \BaseController {
 	* Creates a single new answer
 	*
 	*/
-	private function createAnswer($uid, $timeideaid) {
+	private function createAnswer($uid, $timeideaid, $column) {
 		$answer = new Answer;
-		$answer->participant_id = $uid;
+		$answer->$column = $uid;
 		$answer->timeidea_id = $timeideaid;
 		$answer->sopivuus = 'eivastattu';
 		$answer->save();
@@ -53,7 +53,10 @@ class TimeideaController extends \BaseController {
 	*/
 	private function setAnswers($poll,$timeideaid) {
 		foreach($poll->users as $user) {
-			$this->createAnswer($user->id, $timeideaid);
+			$this->createAnswer($user->id, $timeideaid, "participant_id");
+		}
+		foreach($poll->lurkers as $lurker) {
+			$this->createAnswer($lurker->id, $timeideaid, "lurker_id");
 		}
 	}
 
