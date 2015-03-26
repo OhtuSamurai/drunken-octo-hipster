@@ -86,6 +86,9 @@
 	<div class="row">
 		@include('timeidea.create-form')
 	</div>
+    <div class="row">
+		<a class='btn btn-primary' href='edit' role='button'>Muokkaa kyselyä</a>
+	</div>
     @include('poll.close')
 	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'committeeform', 'method'=>'PUT')) }}
 	{{ Form::hidden('time', '', array('class' => 'valittuaika')) }}
