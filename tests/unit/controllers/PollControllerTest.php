@@ -82,8 +82,9 @@ class PollControllerTest extends TestCase {
 	}
 
 	public function testEdit() {
-		$poll_ctrl = new PollController;
-		$this->assertNull($poll_ctrl->edit(1));
+		$this->mockPoll()->save();
+		$this->action('GET', 'PollController@edit', ['id' => 43]);
+		$this->assertViewHas('poll');
 	}
 	
 	public function testUpdate() {
