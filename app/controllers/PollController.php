@@ -100,7 +100,9 @@ class PollController extends \BaseController {
 		$timeideas = $poll->timeideas;
 		$answers = $poll->answers;
 		$comments = $poll->comments;
-		return View::make('poll.show', array('poll' => $poll, 'users' => $users, 'timeideas' => $timeideas, 'answers' => $answers,'comments'=>$comments));
+		$lurkers = $poll->lurkers;
+		return View::make('poll.show', array('poll' => $poll, 'users' => $users, 'timeideas' => $timeideas,
+			'answers' => $answers, 'comments' => $comments, 'lurkers' => $lurkers));
 	}
 
 
