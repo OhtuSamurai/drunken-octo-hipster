@@ -76,9 +76,12 @@ class PollControllerTest extends TestCase {
 	public function testShow() {
 		$this->mockPoll()->save();
 		$this->action('GET', 'PollController@show', ['id' => 43]);
+		$this->assertViewHas('poll');
 		$this->assertViewHas('users');
 		$this->assertViewHas('timeideas');
 		$this->assertViewHas('answers');
+		$this->assertViewHas('comments');
+		$this->assertViewHas('lurkers');
 	}
 
 	public function testEdit() {

@@ -9,14 +9,26 @@ class LurkerController extends \BaseController {
 	 */
 	public function store()
 	{
+		$poll = Poll::find(Input::get('poll_id'));
 		if(!Auth::check() or !Auth::User()->is_admin)
-			return Redirect::action('PollController@edit', ['id' => Input::get('poll_id')])->withErrors("Toiminto evätty!");
+			return Redirect::action('PollController@edit', ['id' => $poll->id])->withErrors("Toiminto evätty!");
 		if(!Input::has('name'))
-			return Redirect::action('PollController@edit', ['id' => Input::get('poll_id')])->withErrors('Käyttäjän nimi unohtui');
+			return Redirect::action('PollController@edit', ['id' => $poll->id])->withErrors('Käyttäjän nimi unohtui');
 		$lurker = new Lurker;
 		$lurker->poll_id = Input::get('poll_id'); 
 		$lurker->name = Input::get('name');
 		$lurker->save();
-		return Redirect::action('PollController@show', ['id' => $lurker->poll_id]);
+
+		$timeideas = $poll->timeideas;
+		foreach($timeideas as $timeidea)
+		{
+			$answer = new Answer;
+			$answer->lurker_id = $lurker->id;
+			$answer->timeidea_id = $timeidea->id;
+			$answer->sopivuus = 'eivastattu';
+			$answer->save();
+		}
+
+		return Redirect::action('PollController@show', ['id' => $poll->id]);
 	}
 }
