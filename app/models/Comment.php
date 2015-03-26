@@ -22,4 +22,12 @@ class Comment extends Eloquent {
 	public function user() {
 		return $this->belongsTo('User');
 	}
+
+	public function validator() {
+		return Validator::make(
+			$this->getAttributes(),
+			array('commenttext'=>'required'),
+			array('commenttext.required'=>'Anna kommentti!')
+			);
+	}
 }

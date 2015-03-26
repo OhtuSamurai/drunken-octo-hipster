@@ -112,7 +112,8 @@ class PollController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$poll = Poll::find($id);
+		return View::make('poll.edit', ['poll' => $poll]);
 	}
 
 	/**

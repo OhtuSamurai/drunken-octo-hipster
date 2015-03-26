@@ -32,7 +32,7 @@ Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
 
 Route::resource('poll', 'PollController',
-                array('except' => array('destroy', 'edit')));
+                array('except' => array('destroy')));
 
 Route::resource('timeidea', 'TimeideaController',
                 array('only' => array('store')));

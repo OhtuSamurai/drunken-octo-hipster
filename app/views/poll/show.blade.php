@@ -66,13 +66,14 @@
 	{{ Form::close() }}
 </div>
 @endif
-<div class="col-md-2 col-md-offset-7">
+<div class="col-md-4 col-md-offset-5">
 	<table class="table table-bordered selitykset">
 		<tbody>
 			<tr>
 				<td class="eisovi"><b>ei sovi</b></td>
 				<td class="sopii"><b>sopii</b></td>
 				<td class="parhaiten"><b>paras</b></td>		
+				<td class="entieda"><b>en tiedä</b></td>
 			</tr>
 		</tbody>
 	</table>
@@ -84,6 +85,9 @@
 	<h2> Admin-alue </h2>
 	<div class="row">
 		@include('timeidea.create-form')
+	</div>
+    <div class="row">
+		<a class='btn btn-primary' href='edit' role='button'>Muokkaa kyselyä</a>
 	</div>
     @include('poll.close')
 	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'committeeform', 'method'=>'PUT')) }}
