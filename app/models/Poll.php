@@ -14,21 +14,25 @@ class Poll extends Eloquent {
 	 */
 	protected $table = 'polls';
 
-  protected $fillable = ['toimikunta', 'is_open'];
+  	protected $fillable = ['toimikunta', 'is_open'];
 
-  public function users(){
-    return $this->belongsToMany('User', 'participants')->withTimestamps();
-  }
+ 	public function users(){
+    	return $this->belongsToMany('User', 'participants')->withTimestamps();
+  	}
 
-  public function timeideas(){
-    return $this->hasMany('Timeidea');
-  }
+  	public function timeideas(){
+    	return $this->hasMany('Timeidea');
+  	}
 
-  public function answers() {
-    return $this->hasManyThrough('Answer', 'Timeidea');
-  }
+  	public function answers() {
+    	return $this->hasManyThrough('Answer', 'Timeidea');
+  	}
 	
 	public function comments() {
 		return $this->hasMany('Comment')->orderBy('created_at','desc');
+	}
+
+	public function lurkers() {
+		return $this->hasMany('Lurker');
 	}
 }

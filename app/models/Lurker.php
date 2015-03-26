@@ -11,9 +11,9 @@ class Lurker extends Eloquent {
 
   	protected $fillable = ['name'];
 
-  	public function polls()
+  	public function poll()
   	{
-  		return $this->belongsToMany('Poll', 'poll_lurkers')->withTimestamps();
+  		return $this->belongsTo('Poll');
   	}
 
 }

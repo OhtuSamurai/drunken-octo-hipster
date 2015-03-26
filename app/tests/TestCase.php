@@ -54,6 +54,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' => 1];
 	}
 
+	private function brew_a_lurker() {
+		return ['id' => 314, 'name' => 'lurker', 'poll_id' => 43];
+	}
+
 	public function mockUserWithId($id) {
 		$params = $this->brew_a_user();
 		$params['id'] = $id;
@@ -88,6 +92,11 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	public function mockCommittee($params = array()) {
 		if(empty($params)) $params = $this->brew_a_committee();
 		return $this->generalMockery(new Committee, $params);
+	}
+
+	public function mockLurker($params = array()) {
+		if(empty($params)) $params = $this->brew_a_lurker();
+		return $this->generalMockery(new Lurker, $params);
 	}
 
 	//yleistä solvaamista

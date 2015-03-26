@@ -34,4 +34,10 @@ class PollTest extends TestCase {
 		foreach(Poll::find(43)->answers as $ans)
 			$this->assertEquals(Answer::find($ans->id)->sopivuus, $ans->sopivuus);
 	}
+
+	public function testPollLurkers() {
+		$this->mockPoll()->save();
+		$this->mockLurker()->save();
+		$this->assertEquals(Lurker::find(314)->name, Poll::find(43)->lurkers()->first()->name);
+	}
 }
