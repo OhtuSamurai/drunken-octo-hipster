@@ -150,24 +150,30 @@ class UserController extends \BaseController {
 		return Redirect::action('UserController@show', $id)->with('success', "Käyttäjän tiedot päivitetty.");	
 	}
 	
-	public function toggleActive(){
+	public function removeFromPool(){
 		if(!Auth::check() or !Auth::User()->is_admin)
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
    		if (!Input::has('user'))
-    			return Redirect::route('poll.create')->withErrors("Valitse ensin käyttäjiä listasta");
-    	echo('testest');
-		var_dump(Input::get('user'));
+    			return Redirect::action('UserController@active')->withErrors("Valitse ensin käyttäjiä listasta");
     	foreach(Input::get('user') as $id)
     		$user = User::find($id);
-    		if($user->is_active = true){
-    			$user->is_active = false;
-    		}
-    		else{
-    			$user->is_active = true;
-    		}
+    		$user->is_active = false;    		
       		$user->save();
     	return Redirect::action('UserController@active')->with('success', "Käyttäjä/t on poistettu poolista.");
 	}
+	
+	public function addToPool(){
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+   		if (!Input::has('user'))
+    			return Redirect::action('UserController@inactive')->withErrors("Valitse ensin käyttäjiä listasta");
+    	foreach(Input::get('user') as $id)
+    		$user = User::find($id);
+    		$user->is_active = true;
+      		$user->save();
+    	return Redirect::action('UserController@inactive')->with('success', "Käyttäjä/t on lisätty pooliin.");
+	}
+	
 
 
 	/**
