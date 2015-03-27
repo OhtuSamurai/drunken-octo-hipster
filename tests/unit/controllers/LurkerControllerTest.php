@@ -25,6 +25,7 @@ class LurkerControllerTest extends TestCase {
 	{
 		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
+		$this->mockTimeidea()->save();
 		$this->action('POST', 'LurkerController@store', [], ['name' => 'lurkah','poll_id' => 43]);
 		$this->assertRedirectedToAction('PollController@show', ['id' => 43]);	
 	}

@@ -47,7 +47,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_an_idea() {
-		return ['id' => 23, 'poll_id' => 1, 'description' => 'Stay awhile and listen'];
+		return ['id' => 23, 'poll_id' => 43, 'description' => 'Stay awhile and listen'];
 	}
 
 	private function brew_a_committee() {
