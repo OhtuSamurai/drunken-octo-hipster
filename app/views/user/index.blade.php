@@ -3,7 +3,7 @@
   {{HTML::script('javascript/pooli.js')}}
 @stop
 @section('content')
-{{ Form::open(array('action' => array('UserController@removefrompool'), 'id'=>'poolremoverform', 'method'=>'PUT')) }}
+{{ Form::open(array('action' => array('UserController@toggleActive'), 'id'=>'poolremoverform', 'method'=>'PUT')) }}
 	<div class="col-md-7">
 	
   		<h1>Opetustaitotoimikuntapooli</h1>
