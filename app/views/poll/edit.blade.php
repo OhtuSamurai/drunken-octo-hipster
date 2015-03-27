@@ -14,8 +14,15 @@
 	</div>
 	{{ Form::close() }}
 
-	<h4>Lisää kyselyyn järjestelmän ulkopuoleisia henkilöitä</h4>
-	@include('lurker.create')
+	<div class="row">
+		@include('lurker.list')
+		@include('lurker.create')
+	</div>
 
+	<div class="row">
+		@include('timeidea.list')
+		@include('timeidea.create-form')
+	</div>
+	
 	<a class='btn btn-primary' role='button' href={{action('PollController@show', ['id' => $poll->id])}}>Palaa kyselyyn</a>
 @stop

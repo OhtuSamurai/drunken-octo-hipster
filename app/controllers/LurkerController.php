@@ -29,6 +29,6 @@ class LurkerController extends \BaseController {
 			$answer->save();
 		}
 
-		return Redirect::action('PollController@show', ['id' => $poll->id]);
+		return Redirect::action('PollController@edit', ['id' => $poll->id]);
 	}
 }

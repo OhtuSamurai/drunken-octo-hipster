@@ -66,6 +66,7 @@ class PollControllerTest extends TestCase {
 		}
 		$this->action('POST', 'PollController@store', null, ['toimikunta'=>'Hieno Toimikunta', 'user'=>[51, 52]]);
 		$poll = Poll::find(1);
+		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertEquals(1, $poll->is_open);
 		$this->assertEquals('Hieno Toimikunta', $poll->toimikunta);
 		$this->assertTrue($poll->users()->get()->contains(51));

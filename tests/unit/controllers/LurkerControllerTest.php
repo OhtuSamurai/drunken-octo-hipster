@@ -27,6 +27,8 @@ class LurkerControllerTest extends TestCase {
 		$this->mockPoll()->save();
 		$this->mockTimeidea()->save();
 		$this->action('POST', 'LurkerController@store', [], ['name' => 'lurkah','poll_id' => 43]);
-		$this->assertRedirectedToAction('PollController@show', ['id' => 43]);	
+		$this->assertRedirectedToAction('PollController@edit', ['id' => 43]);
+		$this->assertEquals('lurkah', Lurker::find(1)->name);
+		$this->assertEquals(Poll::find(43)->lurkers()->first()->name, Lurker::find(1)->name);
 	}
 }

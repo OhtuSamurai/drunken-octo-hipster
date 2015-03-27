@@ -80,9 +80,6 @@
 @if(Auth::user() && Auth::user()->is_admin)
 	<div class="admin top30">
 	<h2> Admin-alue </h2>
-	<div class="row">
-		@include('timeidea.create-form')
-	</div>
     <div class="row">
 		<a class='btn btn-primary' href={{action('PollController@edit', ['id' => $poll->id])}} role='button'>Muokkaa kyselyä</a>
 	</div>
