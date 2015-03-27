@@ -17,6 +17,8 @@ class CreateAnswersTable extends Migration {
 			$table->increments('id');
 			$table->integer('participant_id')->unsigned()->nullable();
 			$table->foreign('participant_id')->references('id')->on('users');
+			$table->integer('lurker_id')->unsigned()->nullable();
+			$table->foreign('lurker_id')->references('id')->on('lurkers');
 			$table->integer('timeidea_id')->unsigned();
 			$table->foreign('timeidea_id')->references('id')->on('timeideas');
 			$table->enum('sopivuus',array('parhaiten','sopii','eisovi','entieda','eivastattu'));
