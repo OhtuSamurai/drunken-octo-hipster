@@ -13,4 +13,6 @@
 	@endif  
 	</div>
 	{{ Form::close() }}
+
+	<a class='btn btn-primary' role='button' href={{action('PollController@show', ['id' => $poll->id])}}>Palaa kyselyyn</a>
 @stop
