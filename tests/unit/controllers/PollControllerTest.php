@@ -96,7 +96,7 @@ class PollControllerTest extends TestCase {
 		$this->mockPoll()->save();
 		$poll = Poll::find(43);
 		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'bricks']);
-		$this->assertRedirectedToAction('PollController@show', ['id' => $poll->id]);
+		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertEquals('bricks', Poll::find(43)->toimikunta);
 	}
 

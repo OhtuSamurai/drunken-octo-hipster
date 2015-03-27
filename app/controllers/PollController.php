@@ -140,7 +140,7 @@ class PollController extends \BaseController {
 		}
 
 		//for example if polls name gets changed
-		return Redirect::route('poll.show', array('id' => $id));
+		return Redirect::route('poll.edit', array('id' => $id));
 	}
 
 
