@@ -70,7 +70,7 @@ class PollController extends \BaseController {
 		$poll = $this->makeAndSaveAPoll();
     	foreach(Input::get('user') as $user)
       		$poll->users()->attach($user);
-    	return Redirect::route('poll.show', array('poll' => $poll->id));
+    	return Redirect::route('poll.edit', array('poll' => $poll->id));
     }
 
 	/**

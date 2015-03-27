@@ -14,5 +14,10 @@
 	</div>
 	{{ Form::close() }}
 
-	<a class='btn btn-primary' role='button' href={{action('PollController@show', ['id' => $poll->id])}}>Palaa kyselyyn</a>
+	<div class="row">
+		@include('timeidea.list')
+		@include('timeidea.create-form')
+	</div>
+
+	<a class='btn btn-primary' role='button' href={{action('PollController@show', ['id' => $poll->id])}}>Siirry kyselyyn</a>
 @stop

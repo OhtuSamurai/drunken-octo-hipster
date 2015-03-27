@@ -43,7 +43,7 @@ class TimeideaControllerTest extends TestCase {
 		$usr->save();
 		$poll->users()->attach($usr);
 		$this->action('POST', 'TimeideaController@store', null, ['poll_id'=>'43','description'=>'kokista']);
-		$this->assertRedirectedToAction('PollController@show', ['id' => $poll->id]);
+		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertEquals('kokista', Timeidea::find(1)->description);
 		foreach($poll->answers() as $answer)
 			$this->assertEquals('eisovi', $answer->sopivuus);
