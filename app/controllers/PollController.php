@@ -96,7 +96,7 @@ class PollController extends \BaseController {
 	public function show($id)
 	{
 		$poll = Poll::find($id);
-    		$users = $poll->users;
+    	$users = $poll->users;
 		$timeideas = $poll->timeideas;
 		$answers = $poll->answers;
 		$comments = $poll->comments;

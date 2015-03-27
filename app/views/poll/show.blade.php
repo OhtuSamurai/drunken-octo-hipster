@@ -9,20 +9,7 @@
 @section('content')
 
 <h1>{{$poll->toimikunta}}</h1>
-{{ Form::open(array('action' => 'PollController@updateDescriptionAndTitle', 'id'=>'titleanddes', 'method' => 'PUT')) }}
-{{ Form::hidden('poll_id', $poll->id) }}
-<div>
-  	@if(Auth::user() && Auth::user()->is_admin)
-  		<p>Otsikko  {{ Form::text('title', $poll->toimikunta) }} </p>
-  		<p>Kuvaus  {{ Form::textarea('description', $poll->description)}}
-  			<input type="submit" value="Tallenna">
-  		</p>
-  	@else
-  		<p>{{$poll->description}}</p>
-	@endif  
-</div>
-{{ Form::close() }}
-
+<p>{{$poll->description}}</p>
 {{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method' => 'PUT')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
 
 <table class="table table-bordered">
@@ -87,7 +74,7 @@
 		@include('timeidea.create-form')
 	</div>
     <div class="row">
-		<a class='btn btn-primary' href='edit' role='button'>Muokkaa kyselyä</a>
+		<a class='btn btn-primary' href={{action('PollController@edit', ['id' => $poll->id])}} role='button'>Muokkaa kyselyä</a>
 	</div>
     @include('poll.close')
 	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'committeeform', 'method'=>'PUT')) }}
