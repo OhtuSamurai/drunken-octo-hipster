@@ -26,8 +26,6 @@ Route::get('pooli', 'UserController@active');
 
 Route::get('poistetut', 'UserController@inactive');
 
-Route::put('updateDescriptionAndTitle', 'PollController@updateDescriptionAndTitle');
-
 Route::put('removeFromPool', 'UserController@removeFromPool');
 
 Route::put('addToPool', 'UserController@addToPool');

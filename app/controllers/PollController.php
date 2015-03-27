@@ -72,20 +72,6 @@ class PollController extends \BaseController {
       		$poll->users()->attach($user);
     	return Redirect::route('poll.show', array('poll' => $poll->id));
     }
-    
-    
-    /**
-     *Updates Description and title given by Admin
-     *
-    */
-    public function updateDescriptionAndTitle(){
-    	$poll = Poll::find(Input::get('poll_id'));
-    	$poll->description = Input::get('description');
-    	$poll->toimikunta = Input::get('title');
-    	$poll->save();
-    	return Redirect::route('poll.show', ['id' => Input::get('poll_id')]);
-    }
-
 
 	/**
 	 * Display the specified resource.
@@ -96,7 +82,7 @@ class PollController extends \BaseController {
 	public function show($id)
 	{
 		$poll = Poll::find($id);
-    		$users = $poll->users;
+    	$users = $poll->users;
 		$timeideas = $poll->timeideas;
 		$answers = $poll->answers;
 		$comments = $poll->comments;
