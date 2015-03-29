@@ -11,5 +11,12 @@ $(document).ready(function(){
     }
     checkbox.prop("checked", !checkbox.prop("checked"));	
   });
+  
+  
+  $("#deleteuser").click(function(){
+  	$('#MoveorRemove').attr('action', "/delete");
+    $('#MoveorRemove').submit();
+  });
+  
 });
- //tänne tulee kaikenlaista
+

@@ -30,6 +30,8 @@ Route::put('removeFromPool', 'UserController@removeFromPool');
 
 Route::put('addToPool', 'UserController@addToPool');
 
+Route::put('delete', 'UserController@delete');
+
 Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
 

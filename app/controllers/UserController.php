@@ -155,10 +155,11 @@ class UserController extends \BaseController {
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
    		if (!Input::has('user'))
     			return Redirect::action('UserController@active')->withErrors("Valitse ensin käyttäjiä listasta");
-    	foreach(Input::get('user') as $id)
+    	foreach(Input::get('user') as $id){
     		$user = User::find($id);
     		$user->is_active = false;    		
       		$user->save();
+      	}
     	return Redirect::action('UserController@active')->with('success', "Käyttäjä/t on poistettu poolista.");
 	}
 	
@@ -167,10 +168,11 @@ class UserController extends \BaseController {
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
    		if (!Input::has('user'))
     			return Redirect::action('UserController@inactive')->withErrors("Valitse ensin käyttäjiä listasta");
-    	foreach(Input::get('user') as $id)
+    	foreach(Input::get('user') as $id){
     		$user = User::find($id);
     		$user->is_active = true;
       		$user->save();
+      	}
     	return Redirect::action('UserController@inactive')->with('success', "Käyttäjä/t on lisätty pooliin.");
 	}
 	
@@ -182,9 +184,23 @@ class UserController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	 public function destroy($id)
 	{
-		//
+	 //
+	}
+	
+	
+	public function delete()
+	{
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		if (!Input::has('user'))
+   			return Redirect::action('UserController@inactive')->withErrors("Valitse ensin käyttäjiä listasta");
+    	foreach(Input::get('user') as $id){
+    		$user = User::find($id);
+    		$user->delete();
+    	}
+    	return Redirect::action('UserController@inactive')->with('success', "Käyttäjä/t on poistettu tietokannasta.");
 	}
 
 }
