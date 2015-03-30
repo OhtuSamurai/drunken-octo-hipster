@@ -27,4 +27,20 @@
 			$this->assertRedirectedToAction('PollController@show', ['id' => 43]);
 			$this->assertEquals(1, count(Poll::find(43)->comments));
 		}
+
+		public function testStoreAsNotLoggedIn() {
+			$this->mockPoll()->save();
+			$this->action('POST','CommentController@store', [], ['poll_id' => 43, 'commenttext' => 'no-copi-pastarino']);
+			$this->assertRedirectedToAction('PollController@show', ['id' => 43]);
+			$this->assertEquals(1, count(Poll::find(43)->comments));
+			$this->assertEquals("Anonyymi", Comment::find(1)->author_name);
+		}
+
+		public function testStoreAsNotLoggedInWithGivenAuthorName() {
+			$this->mockPoll()->save();
+			$this->action('POST','CommentController@store', [], ['poll_id' => 43, 'author_name' => 'pedro','commenttext' => 'no-copi-pastarino']);
+			$this->assertRedirectedToAction('PollController@show', ['id' => 43]);
+			$this->assertEquals(1, count(Poll::find(43)->comments));
+			$this->assertEquals("pedro", Comment::find(1)->author_name);
+		}
 	}

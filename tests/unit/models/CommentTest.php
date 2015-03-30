@@ -7,4 +7,10 @@ class CommentTest extends TestCase {
 		$comment->user_id=245;
 		$this->assertTrue($comment->user->first_name=='f');
 	}
+
+	public function testPollFunction() {
+		$this->mockPoll()->save();
+		$this->mockComment()->save();
+		$this->assertEquals(Comment::find(12)->poll->toimikunta, Poll::find(43)->toimikunta);
+	}
 }	

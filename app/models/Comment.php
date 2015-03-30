@@ -13,12 +13,13 @@ class Comment extends Eloquent {
 	 */
 	protected $table = 'comments';
 
-  protected $fillable = ['commenttext'];
+	protected $fillable = ['commenttext'];
 
 
 	public function poll() {
 		return $this->belongsTo('Poll');
 	}
+	
 	public function user() {
 		return $this->belongsTo('User');
 	}

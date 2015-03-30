@@ -189,9 +189,85 @@ class UserControllerTest extends TestCase {
 		$this->assertEquals('', $user2->description);	
 	}
 
+	public function testRemoveFromPoolAsNotLoggedIn() {
+		$this->action('PUT', 'UserController@removeFromPool', [], ['user' => [314, 262]]);
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testRemoveFromPoolAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testAddToPoolAsNotLoggedIn();
+	}
+
+	public function testRemoveFromPoolWithMissingInput() {
+		$this->fakeLoginAdmin();
+		$this->action('PUT', 'UserController@removeFromPool');
+		$this->assertRedirectedToAction('UserController@active');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testRemoveFromPool() {
+		$this->mockUserWithId(314)->save();
+		$this->mockUserWithId(262)->save();
+		$this->fakeLoginAdmin();
+		$this->action('PUT', 'UserController@removeFromPool', [], ['user' => [314, 262]]);
+		$this->assertRedirectedToAction('UserController@active');
+		$this->assertEquals(0, User::find(314)->is_active);
+		$this->assertEquals(0, User::find(262)->is_active);	
+	}
+	
+	public function testAddToPoolAsNotLoggedIn() {
+		$this->action('PUT', 'UserController@addToPool', [], ['user' => [314, 262]]);
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testAddToPoolAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testAddToPoolAsNotLoggedIn();
+	}
+
+	public function testAddToPool() {
+		$this->mockUserWithId(314)->save();
+		$this->mockUserWithId(262)->save();
+		$this->fakeLoginAdmin();
+		$this->action('PUT', 'UserController@addToPool', [], ['user' => [314, 262]]);
+		$this->assertRedirectedToAction('UserController@inactive');
+		$this->assertEquals(1, User::find(314)->is_active);
+		$this->assertEquals(1, User::find(262)->is_active);	
+	}
 
 	public function testDestroy() {
 		$usr_ctrl = new UserController;
 		$this->assertNull($usr_ctrl->destroy(1));
+	}
+
+	public function testDeleteAsNotLoggedIn() {
+		$this->action('PUT', 'UserController@delete', [], ['user' => [314, 262]]);
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testDeleteAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testDeleteAsNotLoggedIn();
+	}
+
+	public function testDeleteWithMissingInput() {
+		$this->fakeLoginAdmin();
+		$this->action('PUT', 'UserController@delete');
+		$this->assertRedirectedToAction('UserController@inactive');
+		$this->assertSessionHasErrors();
+	}
+
+	public function testDelete() {
+		$this->mockUserWithId(314)->save();
+		$this->mockUserWithId(262)->save();
+		$this->fakeLoginAdmin();
+		$this->action('PUT', 'UserController@delete', [], ['user' => [314, 262]]);
+		$this->assertRedirectedToAction('UserController@inactive');
+		$this->assertNull(User::find(314));
+		$this->assertNull(User::find(262));	
 	}
 }
