@@ -21,12 +21,12 @@ class LoginController extends Controller {
 		if ($user == null)
 			return Redirect::action('LoginController@showLoginPage')->withErrors('Virheellinen käyttäjätunnus');
 		Auth::login($user);
-		return Redirect::action('UserController@show', array('id' => $user->id));
+		return Redirect::action('UserController@show', array('id' => $user->id))->with('success', 'Tervetuloa '.$user->first_name.'!');
 	}
 
 	public function logout()
 	{
 		Auth::logout();
-		return Redirect::to('/');
+		return Redirect::to('/')->with('success', 'Ulos kirjaatuminen onnistui!');
 	}
 }

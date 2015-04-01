@@ -79,7 +79,7 @@ class AnswerController extends \BaseController {
 			$answer->sopivuus = $answer_sopivuus;
 			$answer->save();
 		}
-		return Redirect::action('PollController@show', ['id' => Input::get('poll_id')]);
+		return Redirect::action('PollController@show', ['id' => Input::get('poll_id')])->with('success', 'Vastaukset tallennettu!');
 	}
 
 

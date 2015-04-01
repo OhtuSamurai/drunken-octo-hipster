@@ -89,7 +89,7 @@ class TimeideaController extends \BaseController {
 		$timeidea->save();
 		$poll = Poll::find($timeidea->poll_id);
 		$this->setAnswers($poll,$timeidea->id);
-		return Redirect::route('poll.edit', array('poll' => $timeidea->poll_id));
+		return Redirect::route('poll.edit', array('poll' => $timeidea->poll_id))->with('success', 'Ajankohta '.$timeidea->description.' lisätty' );
 	}
 
 
