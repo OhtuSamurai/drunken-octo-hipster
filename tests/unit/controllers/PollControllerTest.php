@@ -65,7 +65,7 @@ class PollControllerTest extends TestCase {
 			$this->mockUser($params)->save();
 		}
 		$this->action('POST', 'PollController@store', null, ['toimikunta'=>'Hieno Toimikunta', 'user'=>[51, 52]]);
-		$poll = Poll::find(1);
+		$poll = Poll::all()->first();
 		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertEquals(1, $poll->is_open);
 		$this->assertEquals('Hieno Toimikunta', $poll->toimikunta);
@@ -76,7 +76,7 @@ class PollControllerTest extends TestCase {
 	
 	public function testShow() {
 		$this->mockPoll()->save();
-		$this->action('GET', 'PollController@show', ['id' => 43]);
+		$this->action('GET', 'PollController@show', ['id' => 'uniikki']);
 		$this->assertViewHas('poll');
 		$this->assertViewHas('users');
 		$this->assertViewHas('timeideas');
@@ -87,17 +87,17 @@ class PollControllerTest extends TestCase {
 
 	public function testEdit() {
 		$this->mockPoll()->save();
-		$this->action('GET', 'PollController@edit', ['id' => 43]);
+		$this->action('GET', 'PollController@edit', ['id' => 'uniikki']);
 		$this->assertViewHas('poll');
 	}
 	
 	public function testUpdate() {
 		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
-		$poll = Poll::find(43);
+		$poll = Poll::find('uniikki');
 		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'bricks']);
 		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
-		$this->assertEquals('bricks', Poll::find(43)->toimikunta);
+		$this->assertEquals('bricks', Poll::find('uniikki')->toimikunta);
 	}
 
 	private function updateIsOpen($cred, $expected) {
@@ -106,7 +106,7 @@ class PollControllerTest extends TestCase {
 		$poll->save();
 		$this->assertEquals(1, $poll->is_open);
 		$this->action('PUT','PollController@update', ['id' => $poll->id], $cred);
-		$this->assertEquals($expected, Poll::find(43)->is_open);
+		$this->assertEquals($expected, Poll::find('uniikki')->is_open);
 	}
 
 	public function testUpdateIsOpenWithoutInput() {

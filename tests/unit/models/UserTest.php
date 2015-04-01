@@ -9,7 +9,7 @@ class UserTest extends TestCase {
 
 	public function testUserParticipatesInAPoll() {
 		$this->mockPoll()->save();
-		$poll = Poll::find(43);
+		$poll = Poll::find('uniikki');
 
 		$usr = $this->mockUser();
 		$usr->save(); 
@@ -33,7 +33,7 @@ class UserTest extends TestCase {
 		$poll = $this->mockPoll();
 		$poll->save();
 
-		$poll2 = $this->mockPoll(['id' => 44, 'toimikunta' => 'committee', 'is_open' => 0]);
+		$poll2 = $this->mockPoll(['id' => '314!', 'toimikunta' => 'committee', 'is_open' => 0]);
 		$poll2->save();
 
 		$usr = $this->mockUser();

@@ -7,6 +7,8 @@ class Poll extends Eloquent {
 
 	use UserTrait, RemindableTrait;
 
+	public $incrementing = false;
+
 	/**
 	 * The database table used by the model.
 	 *

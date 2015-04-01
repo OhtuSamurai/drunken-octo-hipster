@@ -11,6 +11,6 @@ class CommentTest extends TestCase {
 	public function testPollFunction() {
 		$this->mockPoll()->save();
 		$this->mockComment()->save();
-		$this->assertEquals(Comment::find(12)->poll->toimikunta, Poll::find(43)->toimikunta);
+		$this->assertEquals(Comment::find(12)->poll->toimikunta, Poll::find('uniikki')->toimikunta);
 	}
 }	

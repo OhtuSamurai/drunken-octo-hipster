@@ -50,8 +50,25 @@ class PollController extends \BaseController {
 	private function makeAndSaveAPoll() {
 		$poll = new Poll;
     	$poll->toimikunta = Input::get('toimikunta');
+    	$poll->id = $this->random_path();
     	$poll->save();
     	return $poll;
+	}
+
+	/**
+	* Creates a random string with the lengt of 15
+	*
+	* @return string
+	*/
+	private function random_path()
+	{
+		$path = "";
+		$poss = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		for($i = 0; $i<15; $i++) {
+			$n = rand(0, strlen($poss)-1);
+			$path .= $poss[$n];
+		}
+		return $path;
 	}	
 
 	/**
@@ -71,7 +88,7 @@ class PollController extends \BaseController {
     	foreach(Input::get('user') as $user)
       		$poll->users()->attach($user);
     	return Redirect::route('poll.edit', array('poll' => $poll->id));
-    }
+  	}
 
 	/**
 	 * Display the specified resource.

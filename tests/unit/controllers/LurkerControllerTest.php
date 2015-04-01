@@ -4,8 +4,8 @@ class LurkerControllerTest extends TestCase {
 	public function testStoreAsNotLoggedIn()
 	{
 		$this->mockPoll()->save();
-		$this->action('POST', 'LurkerController@store', [], ['poll_id' => 43]);
-		$this->assertRedirectedToAction('PollController@edit', ['id' => 43]);
+		$this->action('POST', 'LurkerController@store', [], ['poll_id' => 'uniikki']);
+		$this->assertRedirectedToAction('PollController@edit', ['id' => 'uniikki']);
 		$this->assertSessionHasErrors();
 	}
 
@@ -26,9 +26,9 @@ class LurkerControllerTest extends TestCase {
 		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
 		$this->mockTimeidea()->save();
-		$this->action('POST', 'LurkerController@store', [], ['name' => 'lurkah','poll_id' => 43]);
-		$this->assertRedirectedToAction('PollController@edit', ['id' => 43]);
+		$this->action('POST', 'LurkerController@store', [], ['name' => 'lurkah','poll_id' => 'uniikki']);
+		$this->assertRedirectedToAction('PollController@edit', ['id' => 'uniikki']);
 		$this->assertEquals('lurkah', Lurker::find(1)->name);
-		$this->assertEquals(Poll::find(43)->lurkers()->first()->name, Lurker::find(1)->name);
+		$this->assertEquals(Poll::find('uniikki')->lurkers()->first()->name, Lurker::find(1)->name);
 	}
 }

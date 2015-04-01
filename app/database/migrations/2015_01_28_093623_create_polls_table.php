@@ -14,11 +14,12 @@ class CreatePollsTable extends Migration {
 	{
 		Schema::create('polls', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->string('id');
+			$table->unique('id');
 			$table->string('toimikunta');
-			$table->timestamps();
 			$table->boolean('is_open')->default(1);
 			$table->text('description')->default('');
+			$table->timestamps();
 		});
 	}
 

@@ -39,15 +39,15 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_a_comment() {
-		return ['id'=>12,'commenttext'=>'Ebin juttu XD','poll_id'=>43,'user_id'=>42];
+		return ['id'=>12,'commenttext'=>'Ebin juttu XD','poll_id'=>'uniikki','user_id'=>42];
 	}
 
 	private function brew_a_poll() {
-		return ['id' => 43, 'toimikunta' => 'committee', 'is_open' => 1];
+		return ['id' => 'uniikki', 'toimikunta' => 'committee', 'is_open' => 1];
 	}
 
 	private function brew_an_idea() {
-		return ['id' => 23, 'poll_id' => 43, 'description' => 'Stay awhile and listen'];
+		return ['id' => 23, 'poll_id' => 'uniikki', 'description' => 'Stay awhile and listen'];
 	}
 
 	private function brew_a_committee() {
@@ -55,7 +55,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_a_lurker() {
-		return ['id' => 314, 'name' => 'lurker', 'poll_id' => 43];
+		return ['id' => 314, 'name' => 'lurker', 'poll_id' => 'uniikki'];
 	}
 
 	public function mockUserWithId($id) {

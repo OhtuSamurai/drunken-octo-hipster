@@ -15,7 +15,7 @@ class CreateLurkersTable extends Migration {
 		Schema::create('lurkers', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('poll_id')->unsigned();
+			$table->string('poll_id');
 			$table->foreign('poll_id')->references('id')->on('polls');
 			$table->string('name');
 			$table->timestamps();
