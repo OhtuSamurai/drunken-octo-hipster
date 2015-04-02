@@ -1,7 +1,7 @@
 <table class="pooltable table table-hover">
   <thead>
     <tr>
-      <th>Järjestelmän ulkopuoleiset käyttäjät</th>
+      <th>Järjestelmän ulkopuoliset käyttäjät</th>
     </tr>
   </thead>
   <tbody>

@@ -4,6 +4,7 @@
 <h1>{{$user->first_name}} {{$user->last_name}}</h1>
 
 <p>Käyttäjätunnus: {{$user->username}}</p>
+<p>Sähköpostiosoite: {{$user->email}}</p>
 <p>Laitos: {{$user->department}}</p>
 <p>Asema: {{$user->position}}</p>
 

@@ -39,11 +39,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			array('username' => 'required|unique:users,username,'.$this->id,
 			'first_name' => 'required',
 			'last_name' => 'required',
+			'email' => 'email',
 			'department' => 'required',
 			'position' => 'required'), 
 			array('username.required' => 'Anna käyttäjätunnus.',
 			'first_name.required' => 'Anna etunimi.',
 			'last_name.required' => 'Anna sukunimi.',
+			'email.email' => 'Sähköpostiosoitteen täytyy olla kelvollinen.',
 			'department.required' => 'Anna laitos.',
 			'position.required' => 'Anna asema.',
 			'username.unique' => 'Käyttäjätunnus löytyy jo järjestelmästä.'

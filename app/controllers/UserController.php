@@ -65,6 +65,7 @@ class UserController extends \BaseController {
 		$user->username = Input::get('username');
 		$user->first_name = Input::get('first_name');
 		$user->last_name = Input::get('last_name');
+		$user->email = Input::get('email');
 		$user->department = Input::get('department');
 		$user->position = Input::get('position');
 		$user->description = Input::get('description');
@@ -137,6 +138,7 @@ class UserController extends \BaseController {
 		$user = User::find($id);
 		$user->first_name = Input::get('first_name');
 		$user->last_name = Input::get('last_name');
+		$user->email = Input::get('email');
 		$user->department = Input::get('department');
 		$user->position = Input::get('position');
 		$user->description = Input::get('description');

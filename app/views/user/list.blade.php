@@ -4,6 +4,7 @@
     <tr>
       <th>Etunimi</th>
       <th>Sukunimi</th>
+      <th>Sähköposti</th>
       <th>Laitos</th>
       <th>Asema</th>
     </tr>
@@ -14,6 +15,7 @@
     <tr data-userid="{{$user->id}}" >
       <td><a href="/user/{{$user->id}}">{{$user->first_name}}</a><input class="userselector hidden" type="checkbox" name="user[]" value="{{$user->id}}"></td>
       <td>{{$user->last_name}}</td>
+      <td>{{$user->email}}</td>
       <td>{{$user->department}}</td>
       <td>{{$user->position}}</td>
     </tr>

@@ -18,6 +18,12 @@
 {{ Form::text('last_name', (Input::old('last_name') ? Input::old('last_name') : $user->last_name), array('class' => 'form-control')) }}
 </div>
 </div>
+<div class="form-group @if ($errors->has('last_name')) has-error @endif">
+{{ Form::label('email', 'Sähköposti', array('class' => 'control-label col-sm-2'))}}
+<div class="col-sm-10">
+{{ Form::text('email', (Input::old('email') ? Input::old('email') : $user->email), array('class' => 'form-control')) }}
+</div>
+</div>
 <div class="form-group @if ($errors->has('department')) has-error @endif">
 {{ Form::label('department', 'Laitos', array('class' => 'control-label col-sm-2'))}}
 <div class="col-sm-10">
