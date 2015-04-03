@@ -100,7 +100,6 @@ class PollController extends \BaseController {
 	{
 		$poll = Poll::find($id);
     		$users = $poll->users;
-		if (Auth::user())
 		$timeideas = $poll->timeideas;
 		$answers = $poll->answers;
 		$comments = $poll->comments;
