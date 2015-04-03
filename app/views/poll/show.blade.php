@@ -19,6 +19,9 @@
 				{{--<a type="button" class="btn btn-default btn-block" aria-label="Muokkaa" href="/timeidea/create">
   					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 				</a>--}}
+				{{--@if(Auth::user() && Auth::user()->is_admin)--}}
+					<div class="allusersactive btn-default">valitse kaikki käyttäjät</div>
+				{{--@endif--}}
 			</th>
 			@if (!empty($users))
 			@foreach($users as $user)

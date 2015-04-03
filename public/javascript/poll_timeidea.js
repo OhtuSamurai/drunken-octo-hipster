@@ -91,6 +91,17 @@ $(document).ready(function(){
 		countsum();
 	});
 	
+	$(".allusersactive").click(function(){ //valitaan kaikki käyttäjät
+		$(".users").each(function(){
+			id = $(this).data('id');
+			usercheckbox = $("[value='" + id + "']");
+			usercheckbox.prop("checked", !usercheckbox.prop("checked"));		
+	    	if(!$(this).hasClass("active")){	    
+      			$(this).addClass("active");
+      		}
+		});      	
+		countsum();
+	});
 	
 });
 
