@@ -36,5 +36,12 @@
   	@endforeach
   	</tbody>
 	</table>
+	@if ($showFiles||Auth::user()->is_admin)
+	@include('attachment.list')
+	@endif
+
+	@if (Auth::user()->is_admin)
+		@include('attachment.form')
+	@endif
 </div>
 @stop

@@ -24,6 +24,8 @@ Route::post('committee/{id}/toggleopen', 'CommitteeController@toggleOpen');
 
 Route::get('pooli', 'UserController@active');
 
+Route::get('committee/{committee_id}/attachment/{id}','AttachmentController@download');
+
 Route::get('poistetut', 'UserController@inactive');
 
 Route::put('removeFromPool', 'UserController@removeFromPool');
@@ -51,5 +53,7 @@ Route::resource('committee', 'CommitteeController',
 
 Route::resource('lurker', 'LurkerController',
 				array('only' => array('store')));
+
+Route::resource('attachment','AttachmentController');
 
 Route::get('add', 'CommitteeController@store');

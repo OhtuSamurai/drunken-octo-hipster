@@ -15,5 +15,9 @@ class Committee extends Eloquent {
     return $this->belongsToMany('User', 'committee_participants')->withTimestamps();
   }
 
+	public function attachments() {
+		return $this->hasMany('Attachment');
+	}
+
   
 }
