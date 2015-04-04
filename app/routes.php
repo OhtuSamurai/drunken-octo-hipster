@@ -34,8 +34,12 @@ Route::put('addToPool', 'UserController@addToPool');
 
 Route::put('delete', 'UserController@delete');
 
+Route::delete('commmittee/{committee_id}/attachment/{id}','AttachmentController@destroy');
+
 Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
+
+
 
 Route::resource('poll', 'PollController',
                 array('except' => array('destroy')));
@@ -54,6 +58,6 @@ Route::resource('committee', 'CommitteeController',
 Route::resource('lurker', 'LurkerController',
 				array('only' => array('store')));
 
-Route::resource('attachment','AttachmentController');
+Route::resource('/committee/{id}/attachment','AttachmentController');
 
 Route::get('add', 'CommitteeController@store');

@@ -58,6 +58,15 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return ['id' => 314, 'name' => 'lurker', 'poll_id' => 'uniikki'];
 	}
 
+	private function brew_an_attachment() {
+		return ['id'=>255,'file'=>'/es247/ebin','committee_id'=>'1','filename'=>'asdf'];
+	}
+
+	public function mockAttachment() {
+		$params = $this->brew_an_attachment();
+		return $this->generalMockery(new Attachment, $params);
+	}
+
 	public function mockUserWithId($id) {
 		$params = $this->brew_a_user();
 		$params['id'] = $id;
