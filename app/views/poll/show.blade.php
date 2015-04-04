@@ -20,7 +20,7 @@
   					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 				</a>--}}
 				{{--@if(Auth::user() && Auth::user()->is_admin)--}}
-					<div class="allusersactive btn-default">valitse kaikki käyttäjät</div>
+					<div class="allusersactive btn-default">valitse kaikki / poista valinnat</div>
 				{{--@endif--}}
 			</th>
 			@if (!empty($users))

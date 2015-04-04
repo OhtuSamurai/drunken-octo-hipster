@@ -91,13 +91,28 @@ $(document).ready(function(){
 		countsum();
 	});
 	
-	$(".allusersactive").click(function(){ //valitaan kaikki käyttäjät
+	$(".allusersactive").click(function(){ //valitaan kaikki käyttäjät tai poistetaan kaikki valinnat
+		var someistriggered = false;
+		$(".users").each(function(){
+			if($(this).hasClass("active")){ //jokin yksittäinen tai useampi käyttäjä on valittu
+				someistriggered = true;
+			}			
+		});
+		if(someistriggered === true){
+			$(".users").each(function(){
+				$(this).removeClass("active"); //nollataan kaikki aluksi, jotta kaikki valinnat vaihtuvat samaksi
+			});
+		}
+		
 		$(".users").each(function(){
 			id = $(this).data('id');
 			usercheckbox = $("[value='" + id + "']");
 			usercheckbox.prop("checked", !usercheckbox.prop("checked"));		
-	    	if(!$(this).hasClass("active")){	    
-      			$(this).addClass("active");
+	    	if(someistriggered === false){	    
+      			$(this).addClass("active"); //kaikki valituksi
+      		}
+      		else{
+      			$(this).removeClass("active"); //joku tai kaikki oli valittu->poistetaan kaikki valinnat
       		}
 		});      	
 		countsum();
