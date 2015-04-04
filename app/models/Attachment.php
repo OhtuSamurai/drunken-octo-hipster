@@ -9,4 +9,8 @@ class Attachment extends Eloquent {
   public function committee() {
     return $this->belongsTo('Committee');
   }
+	
+	public function users() {
+		return $this->belongsToMany('User');
+	}
 }

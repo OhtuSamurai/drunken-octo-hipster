@@ -4,6 +4,7 @@
 <div class="col-md-7">
 	<h1>{{ $committee->name }}</h1>
 	<h2>Järjestetään: {{ $committee->time }}</h2>
+	@if(Auth::user() && Auth::user()->is_admin)
     @if($committee->is_open)
     {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
     {{ Form::submit('Sulje toimikunta', array('class' => 'btn btn-primary')) }}
@@ -14,7 +15,7 @@
     {{ Form::submit('Avaa uudelleen', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @endif
-
+	@endif
     <table class="pooltable table table-hover">
   	<thead>
     	<tr>
@@ -36,12 +37,16 @@
   	@endforeach
   	</tbody>
 	</table>
-	@if (Auth::user() && ($showFiles||Auth::user()->is_admin))
-	@include('attachment.list')
-	@endif
 
+</div>
+	<div class="col-md-7">	
+	@if (Auth::user() && ($showFiles||Auth::user()->is_admin))
+		@include('attachment.list')
+	@endif
+	</div>	
+	<div class="col-md-12">
 	@if (Auth::user() && Auth::user()->is_admin)
 		@include('attachment.form')
 	@endif
-</div>
+	</div>
 @stop

@@ -23,16 +23,16 @@ class AttachmentController extends \BaseController {
 			return false;
 		if (Auth::user()->is_admin) 
 			return true;
-		foreach (Committee::find($committee_id)->users as $user) {
+		foreach (Committee::find($committee_id)->users as $user) 
 			if ($user->id==Auth::user()->id)
 				return true;
 		return false;
-		}
 	}
 
 	public function download($committee_id,$id) {
 		if (!($this->oikeudet($committee_id)))
 			return Redirect::to('/')->withErrors('Sinulla ei ole oikeutta ladata tiedostoa!');
+		Attachment::find($id)->users()->attach(Auth::user()->id);
 		return Response::download(Attachment::find($id)->file);
 	}
 } 
