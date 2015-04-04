@@ -96,13 +96,11 @@ $(document).ready(function(){
 		$(".users").each(function(){
 			if($(this).hasClass("active")){ //jokin yksittäinen tai useampi käyttäjä on valittu
 				someistriggered = true;
+				$(".users").each(function(){
+					$(this).removeClass("active"); //nollataan kaikki aluksi, jotta kaikki valinnat vaihtuvat samaksi
+				});
 			}			
 		});
-		if(someistriggered === true){
-			$(".users").each(function(){
-				$(this).removeClass("active"); //nollataan kaikki aluksi, jotta kaikki valinnat vaihtuvat samaksi
-			});
-		}
 		
 		$(".users").each(function(){
 			id = $(this).data('id');
