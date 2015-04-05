@@ -59,11 +59,12 @@ class CommitteeController extends \BaseController {
 	public function show($id)
 	{
 		$committee = Committee::find($id);
-    		$users = $committee->users;
+    	$users = $committee->users;
 		if (!Auth::user())
 			$showfiles=false;
 		else $showfiles=$this->showFiles($id,Auth::user()->id);
-		return View::make('committee.show', array('committee' => $committee, 'users' => $users,'showFiles'=>$showfiles));
+		return View::make('committee.show',
+			array('committee' => $committee, 'users' => $users,'showFiles'=>$showfiles, 'comments' => $committee->comments));
 	}
 
 	private function showFiles($committee_id,$user_id) {

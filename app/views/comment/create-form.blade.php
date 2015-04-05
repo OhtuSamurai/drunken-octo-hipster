@@ -5,7 +5,12 @@
 @if (!Auth::user())
 {{ Form::text('author_name','',array('placeholder'=>'Käyttäjänimi'))}}
 @endif
+@if(isset($poll))
 {{ Form::hidden('poll_id', $poll->id) }}
+@endif
+@if(isset($committee))
+{{ Form::hidden('committee_id', $committee->id) }}
+@endif
 </div>
 <div class="form-group">
 {{ Form::submit('Kommentoi', array('class'=>'btn btn-default'))}}

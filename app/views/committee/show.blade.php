@@ -39,6 +39,9 @@
 	</table>
 
 </div>
+<div class="col-md-12">
+  @include('comment.list')
+</div>
 	<div class="col-md-7">	
 	@if (Auth::user() && ($showFiles||Auth::user()->is_admin))
 		@include('attachment.list')
