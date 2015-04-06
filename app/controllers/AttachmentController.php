@@ -48,8 +48,10 @@ class AttachmentController extends \BaseController {
 	public function destroy($committee_id,$id) {
 		if (!(Auth::user()&&Auth::user()->is_admin))
 			return Redirect::to('/')->withErrors('Sinulla ei ole oikeutta poistaa tiedostoa!'); 
-		Attachment::find($id)->users()->detach();
-		Attachment::find($id)->delete();
+		$tiedosto = Attachment::find($id);
+		File::delete($tiedosto->file);
+		$tiedosto->users()->detach();
+		$tiedosto->delete();
 		return Redirect::route('committee.show',$committee_id)->with('success','Liite poistettiin onnistuneesti!');
 	}
 } 
