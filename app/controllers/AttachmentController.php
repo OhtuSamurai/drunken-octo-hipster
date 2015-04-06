@@ -5,6 +5,8 @@ class AttachmentController extends \BaseController {
 		$committee = Committee::find(Input::get('committee_id'));
 		$destinationpath = storage_path().'/attachments/'.$committee->id;
 		$tiedosto = Input::file('tiedosto');		
+		if ($tiedosto==NULL)
+			return Redirect::route('committee.show',$committee->id)->withErrors('Anna lisättävä tiedosto!');
 		$tiedostonimi = $tiedosto->getClientOriginalName();
 		$tiedosto->move($destinationpath,$tiedostonimi);
 		$kokopolku = $destinationpath .'/'. $tiedostonimi;
