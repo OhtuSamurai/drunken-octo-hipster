@@ -2,6 +2,8 @@
 
 class AttachmentController extends \BaseController {
 	public function store() {
+		if (!(Auth::user() && Auth::user()->is_admin))
+			return Redirect::to('/')->withError('Et voi lisätä liitettä, koska et ole admin!');
 		$committee = Committee::find(Input::get('committee_id'));
 		$destinationpath = storage_path().'/attachments/'.$committee->id;
 		$tiedosto = Input::file('tiedosto');		
@@ -31,6 +33,9 @@ class AttachmentController extends \BaseController {
 		return false;
 	}
 	private function ollaankosJoAiemminLadattu($user_id,$attachment_id) {
+/*		if (Auth::user()->is_admin) 
+			return true;
+*/
 		foreach (Attachment::find($attachment_id)->users as $user) 
 			if ($user->id==$user_id)
 				return true;
