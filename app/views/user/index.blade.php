@@ -8,7 +8,9 @@
 	
   		<h1>Opetustaitotoimikuntapooli</h1>
   		@include('user.list') 		
+		@if(Auth::user() && Auth::user()->is_admin)
   		{{ Form::submit('Poista käyttäjä poolista', array('class' => 'btn btn-primary')) }}
+		@endif
   		
 	</div>
 {{ Form::close() }}
