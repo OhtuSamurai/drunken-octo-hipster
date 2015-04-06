@@ -4,6 +4,8 @@
 <div class="col-md-7">
 	<h1>{{ $committee->name }}</h1>
 	<h2>Järjestetään: {{ $committee->time }}</h2>
+</div>
+<div class="row col-md-7">
 	@if(Auth::user() && Auth::user()->is_admin)
     @if($committee->is_open)
     {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
@@ -39,8 +41,9 @@
 	</table>
 
 </div>
-<div class="col-md-12">
+<div class="col-md-2">
   @include('comment.list')
+</div>
 </div>
 	<div class="col-md-7">	
 	@if (Auth::user() && ($showFiles||Auth::user()->is_admin))

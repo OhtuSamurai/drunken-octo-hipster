@@ -3,7 +3,7 @@
 class AttachmentController extends \BaseController {
 	public function store() {
 		$committee = Committee::find(Input::get('committee_id'));
-		$destinationpath = storage_path().'/attachments';
+		$destinationpath = storage_path().'/attachments/'.$committee->id;
 		$tiedosto = Input::file('tiedosto');		
 		$tiedostonimi = $tiedosto->getClientOriginalName();
 		$tiedosto->move($destinationpath,$tiedostonimi);
@@ -28,11 +28,18 @@ class AttachmentController extends \BaseController {
 				return true;
 		return false;
 	}
+	private function ollaankosJoAiemminLadattu($user_id,$attachment_id) {
+		foreach (Attachment::find($attachment_id)->users as $user) 
+			if ($user->id==$user_id)
+				return true;
+			return false;	
+	}
 
 	public function download($committee_id,$id) {
 		if (!($this->oikeudet($committee_id)))
 			return Redirect::to('/')->withErrors('Sinulla ei ole oikeutta ladata tiedostoa!');
-		Attachment::find($id)->users()->attach(Auth::user()->id);
+		if (!$this->ollaankosJoAiemminLadattu(Auth::user()->id,$id))
+			Attachment::find($id)->users()->attach(Auth::user()->id);
 		return Response::download(Attachment::find($id)->file);
 	}
 	

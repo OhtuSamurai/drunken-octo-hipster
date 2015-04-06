@@ -8,7 +8,11 @@
 </thead>
 <tbody>
 @foreach($committee->attachments as $attachment)
-	<tr>
+	
+	@if ((!in_array(Auth::user()->id,$attachment->getUserIDs()))&&(!Auth::user()->is_admin))
+	<tr class="halytys">
+	@else <tr>
+	@endif
 		<td><a href="/committee/{{$committee->id}}/attachment/{{$attachment->id}}">{{$attachment->filename}}</a></td>
 
 			<td>
@@ -20,6 +24,10 @@
 			<td>
 				@include('attachment.destroyform')
 			<td>
+			@endif
+
+			@if ((!in_array(Auth::user()->id,$attachment->getUserIDs()))&&(!Auth::user()->is_admin))
+			<td class="halytys"><b>Lue tämä!</b></td>
 			@endif
 	</tr>
 @endforeach

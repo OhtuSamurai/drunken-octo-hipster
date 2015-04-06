@@ -36,6 +36,19 @@ table tbody tr > td.kysy {
 	color: blue !important;
 	text-decoration: underline;
 }
+
+table tbody tr > td.halytys {
+	color: #CC0000 !important;
+	text-transform:uppercase;
+	text-align:right;
+}
+
+table tbody tr.halytys {
+	outline-style:solid;
+	outline-color:#CC0000;
+	outline-offset:-5px;
+}
+
 nav > * {
 	background-color: #FFFFFF !important;
 	border-color: #FFFFFF !important;
