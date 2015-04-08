@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('pagehead')
   {{HTML::script('javascript/inactive.js')}}
+  {{HTML::script('javascript/sortusers.js')}}
 @stop
 @section('content')
 

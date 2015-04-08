@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('pagehead')
   {{HTML::script('javascript/pooli.js')}}
+  {{HTML::script('javascript/sortusers.js')}}
 @stop
 @section('content')
 {{ Form::open(array('action' => array('UserController@removeFromPool'), 'id'=>'poolremoverform', 'method'=>'PUT')) }}
