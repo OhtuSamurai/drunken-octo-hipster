@@ -27,6 +27,6 @@ class LoginController extends Controller {
 	public function logout()
 	{
 		Auth::logout();
-		return Redirect::to('/')->with('success', 'Ulos kirjaatuminen onnistui!');
+		return Redirect::to('/')->with('success', 'Uloskirjautuminen onnistui!');
 	}
 }
