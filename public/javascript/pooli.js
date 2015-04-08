@@ -19,7 +19,16 @@ $(document).ready(function(){
 	}
 	function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
 
+	$('th').click(function(){  //järjestetään klikatun th:n perusteella
 
+	    	var table = $(this).parents('table').eq(0)
+	    	var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+	    	this.asc = !this.asc
+	    	if (!this.asc){rows = rows.reverse()}
+	    	for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+	    
+	})
+	
   $(".pooltable>tbody>tr").click(function(){
     checkbox = $(this).find(".userselector")
      
