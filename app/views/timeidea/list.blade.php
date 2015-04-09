@@ -6,7 +6,10 @@
   </thead>
   <tbody>
   @foreach($poll->timeideas as $idea)
-    <tr><td>{{$idea->description}}</td></tr>
+    	<tr>
+		<td>{{$idea->description}}</td>
+		<td>@include('timeidea.destroyform')</td>
+	</tr>
   @endforeach
   </tbody>
 </table>

@@ -137,9 +137,14 @@ class TimeideaController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
+	public function destroy($poll_id,$timeidea_id){
+		if (!Auth::user() || !Auth::user()->is_admin)
+			return Redirect::to('/')->withErrors('Toiminto evätty!');
+		$timeidea = Timeidea::find($timeidea_id);	
+		foreach($timeidea->answers as $answer) 
+			$answer->delete();
+		$timeidea->delete();
+		return Redirect::action('PollController@edit',['id'=>$poll_id])->with('success','Ajankohta poistettiin kyselystä!');
 	}
 
 

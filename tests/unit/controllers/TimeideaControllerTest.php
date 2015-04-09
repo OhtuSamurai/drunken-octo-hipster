@@ -30,11 +30,6 @@ class TimeideaControllerTest extends TestCase {
 		$this->assertNull($idea_ctrl->update(1));
 	}
 	
-	public function testDestroy() {
-		$idea_ctrl = new TimeideaController;
-		$this->assertNull($idea_ctrl->destroy(1));
-	}
-	
 	public function testStore() {
 		$this->fakeLoginAdmin();
 		$poll = $this->mockPoll();
@@ -71,4 +66,15 @@ class TimeideaControllerTest extends TestCase {
 		$this->assertRedirectedToAction('PollController@show', ['id' => $poll->id]);
 		$this->assertSessionHasErrors('description');
 	} 
+
+
+	public function testDestroyPoistaaTietokannassa() {
+		$this->fakeLoginAdmin();
+		$ti = $this->mockTimeidea();
+		$ti->save();
+		$poll = $this->mockPoll();
+		$poll->save();
+		$this->action('delete','TimeideaController@destroy',['poll_id'=>$poll->id,'timeidea_id'=>$ti->id]);
+		$this->assertTrue(Timeidea::find($ti->id)==NULL);
+	}
 }

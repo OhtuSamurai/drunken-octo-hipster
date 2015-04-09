@@ -6,7 +6,10 @@
   </thead>
   <tbody>
   @foreach($poll->lurkers as $lurker)
-    <tr><td>{{$lurker->name}}</td></tr>
+    	<tr>
+		<td>{{$lurker->name}}</td>
+		<td>@include('lurker.destroyform')<td>
+	</tr>
   @endforeach
   </tbody>
 </table>

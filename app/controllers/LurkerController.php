@@ -31,4 +31,11 @@ class LurkerController extends \BaseController {
 
 		return Redirect::action('PollController@edit', ['id' => $poll->id])->with('success', 'Käyttäjä '.$lurker->name.' lisätty' );
 	}
+
+	public function destroy($poll_id,$lurker_id) {
+		if (!Auth::check() or !Auth::user()->is_admin)
+			return Redirect::action('PollController@edit', ['id' => $poll_id])->withErrors("Toiminto evätty!");
+		Lurker::find($lurker_id)->delete();
+		return Redirect::action('PollController@edit',['id'=>$poll_id])->with('success','Käyttäjä poistettiin kyselystä!');	
+	}
 }

@@ -36,6 +36,10 @@ Route::put('delete', 'UserController@delete');
 
 Route::delete('commmittee/{committee_id}/attachment/{id}','AttachmentController@destroy');
 
+Route::delete('poll/{poll_id}/edit/remove/{id}','LurkerController@destroy');
+
+Route::delete('poll/{poll_id}/edit/deletetime/{timeidea_id}','TimeideaController@destroy');
+
 Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
 
