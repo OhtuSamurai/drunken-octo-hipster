@@ -22,6 +22,8 @@ class CommentController extends \BaseController {
 		if(Input::has('committee_id')) 
 		{
 			$committee = Committee::find(Input::get('committee_id'));
+			if(!Auth::check())
+				return Redirect::action('CommitteeController@show', ['id' => $committee->id])->withErrors("Vain toimikunnan jäsenet voivat kommentoida!");
 			if(!$committee->users->contains(Auth::user()) AND !Auth::user()->is_admin)
 				return Redirect::action('CommitteeController@show', ['id' => $committee->id])->withErrors("Et voi kommentoida, koska et kuulu toimikuntaan!");
 			$comment->committee_id = $committee->id;

@@ -99,7 +99,7 @@ class PollController extends \BaseController {
 	public function show($id)
 	{
 		$poll = Poll::find($id);
-    		$users = $poll->users;
+    	$users = $poll->users;
 		$timeideas = $poll->timeideas;
 		$answers = $poll->answers;
 		$comments = $poll->comments;
@@ -108,12 +108,13 @@ class PollController extends \BaseController {
 			'answers' => $answers, 'comments' => $comments, 'lurkers' => $lurkers));
 	}
 	
+/*	Mihin tätä funktiota tarvitaan?
 	private function userInCommittee($user_id,$committee_id) {
 		foreach(Committee::find($committee_id)->users as $user)
 			if ($user->id==$committee_id)
 				return true;
 		return false;
-	}
+	} */
 
 	/**
 	 * Show the form for editing the specified resource.
