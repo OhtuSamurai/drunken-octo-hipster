@@ -23,4 +23,10 @@ class CommitteeTest extends TestCase {
 		$this->assertEquals($com->users->last()->username, $u11->username);
 		$this->assertEquals(2, count($com->users));
 	}
+
+	public function testCommitteeAttachement() {
+		$this->mockCommittee()->save();
+		$this->mockAttachment()->save();
+		$this->assertEquals(Attachment::find(255)->filename,Committee::find(1)->attachments()->first()->filename);
+	}
 }

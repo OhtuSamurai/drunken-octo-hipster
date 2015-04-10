@@ -59,7 +59,16 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_an_attachment() {
-		return ['id'=>255,'file'=>'/es247/ebin','committee_id'=>'1','filename'=>'asdf'];
+		return ['id'=>255,'file'=>base_path().'/tests/attachments/1/asdf','committee_id'=>1,'filename'=>'asdf'];
+	}
+
+	private function brew_a_destroyable() {
+		return ['id'=>255,'file'=>'/los_ebun/1/asdf','committee_id'=>1,'filename'=>'asdf'];
+	}
+
+	public function mockDestroyableAttachment() {
+		$params = $this->brew_a_destroyable();
+		return $this->generalMockery(new Attachment, $params);
 	}
 
 	public function mockAttachment() {

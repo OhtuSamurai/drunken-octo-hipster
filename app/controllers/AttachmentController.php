@@ -20,9 +20,14 @@ class AttachmentController extends \BaseController {
 		return Redirect::route('committee.show',$committee->id)->with('success','Tiedoston lisääminen onnistui');
 	}
 	
-
-
-	private function oikeudet($committee_id) {
+	/**
+	*  Checks if loggedin user has rights for the attachment.
+	*  If user is admin or belongs to the attachments committee, 
+	*  user has rights for the attachment.
+	*
+	*  @return boolean
+	*/
+	private function rights($committee_id) {
 		if (!Auth::user())
 			return false;
 		if (Auth::user()->is_admin) 
@@ -32,31 +37,41 @@ class AttachmentController extends \BaseController {
 				return true;
 		return false;
 	}
-	private function ollaankosJoAiemminLadattu($user_id,$attachment_id) {
-/*		if (Auth::user()->is_admin) 
-			return true;
-*/
+
+	/**
+	*  Checks if Attachment::users list contains given user
+	*
+	* @return boolean
+	*/
+	private function addUserInAttachmentsUserTable($user_id,$attachment_id){
 		foreach (Attachment::find($attachment_id)->users as $user) 
 			if ($user->id==$user_id)
 				return true;
 			return false;	
 	}
 
+	/**
+	*  Enables committee users to read attachments.
+	*  If users hasn't read the file previously, adds users in the AttachmentUsers table.
+	*/
 	public function download($committee_id,$id) {
-		if (!($this->oikeudet($committee_id)))
+		if (!($this->rights($committee_id)))
 			return Redirect::to('/')->withErrors('Sinulla ei ole oikeutta ladata tiedostoa!');
-		if (!$this->ollaankosJoAiemminLadattu(Auth::user()->id,$id))
+		if (!$this->addUserInAttachmentsUserTable(Auth::user()->id,$id))
 			Attachment::find($id)->users()->attach(Auth::user()->id);
 		return Response::download(Attachment::find($id)->file);
 	}
 	
-	public function destroy($committee_id,$id) {
+	/**
+	*  Deletes given file in a committee
+	*/
+	public function destroy($committee_id, $id) {
 		if (!(Auth::user()&&Auth::user()->is_admin))
 			return Redirect::to('/')->withErrors('Sinulla ei ole oikeutta poistaa tiedostoa!'); 
-		$tiedosto = Attachment::find($id);
-		File::delete($tiedosto->file);
-		$tiedosto->users()->detach();
-		$tiedosto->delete();
-		return Redirect::route('committee.show',$committee_id)->with('success','Liite poistettiin onnistuneesti!');
+		$destroyable = Attachment::find($id);
+		File::delete($destroyable->file);
+		$destroyable->users()->detach();
+		$destroyable->delete();
+		return Redirect::action('CommitteeController@show', ['id' => $committee_id])->with('success','Liite poistettiin onnistuneesti!');
 	}
 } 

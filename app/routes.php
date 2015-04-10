@@ -43,8 +43,6 @@ Route::delete('poll/{poll_id}/edit/deletetime/{timeidea_id}','TimeideaController
 Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
 
-
-
 Route::resource('poll', 'PollController',
                 array('except' => array('destroy')));
 
