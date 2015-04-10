@@ -1,23 +1,43 @@
 <?php
 
 class AttachmentController extends \BaseController {
-	public function store() {
-		if (!(Auth::user() && Auth::user()->is_admin))
-			return Redirect::to('/')->withError('Et voi lisätä liitettä, koska et ole admin!');
-		$committee = Committee::find(Input::get('committee_id'));
-		$destinationpath = storage_path().'/attachments/'.$committee->id;
-		$tiedosto = Input::file('tiedosto');		
-		if ($tiedosto==NULL)
-			return Redirect::route('committee.show',$committee->id)->withErrors('Anna lisättävä tiedosto!');
-		$tiedostonimi = $tiedosto->getClientOriginalName();
-		$tiedosto->move($destinationpath,$tiedostonimi);
-		$kokopolku = $destinationpath .'/'. $tiedostonimi;
+	
+	/**
+	*  Adds attachment in serverside fs
+	*
+	*  @return string server fs's path to attachment
+	*/
+	private function stashAttachment($file, $committee_id) {
+		$destinationpath = storage_path().'/attachments/'.$committee_id;
+		$file->move($destinationpath, $file->getClientOriginalName());
+		return $destinationpath .'/'. $file->getClientOriginalName();
+	}
+
+	/**
+	*  Stores attachment type in db
+	*/
+	private function storeAttachment($path, $committee_id, $filename) {
 		$liite = new Attachment;
-		$liite->file=$kokopolku;
-		$liite->committee_id=$committee->id;
-		$liite->filename=$tiedosto->getClientOriginalName();
+		$liite->file = $path;
+		$liite->committee_id = $committee_id;
+		$liite->filename = $filename;
 		$liite->save();
-		return Redirect::route('committee.show',$committee->id)->with('success','Tiedoston lisääminen onnistui');
+	}
+
+	/**
+	*  Stores info about attachment in db and adds it to servers fs.
+	*  Only admin allowed to store attachments.
+	*/
+	public function store() {
+		if (!(Auth::check() AND Auth::user()->is_admin))
+			return Redirect::to('/')->withError('Et voi lisätä liitettä, koska et ole admin!');
+		$committee = Committee::find(Input::get('committee_id'));	
+		if (!Input::hasFile('tiedosto'))
+			return Redirect::action('CommitteeController@show', ['id' => $committee->id])->withErrors('Anna lisättävä tiedosto!');
+		$file = Input::file('tiedosto');
+		$path = $this->stashAttachment($file, $committee->id);
+		$this->storeAttachment($path, $committee->id, $file->getClientOriginalName());
+		return Redirect::action('CommitteeController@show', ['id' => $committee->id])->with('success','Tiedoston lisääminen onnistui');
 	}
 	
 	/**

@@ -68,4 +68,10 @@ class CommentControllerTest extends TestCase {
 		$this->action('POST','CommentController@store', [], ['committee_id' => 1,'commenttext' => 'no-copi-pastarino']);
 		$this->assertRedirectedToAction('CommitteeController@show', ['id' => 1]);	
 	}
+
+	public function testStoreWithMissingResourceId() {
+		$this->action('POST', 'CommentController@store');
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
+	}
 }

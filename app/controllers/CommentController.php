@@ -1,7 +1,8 @@
 <?php
 class CommentController extends \BaseController {
 	/**
-	* Luo ja tallentaa uuden kommentin ja päivittää lopuksi polli näkymän 
+	* Luo ja tallentaa uuden kommentin ja päivittää lopuksi polli näkymän
+	* REFAKTORY NEEDED!
 	*/
 	public function store() {
 		$comment = new Comment;
@@ -33,6 +34,7 @@ class CommentController extends \BaseController {
 				return Redirect::action('CommitteeController@show',['id' => $committee->id])->withErrors($validator);
 			$comment->save();
 			return Redirect::action('CommitteeController@show', ['id' => $committee->id]);
-		}	
+		}
+		return Redirect::to('/')->withErrors("Tapahtui virhe!");
 	}
 }

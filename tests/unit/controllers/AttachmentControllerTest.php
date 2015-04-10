@@ -2,8 +2,29 @@
 
 class AttachmentControllerTest extends TestCase {
 	
-	public function testStore() {
+	public function testStoreAsNotLoggedIn() {
+		$this->action('post', 'AttachmentController@store');
+		$this->assertRedirectedTo('/');
+	}
 
+	public function testStoreAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testStoreAsNotLoggedIn();
+	}
+
+	public function testStoreWithMissingFile() {
+		$this->fakeLoginAdmin();
+		$this->mockCommittee()->save();
+		$this->action('post', 'AttachmentController@store', [], ['committee_id' => 1]);
+		$this->assertRedirectedToAction('CommitteeController@show', ['id' => 1]);
+		$this->assertSessionHasErrors();
+	}
+
+	public function testStore() {
+		$this->fakeLoginAdmin();
+		$this->mockCommittee()->save();
+		$this->action('post', 'AttachmentController@store', [], ['committee_id' => 1, 'tiedosto' => $this->mockAttachment()]);
+		$this->assertRedirectedToAction('CommitteeController@show', ['id' => 1]);
 	}
 
 	public function testDownloadAsNotLoggedIn() {
