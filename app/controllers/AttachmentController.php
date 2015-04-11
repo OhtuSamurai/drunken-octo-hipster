@@ -20,15 +20,15 @@ class AttachmentController extends \BaseController {
 		$liite = new Attachment;
 		$liite->file = $path;
 		$liite->committee_id = $committee_id;
-		$liite->filename = $this->generateProperFilename($filename,"",Committee::find($committee_id),1);
+		$liite->filename = $this->generateProperFilename($this->cutFilenameToReasonableLength($filename),"",Committee::find($committee_id),1);
 		$liite->save();
 	}
-
+/**
+* Checks if there already is a file with the same name in the committee's attachments. If there is, function will generate a name like "somename.txt(1)". If that also exists, it will go on untill finding n < 99 such that no file with the name exists. PHP will allows recursion to the depth of 100, so after 99 a random suffix is generated. That is expected to never happen.
+*/
 	private function generateProperFilename($filename,$suffix, $committee,$i) {
-		$MAXLENGTH=15;
-		if (strlen($filename)>$MAXLENGTH) {
-			$filename=substr($filename,0,$MAXLENGTH);
-		}
+		if ($i==99)
+			return $filename.rand(1,999999);
 		$existsAnotherWithSameName=false;
 		foreach($committee->attachments as $attachment) 
 			if ($attachment->filename==$filename.$suffix)
@@ -39,6 +39,19 @@ class AttachmentController extends \BaseController {
 			return $filename.$suffix;
 		return $this->generateProperFilename($filename,"(".$i.")",$committee,$i+1);
 	}
+
+/**
+* Makes sure that the filename is no longer that MAXLENGTH.
+*/
+	private function cutFilenameToReasonableLength($filename) {
+		$MAXLENGTH=17;
+		if (strlen($filename)>$MAXLENGTH) {
+			return substr($filename,0,$MAXLENGTH);
+		}
+		return $filename;
+
+	}
+
 	/**
 	*  Stores info about attachment in db and adds it to servers fs.
 	*  Only admin allowed to store attachments.
