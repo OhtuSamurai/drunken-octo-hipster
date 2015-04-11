@@ -7,10 +7,10 @@ class AttachmentController extends \BaseController {
 	*
 	*  @return string server fs's path to attachment
 	*/
-	private function stashAttachment($file, $committee_id) {
+	private function stashAttachment($file, $committee_id,$filename) {
 		$destinationpath = storage_path().'/attachments/'.$committee_id;
-		$file->move($destinationpath, $file->getClientOriginalName());
-		return $destinationpath .'/'. $file->getClientOriginalName();
+		$file->move($destinationpath, $filename);
+		return $destinationpath .'/'. $filename;
 	}
 
 	/**
@@ -20,7 +20,7 @@ class AttachmentController extends \BaseController {
 		$liite = new Attachment;
 		$liite->file = $path;
 		$liite->committee_id = $committee_id;
-		$liite->filename = $this->generateProperFilename($this->cutFilenameToReasonableLength($filename),"",Committee::find($committee_id),1);
+		$liite->filename = $filename;
 		$liite->save();
 	}
 /**
@@ -63,8 +63,9 @@ class AttachmentController extends \BaseController {
 		if (!Input::hasFile('tiedosto'))
 			return Redirect::action('CommitteeController@show', ['id' => $committee->id])->withErrors('Anna lisättävä tiedosto!');
 		$file = Input::file('tiedosto');
-		$path = $this->stashAttachment($file, $committee->id);
-		$this->storeAttachment($path, $committee->id, $file->getClientOriginalName());
+		$filename = $this->generateProperFilename($this->cutFilenametoReasonableLength($file->getClientOriginalName()),"",$committee,1);
+		$path = $this->stashAttachment($file, $committee->id,$filename);
+		$this->storeAttachment($path, $committee->id, $filename);
 		return Redirect::action('CommitteeController@show', ['id' => $committee->id])->with('success','Tiedoston lisääminen onnistui');
 	}
 	
