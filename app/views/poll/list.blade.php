@@ -14,7 +14,7 @@
   @foreach($polls as $poll)
     <tr data-userid="{{$poll->id}}" >
       <td><a href={{route('poll.show', $poll->id)}}>{{$poll->toimikunta}}</a></td>
-      <td>{{$poll->users()->count()+$poll->lurkers->count()}}</td>
+      <td>{{$poll->users()->count()}}</td>
     </tr>
   @endforeach
   </tbody>
