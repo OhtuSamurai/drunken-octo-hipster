@@ -44,7 +44,7 @@ class AttachmentController extends \BaseController {
 * Makes sure that the filename is no longer that MAXLENGTH.
 */
 	private function cutFilenameToReasonableLength($filename) {
-		$MAXLENGTH=17;
+		$MAXLENGTH=25;
 		if (strlen($filename)>$MAXLENGTH) {
 			return substr($filename,0,$MAXLENGTH);
 		}
