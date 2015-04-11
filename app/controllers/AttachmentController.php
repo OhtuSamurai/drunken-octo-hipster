@@ -20,10 +20,25 @@ class AttachmentController extends \BaseController {
 		$liite = new Attachment;
 		$liite->file = $path;
 		$liite->committee_id = $committee_id;
-		$liite->filename = $filename;
+		$liite->filename = $this->generateProperFilename($filename,"",Committee::find($committee_id),1);
 		$liite->save();
 	}
 
+	private function generateProperFilename($filename,$suffix, $committee,$i) {
+		$MAXLENGTH=15;
+		if (strlen($filename)>$MAXLENGTH) {
+			$filename=substr($filename,0,$MAXLENGTH);
+		}
+		$existsAnotherWithSameName=false;
+		foreach($committee->attachments as $attachment) 
+			if ($attachment->filename==$filename.$suffix)
+				$existsAnotherWithSameName=true;
+		if (!$existsAnotherWithSameName && $i==0)
+			return $filename;
+		if (!$existsAnotherWithSameName) 
+			return $filename.$suffix;
+		return $this->generateProperFilename($filename,"(".$i.")",$committee,$i+1);
+	}
 	/**
 	*  Stores info about attachment in db and adds it to servers fs.
 	*  Only admin allowed to store attachments.
