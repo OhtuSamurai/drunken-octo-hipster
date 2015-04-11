@@ -15,5 +15,9 @@ class Lurker extends Eloquent {
   	{
   		return $this->belongsTo('Poll');
   	}
+	
+	public function answers() {
+		return $this->hasMany('Answer');
+	}
 
 }

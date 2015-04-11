@@ -59,10 +59,16 @@ class AttachmentController extends \BaseController {
 	public function store() {
 		if (!(Auth::check() AND Auth::user()->is_admin))
 			return Redirect::to('/')->withError('Et voi lisätä liitettä, koska et ole admin!');
-		$committee = Committee::find(Input::get('committee_id'));	
-		if (!Input::hasFile('tiedosto'))
-			return Redirect::action('CommitteeController@show', ['id' => $committee->id])->withErrors('Anna lisättävä tiedosto!');
-		$file = Input::file('tiedosto');
+		$committee = Committee::find(Input::get('committee_id'));
+		try {
+			if (!Input::hasFile('tiedosto'))
+				return Redirect::action('CommitteeController@show', ['id' => $committee->id])->withErrors('Anna lisättävä tiedosto!');
+			$file = Input::file('tiedosto');
+			if (filesize($file) > 1000000)
+				return Redirect::action('CommitteeController@show',['id'=>$committee->id])->withError('Tiedoston maksimikoko on 1 MB');
+		} catch (Exception $e) {
+			return Redirect::action('CommitteeController@show',['id'=>$committee->id])->withError('Tiedoston maksimikoko on 1 MB');
+		}
 		$filename = $this->generateProperFilename($this->cutFilenametoReasonableLength($file->getClientOriginalName()),"",$committee,1);
 		$path = $this->stashAttachment($file, $committee->id,$filename);
 		$this->storeAttachment($path, $committee->id, $filename);
