@@ -33,7 +33,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	private function brew_a_user() {
 		return $params = ['id' => 42, 'first_name' => 'f', 'last_name' => 'l', 'department' => 'deb', 'position' => 'pos', 'username' => 'usr', 'is_active' => 1];
 	}
-
+	
 	private function brew_an_answer() {
 		return $params = ['id' => 8, 'participant_id' => 99, 'timeidea_id'=>99, 'sopivuus' => 'sopii'];
 	}

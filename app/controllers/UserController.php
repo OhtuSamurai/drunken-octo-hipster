@@ -1,22 +1,12 @@
 <?php
 
 class UserController extends \BaseController {
-	
-	/** TARVITAANKO TÄTÄ METODIA ENÄÄ???
-	 * Display a listing of the resource.
+
+	/**
+	 * Show the list containing active users
 	 *
 	 * @return Response
-	 *
-	 *public function index()
-	 *{
-	 *	if (!Auth::user())
-	 *		return Redirect::to('login')->withErrors('Pooli näkyy vain kirjautuneille');
-	 *	
-	 *	$users = User::all();
-	 *		return View::make('user.index', array('users' => $users));
-	 *} 
 	 */
-
 	public function active()
 	{
 		if (!Auth::user()) {
@@ -26,6 +16,11 @@ class UserController extends \BaseController {
 		return View::make('user.index', array('users' => $users));
 	}
 
+	/**
+	 * Show the list containing inactive users
+	 *
+	 * @return Response
+	 */
 	public function inactive()
 	{
 		if (!Auth::user()) {
@@ -34,7 +29,6 @@ class UserController extends \BaseController {
 		$users = User::where('is_active', '=', false)->get();
 		return View::make('user.inactive', array('users' => $users));
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -135,14 +129,14 @@ class UserController extends \BaseController {
 		if(!Auth::check() || (!Auth::user()->is_admin && Auth::user()->id != $id)) {
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
 		}
+		if(Input::has('is_admin') and (Auth::user()->is_admin AND Auth::user()->id == $id))
+			return Redirect::action('UserController@show', $id)->withErrors('Et voi poistaa admin oikeuksiasi');
 		$user = User::find($id);
-		$user->first_name = Input::get('first_name');
-		$user->last_name = Input::get('last_name');
-		$user->email = Input::get('email');
-		$user->department = Input::get('department');
-		$user->position = Input::get('position');
-		$user->description = Input::get('description');
-
+		foreach (Input::all() as $key => $value)
+		{
+			if( array_key_exists($key, $user->toArray() ))
+				$user->$key = $value;
+		}
 		$validator = $user->validator();
 		if ($validator->fails()) {
 			return Redirect::action('UserController@edit', $id)->withErrors($validator)->withInput(Input::all());
