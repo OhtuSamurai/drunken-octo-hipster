@@ -6,7 +6,7 @@
 	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'titleanddes', 'method' => 'PUT')) }}
   	@if(Auth::user() && Auth::user()->is_admin)
 		<div class="row col-md-7 top15">
-  		{{ Form::text('title', $poll->toimikunta,array('placeholder'=>'Otsikko')) }}
+  		{{ Form::text('toimikunta', $poll->toimikunta,array('placeholder'=>'Otsikko')) }}
 		</div>
 		<div class="row col-md-7 top15">
   		{{ Form::textarea('description', $poll->description,array('placeholder'=>'Kuvaus','size'=>'40x3'))}}
