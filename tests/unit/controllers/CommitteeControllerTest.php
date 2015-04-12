@@ -119,16 +119,56 @@ class CommitteeControllerTest extends TestCase {
 		$this->toggleHelper($com, 1);//opens 
 	}
 
-
-	public function testEdit() {
-		$com_ctrl = new CommitteeController;
-		$this->assertNull($com_ctrl->edit(1));
+	public function testEditAsNotLoggedIn() {
+		$this->mockCommittee()->save();
+		$this->action('GET', 'CommitteeController@edit', ['id' => 1]);
+		$this->assertRedirectedTo('/');
+		$this->assertSessionHasErrors();
 	}
 
+	public function testEditAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testEditAsNotLoggedIn();
+	}
+
+	public function testEdit() {
+		$this->fakeLoginAdmin();
+		$this->mockCommittee()->save();
+		$this->action('GET', 'CommitteeController@edit', ['id' => 1]);
+		$this->assertResponseOk();
+		$this->assertViewHas('committee');
+	}
+
+	public function testUpdateAsNotLoggedIn() {
+		$this->mockCommittee()->save();
+		$this->action('PUT', 'CommitteeController@update', ['id' => 1], ['name' => 'hassu nimi']);
+		$this->assertRedirectedToAction('CommitteeController@show', ['id' => 1]);
+		$this->assertSessionHasErrors();
+		$this->assertEquals('committee', Committee::find(1)->name);
+		$this->assertFalse(Committee::find(1)->name == 'hassu nimi');
+	}
+
+	public function testUpdateAsRegularUser() {
+		$this->fakeLoginUser();
+		$this->testUpdateAsNotLoggedIn();
+	}
+
+	public function testUpdateOneField() {
+		$this->fakeLoginAdmin();
+		$this->mockCommittee()->save();
+		$this->action('PUT', 'CommitteeController@update', ['id' => 1], ['name' => 'hassu nimi']);
+		$this->assertRedirectedToAction('CommitteeController@edit', ['id' => 1]);
+		$this->assertEquals('hassu nimi', Committee::find(1)->name);
+	}
 
 	public function testUpdate() {
-		$com_ctrl = new CommitteeController;
-		$this->assertNull($com_ctrl->update(1));
+		$this->fakeLoginAdmin();
+		$this->mockCommittee()->save();
+		$this->action('PUT', 'CommitteeController@update', ['id' => 1], ['name' => 'hassu nimi', 'time' => 'new time', 'description' => 'new']);
+		$this->assertRedirectedToAction('CommitteeController@edit', ['id' => 1]);
+		$this->assertEquals('hassu nimi', Committee::find(1)->name);
+		$this->assertEquals('new time', Committee::find(1)->time);
+		$this->assertEquals('new', Committee::find(1)->description);
 	}
 
 	public function testDestroy() {

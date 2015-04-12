@@ -17,6 +17,7 @@
     {{ Form::submit('Avaa uudelleen', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @endif
+    <a class='btn btn-primary' href={{action('CommitteeController@edit', ['id' => $committee->id])}} role='button'>Muokkaa toimikuntaa</a>
 	@endif
     <table class="pooltable table table-hover">
   	<thead>
@@ -49,10 +50,10 @@
 	@if (Auth::user() && ($showFiles||Auth::user()->is_admin))
 		@include('attachment.list')
 	@endif
-	</div>	
-	<div class="col-md-12">
-	@if (Auth::user() && Auth::user()->is_admin)
-		@include('attachment.form')
-	@endif
 	</div>
+  <div class="col-md-12">
+	@if (Auth::user() && Auth::user()->is_admin) 
+    @include('attachment.form')
+	@endif
+  </div>
 @stop

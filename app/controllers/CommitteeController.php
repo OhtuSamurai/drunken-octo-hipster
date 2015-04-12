@@ -111,7 +111,11 @@ class CommitteeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
+		$committee = Committee::find($id);
+		return View::make('committee.edit', ['committee' => $committee]);
 	}
 
 
@@ -123,7 +127,16 @@ class CommitteeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::action('CommitteeController@show', ['id' => $id])->withErrors('Toiminto estetty!');
+		$committee = Committee::find($id);
+		foreach (Input::all() as $key => $value)
+		{
+			if( array_key_exists($key, $committee->toArray() ))
+				$committee->$key = $value;
+		}
+		$committee->save();
+		return Redirect::action('CommitteeController@edit', ['id' => $id])->with('success','Toimikunnan tiedot on tallennettu!');
 	}
 
 

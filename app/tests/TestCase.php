@@ -51,7 +51,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	}
 
 	private function brew_a_committee() {
-		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'is_open' => 1];
+		return ['id' => 1, 'name' => 'committee', 'time' => 'default', 'description' => 'kuvaus', 'is_open' => 1];
 	}
 
 	private function brew_a_lurker() {
