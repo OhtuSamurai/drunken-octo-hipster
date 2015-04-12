@@ -59,6 +59,20 @@ class AttachmentControllerTest extends TestCase {
 		$this->assertResponseOk();
 	}
 
+	public function testDownloadTwice() {
+		$this->fakeLoginUser();
+		$this->mockCommittee()->save();
+		$this->mockAttachment()->save();
+		$com = Committee::find(1);
+		$usr = User::find(42);
+		$com->users()->attach($usr);
+		$this->action('get', 'AttachmentController@download', ['committee_id' => 1, 'id' => 255]);
+		$this->assertResponseOk();
+		//for addUserInAttachmentsUserTable if-block
+		$this->action('get', 'AttachmentController@download', ['committee_id' => 1, 'id' => 255]);
+		$this->assertResponseOk();
+	}
+
 	public function testDestroy() {
 		$this->fakeLoginAdmin();			
 		$this->mockCommittee()->save();

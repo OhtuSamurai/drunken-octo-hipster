@@ -13,16 +13,6 @@ class CommitteeController extends \BaseController {
 		return View::make('committee.index', array('committees' => $committees));
 	}
 
-
-	private function updateAttachments($committee_id) {
-		foreach(Committee::find($committee_id)->attachments as $attachment) {
-			if (!file_exists($attachment->file)) {
-				$attachment->users()->detach();
-				$attachment->delete();
-			}
-		}
-	}
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -58,6 +48,14 @@ class CommitteeController extends \BaseController {
 		return Redirect::route('committee.show', array('poll' => $committee->id));
 	}
 
+	private function updateAttachments($committee_id) {
+		foreach(Committee::find($committee_id)->attachments as $attachment) {
+			if (!file_exists($attachment->file)) {
+				$attachment->users()->detach();
+				$attachment->delete();
+			}
+		}
+	}
 
 	/**
 	 * Display the specified resource.
@@ -70,7 +68,7 @@ class CommitteeController extends \BaseController {
 		/* A careful reader might note that we use $id in updateAttachments function to query a committee, which we do again on the very next line. This is intentional, because if we first find a committee and then pass it to updateAttachments, laravel will load the attachments before updating them. This would lead to displaying non-existant attachments on the first time show is called after removing files from the filesystem by hand*/
 		$this->updateAttachments($id);
 		$committee = Committee::find($id);
-    		$users = $committee->users;
+    	$users = $committee->users;
 		if (!Auth::user())
 			$showfiles=false;
 		else $showfiles=$this->showFiles($id,Auth::user()->id);

@@ -65,6 +65,32 @@ class CommitteeControllerTest extends TestCase {
 		$this->assertViewHas('showFiles', true);
 	}
 
+	public function testShowWithFile() {
+		$this->fakeLoginUser();
+		$this->mockCommittee()->save();
+		$this->mockAttachment()->save();
+		$usr = User::find(42);
+		$com = Committee::find(1);
+		$com->users()->attach($usr);
+		$this->action('GET', 'CommitteeController@show', ['id' => 1]);
+		$this->assertViewHas('committee');
+		$this->assertViewHas('users');
+		$this->assertViewHas('showFiles', true);
+	}
+
+	public function testShowUpdateAttachments() {
+		$this->fakeLoginUser();
+		$this->mockCommittee()->save();
+		$this->mockAttachment(['id'=>256,'file'=>null,'committee_id'=>1,'filename'=>'gerogerigegege'])->save();
+		$usr = User::find(42);
+		$com = Committee::find(1);
+		$com->users()->attach($usr);
+		$this->action('GET', 'CommitteeController@show', ['id' => 1]);
+		$this->assertViewHas('committee');
+		$this->assertViewHas('users');
+		$this->assertViewHas('showFiles', true);
+	}
+
 	public function testShowWithNonMemberUser() {
 		$this->fakeLoginUser();
 		$this->mockUserWithId(82)->save();
