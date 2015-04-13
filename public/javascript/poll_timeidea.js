@@ -3,6 +3,8 @@ function is_user_active(userid){
 	return selecteduser.hasClass("active");
 }
 
+//countsum() tarvitsee vähän refaktorointia, palaan tähänkin
+
 function countsum(){ //laskee summatietoihin Paras/Sopii/Eisovi
 	$(".timeidea").each(function(){ //looppaa kaikki rivit ja laskee jokaisen summat
 		best = $(this).find(".parhaiten").filter(function(){
@@ -24,35 +26,73 @@ $(document).ready(function(){
 	countsum();
 	document.getElementById("pollform").reset();
 	
-	$(".timeidea>.options").click(function(){ //muuttaa laatikoiden värejä klikkailujen mukaan		
-	    selected = $(this).find(".selectedvalue");
-	    selected.attr('data-clicked', 'true'); //tieto siitä, että tätä elementtiä on klikattu
-	    if(selected.val()=='parhaiten'){
-	    	selected.val('sopii');
-	    	$(this).removeClass("parhaiten");
-	    	$(this).addClass("sopii");
+	$(".timeidea>.options").click(function(){ //muuttaa laatikoiden värejä klikkailujen mukaan	
+		currentuser = $(".kirjautunutuser").data('userid');
+		thisrow = $(this).data('userid');
+		islurker = ($(this).find(".selectedvalue").data('lurker'));
+		if(currentuser === thisrow && islurker == false){
+	    	selected = $(this).find(".selectedvalue");
+	    	selected.attr('data-clicked', 'true'); //tieto siitä, että tätä elementtiä on klikattu
+	    	if(selected.val()=='parhaiten'){
+	    		selected.val('sopii');
+	    		$(this).removeClass("parhaiten");
+	    		$(this).addClass("sopii");
+	    	}
+	    	else if(selected.val()=='sopii'){
+	    		selected.val('eisovi');
+	    		$(this).removeClass("sopii");
+	    		$(this).addClass("eisovi");
+	    	}
+	    	else if(selected.val()=='eisovi'){
+	    		selected.val('entieda');
+	    		$(this).removeClass("eisovi");
+	    		$(this).addClass("entieda");
+	    	}
+	    	else if(selected.val()=='entieda'){
+	    		selected.val('parhaiten');
+	    		$(this).removeClass("entieda");
+	    		$(this).addClass("parhaiten");
+	    	}
+	    	else if(selected.val()=='eivastattu'){
+	    		selected.val('parhaiten');
+	    		$(this).removeClass("eivastattu");
+	    		$(this).addClass("parhaiten");
+	    	} 	
+	    	countsum();
 	    }
-	    else if(selected.val()=='sopii'){
-	    	selected.val('eisovi');
-	    	$(this).removeClass("sopii");
-	    	$(this).addClass("eisovi");
-	    }
-	    else if(selected.val()=='eisovi'){
-	    	selected.val('entieda');
-	    	$(this).removeClass("eisovi");
-	    	$(this).addClass("entieda");
-	    }
-	    else if(selected.val()=='entieda'){
-	    	selected.val('parhaiten');
-	    	$(this).removeClass("entieda");
-	    	$(this).addClass("parhaiten");
-	    }
-	    else if(selected.val()=='eivastattu'){
-	    	selected.val('parhaiten');
-	    	$(this).removeClass("eivastattu");
-	    	$(this).addClass("parhaiten");
-	    } 	
-	    countsum();
+	});
+	
+	$(".timeidea>.lurkeroptions").click(function(){ //muuttaa lurkereiden laatikoiden värejä klikkailujen mukaan
+			if(!$(".kirjautunutuser").data('userid')){
+	    		selected = $(this).find(".selectedvalue");
+	    		selected.attr('data-clicked', 'true'); //tieto siitä, että tätä elementtiä on klikattu
+	    		if(selected.val()=='parhaiten'){
+	    			selected.val('sopii');
+	    			$(this).removeClass("parhaiten");
+	    			$(this).addClass("sopii");
+	    		}
+	    		else if(selected.val()=='sopii'){
+	    			selected.val('eisovi');
+	    			$(this).removeClass("sopii");
+	    			$(this).addClass("eisovi");
+	    		}
+	    		else if(selected.val()=='eisovi'){
+	    			selected.val('entieda');
+	    			$(this).removeClass("eisovi");
+	    			$(this).addClass("entieda");
+	    		}
+	    		else if(selected.val()=='entieda'){
+	    			selected.val('parhaiten');
+	    			$(this).removeClass("entieda");
+	    			$(this).addClass("parhaiten");
+	    		}
+	    		else if(selected.val()=='eivastattu'){Vaina
+	    			selected.val('parhaiten');
+	    			$(this).removeClass("eivastattu");
+	    			$(this).addClass("parhaiten");
+	    		} 	
+	    		countsum();
+	    	}
 	});
 	
 	$("#pollform").submit( function() {
@@ -81,15 +121,36 @@ $(document).ready(function(){
       	countsum();      	
 	}); 
 	
-	$(".allred").click(function(){  //muutetaan tietyn sarakkeen kaikki boxit punaiseksi
-		redbuttonuserid = $(this).data("userid");
-		selectedcolumn = $(".timeidea>.options[data-userid|='"+redbuttonuserid+"']");
-		selectedcolumn.removeClass(); //removes all classes
-		selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
-		selectedcolumn.find(".selectedvalue").val('eisovi');
-		selectedcolumn.addClass("eisovi");
-		countsum();
-	});
+	
+	//huom huom palaan tänne, tämä rikki (oli jo aiemmin koska lurkereilla ja usereilla voi olla sama data-id mutta korjaan kyllä!
+	
+	/*$(".allred").click(function(){  //muutetaan tietyn sarakkeen kaikki boxit punaiseksi
+		currentuser = $(".kirjautunutuser").data('userid');
+		thisuser = $(this).data('userid');
+		selectedcolumn = $(".timeidea>.options[data-userid|='"+thisuser+"']");
+		islurker = selectedcolumn.find(".selectedvalue").data('lurker');
+		//if(islurker == false){
+		if(currentuser === thisuser){
+		//redbuttonuserid = $(this).data("userid");
+				//selectedcolumn = $(".timeidea>.options[data-userid|='"+thisrow+"']");			
+			selectedcolumn.removeClass(); //removes all classes
+			selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
+			selectedcolumn.find(".selectedvalue").val('eisovi');
+			selectedcolumn.addClass("eisovi");
+			countsum();
+		}
+		alert(selectedcolumn);	
+		alert(islurker);
+		
+		if(!$(".kirjautunutuser").data('userid')){
+				selectedcolumn.removeClass(); //removes all classes
+				selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
+				selectedcolumn.find(".selectedvalue").val('eisovi');
+				selectedcolumn.addClass("eisovi");
+				countsum();
+		}
+	});*/
+
 	
 	$(".allusersactive").click(function(){ //valitaan kaikki käyttäjät tai poistetaan kaikki valinnat
 		var someistriggered = false;
