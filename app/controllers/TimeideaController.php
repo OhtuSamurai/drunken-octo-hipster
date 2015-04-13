@@ -23,53 +23,6 @@ class TimeideaController extends \BaseController {
 		//
 	}
 
-	/**
-	* Creates a new Model of Timeidea
-	*
-	* @return Timeidea
-	*/
-	private function makeTimeideaOfInput() {
-		$timeidea = new Timeidea;
-		$timeidea->poll_id = Input::get('poll_id');
-		$timeidea->description = Input::get('description');
-		return $timeidea;
-	}
-
-	/*
-	* Creates a single new answer
-	*
-	*/
-	private function createAnswer($uid, $timeideaid, $column) {
-		$answer = new Answer;
-		$answer->$column = $uid;
-		$answer->timeidea_id = $timeideaid;
-		$answer->sopivuus = 'eivastattu';
-		$answer->save();
-	}
-
-	/*
-	* Creates answers for a single timeidea
-	*
-	*/
-	private function setAnswers($poll,$timeideaid) {
-		foreach($poll->users as $user) {
-			$this->createAnswer($user->id, $timeideaid, "participant_id");
-		}
-		foreach($poll->lurkers as $lurker) {
-			$this->createAnswer($lurker->id, $timeideaid, "lurker_id");
-		}
-	}
-
-	/**
-  	* Sets Validator arguments and returns an instance of Validator
-  	* 
-  	* @return Validator
-  	*/
-  	private function validate() {
-  		$rules = array('description'=>'required|min:1');		
-		$messages = ['required'=>'Yritit lisätä tyhjän ajankohdan'];
-		return Validator::make(Input::all(),$rules,$messages);
-	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -78,20 +31,25 @@ class TimeideaController extends \BaseController {
 	 */
 	public function store()
 	{
-		if(!Auth::check() or !Auth::User()->is_admin)
+		if (!Auth::user() || !Auth::user()->is_admin)
 			return Redirect::route('poll.show', array('poll'=>Input::get('poll_id')))->withErrors("Toiminto evätty!");
-
-		$validation = $this->validate();
-		if($validation->fails())
-			return Redirect::route('poll.show', array('poll'=>Input::get('poll_id')))->withErrors($validation);
-
-		$timeidea = $this->makeTimeideaOfInput();
+		$poll = Poll::find(Input::get('poll_id'));
+		$timeidea = new Timeidea;
+		$timeidea->poll_id = $poll->id;
+		$timeidea->description = Input::get('description');
+		$validator = $timeidea->validator();
+		if ($validator->fails()) {
+			return Redirect::action('PollController@edit', $poll->id)->withErrors($validator);
+		}
 		$timeidea->save();
-		$poll = Poll::find($timeidea->poll_id);
-		$this->setAnswers($poll,$timeidea->id);
-		return Redirect::route('poll.edit', array('poll' => $timeidea->poll_id))->with('success', 'Ajankohta '.$timeidea->description.' lisätty' );
+		foreach($poll->users as $user) {
+			AnswerController::createAnswer($user->id, $timeidea->id, "participant_id");
+		}
+		foreach($poll->lurkers as $lurker) {
+			AnswerController::createAnswer($lurker->id, $timeidea->id, "lurker_id");
+		}
+		return Redirect::action('PollController@edit',['id'=>$poll->id])->with('success','Ajankohta on lisätty kyselyyn');
 	}
-
 
 	/**
 	 * Display the specified resource.
@@ -137,15 +95,16 @@ class TimeideaController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($poll_id,$timeidea_id){
+	public function destroy($timeidea_id)
+	{
 		if (!Auth::user() || !Auth::user()->is_admin)
 			return Redirect::to('/')->withErrors('Toiminto evätty!');
-		$timeidea = Timeidea::find($timeidea_id);	
-		foreach($timeidea->answers as $answer) 
-			$answer->delete();
+		$timeidea = Timeidea::find($timeidea_id);
+		Answer::where("timeidea_id", "=", $timeidea_id)->delete();
+		$poll_id = $timeidea->poll_id;
 		$timeidea->delete();
-		return Redirect::action('PollController@edit',['id'=>$poll_id])->with('success','Ajankohta poistettiin kyselystä!');
+
+		Answer::where("timeidea_id", "=", $timeidea_id)->delete();
+		return Redirect::action('PollController@edit',['id'=>$poll_id])->with('success','Ajankohta on poistettu kyselystä');
 	}
-
-
 }

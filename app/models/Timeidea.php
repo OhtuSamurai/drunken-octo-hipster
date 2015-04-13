@@ -24,4 +24,12 @@ class Timeidea extends Eloquent {
   public function answers() {
     return $this->hasMany('Answer');
   }
+
+  public function validator() {
+    return Validator::make(
+      $this->getAttributes(),
+      ['description' => 'required'],
+      ['description.required' => 'Yritit lisätä tyhjän ajankohdan']
+      );
+    }
 }

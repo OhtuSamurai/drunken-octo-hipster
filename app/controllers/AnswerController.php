@@ -94,5 +94,13 @@ class AnswerController extends \BaseController {
 		//
 	}
 
+	public static function createAnswer($uid, $timeideaid, $column) {
+		$answer = new Answer;
+		$answer->$column = $uid;
+		$answer->timeidea_id = $timeideaid;
+		$answer->sopivuus = 'eivastattu';
+		$answer->save();
+	}
+
 
 }

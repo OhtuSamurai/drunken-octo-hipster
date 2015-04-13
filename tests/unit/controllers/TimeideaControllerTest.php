@@ -63,7 +63,7 @@ class TimeideaControllerTest extends TestCase {
 		$poll = $this->mockPoll();
 		$poll->save();
 		$this->action('POST', 'TimeideaController@store', null, ['poll_id' => $poll->id]);
-		$this->assertRedirectedToAction('PollController@show', ['id' => $poll->id]);
+		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertSessionHasErrors('description');
 	} 
 
@@ -74,7 +74,7 @@ class TimeideaControllerTest extends TestCase {
 		$ti->save();
 		$poll = $this->mockPoll();
 		$poll->save();
-		$this->action('delete','TimeideaController@destroy',['poll_id'=>$poll->id,'timeidea_id'=>$ti->id]);
+		$this->action('delete','TimeideaController@destroy',['timeidea_id'=>$ti->id]);
 		$this->assertTrue(Timeidea::find($ti->id)==NULL);
 	}
 }
