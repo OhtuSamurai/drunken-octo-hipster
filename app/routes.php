@@ -22,6 +22,8 @@ Route::put('updateSopivuus', 'AnswerController@updateSopivuus');//eikö tämän 
 
 Route::post('committee/{id}/toggleopen', 'CommitteeController@toggleOpen');
 
+Route::post('poll/{id}/makeacopy', 'PollController@makeACopy');
+
 Route::get('pooli', 'UserController@active');
 
 Route::get('committee/{committee_id}/attachment/{id}','AttachmentController@download');
@@ -38,8 +40,6 @@ Route::delete('commmittee/{committee_id}/attachment/{id}','AttachmentController@
 
 Route::delete('poll/{poll_id}/edit/remove/{id}','LurkerController@destroy');
 
-Route::delete('poll/{poll_id}/edit/deletetime/{timeidea_id}','TimeideaController@destroy');
-
 Route::resource('user', 'UserController',
                 array('except' => array('index', 'destroy')));
 
@@ -47,7 +47,7 @@ Route::resource('poll', 'PollController',
                 array('except' => array('destroy')));
 
 Route::resource('timeidea', 'TimeideaController',
-                array('only' => array('store')));
+                array('only' => array('store', 'destroy')));
 
 Route::resource('comment', 'CommentController');
 

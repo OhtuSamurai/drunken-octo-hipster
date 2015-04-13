@@ -100,6 +100,11 @@
 		{{ Form::submit('Sulje kysely', array('class' => 'btn btn-primary')) }}
 	</div>
 	{{ Form::close() }}
+	<div class="row top15">
+	{{ Form::open(array('action' => array('PollController@makeACopy', $poll->id), 'method'=>'POST')) }}
+	{{ Form::submit('Tee kopio', array('class' => 'btn btn-primary')) }}
+	{{ Form::close() }}
+	</div>
 	</div>
 @endif
 

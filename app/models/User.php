@@ -33,7 +33,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsToMany('Committee', 'committee_participants')->withTimestamps();
   	}
 
-  	public function validator() {
+	public function validator() {
 		return Validator::make(
 			$this->getAttributes(),
 			array('username' => 'required|unique:users,username,'.$this->id,

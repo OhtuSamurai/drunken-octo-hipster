@@ -94,8 +94,10 @@ class PollControllerTest extends TestCase {
 	public function testUpdate() {
 		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
+		$user = $this->mockUser();
+		$user->save();
 		$poll = Poll::find('uniikki');
-		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'bricks']);
+		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'bricks', 'user' => [$user->id]]);
 		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertEquals('bricks', Poll::find('uniikki')->toimikunta);
 	}

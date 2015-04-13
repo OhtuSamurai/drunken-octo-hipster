@@ -1,7 +1,4 @@
 $(document).ready(function(){
-  $(".userselector").prop("checked", false);
-
-
 	
   $(".pooltable>tbody>tr").click(function(){
     checkbox = $(this).find(".userselector")
