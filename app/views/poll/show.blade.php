@@ -54,7 +54,7 @@
 			<td class="allred" data-userid="{{$user->id}}">kaikki punaiseksi</td>
 		@endforeach
 		@foreach($lurkers as $lurker)
-			<td class="allred" data-userid="{{$lurker->id}}">kaikki punaiseksi</td>
+			<td class="allredlurker" data-userid="{{$lurker->id}}">kaikki punaiseksi</td>
 		@endforeach
 	</tbody>
 </table>

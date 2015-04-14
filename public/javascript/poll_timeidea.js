@@ -86,7 +86,7 @@ $(document).ready(function(){
 	    			$(this).removeClass("entieda");
 	    			$(this).addClass("parhaiten");
 	    		}
-	    		else if(selected.val()=='eivastattu'){Vaina
+	    		else if(selected.val()=='eivastattu'){
 	    			selected.val('parhaiten');
 	    			$(this).removeClass("eivastattu");
 	    			$(this).addClass("parhaiten");
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		thisuser = $(this).data('userid');
 		selectedcolumn = $(".timeidea>.options[data-userid|='"+thisuser+"']");
 		islurker = selectedcolumn.find(".selectedvalue").data('lurker');
-		//if(islurker == false){
+		//if(islurker == false){ //jos islurker == true tämän userid:n kohdalla, älä muuta semmoista jossa islurker false öm
 		if(currentuser === thisuser){
 		//redbuttonuserid = $(this).data("userid");
 				//selectedcolumn = $(".timeidea>.options[data-userid|='"+thisrow+"']");			
@@ -148,6 +148,19 @@ $(document).ready(function(){
 				selectedcolumn.find(".selectedvalue").val('eisovi');
 				selectedcolumn.addClass("eisovi");
 				countsum();
+		}
+	});
+	$(".allredlurker").click(function(){
+		thisuser = $(this).data('userid');
+		selectedcolumn = $(".timeidea>.options[data-userid|='"+thisuser+"']");
+		alert(selectedcolumn);
+		alert(selectedcolumn.find(".selectedvalue").data("lurker"));
+		if(selectedcolumn.find(".selectedvalue").data("lurker") == true){
+			selectedcolumn.removeClass(); //removes all classes
+			selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
+			selectedcolumn.find(".selectedvalue").val('eisovi');
+			selectedcolumn.addClass("eisovi");
+			countsum();
 		}
 	});*/
 
