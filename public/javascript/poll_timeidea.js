@@ -122,35 +122,25 @@ $(document).ready(function(){
 	}); 
 	
 	
-	//huom huom palaan tänne, tämä rikki (oli jo aiemmin koska lurkereilla ja usereilla voi olla sama data-id mutta korjaan kyllä!
+
 	
-	/*$(".allred").click(function(){  //muutetaan tietyn sarakkeen kaikki boxit punaiseksi
+	$(".allred").click(function(){  //muutetaan kirjautuneen käyttäjän sarakkeen kaikki boxit punaiseksi
 		currentuser = $(".kirjautunutuser").data('userid');
 		thisuser = $(this).data('userid');
 		selectedcolumn = $(".timeidea>.options[data-userid|='"+thisuser+"']");
-		islurker = selectedcolumn.find(".selectedvalue").data('lurker');
-		//if(islurker == false){ //jos islurker == true tämän userid:n kohdalla, älä muuta semmoista jossa islurker false öm
-		if(currentuser === thisuser){
-		//redbuttonuserid = $(this).data("userid");
-				//selectedcolumn = $(".timeidea>.options[data-userid|='"+thisrow+"']");			
+		selectedcolumn.addClass("eisovi");
+		alert(currentuser);
+		if(currentuser === thisuser){			
 			selectedcolumn.removeClass(); //removes all classes
 			selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
 			selectedcolumn.find(".selectedvalue").val('eisovi');
 			selectedcolumn.addClass("eisovi");
 			countsum();
 		}
-		alert(selectedcolumn);	
-		alert(islurker);
-		
-		if(!$(".kirjautunutuser").data('userid')){
-				selectedcolumn.removeClass(); //removes all classes
-				selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
-				selectedcolumn.find(".selectedvalue").val('eisovi');
-				selectedcolumn.addClass("eisovi");
-				countsum();
-		}
-	});*/
-	$(".allredlurker").click(function(){
+
+	});
+	
+	$(".allredlurker").click(function(){  //muutetaan kirjautumattoman käyttäjän kaikki boxit punaiseksi
 		if($(".kirjautunutuser").data('userid')){
 			return;
 		}
