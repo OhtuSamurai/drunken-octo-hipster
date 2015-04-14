@@ -149,12 +149,14 @@ $(document).ready(function(){
 				selectedcolumn.addClass("eisovi");
 				countsum();
 		}
-	});
+	});*/
 	$(".allredlurker").click(function(){
+		if($(".kirjautunutuser").data('userid')){
+			return;
+		}
 		thisuser = $(this).data('userid');
-		selectedcolumn = $(".timeidea>.options[data-userid|='"+thisuser+"']");
-		alert(selectedcolumn);
-		alert(selectedcolumn.find(".selectedvalue").data("lurker"));
+		selectedcolumn = $(".timeidea>.lurkeroptions[data-userid|='"+thisuser+"']");
+		selectedcolumn.addClass("eisovi");
 		if(selectedcolumn.find(".selectedvalue").data("lurker") == true){
 			selectedcolumn.removeClass(); //removes all classes
 			selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
@@ -162,7 +164,7 @@ $(document).ready(function(){
 			selectedcolumn.addClass("eisovi");
 			countsum();
 		}
-	});*/
+	});
 
 	
 	$(".allusersactive").click(function(){ //valitaan kaikki käyttäjät tai poistetaan kaikki valinnat
