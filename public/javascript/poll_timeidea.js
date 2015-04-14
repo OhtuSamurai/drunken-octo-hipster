@@ -120,8 +120,6 @@ $(document).ready(function(){
       	}
       	countsum();      	
 	}); 
-	
-	
 
 	
 	$(".allred").click(function(){  //muutetaan kirjautuneen käyttäjän sarakkeen kaikki boxit punaiseksi
@@ -129,7 +127,6 @@ $(document).ready(function(){
 		thisuser = $(this).data('userid');
 		selectedcolumn = $(".timeidea>.options[data-userid|='"+thisuser+"']");
 		selectedcolumn.addClass("eisovi");
-		alert(currentuser);
 		if(currentuser === thisuser){			
 			selectedcolumn.removeClass(); //removes all classes
 			selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
