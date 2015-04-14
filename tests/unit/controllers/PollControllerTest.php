@@ -97,20 +97,33 @@ class PollControllerTest extends TestCase {
 		$user = $this->mockUser();
 		$user->save();
 		$poll = Poll::find('uniikki');
-		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'bricks', 'user' => [$user->id]]);
+		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'bricks', 'description' => 'weeee', 'user' => [$user->id]]);
 		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertEquals('bricks', Poll::find('uniikki')->toimikunta);
 	}
 
-	private function updateIsOpen($cred, $expected) {
+	public function testToggleOpenWithoutLoggingIn() {
+		$poll = $this->mockPoll();
+		$poll->save();
+		$this->assertEquals(1, $poll->is_open);
+		$this->action('POST','PollController@toggleOpen', ['id' => $poll->id]);
+		$this->assertEquals(1, Poll::find($poll->id)->is_open);
+		$this->action('POST','PollController@toggleOpen', ['id' => $poll->id]);
+		$this->assertEquals(1, Poll::find($poll->id)->is_open);
+	}
+
+	public function testToggleOpenAsAdmin() {
 		$this->fakeLoginAdmin();
 		$poll = $this->mockPoll();
 		$poll->save();
 		$this->assertEquals(1, $poll->is_open);
-		$this->action('PUT','PollController@update', ['id' => $poll->id], $cred);
-		$this->assertEquals($expected, Poll::find('uniikki')->is_open);
+		$this->action('POST','PollController@toggleOpen', ['id' => $poll->id]);
+		$this->assertEquals(0, Poll::find($poll->id)->is_open);
+		$this->action('POST','PollController@toggleOpen', ['id' => $poll->id]);
+		$this->assertEquals(1, Poll::find($poll->id)->is_open);
 	}
 
+/* TODO: testaa makeACommittee
 	public function testUpdateIsOpenWithoutInput() {
 		$this->updateIsOpen(['is_open'=>false], 1);
 	}
@@ -126,7 +139,7 @@ class PollControllerTest extends TestCase {
 	public function testUpdateIsOpen() {
 		$this->updateIsOpen(['is_open'=>false, 'time'=>'Joskus', 'user'=>[1]], 0);
 	}
-
+*/
 	public function testDestroy() {
 		$poll_ctrl = new PollController;
 		$this->assertNull($poll_ctrl->destroy(1));

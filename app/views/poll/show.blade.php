@@ -86,23 +86,23 @@
     <div class="row">
 		<a class='btn btn-primary' href={{action('PollController@edit', ['id' => $poll->id])}} role='button'>Muokkaa kyselyä</a>
 	</div>
-    @include('poll.close')
-	{{ Form::open(array('action' => array('PollController@update', $poll->id), 'id'=>'committeeform', 'method'=>'PUT')) }}
+	<div class="row top15">
+    @include('poll.toggleopen')
+	</div>
+	{{ Form::open(array('action' => array('PollController@makeACommittee', $poll->id), 'id'=>'committeeform', 'method'=>'POST')) }}
 	{{ Form::hidden('time', '', array('class' => 'valittuaika')) }}
 	<div class = "valitutuserit hidden">
 		@foreach($users as $user)
 			{{ Form::checkbox('user[]', $user->id) }}
 		@endforeach
 	</div>
-	{{ Form::hidden('is_open', 0)}}
-	{{-- {{ Form::hidden('poll_id', $poll->id)}} --}}
 	<div class="row top15">
-		{{ Form::submit('Sulje kysely', array('class' => 'btn btn-primary')) }}
+		{{ Form::submit('Muodosta toimikunta', array('class' => 'btn btn-primary')) }}
 	</div>
 	{{ Form::close() }}
 	<div class="row top15">
 	{{ Form::open(array('action' => array('PollController@makeACopy', $poll->id), 'method'=>'POST')) }}
-	{{ Form::submit('Tee kopio', array('class' => 'btn btn-primary')) }}
+	{{ Form::submit('Tee kopio tästä kyselystä', array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
 	</div>
 	</div>

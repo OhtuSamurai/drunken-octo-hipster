@@ -172,15 +172,9 @@ class PollController extends \BaseController {
 			return Redirect::route('poll.show', array('poll' => $id));
 		if(!Input::has('user'))
 			return Redirect::action('PollController@edit', ['id' => $id])->withErrors('Valitse ensin käyttäjiä');
-		if(Input::has('is_open') AND !Input::has('time'))
-			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ajankohta');
 		$poll = Poll::find($id);
-		
-		foreach (Input::all() as $key => $value)
-		{
-			if( array_key_exists($key, $poll->toArray() ))
-				$poll->$key = $value;
-		}
+		$poll->toimikunta = Input::get('toimikunta');
+		$poll->description = Input::get('description');
 
 		//list of users in poll before making changes
 		$userlist = $poll->users->lists('id');
@@ -200,21 +194,46 @@ class PollController extends \BaseController {
 		}
 
 		$poll->save();
-
-		//if poll is_open changes, create new committee from poll
-		if( Input::has('is_open') )
-		{			
-			$committee = new Committee;
-			$committee->name = $poll->toimikunta;
-			$committee->time = Input::get('time');
-			$committee->save();
-			foreach(Input::get('user') as $user)
-				$committee->users()->attach($user);
-		return Redirect::route('committee.show', array('poll' => $committee->id));
-		}
-
-		//for example if polls name gets changed
 		return Redirect::route('poll.edit', array('id' => $id))->with('success','Kyselyn tiedot on tallennettu!');
+	}
+
+	/**
+	 * Toggles the 'is_open' state of a poll
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function toggleOpen($id) {
+		if(!Auth::check() or !Auth::User()->is_admin){
+			return Redirect::to('/')->withErrors("Toiminto evätty!");
+		}
+		$poll = Poll::find($id);
+		$poll->is_open = !$poll->is_open;
+		$poll->save();
+		return Redirect::route('poll.show', array('id' => $id));
+	}
+
+	/**
+	 * Creates a committee from a poll
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function makeACommittee($id) {
+		if(!Auth::check() or !Auth::User()->is_admin)
+			return Redirect::route('poll.show', array('poll' => $id));
+		if (!Input::has('time'))
+			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ajankohta');
+		if (!Input::has('user'))
+			return Redirect::route('poll.create')->withErrors("Valitse ensin käyttäjiä listasta");
+		$poll = Poll::find($id);
+		$committee = new Committee;
+		$committee->name = $poll->toimikunta;
+		$committee->time = Input::get('time');
+		$committee->save();
+		foreach(Input::get('user') as $user)
+			$committee->users()->attach($user);
+		return Redirect::route('committee.show', array('poll' => $committee->id));
 	}
 
 	/**

@@ -22,6 +22,10 @@ Route::put('updateSopivuus', 'AnswerController@updateSopivuus');//eikö tämän 
 
 Route::post('committee/{id}/toggleopen', 'CommitteeController@toggleOpen');
 
+Route::post('poll/{id}/toggleopen', 'PollController@toggleOpen');
+
+Route::post('poll/{id}/makeacommittee', 'PollController@makeACommittee');
+
 Route::post('poll/{id}/makeacopy', 'PollController@makeACopy');
 
 Route::get('pooli', 'UserController@active');
