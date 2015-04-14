@@ -126,8 +126,7 @@ $(document).ready(function(){
 		currentuser = $(".kirjautunutuser").data('userid');
 		thisuser = $(this).data('userid');
 		selectedcolumn = $(".timeidea>.options[data-userid|='"+thisuser+"']");
-		selectedcolumn.addClass("eisovi");
-		if(currentuser === thisuser){			
+		if(currentuser == thisuser){			
 			selectedcolumn.removeClass(); //removes all classes
 			selectedcolumn.find(".selectedvalue").attr('data-clicked', 'true'); //nyt näitäkin on "klikattu"
 			selectedcolumn.find(".selectedvalue").val('eisovi');
