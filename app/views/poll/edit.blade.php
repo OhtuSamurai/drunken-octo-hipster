@@ -14,7 +14,7 @@
 	<div class="row col-md-7 top15">
 	{{ Form::textarea('description', $poll->description,array('placeholder'=>'Kuvaus','size'=>'40x3'))}}
 	</div>
-
+	<div class="col-md-7 top15">
 	<table class="pooltable table table-hover">
 	  <thead>
 		<tr>
@@ -44,8 +44,8 @@
 	  @endforeach
 	  </tbody>
 	</table>
-
-	<div class="row col-md-7 top7">
+	</div>
+	<div class="row col-md-7">
 	{{ Form::submit('Tallenna',array('class'=>'btn btn-default'))}}
 	</div>
 
