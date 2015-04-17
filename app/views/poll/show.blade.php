@@ -35,7 +35,7 @@
 			@endif
 			@if (!empty($lurkers))
 			@foreach($lurkers as $lurker)
-			<td class="col-md-1 users" data-id = "{{$lurker->id}}">
+			<td class="col-md-1 lurkers" data-lurkerid = "{{$lurker->id}}" data-islurker = 'true'>
 					{{$lurker->name}}
 				</td>
 			@endforeach
@@ -54,7 +54,7 @@
 			<td class="allred" data-userid="{{$user->id}}">kaikki punaiseksi</td>
 		@endforeach
 		@foreach($lurkers as $lurker)
-			<td class="allredlurker" data-userid="{{$lurker->id}}">kaikki punaiseksi</td>
+			<td class="allredlurker" data-lurkerid="{{$lurker->id}}">kaikki punaiseksi</td>
 		@endforeach
 	</tbody>
 </table>
