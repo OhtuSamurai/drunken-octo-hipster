@@ -4,6 +4,9 @@
 <div class="col-md-7">
 	<h1>{{ $committee->name }}</h1>
 	<h2>Järjestetään: {{ $committee->time }}</h2>
+  @if($committee->description)
+  <pre>{{ $committee->description }}</pre>
+  @endif
 </div>
 <div class="row col-md-7">
 	@if(Auth::user() && Auth::user()->is_admin)
