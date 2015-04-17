@@ -15,16 +15,16 @@ table.selitykset > tr >td{
 table tbody tr > td.eivastattu {
 	background-color: #989898 !important;
 }
-
-/*table tbody tr > td.parhaiten {
-	background-color: #53CF29 !important;
+/*
+table tbody tr > td.parhaiten {
+	background-color: #52CC29 !important;
 }*/
 table tbody tr > td.parhaiten {
 	background-color: #5CE62E !important;
 }
 
 table tbody tr > td.eisovi {
-	background-color: #FF3385 !important;
+	background-color: #FF1A99 !important;
 }
 
 table tbody tr > td.sopii {
