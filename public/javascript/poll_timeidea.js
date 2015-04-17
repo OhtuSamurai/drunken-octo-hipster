@@ -204,7 +204,28 @@ $(document).ready(function(){
       		else{
       			$(this).removeClass("active"); //joku tai kaikki oli valittu->poistetaan kaikki valinnat
       		}
-		});      	
+		});
+		
+		$(".lurkers").each(function(){ //ja sama lurkereille taas
+			if($(this).hasClass("active")){ //jokin yksittäinen tai useampi käyttäjä on valittu
+				someistriggered = true;
+				$(".lurkers").each(function(){
+					$(this).removeClass("active"); //nollataan kaikki aluksi, jotta kaikki valinnat vaihtuvat samaksi
+				});
+			}			
+		});
+		
+		$(".lurkers").each(function(){
+			id = $(this).data('id');
+			usercheckbox = $("[value='" + id + "']");
+			usercheckbox.prop("checked", !usercheckbox.prop("checked"));		
+	    	if(someistriggered === false){	    
+      			$(this).addClass("active"); //kaikki valituksi
+      		}
+      		else{
+      			$(this).removeClass("active"); //joku tai kaikki oli valittu->poistetaan kaikki valinnat
+      		}
+		});       	
 		countsum();
 	});
 	
