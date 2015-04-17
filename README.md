@@ -1,4 +1,5 @@
 ﻿# Opetusnäytteiden hallintatyökalu
+## Demotilaisuus: to 23.4.2015 klo 15-17
 ## Seuraava ryhmätapaaminen: ti 17.3.2015 klo 14.00-16.00 kirjastossa
 ## Seuraava asiakastapaaminen: ke 29.4.2015 14.15-16 A218
 
