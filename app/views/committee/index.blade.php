@@ -2,9 +2,6 @@
 @section('content')
 
 <div class="col-md-7">
-  <h1>Toimikunnat</h1>
-
-	@include('committee.list')
 
 @if(Auth::user() && Auth::user()->is_admin)
 	<div class ="row">
@@ -16,5 +13,12 @@
 		</div>
 	</div>
 @endif
+
+  <h1>Avoimet toimikunnat</h1>
+	@include('committee.list')
+
+	{{ob_start();$committees=$closed;ob_end_clean()}}
+	<h1>Suljetut toimikunnat</h2>
+	@include('committee.list')
 </div>
 @stop

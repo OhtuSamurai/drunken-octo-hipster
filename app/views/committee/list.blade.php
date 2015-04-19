@@ -1,4 +1,4 @@
-<table class="pooltable table table-hover">
+<table class="pooltable table table-striped">
   <thead>
     <tr>
       <th>Nimi</th>

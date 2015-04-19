@@ -1,5 +1,5 @@
 <div class="col-md-4">
-<table class="pooltable table table-hover">
+<table class="pooltable table table-striped">
 	@if(count($polls)==0)
 		<h3>Ei avoimia kyselyjä</h3>
 	@endif
