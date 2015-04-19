@@ -82,11 +82,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function unansweredPolls() {
 		$tulos = array();
 		$s = "'eivastattu'";
-		if (DB::connection()->getDriverName()=='mysql'){
-			foreach( DB::select( DB::raw('select poll_id from (select user_id, b.poll_id, sopivuus from (select * from (select polls.id as poll_id, is_open, timeideas.id as timeidea_id2 from timeideas inner join polls on timeideas.poll_id = polls.id where is_open=1)as a inner join answers on answers.timeidea_id = a.timeidea_id2) as b inner join participants on b.participant_id = participants.id where participant_id='.$this->id.' and sopivuus='.$s.') as c') ) as $obj) 
+		if (DB::connection()->getDriverName()=='pgsql'){
+			foreach( DB::select( DB::raw('select poll_id from (select user_id, b.poll_id, sopivuus from (select * from (select polls.id as poll_id, is_open, timeideas.id as timeidea_id2 from timeideas inner join polls on timeideas.poll_id = polls.id where is_open=TRUE)as a inner join answers on answers.timeidea_id = a.timeidea_id2) as b inner join participants on b.participant_id = participants.id where participant_id='.$this->id.' and sopivuus='.$s.') as c') ) as $obj) 
 				array_push($tulos,$obj->poll_id);
 		} else {
-			foreach( DB::select( DB::raw('select poll_id from (select user_id, b.poll_id, sopivuus from (select * from (select polls.id as poll_id, is_open, timeideas.id as timeidea_id2 from timeideas inner join polls on timeideas.poll_id = polls.id where is_open=TRUE)as a inner join answers on answers.timeidea_id = a.timeidea_id2) as b inner join participants on b.participant_id = participants.id where participant_id='.$this->id.' and sopivuus='.$s.') as c') ) as $obj) 
+			foreach( DB::select( DB::raw('select poll_id from (select user_id, b.poll_id, sopivuus from (select * from (select polls.id as poll_id, is_open, timeideas.id as timeidea_id2 from timeideas inner join polls on timeideas.poll_id = polls.id where is_open=1)as a inner join answers on answers.timeidea_id = a.timeidea_id2) as b inner join participants on b.participant_id = participants.id where participant_id='.$this->id.' and sopivuus='.$s.') as c') ) as $obj) 
 				array_push($tulos,$obj->poll_id);
 
 		}
@@ -94,3 +94,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 }
+

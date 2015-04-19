@@ -1,3 +1,11 @@
+h2.huomio {
+	color:#E93103;
+}
+h1.huomio {
+	color:#E93103;
+}
+
+
 .active{
 	color: #339900 !important;	
 	background: #CCFF99 !important;
@@ -14,6 +22,9 @@ table.selitykset > tr >td{
 
 .table td.center {
    text-align: center;   
+}
+.table td.left {
+   text-align: left;   
 }
 
 table tbody tr > td.eivastattu {

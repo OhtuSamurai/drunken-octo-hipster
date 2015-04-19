@@ -33,6 +33,12 @@
 	</div>
 @endif
 
+@if (Auth::user() && !Auth::user()->is_admin && count(Auth::user()->unansweredpolls())>0)
+	<div class="alert alert-warning">
+		<p>Sinulla on vastaamattomia kyselyjä!</p>
+	</div>
+@endif
+
 <div class="container-fluid">
   @yield('content')
 </div>

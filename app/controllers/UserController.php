@@ -96,11 +96,25 @@ class UserController extends \BaseController {
 			foreach($user->committees as $committee)
 				if($committee->is_open) array_push($committees, $committee);
 		}
+	
+		$showUnanswered = false;
+		$uapolls = array();
+		if (Auth::user() && !Auth::user()->is_admin && $id==Auth::user()->id &&count(Auth::user()->unansweredpolls())>0) {
+			$showUnanswered=true;
+			$uapolls = $this->createArrayOfUnAnsweredPolls();
+		}
+		
 		return View::make('user.show', 
-			array('user' => $user, 'polls' => $polls, 'committees' => $committees,
+			array('user' => $user, 'polls' => $polls, 'committees' => $committees, 'showUnanswered'=>$showUnanswered,'uapolls'=>$uapolls,
 				'curr' => count($user->curr_committees()), 'evry' => count($user->committees), 'currp' => count($user->curr_polls()), 'evryp' =>count($user->polls)));
 	}
 
+	private function createArrayOfUnAnsweredPolls() {
+		$res = array();
+		foreach (array_unique(Auth::user()->unansweredpolls()) as $uapollid)
+			array_push($res,Poll::find($uapollid));
+		return $res;
+	}
 
 	/**
 	 * Show the form for editing the specified resource.

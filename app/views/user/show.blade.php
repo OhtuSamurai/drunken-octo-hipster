@@ -1,6 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+
+@if ($showUnanswered)
+
+<h1 class="huomio">Vastaa näihin kyselyihin!</h1>
+	@foreach ($uapolls as $uapoll)
+		<a href="/poll/{{$uapoll->id}}"><h2>{{$uapoll->toimikunta}}</h2></a>
+	@endforeach
+@endif
 <h1>{{$user->first_name}} {{$user->last_name}}</h1>
 
 <p>Käyttäjätunnus: {{$user->username}}</p>
