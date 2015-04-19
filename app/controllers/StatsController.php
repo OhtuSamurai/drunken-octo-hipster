@@ -8,28 +8,18 @@ class StatsController extends BaseController {
 		if (!Auth::user() || !Auth::user()->is_admin)
 			return Redirect::to('/')->withErrors('Toiminto evätty');
 		$tilasto = (object) array(
-			'n_pooli'=>DB::select( DB::raw('select count(*) as n_pooli from users') )[0]->n_pooli,
+			'n_pooli'=>DB::table('users')->where('is_active','=',1)->count(),
 			'n_users'=>User::all()->count(),
-			'n_kyselyissa'=>DB::select(DB::raw('select count(*) as n_kyselyissa from (select count(*) from participants group by user_id) as whatevs'))[0]->n_kyselyissa,
-			'n_komiteoissa'=>DB::select(DB::raw('select count(*) as n_komiteoissa from (select count(*) from committee_participants group by user_id) as whevers'))[0]->n_komiteoissa,
-			'eikoskaankys'=>$this->getEikoskaan('participants'),
-			'eikoskaantk'=>$this->getEikoskaan('committee_participants'),
-			'n_polls'=>DB::select( DB::raw('SELECT count(*) as n_polls FROM polls') )[0]->n_polls,
-			'n_committees'=>DB::select(DB::raw('SELECT count(*) as n_committees FROM committees'))[0]->n_committees,
-			'n_openpolls'=>DB::select( DB::raw('SELECT count(*) as n_openpolls FROM polls WHERE is_open = 1'))[0]->n_openpolls,
-			'n_opencommittees'=>DB::select( DB::raw('SELECT count(*) as n_opencommittees FROM  committees WHERE is_open = 1'))[0]->n_opencommittees,
+			'n_kyselyissa'=>count(DB::table('polls')->where('is_open','=',1)->join('participants','polls.id','=','participants.poll_id')->select('participants.user_id')->distinct()->get()),
+			'n_komiteoissa'=>count(DB::table('committees')->where('is_open','=',1)->join('committee_participants','committees.id','=','committee_participants.committee_id')->select('committee_participants.user_id')->distinct()->get()),
+			'n_polls'=>Poll::all()->count(),
+			'n_committees'=>Committee::all()->count(),
+			'n_openpolls'=>DB::table('polls')->where('is_open','=',1)->count(),
+			'n_opencommittees'=>DB::table('committees')->where('is_open','=',1)->count(),
 			'n_attachments'=>Attachment::all()->count(),
 			'attachmentsize'=>$this->getSumAttachmentSize()
 			);
 			return View::make('stats.index')->with(['tilasto'=>$tilasto,'users'=>User::all()]);
-	}
-
-	private function getEikoskaan($tablename) {
-		$res = DB::select(DB::raw('select id from users where id not in (select user_id from '.$tablename.') order by created_at'));
-		$users = array();
-		foreach ($res as $obj)
-			array_push($users,User::find($obj->id));
-		return $users;
 	}
 
 	private function getSumAttachmentSize() {
