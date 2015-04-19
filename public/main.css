@@ -12,6 +12,10 @@ table.selitykset > tr >td{
     width: 100px;
 }
 
+.table td.center {
+   text-align: center;   
+}
+
 table tbody tr > td.eivastattu {
 	background-color: #989898 !important;
 }

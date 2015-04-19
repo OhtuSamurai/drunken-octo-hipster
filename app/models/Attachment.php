@@ -22,4 +22,8 @@ class Attachment extends Eloquent {
 		}
 		return $userids;
 	}
+
+	public function getSize() {
+		return filesize($this->file);
+	}
 }

@@ -65,4 +65,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   			return $com->is_open;
   		});
   	}
+
+
+	public function n_committee() {
+		return $this->committees->count();
+	}
+	
+	public function n_poll() {
+		return $this->polls->count();
+	}
 }

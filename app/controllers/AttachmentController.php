@@ -57,6 +57,8 @@ class AttachmentController extends \BaseController {
 	*  Only admin allowed to store attachments.
 	*/
 	public function store() {
+		if((empty($_FILES) && empty($_POST) && isset($_SERVER['REQUEST_METHOD']) && strtolower($_SERVER['REQUEST_METHOD']) == 'post'))
+			return Redirect::to('/')->withError('Tiedosto on liian suuri!');
 		if (!(Auth::check() AND Auth::user()->is_admin))
 			return Redirect::to('/')->withError('Et voi lisätä liitettä, koska et ole admin!');
 		$committee = Committee::find(Input::get('committee_id'));
