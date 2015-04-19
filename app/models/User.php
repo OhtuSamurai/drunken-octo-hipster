@@ -74,4 +74,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function n_poll() {
 		return $this->polls->count();
 	}
+	
+	public function n_comment() {
+		return $this->hasMany('Comment')->count();
+	}
+
 }

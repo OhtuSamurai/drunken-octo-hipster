@@ -6,6 +6,7 @@
 		<th>Osallistunut kyselyyn</th>
 		<th>Monessako avoimessa kyselyssä</th>
 		<th>Monessako avoimessa toimikunnasssa</th>
+		<th>Kommentteja</th>
 	</tr>
 	@foreach($users as $user) 
 		<tr>
@@ -15,6 +16,7 @@
 			<td class="center">{{$user->n_poll()}}</td>
 			<td class="center">{{$user->curr_polls()->count()}}</td>
 			<td class="center">{{$user->curr_committees()->count()}}</td>
+			<td class="center">{{$user->n_comment()}}</td>
 		</tr>
 	@endforeach
 </table>
