@@ -13,7 +13,8 @@ class PollController extends \BaseController {
 		return Redirect::to('login')->withErrors('Kyselyt näkyvät vain adminille');
 
 	  $polls = Poll::where('is_open','=',1)->get(); 	  
-	  return View::make('poll.index', array('polls' => $polls));
+	$closed = Poll::where('is_open','=',0)->get();
+	  return View::make('poll.index', array('polls' => $polls,'closed'=>$closed));
 	}
 
 
