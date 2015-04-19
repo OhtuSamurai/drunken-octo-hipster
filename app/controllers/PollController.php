@@ -144,6 +144,8 @@ class PollController extends \BaseController {
 		$answers = $poll->answers;
 		$comments = $poll->comments;
 		$lurkers = $poll->lurkers;
+		if ((Auth::user() && !Auth::user()->is_admin && in_array($id,Auth::user()->unansweredpolls()))||!Auth::user())
+			Session::flash('info','Ohje: valitse ajankohdan sopivuutta kuvaava väri klikkaamalla toistuvasti taulukon ruutua');
 		return View::make('poll.show', array('poll' => $poll, 'users' => $users, 'timeideas' => $timeideas,
 			'answers' => $answers, 'comments' => $comments, 'lurkers' => $lurkers));
 	}

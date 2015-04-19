@@ -27,6 +27,12 @@
   </div> 
 @endif
 
+@if (Session::has('info'))
+	<div class="alert alert-info">
+		<p>{{Session::get('info')}}</p>
+	</div>
+@endif
+
 <div class="container-fluid">
   @yield('content')
 </div>

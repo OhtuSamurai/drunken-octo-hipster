@@ -7,7 +7,6 @@
 @endif
 
 @section('content')
-
 <h1>{{$poll->toimikunta}}</h1>
 <p>{{$poll->description}}</p>
 {{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method' => 'PUT')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
