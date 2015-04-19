@@ -5,8 +5,12 @@
   {{HTML::script('javascript/poll_timeidea.js')}}
 @stop
 @endif
-
 @section('content')
+@if(isset($showAdvice)&&$showAdvice)
+<div class="alert alert-info">
+	<p>Valitse ajankohdan sopivuutta kuvaava väri klikkaamalla toistuvasti taulukon ruutua. Klikkaa sen jälkeen "Tallenna vastaukset" -nappulaan taulukon alapuolella.</p>
+</div>
+@endif
 <h1>{{$poll->toimikunta}}</h1>
 <p>{{$poll->description}}</p>
 {{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method' => 'PUT')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
@@ -106,5 +110,4 @@
 	</div>
 	</div>
 @endif
-
 @stop
