@@ -11,7 +11,7 @@
     <tr data-userid="{{$committee->id}}" >
       <td><a href={{route('committee.show', $committee->id)}}>{{$committee->name}}</a></td>
       <td>{{$committee->time}}</td>
-      <td>{{$committee->users()->count()}}</td>
+      <td class="center">{{$committee->users()->count()}}</td>
     </tr>
   @endforeach
   </tbody>

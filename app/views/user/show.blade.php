@@ -49,7 +49,7 @@
   <h2>Kuulut toimikuntiin:</h2>
 	@include('committee.list')
 </div>
-<div class="col-md-12">
+<div class="col-md-4">
   <h2>Kuulut kyselyihin:</h2>
 	@include('poll.list')
 </div>

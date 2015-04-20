@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="col-md-7">
-
 @if(Auth::user() && Auth::user()->is_admin)
 	<div class ="row">
 		<div class="top7">
@@ -13,12 +11,17 @@
 		</div>
 	</div>
 @endif
-
-  <h1>Avoimet toimikunnat</h1>
-	@include('committee.list')
-
-	{{ob_start();$committees=$closed;ob_end_clean()}}
-	<h1>Suljetut toimikunnat</h2>
-	@include('committee.list')
-</div>
+	<div class="row">
+		<div class="col-md-4">
+			<h1>Avoimet toimikunnat</h1>
+			@include('committee.list')
+		</div>
+		<div class="col-md-1">
+		{{ob_start();$committees=$closed;ob_end_clean()}}
+		</div>
+		<div class="col-md-4">
+		<h1>Suljetut toimikunnat</h2>
+		@include('committee.list')
+		</div>
+	</div>
 @stop
