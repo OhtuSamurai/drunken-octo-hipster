@@ -13,7 +13,7 @@
 	{{ Form::label('username', 'Käyttäjätunnus' )}}
 	{{ Form::text('username') }}
 
-	{{ Form::submit('Kirjaudu', array('class' => 'btn btn-primary')) }}
+	{{ Form::submit('Kirjaudu', array('class' => 'btn btn-default')) }}
 
 	{{ Form::close()}}
 @stop
