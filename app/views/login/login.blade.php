@@ -3,12 +3,7 @@
 @section('content')
   <h1>Sisäänkirjautuminen</h1>
 
-
-  	@if(Auth::user())
-  	{{{Auth::user()->first_name}}}
-  	@endif
-
-	{{ Form::open(/* array('action' => 'LoginController@doLogin')*/) }}
+	{{ Form::open(array('id' => 'loginForm')) }}
 
 	{{ Form::label('username', 'Käyttäjätunnus' )}}
 	{{ Form::text('username') }}
