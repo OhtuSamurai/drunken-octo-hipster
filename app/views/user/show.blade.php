@@ -14,7 +14,9 @@
 <p>Olet ollut jäsenenä {{$evry}} toimikunnassa {{$evryp}} kyselyssä.</p>
 <p>Kuvaus:</p>
 <pre>{{$user->description}}</pre>
+@if (Auth::user() && (Auth::user()->is_admin || Auth::user()->id==$user->id))
 <a href="/user/{{$user->id}}/edit" class="btn btn-primary" role="button">Muokkaa tietoja</a>
+@endif
 @if(Auth::user()->is_admin && Auth::user()->id != $user->id)
 	@if($user->is_admin)
     {{ Form::open(array('action' => array('UserController@update', $user->id), 'method' => 'PUT')) }}
@@ -34,7 +36,7 @@
 
 <div class="row">
 
-@if($user->is_admin)
+@if($user->is_admin && Auth::user() && Auth::user()->is_admin)
 <div class="col-md-4">
   <h2>Päätetyt toimikunnat:</h2>
 	@include('committee.list')
@@ -43,13 +45,13 @@
   <h2>Avoimet kyselyt:</h2>
 	@include('poll.list')
 </div>
-@else
+@elseif (Auth::user() && ($user->id==Auth::user()->id || Auth::user()->is_admin))
 <div class="col-md-4">
-  <h2>Toimikunnat:</h2>
+  <h2>Kuulut toimikuntiin:</h2>
 	@include('committee.list')
 </div>
 <div class="col-md-4">
-  <h2>Kyselyt:</h2>
+  <h2>Kuulut kyselyihin:</h2>
 	@include('poll.list')
 </div>
 @endif
