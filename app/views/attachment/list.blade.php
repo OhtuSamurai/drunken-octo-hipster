@@ -9,7 +9,7 @@
 <tbody>
 @foreach($committee->attachments as $attachment)
 	
-	@if ((!in_array(Auth::user()->id,$attachment->getUserIDs()))&&(!Auth::user()->is_admin))
+	@if ((!in_array(Auth::user()->id,$attachment->getUserIDs()))&&(!Auth::user()->is_admin)&&$committee->is_open)
 	<tr class="halytys">
 	@else <tr>
 	@endif
@@ -26,7 +26,7 @@
 			<td>
 			@endif
 
-			@if ((!in_array(Auth::user()->id,$attachment->getUserIDs()))&&(!Auth::user()->is_admin))
+			@if ((!in_array(Auth::user()->id,$attachment->getUserIDs()))&&(!Auth::user()->is_admin)&&$committee->is_open)
 			<td class="halytys"><b>Lue tämä liite!</b></td>
 			@endif
 	</tr>
