@@ -10,8 +10,8 @@
 <p>Laitos: {{$user->department}}</p>
 <p>Asema: {{$user->position}}</p>
 
-<p>Kuulut tällä hetkellä {{$curr}} toimikuntaan ja {{$currp}} kyselyyn.</p>
-<p>Olet ollut jäsenenä {{$evry}} toimikunnassa {{$evryp}} kyselyssä.</p>
+<p>Jäsenenä tällä hetkellä {{$curr}} toimikunnassa ja {{$currp}} kyselyssä.</p>
+<p>On ollut jäsenenä {{$evry}} toimikunnassa {{$evryp}} kyselyssä.</p>
 <p>Kuvaus:</p>
 <pre>{{$user->description}}</pre>
 @if (Auth::user() && (Auth::user()->is_admin || Auth::user()->id==$user->id))
