@@ -43,6 +43,7 @@ class CommitteeController extends \BaseController {
 		$committee = new Committee;
 		$committee->name = Input::get('name');
 		$committee->time = Input::get('time');
+		$committee->department = Input::get('department');
 		$committee->save();
 		foreach(Input::get('user') as $user)
       		$committee->users()->attach($user);
