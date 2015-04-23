@@ -24,6 +24,8 @@ class Attachment extends Eloquent {
 	}
 
 	public function getSize() {
-		return filesize($this->file);
+		if (file_exists($this->file))
+			return filesize($this->file);
+		else return 0;
 	}
 }
