@@ -1,5 +1,4 @@
 <?php 
-/*
 $I = new FunctionalTester($scenario);
 $I->wantTo('Create a poll as admin');
 $I->loginAsAdmin();
@@ -11,6 +10,4 @@ $I->see('Pakana');
 $I->seeInCurrentUrl('poll/create');
 $user = $I->grabRecord('users', array('username' => 'pentti'));
 $I->sendAjaxPostRequest('/poll', array('toimikunta' => 'Eka toimikunta', 'user' => [$user->id]));
-//$I->click('Luo uusi kysely');
 $I->see('Kyselyn tallennus onnistui!');
-*/
