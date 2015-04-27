@@ -1,5 +1,6 @@
 @if(Auth::user())
 
+<div class = "selectall btn-default">valitse kaikki</div>
 <table class="pooltable table table-hover">
   <thead>
     <tr>
@@ -11,7 +12,6 @@
     </tr>
   </thead>
   <tbody>
-  
   @foreach($users as $user)
 
     <tr class="rivit" data-userid="{{$user->id}}" >
@@ -25,4 +25,5 @@
   @endforeach
   </tbody>
 </table>
+
 @endif
