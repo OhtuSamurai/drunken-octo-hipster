@@ -27,6 +27,22 @@
   </div> 
 @endif
 
+@if (Session::has('info'))
+	<div class="alert alert-info">
+		<p>{{Session::get('info')}}</p>
+	</div>
+@endif
+
+@if (Auth::user() && !Auth::user()->is_admin && count(Auth::user()->unansweredpolls())>0)
+	<div class="alert alert-warning">
+		<p>Sinulla on vastaamattomia kyselyjä! Siirry vastaamaan linkistä:
+		@foreach (array_unique(Auth::user()->unansweredpolls()) as $uapolli_id)
+			<a href="/poll/{{$uapolli_id}}">{{Poll::find($uapolli_id)->toimikunta}}</a>
+		@endforeach
+</p>
+	</div>
+@endif
+
 <div class="container-fluid">
   @yield('content')
 </div>

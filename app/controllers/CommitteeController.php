@@ -9,8 +9,9 @@ class CommitteeController extends \BaseController {
 	 */
 	public function index()
 	{
-		$committees = Committee::all(); 	  
-		return View::make('committee.index', array('committees' => $committees));
+		$committees = Committee::where('is_open','=',1)->get(); 	  
+		$closed = Committee::where('is_open','=',0)->get();
+		return View::make('committee.index', array('committees' => $committees, 'closed'=>$closed));
 	}
 
 	/**
@@ -42,6 +43,7 @@ class CommitteeController extends \BaseController {
 		$committee = new Committee;
 		$committee->name = Input::get('name');
 		$committee->time = Input::get('time');
+		$committee->department = Input::get('department');
 		$committee->save();
 		foreach(Input::get('user') as $user)
       		$committee->users()->attach($user);

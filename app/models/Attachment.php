@@ -22,4 +22,10 @@ class Attachment extends Eloquent {
 		}
 		return $userids;
 	}
+
+	public function getSize() {
+		if (file_exists($this->file))
+			return filesize($this->file);
+		else return 0;
+	}
 }

@@ -6,10 +6,5 @@ namespace Codeception\Module;
 
 class AcceptanceHelper extends \Codeception\Module
 {
-	function loginToSite($name, $I)
-	{
-		$I->amOnPage('/login');
-		$I->fillField('username', $name);
-		$I->click('Kirjaudu');
-	}
+
 }

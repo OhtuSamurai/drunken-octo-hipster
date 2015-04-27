@@ -32,7 +32,7 @@ before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction
 
-  - php artisan migrate --force
+  - php artisan migrate --seed --force
 
 # Selenium: toimii, mutta testaus remotessa ei ole huomioitu
 #  - sh -e /etc/init.d/xvfb start

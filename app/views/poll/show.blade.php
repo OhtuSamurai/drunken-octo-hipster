@@ -5,9 +5,12 @@
   {{HTML::script('javascript/poll_timeidea.js')}}
 @stop
 @endif
-
 @section('content')
-
+@if(isset($showAdvice)&&$showAdvice)
+<div class="alert alert-info">
+	<p>Valitse ajankohdan sopivuutta kuvaava väri klikkaamalla toistuvasti taulukon ruutua. Klikkaa sen jälkeen "Tallenna vastaukset" -nappulaan taulukon alapuolella.</p>
+</div>
+@endif
 <h1>{{$poll->toimikunta}}</h1>
 <p>{{$poll->description}}</p>
 {{ Form::open(array('action' => 'AnswerController@updateSopivuus', 'id'=>'pollform', 'method' => 'PUT')) }} {{-- , 'method'=>'GET' Here starts form for answers --}}
@@ -35,7 +38,7 @@
 			@endif
 			@if (!empty($lurkers))
 			@foreach($lurkers as $lurker)
-			<td class="col-md-1 users" data-id = "{{$lurker->id}}">
+			<td class="col-md-1 lurkers" data-lurkerid = "{{$lurker->id}}" data-islurker = 'true'>
 					{{$lurker->name}}
 				</td>
 			@endforeach
@@ -54,7 +57,7 @@
 			<td class="allred" data-userid="{{$user->id}}">kaikki punaiseksi</td>
 		@endforeach
 		@foreach($lurkers as $lurker)
-			<td class="allredlurker" data-userid="{{$lurker->id}}">kaikki punaiseksi</td>
+			<td class="allredlurker" data-lurkerid="{{$lurker->id}}">kaikki punaiseksi</td>
 		@endforeach
 	</tbody>
 </table>
@@ -107,5 +110,4 @@
 	</div>
 	</div>
 @endif
-
 @stop

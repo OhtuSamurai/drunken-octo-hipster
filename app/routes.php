@@ -40,6 +40,8 @@ Route::put('addToPool', 'UserController@addToPool');
 
 Route::put('delete', 'UserController@delete');
 
+Route::get('stats', 'StatsController@index');
+
 Route::delete('commmittee/{committee_id}/attachment/{id}','AttachmentController@destroy');
 
 Route::delete('poll/{poll_id}/edit/remove/{id}','LurkerController@destroy');

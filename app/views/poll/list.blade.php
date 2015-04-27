@@ -1,5 +1,4 @@
-<div class="col-md-4">
-<table class="pooltable table table-hover">
+<table class="pooltable table table-striped">
 	@if(count($polls)==0)
 		<h3>Ei avoimia kyselyjä</h3>
 	@endif
@@ -14,10 +13,9 @@
   @foreach($polls as $poll)
     <tr data-userid="{{$poll->id}}" >
       <td><a href={{route('poll.show', $poll->id)}}>{{$poll->toimikunta}}</a></td>
-      <td>{{$poll->users()->count()}}</td>
+      <td class="center">{{$poll->users()->count()}}</td>
     </tr>
   @endforeach
   </tbody>
   @endif
 </table>
-</div>

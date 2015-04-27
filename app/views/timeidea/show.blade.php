@@ -27,7 +27,7 @@
 	@foreach($lurkers as $lurker)
 		@foreach($answers as $answer)
 			@if($answer->lurker_id == $lurker->id && $timeidea->id == $answer->timeidea_id)
-			<td class="lurkeroptions {{$answer->sopivuus}}" data-userid="{{$lurker->id}}">
+			<td class="lurkeroptions {{$answer->sopivuus}}" data-lurkerid="{{$lurker->id}}">
 				{{Form::select('size', 
 								array('sopii' => 'Sopii', 'parhaiten' => 'Parhaiten', 'eisovi' => 'Ei','entieda' => 'En tiedä', 'eivastattu' => 'eivastattu'), 
 								$answer->sopivuus, 

@@ -13,7 +13,8 @@ class PollController extends \BaseController {
 		return Redirect::to('login')->withErrors('Kyselyt näkyvät vain adminille');
 
 	  $polls = Poll::where('is_open','=',1)->get(); 	  
-	  return View::make('poll.index', array('polls' => $polls));
+	$closed = Poll::where('is_open','=',0)->get();
+	  return View::make('poll.index', array('polls' => $polls,'closed'=>$closed));
 	}
 
 
@@ -143,8 +144,11 @@ class PollController extends \BaseController {
 		$answers = $poll->answers;
 		$comments = $poll->comments;
 		$lurkers = $poll->lurkers;
+		$showAdvice = false;
+		if ((Auth::user() && !Auth::user()->is_admin && in_array($id,Auth::user()->unansweredpolls()))||!Auth::user())
+			$showAdvice=true;
 		return View::make('poll.show', array('poll' => $poll, 'users' => $users, 'timeideas' => $timeideas,
-			'answers' => $answers, 'comments' => $comments, 'lurkers' => $lurkers));
+			'answers' => $answers,'showAdvice'=>$showAdvice, 'comments' => $comments, 'lurkers' => $lurkers));
 	}
 	
 	/**

@@ -1,14 +1,13 @@
 ﻿# Opetusnäytteiden hallintatyökalu
+## Demotilaisuus: to 23.4.2015 klo 15-17
 ## Seuraava ryhmätapaaminen: ti 17.3.2015 klo 14.00-16.00 kirjastossa
-## Seuraava asiakastapaaminen: ke 15.4.2015 14.15-16 A217
+## Seuraava asiakastapaaminen: ke 29.4.2015 14.15-16 A218
 
 [![Build Status](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster.svg?branch=master)](https://travis-ci.org/OhtuSamurai/drunken-octo-hipster)
 [![Coverage Status](https://coveralls.io/repos/OhtuSamurai/drunken-octo-hipster/badge.svg)](https://coveralls.io/r/OhtuSamurai/drunken-octo-hipster)
 [![Code Climate](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster/badges/gpa.svg)](https://codeclimate.com/github/OhtuSamurai/drunken-octo-hipster)
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
 ![Ohtu Samurai](https://img.shields.io/badge/ohtu-samurai-lightgrey.svg)
-
-420 blaze eet ![200](https://kazdelaney.files.wordpress.com/2011/06/celebration-mine54.jpg#celebrate "200")
 
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
 * Heroku: http://oona.herokuapp.com

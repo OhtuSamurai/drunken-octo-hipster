@@ -96,11 +96,12 @@ class UserController extends \BaseController {
 			foreach($user->committees as $committee)
 				if($committee->is_open) array_push($committees, $committee);
 		}
+
+		
 		return View::make('user.show', 
 			array('user' => $user, 'polls' => $polls, 'committees' => $committees,
 				'curr' => count($user->curr_committees()), 'evry' => count($user->committees), 'currp' => count($user->curr_polls()), 'evryp' =>count($user->polls)));
 	}
-
 
 	/**
 	 * Show the form for editing the specified resource.
