@@ -14,8 +14,7 @@ class Attachment extends Eloquent {
 		return $this->belongsToMany('User');
 	}
 
-	public function getUserIDs()
-	{
+	public function getUserIDs() {
 		$userids = array();
 		foreach($this->users as $user) {
 			array_push($userids,$user->id);
