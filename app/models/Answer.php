@@ -2,11 +2,11 @@
 
 class Answer extends Eloquent {
 
-  protected $table = 'answers';
+	protected $table = 'answers';
 
-  protected $fillable = ['sopivuus'];
+	protected $fillable = ['sopivuus'];
 
-  public function timeidea() {
-    return $this->belongsTo('Timeidea');
-  }
+	public function timeidea() {
+		return $this->belongsTo('Timeidea');
+	}
 }
