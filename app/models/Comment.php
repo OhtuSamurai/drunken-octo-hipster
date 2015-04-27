@@ -16,13 +16,9 @@ class Comment extends Eloquent {
 	protected $fillable = ['commenttext'];
 
 
-	public function poll() {
-		return $this->belongsTo('Poll');
-	}
+	public function poll() { return $this->belongsTo('Poll'); }
 	
-	public function user() {
-		return $this->belongsTo('User');
-	}
+	public function user() { return $this->belongsTo('User'); }
 
 	public function validator() {
 		return Validator::make(

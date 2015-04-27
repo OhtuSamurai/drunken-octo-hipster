@@ -6,7 +6,5 @@ class Answer extends Eloquent {
 
 	protected $fillable = ['sopivuus'];
 
-	public function timeidea() {
-		return $this->belongsTo('Timeidea');
-	}
+	public function timeidea() { return $this->belongsTo('Timeidea'); }
 }

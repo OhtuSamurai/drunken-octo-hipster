@@ -32,4 +32,10 @@ class AttachmentTest extends TestCase {
 		$attachment->users()->attach($usr);
 		$this->assertEquals(42, head($attachment->getUserIDs()));
 	}
+
+	public function testGetSize()
+	{
+		$this->mockAttachment()->save();
+		$this->assertEquals(4, Attachment::find(255)->getSize());
+	}
 }
