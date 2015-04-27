@@ -2,6 +2,7 @@
 
 @section('pagehead')
   {{HTML::script('javascript/pooli.js')}}
+  {{HTML::script('javascript/committee.js')}}
 @stop
 
 @section('content')
@@ -18,7 +19,7 @@
 	{{ Form::select('department', array('Fysiikan laitos' => 'Fysiikan laitos', 'Matematiikan ja tilastotieteen laitos' => 'Matematiikan ja tilastotieteen laitos', 'Tietojenkäsittelytieteen laitos' => 'Tietojenkäsittelytieteen laitos', 'Geotieteiden ja maantieteen laitos' => 'Geotieteiden ja maantieteen laitos', 'Kemian laitos' => 'Kemian laitos')); }}
 	<br>
 	{{ Form::label('role', 'Valitse täytettävän tehtävän nimike' )}}
-	{{ Form::select('role', array('Professori' => 'Professori', 'Lehtori' => 'Lehtori', 'Apulaisprofessori' => 'Apulaisprofessori', 'Dosentti' => 'Dosentti', 'Yliopisto-opettaja' => 'Yliopisto-opettaja')); }}
+	{{ Form::select('role', array('Professori' => 'Professori', 'Lehtori' => 'Lehtori', 'Apulaisprofessori' => 'Apulaisprofessori', 'Dosentti' => 'Dosentti', 'Yliopisto-opettaja' => 'Yliopisto-opettaja', 'Muu, mikä:' => 'Muu, mikä:')); }}
 	<br>
 	{{ Form::label('time', 'Valitse toimikuntaan tulevat poolilaiset listasta' )}}
 	@include('user.list')
