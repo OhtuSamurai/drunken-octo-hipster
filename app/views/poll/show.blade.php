@@ -54,10 +54,10 @@
 		@endforeach
 		<th></th>
 		@foreach($users as $user)
-			<td class="allred" data-userid="{{$user->id}}">kaikki punaiseksi</td>
+			<td class="allred btn-default" data-userid="{{$user->id}}">mikään ei sovi</td>
 		@endforeach
 		@foreach($lurkers as $lurker)
-			<td class="allredlurker" data-lurkerid="{{$lurker->id}}">kaikki punaiseksi</td>
+			<td class="allredlurker btn-default" data-lurkerid="{{$lurker->id}}">mikään ei sovi</td>
 		@endforeach
 	</tbody>
 </table>
