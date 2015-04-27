@@ -14,6 +14,9 @@
 		<div class="row col-md-7 top10">Laitos:
   		{{ Form::select('department', array('Fysiikan laitos' => 'Fysiikan laitos', 'Matematiikan ja tilastotieteen laitos' => 'Matematiikan ja tilastotieteen laitos', 'Tietojenkäsittelytieteen laitos' => 'Tietojenkäsittelytieteen laitos', 'Geotieteiden ja maantieteen laitos' => 'Geotieteiden ja maantieteen laitos', 'Kemian laitos' => 'Kemian laitos'), $committee->department); }}
 		</div>
+		<div class="row col-md-7 top10">Tehtävän nimike:
+  		{{ Form::select('role', array('Professori' => 'Professori', 'Lehtori' => 'Lehtori', 'Apulaisprofessori' => 'Apulaisprofessori', 'Dosentti' => 'Dosentti', 'Yliopisto-opettaja' => 'Yliopisto-opettaja'), $committee->role); }}
+		</div>
 		<div class="row col-md-7 top5">
   		{{ Form::textarea('description', $committee->description)}}
 		</div>

@@ -44,6 +44,7 @@ class CommitteeController extends \BaseController {
 		$committee->name = Input::get('name');
 		$committee->time = Input::get('time');
 		$committee->department = Input::get('department');
+		$committee->role = Input::get('role');
 		$committee->save();
 		foreach(Input::get('user') as $user)
       		$committee->users()->attach($user);

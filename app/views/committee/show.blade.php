@@ -4,7 +4,9 @@
 <div class="col-md-7">
 	<h1>{{ $committee->name }}</h1>
 	<h2>Järjestetään: {{ $committee->time }}</h2>
-	<h2>{{ $committee->department }}</h2>
+	<h2>Tehtävän nimike: {{ $committee->role }}</h2>
+	<h2>{{ $committee->department }}</h2>	
+	
   @if($committee->description)
     <pre>{{ $committee->description }}</pre>
   @endif
