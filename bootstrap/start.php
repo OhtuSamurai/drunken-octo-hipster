@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 	'local' => array('homestead'),
-	'mlpalvelin' => array('mlpalvelin')
+	'mlpalvelin' => array('mlpalvelin.science.helsinki.fi')
 ));
 
 /*
