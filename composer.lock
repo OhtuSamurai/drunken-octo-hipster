@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4fa832ae7312f40658a8261e03a747dc",
+    "hash": "8d839c7546576a536ddf3a1affd3ca9d",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -97,16 +97,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "2.0.12",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "6e29668921182d6b90cd021033002be85382c6f9"
+                "reference": "2a7aed27b78e90699a8ef43182eede6cfa0f5a5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/6e29668921182d6b90cd021033002be85382c6f9",
-                "reference": "6e29668921182d6b90cd021033002be85382c6f9",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/2a7aed27b78e90699a8ef43182eede6cfa0f5a5b",
+                "reference": "2a7aed27b78e90699a8ef43182eede6cfa0f5a5b",
                 "shasum": ""
             },
             "require": {
@@ -115,7 +115,7 @@
                 "facebook/webdriver": "~0.4|~0.5",
                 "guzzlehttp/guzzle": "~4.0|~5.0",
                 "php": ">=5.4.0",
-                "phpunit/phpunit": "~4.5.0",
+                "phpunit/phpunit": "~4.6.0",
                 "symfony/browser-kit": "~2.4",
                 "symfony/console": "~2.4",
                 "symfony/css-selector": "~2.4",
@@ -173,7 +173,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2015-04-02 23:50:20"
+            "time": "2015-04-24 23:54:03"
         },
         {
             "name": "d11wtq/boris",
@@ -894,16 +894,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5"
+                "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/01f0ed1628db7794e2d4e336f55a09daef4248a5",
-                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
+                "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
                 "shasum": ""
             },
             "require": {
@@ -947,7 +947,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2015-01-29 08:36:50"
+            "time": "2015-04-26 09:51:43"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1098,16 +1098,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.4.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5"
+                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5",
-                "reference": "8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
+                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
                 "shasum": ""
             },
             "require": {
@@ -1154,7 +1154,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2015-03-27 19:31:25"
+            "time": "2015-04-27 22:15:08"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1220,31 +1220,33 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.3.4",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb"
+                "reference": "a923bb15680d0089e2316f7a4af8f437046e96bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/acd690379117b042d1c8af1fafd61bde001bf6bb",
-                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/a923bb15680d0089e2316f7a4af8f437046e96bb",
+                "reference": "a923bb15680d0089e2316f7a4af8f437046e96bb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
-                    "File/"
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1261,7 +1263,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2013-10-10 15:34:57"
+            "time": "2015-04-02 05:19:05"
         },
         {
             "name": "phpunit/php-text-template",
@@ -1402,16 +1404,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.5.1",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d6429b0995b24a2d9dfe5587ee3a7071c1161af4"
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d6429b0995b24a2d9dfe5587ee3a7071c1161af4",
-                "reference": "d6429b0995b24a2d9dfe5587ee3a7071c1161af4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/163232991e652e6efed2f8470326fffa61e848e2",
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2",
                 "shasum": ""
             },
             "require": {
@@ -1423,17 +1425,17 @@
                 "php": ">=5.3.3",
                 "phpspec/prophecy": "~1.3,>=1.3.1",
                 "phpunit/php-code-coverage": "~2.0,>=2.0.11",
-                "phpunit/php-file-iterator": "~1.3.2",
+                "phpunit/php-file-iterator": "~1.4",
                 "phpunit/php-text-template": "~1.2",
-                "phpunit/php-timer": "~1.0.2",
+                "phpunit/php-timer": "~1.0",
                 "phpunit/phpunit-mock-objects": "~2.3",
                 "sebastian/comparator": "~1.1",
-                "sebastian/diff": "~1.1",
+                "sebastian/diff": "~1.2",
                 "sebastian/environment": "~1.2",
                 "sebastian/exporter": "~1.2",
                 "sebastian/global-state": "~1.0",
                 "sebastian/version": "~1.0",
-                "symfony/yaml": "~2.0"
+                "symfony/yaml": "~2.1|~3.0"
             },
             "suggest": {
                 "phpunit/php-invoker": "~1.1"
@@ -1444,7 +1446,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.5.x-dev"
+                    "dev-master": "4.6.x-dev"
                 }
             },
             "autoload": {
@@ -1470,7 +1472,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-03-29 09:24:05"
+            "time": "2015-04-11 05:23:21"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3069,133 +3071,24 @@
             "time": "2015-03-18 18:23:50"
         },
         {
-            "name": "hamcrest/hamcrest-php",
-            "version": "v1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hamcrest/hamcrest-php.git",
-                "reference": "ac50c470531243944f977b8de75be0b684a9cb51"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/ac50c470531243944f977b8de75be0b684a9cb51",
-                "reference": "ac50c470531243944f977b8de75be0b684a9cb51",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "replace": {
-                "cordoval/hamcrest-php": "*",
-                "davedevelopment/hamcrest-php": "*",
-                "kodova/hamcrest-php": "*"
-            },
-            "require-dev": {
-                "phpunit/php-file-iterator": "1.3.3",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "hamcrest"
-                ],
-                "files": [
-                    "hamcrest/Hamcrest.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "description": "This is the PHP port of Hamcrest Matchers",
-            "keywords": [
-                "test"
-            ],
-            "time": "2015-01-20 19:34:09"
-        },
-        {
-            "name": "mockery/mockery",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
-                "reference": "dbe3cfe736bb1d3e319c4cd0c310c140737028a0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/dbe3cfe736bb1d3e319c4cd0c310c140737028a0",
-                "reference": "dbe3cfe736bb1d3e319c4cd0c310c140737028a0",
-                "shasum": ""
-            },
-            "require": {
-                "hamcrest/hamcrest-php": "~1.1",
-                "lib-pcre": ">=7.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.9.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Mockery": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pádraic Brady",
-                    "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
-                },
-                {
-                    "name": "Dave Marshall",
-                    "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "http://davedevelopment.co.uk"
-                }
-            ],
-            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
-            "homepage": "http://github.com/padraic/mockery",
-            "keywords": [
-                "BDD",
-                "TDD",
-                "library",
-                "mock",
-                "mock objects",
-                "mockery",
-                "stub",
-                "test",
-                "test double",
-                "testing"
-            ],
-            "time": "2015-04-02 20:16:47"
-        },
-        {
             "name": "satooshi/php-coveralls",
-            "version": "dev-master",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/satooshi/php-coveralls.git",
-                "reference": "2fbf803803d179ab1082807308a67bbd5a760c70"
+                "reference": "dd0df95bd37a7cf5c5c50304dfe260ffe4b50760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/2fbf803803d179ab1082807308a67bbd5a760c70",
-                "reference": "2fbf803803d179ab1082807308a67bbd5a760c70",
+                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/dd0df95bd37a7cf5c5c50304dfe260ffe4b50760",
+                "reference": "dd0df95bd37a7cf5c5c50304dfe260ffe4b50760",
                 "shasum": ""
             },
             "require": {
+                "ext-curl": "*",
                 "ext-json": "*",
                 "ext-simplexml": "*",
-                "guzzle/guzzle": ">=2.7",
+                "guzzle/guzzle": ">=3.0",
                 "php": ">=5.3",
                 "psr/log": "1.0.0",
                 "symfony/config": ">=2.0",
@@ -3205,7 +3098,7 @@
             },
             "require-dev": {
                 "apigen/apigen": "2.8.*@stable",
-                "pdepend/pdepend": "dev-master as 2.0.0",
+                "pdepend/pdepend": "dev-master",
                 "phpmd/phpmd": "dev-master",
                 "phpunit/php-invoker": ">=1.1.0,<1.2.0",
                 "phpunit/phpunit": "3.7.*@stable",
@@ -3214,22 +3107,14 @@
                 "squizlabs/php_codesniffer": "1.4.*@stable",
                 "theseer/fdomdocument": "dev-master"
             },
-            "suggest": {
-                "symfony/http-kernel": "Allows Symfony integration"
-            },
             "bin": [
                 "composer/bin/coveralls"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.7-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
-                    "Satooshi\\Component": "src/",
-                    "Satooshi\\Bundle": "src/"
+                    "Contrib\\Component": "src/",
+                    "Contrib\\Bundle": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3251,7 +3136,7 @@
                 "github",
                 "test"
             ],
-            "time": "2014-11-11 15:35:34"
+            "time": "2013-05-04 08:07:33"
         },
         {
             "name": "symfony/config",
@@ -3357,10 +3242,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "satooshi/php-coveralls": 20,
-        "mockery/mockery": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
