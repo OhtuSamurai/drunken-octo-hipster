@@ -15,7 +15,7 @@
   @foreach($users as $user)
 
     <tr class="rivit" data-userid="{{$user->id}}" >
-      <td><a href="/user/{{$user->id}}">{{$user->first_name}}</a><input class="userselector hidden" type="checkbox" name="user[]" value="{{$user->id}}"></td>
+      <td><a href="{{URL::to('/user/'.$user->id)}}">{{$user->first_name}}</a><input class="userselector hidden" type="checkbox" name="user[]" value="{{$user->id}}"></td>
       <td>{{$user->last_name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->department}}</td>

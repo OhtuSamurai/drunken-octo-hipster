@@ -14,12 +14,12 @@
 <div class="row col-md-7">
 	@if(Auth::user() && Auth::user()->is_admin)
     @if($committee->is_open)
-    {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
+    {{ Form::open(array('action' => array('CommitteeController@toggleOpen', $committee->id))) }}
     {{ Form::submit('Sulje toimikunta', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @else
     Toimikunta on suljettu.
-    {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
+    {{ Form::open(array('action' => array('CommitteeController@toggleOpen', $committee->id))) }}
     {{ Form::submit('Avaa uudelleen', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @endif

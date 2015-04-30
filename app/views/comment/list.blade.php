@@ -9,7 +9,7 @@
 					<p>{{$comment->commenttext}}</p>
 					<span class="date sub-text">
 					@if ($comment->user)
-						<a href="/user/{{$comment->user->id}}">{{$comment->user->first_name}}</a>
+						<a href="{{URL::to('/user/'.$comment->user->id)}}">{{$comment->user->first_name}}</a>
 					@else
 						{{$comment->author_name}}
 					@endif

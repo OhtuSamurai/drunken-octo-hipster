@@ -37,7 +37,7 @@
 	<div class="alert alert-warning">
 		<p>Sinulla on vastaamattomia kyselyjä! Siirry vastaamaan linkistä:
 		@foreach (array_unique(Auth::user()->unansweredpolls()) as $uapolli_id)
-			<a href="/poll/{{$uapolli_id}}">{{Poll::find($uapolli_id)->toimikunta}}</a>
+			<a href="{{URL::to('/poll/'.$uapolli_id)}}">{{Poll::find($uapolli_id)->toimikunta}}</a>
 		@endforeach
 </p>
 	</div>
