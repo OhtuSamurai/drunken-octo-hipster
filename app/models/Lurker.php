@@ -11,12 +11,7 @@ class Lurker extends Eloquent {
 
   	protected $fillable = ['name'];
 
-  	public function poll() {
-  		return $this->belongsTo('Poll');
-  	}
+  	public function poll() { return $this->belongsTo('Poll'); }
 	
-	public function answers() {
-		return $this->hasMany('Answer');
-	}
-
+	public function answers() { return $this->hasMany('Answer'); }
 }

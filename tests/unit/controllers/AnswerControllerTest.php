@@ -2,37 +2,6 @@
 
 class AnswerControllerTest extends TestCase {
 
-	public function testIndex() {
-		$ans_ctrl = new AnswerController;
-		$this->assertNull($ans_ctrl->index());
-	}
-
-	public function testCreate() {
-		$ans_ctrl = new AnswerController;
-		$this->assertNull($ans_ctrl->create());
-	}
-
-	public function testStore() {
-		$ans_ctrl = new AnswerController;
-		$this->assertNull($ans_ctrl->store());
-	}
-
-	public function testShow() {
-		$ans_ctrl = new AnswerController;
-		$this->assertNull($ans_ctrl->show(1));
-	}
-
-	public function testEdit() {
-		$ans_ctrl = new AnswerController;
-		$this->assertNull($ans_ctrl->edit(1));
-	}
-
-
-	public function testUpdate() {
-		$ans_ctrl = new AnswerController;
-		$this->assertNull($ans_ctrl->update(1));
-	}
-
 	public function testUpdateSopivuusMissClick() {
 		$this->action('PUT', 'AnswerController@updateSopivuus', [], ['poll_id' => 1]);
 		$this->assertRedirectedToAction('PollController@show', ['id' => 1]);
@@ -50,10 +19,5 @@ class AnswerControllerTest extends TestCase {
 		$this->assertEquals('ei sovi', $answer->sopivuus);
 		$answer = Answer::find(34);
 		$this->assertEquals('sopii', $answer->sopivuus);
-	}
-
-	public function testDestroy() {
-		$ans_ctrl = new AnswerController;
-		$this->assertNull($ans_ctrl->destroy(1));
 	}
 }

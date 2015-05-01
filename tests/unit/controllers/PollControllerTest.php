@@ -94,12 +94,29 @@ class PollControllerTest extends TestCase {
 	public function testUpdate() {
 		$this->fakeLoginAdmin();
 		$this->mockPoll()->save();
+		$this->mockTimeidea()->save();
 		$user = $this->mockUser();
 		$user->save();
 		$poll = Poll::find('uniikki');
 		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'bricks', 'description' => 'weeee', 'user' => [$user->id]]);
 		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
 		$this->assertEquals('bricks', Poll::find('uniikki')->toimikunta);
+		$this->assertEquals('eivastattu', Answer::find(1)->sopivuus);
+		$this->assertEquals(42, Answer::find(1)->participant_id);
+	}
+
+	public function testUpdateRemoveFromPoll() {
+		$this->fakeLoginAdmin();
+		$this->mockPoll()->save();
+		$this->mockTimeidea()->save();
+		$user = $this->mockUser();
+		$user->save();
+		$poll = Poll::find('uniikki');
+		$poll->users()->attach($user);
+		$this->action('PUT', 'PollController@update', ['id' => $poll->id], ['toimikunta' => 'chicks', 'description' => 'wuhuu', 'user' => []]);
+		$this->assertRedirectedToAction('PollController@edit', ['id' => $poll->id]);
+		$this->assertEquals('chicks', Poll::find('uniikki')->toimikunta);
+		$this->assertNull(Answer::find(8));
 	}
 
 	public function testToggleOpenWithoutLoggingIn() {
