@@ -25,7 +25,7 @@
     {{ Form::close() }}
     @else
     {{ Form::open(array('action' => array('UserController@update', $user->id), 'method' => 'PUT')) }}
-    {{ Form::hidden('is_admin', 1) }}
+    {{ Form::hidden('is_admin', Auth::user()->id) }}
     {{ Form::submit('Anna Admin oikeudet', array('class' => 'btn btn-danger')) }}
     {{ Form::close() }}
     @endif
