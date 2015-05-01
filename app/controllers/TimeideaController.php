@@ -35,16 +35,13 @@ class TimeideaController extends \BaseController {
 		$timeidea->poll_id = $poll->id;
 		$timeidea->description = Input::get('description');
 		$validator = $timeidea->validator();
-		if ($validator->fails()) {
+		if ($validator->fails())
 			return Redirect::action('PollController@edit', $poll->id)->withErrors($validator);
-		}
 		$timeidea->save();
-		foreach($poll->users as $user) {
+		foreach($poll->users as $user)
 			AnswerController::createAnswer($user->id, $timeidea->id, "participant_id");
-		}
-		foreach($poll->lurkers as $lurker) {
+		foreach($poll->lurkers as $lurker)
 			AnswerController::createAnswer($lurker->id, $timeidea->id, "lurker_id");
-		}
 		return Redirect::action('PollController@edit',['id'=>$poll->id])->with('success','Ajankohta on lisätty kyselyyn');
 	}
 

@@ -203,7 +203,7 @@ class PollController extends \BaseController {
 		if (!Input::has('time'))
 			return Redirect::action('PollController@show', ['id' => $id])->withErrors('Valitse ajankohta');
 		if (!Input::has('user'))
-			return Redirect::route('poll.create')->withErrors("Valitse ensin käyttäjiä listasta");
+			return Redirect::action('PollController@show', ['id' => $id])->withErrors("Valitse ensin käyttäjiä listasta");
 		$poll = Poll::find($id);
 		$committee = new Committee;
 		$committee->name = $poll->toimikunta;

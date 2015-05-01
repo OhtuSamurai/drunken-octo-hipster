@@ -14,12 +14,10 @@ class Attachment extends Eloquent {
 		$userids = array();
 		foreach($this->users as $user)
 			array_push($userids,$user->id);
-		return $userids;
-	}
+		return $userids; }
 
 	public function getSize() {
 		if (file_exists($this->file))
 			return filesize($this->file);
-		else return 0;
-	}
+		else return 0; }
 }
