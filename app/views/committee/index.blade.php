@@ -3,8 +3,8 @@
 
 @if(Auth::user() && Auth::user()->is_admin)
 	<div class ="row">
-  		<a href="/poll/create" class="btn btn-primary" role="button">Luo uusi toimikunta kyselyn kautta</a>
-		<a href="/committee/create" class="btn btn-primary" role="button">Luo uusi toimikunta ilman kyselyä</a>
+  		<a href="{{URL::to('/poll/create')}}" class="btn btn-primary" role="button">Luo uusi toimikunta kyselyn kautta</a>
+		<a href="{{URL::to('/committee/create')}}" class="btn btn-primary" role="button">Luo uusi toimikunta ilman kyselyä</a>
 	</div>
 @endif
 

@@ -10,7 +10,7 @@
 	</tr>
 	@foreach($users as $user) 
 		<tr>
-			<td><a href="user/{{$user->id}}">{{$user->first_name." ".$user->last_name}}</a></td>	
+			<td><a href="{{URL::to('/user/'.$user->id)}}">{{$user->first_name." ".$user->last_name}}</a></td>	
 			<td class="center">{{date('d.m.Y',strtotime($user->created_at))}}</td>
 			<td class="center">{{$user->n_committee()}}</td>
 			<td class="center">{{$user->n_poll()}}</td>

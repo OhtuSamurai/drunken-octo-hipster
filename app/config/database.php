@@ -35,6 +35,17 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+
+		'mlpalvelin' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'oona_dev',
+			'username'  => 'oona',
+			'password'  => 'oona_00na',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 	),
 
 	/*

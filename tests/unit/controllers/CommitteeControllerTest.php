@@ -45,7 +45,7 @@ class CommitteeControllerTest extends TestCase {
 		$this->fakeLoginAdmin();
 		$user = $this->mockUser();
 		$user->save();
-		$this->action('POST', 'CommitteeController@store', null, ['name'=>'uusi uljas toimikunta', 'time'=>'nyt', 'department' => 'laitos', 'user' => [$user->id]]);
+		$this->action('POST', 'CommitteeController@store', null, ['name'=>'uusi uljas toimikunta', 'time'=>'nyt', 'department' => 'laitos', 'role' => 'suuri johtaja', 'user' => [$user->id]]);
 		$this->assertRedirectedToAction('CommitteeController@show', ['id' => 1]);
 		$committee = Committee::find(1);
 		$this->assertEquals('uusi uljas toimikunta', $committee->name);

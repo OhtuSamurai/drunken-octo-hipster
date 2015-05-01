@@ -15,7 +15,7 @@
 <p>Kuvaus:</p>
 <pre>{{$user->description}}</pre>
 @if (Auth::user() && (Auth::user()->is_admin || Auth::user()->id==$user->id))
-<a href="/user/{{$user->id}}/edit" class="btn btn-primary" role="button">Muokkaa tietoja</a>
+<a href="{{URL::to('/user/'.$user->id.'/edit')}}" class="btn btn-primary" role="button">Muokkaa tietoja</a>
 @endif
 @if(Auth::user()->is_admin && Auth::user()->id != $user->id)
 	@if($user->is_admin)
