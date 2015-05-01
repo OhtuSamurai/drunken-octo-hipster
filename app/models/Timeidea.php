@@ -19,7 +19,5 @@ class Timeidea extends Eloquent {
     return Validator::make(
       $this->getAttributes(),
       ['description' => 'required'],
-      ['description.required' => 'Yritit lisätä tyhjän ajankohdan']
-      );
-    }
+      ['description.required' => 'Yritit lisätä tyhjän ajankohdan']);}
 }

@@ -24,7 +24,5 @@ class Comment extends Eloquent {
 		return Validator::make(
 			$this->getAttributes(),
 			array('commenttext'=>'required'),
-			array('commenttext.required'=>'Anna kommentti!')
-			);
-	}
+			array('commenttext.required'=>'Anna kommentti!'));}
 }
