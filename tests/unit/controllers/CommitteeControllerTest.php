@@ -190,11 +190,13 @@ class CommitteeControllerTest extends TestCase {
 	public function testUpdate() {
 		$this->fakeLoginAdmin();
 		$this->mockCommittee()->save();
-		$this->action('PUT', 'CommitteeController@update', ['id' => 1], ['name' => 'hassu nimi', 'time' => 'new time', 'description' => 'new']);
+		$this->action('PUT', 'CommitteeController@update', ['id' => 1], ['name' => 'hassu nimi', 'time' => 'new time', 'description' => 'new', 'department' => 'Fysiikan laitos', 'role' => 'Professori']);
 		$this->assertRedirectedToAction('CommitteeController@edit', ['id' => 1]);
 		$this->assertEquals('hassu nimi', Committee::find(1)->name);
 		$this->assertEquals('new time', Committee::find(1)->time);
 		$this->assertEquals('new', Committee::find(1)->description);
+		$this->assertEquals('Professori', Committee::find(1)->role);
+		$this->assertEquals('Fysiikan laitos', Committee::find(1)->department);
 	}
 
 	public function testDestroy() {
