@@ -4,7 +4,9 @@
 <div class="col-md-7">
 	<h1>{{ $committee->name }}</h1>
 	<h2>Järjestetään: {{ $committee->time }}</h2>
-	<h2>{{ $committee->department }}</h2>
+	<h2>Tehtävän nimike: {{ $committee->role }}</h2>
+	<h2>{{ $committee->department }}</h2>	
+	
   @if($committee->description)
     <pre>{{ $committee->description }}</pre>
   @endif
@@ -12,12 +14,12 @@
 <div class="row col-md-7">
 	@if(Auth::user() && Auth::user()->is_admin)
     @if($committee->is_open)
-    {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
+    {{ Form::open(array('action' => array('CommitteeController@toggleOpen', $committee->id))) }}
     {{ Form::submit('Sulje toimikunta', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @else
     Toimikunta on suljettu.
-    {{ Form::open(array('url' => '/committee/'.$committee->id.'/toggleopen')) }}
+    {{ Form::open(array('action' => array('CommitteeController@toggleOpen', $committee->id))) }}
     {{ Form::submit('Avaa uudelleen', array('class' => 'btn btn-primary')) }}
     {{ Form::close() }}
     @endif

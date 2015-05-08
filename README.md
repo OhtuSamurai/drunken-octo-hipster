@@ -9,8 +9,6 @@
 ![](https://reposs.herokuapp.com/?path=OhtuSamurai/drunken-octo-hipster&style=flat&color=ff69b4)
 ![Ohtu Samurai](https://img.shields.io/badge/ohtu-samurai-lightgrey.svg)
 
-420 blaze eet ![200](https://kazdelaney.files.wordpress.com/2011/06/celebration-mine54.jpg#celebrate "200")
-
 * Työseloste: https://ohtuprojekti.jamo.fi/topic_descriptions/77
 * Heroku: http://oona.herokuapp.com
 * Product/Sprint backlog (muuttuu vielä): https://docs.google.com/spreadsheet/ccc?key=0Ao8wkOyFAmCrdDRmZnFTS0xZZjAzeUFTcjNtSjBMNXc&usp=sharing

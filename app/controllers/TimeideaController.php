@@ -7,8 +7,7 @@ class TimeideaController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
+	public function index() {
 		//
 	}
 
@@ -18,8 +17,7 @@ class TimeideaController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
+	public function create() {
 		//
 	}
 
@@ -29,8 +27,7 @@ class TimeideaController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
+	public function store() {
 		if (!Auth::user() || !Auth::user()->is_admin)
 			return Redirect::route('poll.show', array('poll'=>Input::get('poll_id')))->withErrors("Toiminto evätty!");
 		$poll = Poll::find(Input::get('poll_id'));
@@ -38,16 +35,13 @@ class TimeideaController extends \BaseController {
 		$timeidea->poll_id = $poll->id;
 		$timeidea->description = Input::get('description');
 		$validator = $timeidea->validator();
-		if ($validator->fails()) {
+		if ($validator->fails())
 			return Redirect::action('PollController@edit', $poll->id)->withErrors($validator);
-		}
 		$timeidea->save();
-		foreach($poll->users as $user) {
+		foreach($poll->users as $user)
 			AnswerController::createAnswer($user->id, $timeidea->id, "participant_id");
-		}
-		foreach($poll->lurkers as $lurker) {
+		foreach($poll->lurkers as $lurker)
 			AnswerController::createAnswer($lurker->id, $timeidea->id, "lurker_id");
-		}
 		return Redirect::action('PollController@edit',['id'=>$poll->id])->with('success','Ajankohta on lisätty kyselyyn');
 	}
 
@@ -57,8 +51,7 @@ class TimeideaController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
+	public function show($id) {
 		$timeidea = Timeidea::find($id);
 		return View::make('timeidea.show', array('timeidea' => $timeidea));
 	}
@@ -70,8 +63,7 @@ class TimeideaController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
+	public function edit($id) {
 		//
 	}
 
@@ -82,8 +74,7 @@ class TimeideaController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
+	public function update($id) {
 		//
 	}
 	
@@ -95,8 +86,7 @@ class TimeideaController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($timeidea_id)
-	{
+	public function destroy($timeidea_id) {
 		if (!Auth::user() || !Auth::user()->is_admin)
 			return Redirect::to('/')->withErrors('Toiminto evätty!');
 		$timeidea = Timeidea::find($timeidea_id);

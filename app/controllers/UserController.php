@@ -130,8 +130,10 @@ class UserController extends \BaseController {
 		if(!Auth::check() || (!Auth::user()->is_admin && Auth::user()->id != $id)) {
 			return Redirect::to('/')->withErrors("Toiminto evätty!");
 		}
-		if(Input::has('is_admin') and (Auth::user()->is_admin AND Auth::user()->id == $id))
-			return Redirect::action('UserController@show', $id)->withErrors('Et voi poistaa admin oikeuksiasi');
+		if(Input::has('is_admin') and (Auth::user()->is_admin != 0 AND Auth::user()->id == $id))
+			return Redirect::action('UserController@show', $id)->withErrors('Et voi poistaa admin oikeuksiasi!');
+		if(Input::has('is_admin') and (Auth::user()->is_admin != 0 and Auth::user()->is_admin == $id))
+			return Redirect::action('UserController@show', $id)->withErrors('Et voi poistaa itsellesi admin oikeudet antaneelta adminilta oikeuksia!');
 		$user = User::find($id);
 		foreach (Input::all() as $key => $value)
 		{

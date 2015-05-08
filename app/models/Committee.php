@@ -11,18 +11,15 @@ class Committee extends Eloquent {
 
   	protected $fillable = ['name', 'time', 'is_open'];
 
-  	public function users()
-  	{
+  	public function users() {
     	return $this->belongsToMany('User', 'committee_participants')->withTimestamps();
 	}
 
-	public function attachments()
-	{
+	public function attachments() {
 		return $this->hasMany('Attachment');
 	}
 
-	public function comments()
-	{
+	public function comments() {
 		return $this->hasMany('Comment')->orderBy('created_at','desc');
 	}
 }

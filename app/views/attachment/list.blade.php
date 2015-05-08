@@ -13,11 +13,11 @@
 	<tr class="halytys">
 	@else <tr>
 	@endif
-		<td><a href="/committee/{{$committee->id}}/attachment/{{$attachment->id}}">{{$attachment->filename}}</a></td>
+		<td><a href="{{URL::to('/committee/'.$committee->id.'/attachment/'.$attachment->id)}}">{{$attachment->filename}}</a></td>
 
 			<td>
 			@foreach($attachment->users as $user)
-				<a href="/user/{{$user->id}}">{{$user->first_name}} </a> 
+				<a href="{{URL::to('/user/'.$user->id)}}">{{$user->first_name}} </a> 
 			@endforeach
 			</td>
 			@if (Auth::user() && Auth::user()->is_admin)

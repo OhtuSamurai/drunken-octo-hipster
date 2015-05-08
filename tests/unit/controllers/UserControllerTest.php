@@ -173,9 +173,9 @@ class UserControllerTest extends TestCase {
 	public function testUpdateCreateAdmin() {
 		$this->fakeLoginAdmin();
 		$this->mockUser()->save();
-		$this->action('Put', 'UserController@update', ['id' => 42], ['is_admin' => 1]);
+		$this->action('Put', 'UserController@update', ['id' => 42], ['is_admin' => 123]);
 		$this->assertRedirectedToAction('UserController@show', ['id' => 42]);
-		$this->assertEquals(1, User::find(42)->is_admin);
+		$this->assertEquals(123, User::find(42)->is_admin);
 	}
 
 	public function testAdminCantRemoveOwnAdminRigths() {
@@ -184,6 +184,15 @@ class UserControllerTest extends TestCase {
 		$this->assertRedirectedToAction('UserController@show', ['id' => 123]);
 		$this->assertSessionHasErrors();
 		$this->assertEquals(1, User::find(123)->is_admin);
+	}
+
+	public function testCantRemoveGiverAdminsRights() {
+		$this->mockUser(['id' => 1, 'first_name' => 'first', 'last_name' => 'last', 'department' => 'deb', 'position' => 'pos', 'username' => 'asd', 'is_admin' => 1, 'is_active' => 1])->save();
+		$this->fakeLoginAdmin();
+		$this->action('Put', 'UserController@update', ['id' => 1], ['is_admin' => 0]);
+		$this->assertRedirectedToAction('UserController@show', ['id' => 1]);
+		$this->assertSessionHasErrors();
+		$this->assertEquals(1, User::find(1)->is_admin);	
 	}
 
 	public function testCantLeaveMandatoryFieldEmpty() {

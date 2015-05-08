@@ -57,8 +57,7 @@ Route::resource('timeidea', 'TimeideaController',
 
 Route::resource('comment', 'CommentController');
 
-Route::resource('answer', 'AnswerController',
-                array('only' => array('store')));
+Route::resource('answer', 'AnswerController');
 
 Route::resource('committee', 'CommitteeController',
                 array('except' => array('destroy')));

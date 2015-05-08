@@ -9,9 +9,9 @@ class CommentController extends \BaseController {
 		$comment->commenttext = Input::get('commenttext');
 		if(Input::has('poll_id'))
 		{
-			if (Auth::user())
+			if (Auth::check())
 				$comment->user_id = Auth::user()->id;
-			else
+			if(!Auth::check())
 				$comment->author_name = (Input::get('author_name') ? Input::get('author_name') : "Anonyymi");
 			$comment->poll_id = Input::get('poll_id');
 			$validator = $comment->validator();
